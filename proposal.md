@@ -1,11 +1,3 @@
-# SEM-1.1-GraphQL
-
-Senior Seminar with GraphQL
-
-This is proposal for a possible class to run term 3 2019. 
-
-Feel free to comment with any suggestions, words of encouragement, and expressions of interest.
-
 # GraphQL Class Proposal
 
 This is a proposal for a senior seminar. To run in term 3 2018. 
@@ -142,3 +134,22 @@ On the clientside GraphQL queries are written as strings and so work with any fr
 - Caching
   
 https://graphql.org/learn/
+
+| Class |          Date          |  Topics    |
+|:-----:|:----------------------:|:----------:|
+|  Wk 1 |  Intro                 | [Lesson 1] |
+|  Wk 1 | Getting Started        | [Lesson 2] |
+|  Wk 2 | Schemas                | [Lesson 1] |
+|  Wk 2 | Thursday, November 1             | [Lesson 1] |
+|  Wk 5 |  Tuesday, November 6             | [Lesson 1] |
+|  Wk 6 | Thursday, November 8             | [Lesson 1] |
+|  Wk 7 |  Tuesday, November 13            | [Lesson 1] |
+|  Wk 8 | Thursday, November 15            | [Lesson 1] |
+|       |  Tuesday, November 20            | **Don Rags** |
+|       | Thursday, November 22            | **Fall Break** |
+|  Wk 9 |  Tuesday, November 27            | [Lesson 1] |
+|  Wk 10| Thursday, November 29            | [Lesson 1] |
+|  Wk 11|  Tuesday, December 4             | [Lesson 1] |
+|  Wk 12| Thursday, December 6             | [Lesson 1] |
+|  Wk 13| Tuesday, December 11             | Final Exams |
+|  Wk 14| Thursday, December 13            | Final Class (presentations, etc) |
