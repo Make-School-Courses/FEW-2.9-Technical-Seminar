@@ -24,6 +24,8 @@ With REST there is a need to define an end point for each type of request at the
 - Using a single endpoint simplifies your work. 
 - Make more effecient applications by avoiding over fetching and under fetching data. 
 
+Runs everywhere: Can be deployed via now, up, AWS Lambda, Heroku etc.
+
 ## Core Concepts 
 
 The GraphQL language uses a JS like syntax. Below are some examples of the code you would write in the GraphQL language. 
