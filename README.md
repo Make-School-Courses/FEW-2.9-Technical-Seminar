@@ -1,4 +1,4 @@
-# SEM-1.1-GraphQL
+# FEW-2.9-GraphQL
 
 Senior Seminar with GraphQL
 
