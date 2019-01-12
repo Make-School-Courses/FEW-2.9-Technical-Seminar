@@ -1,4 +1,4 @@
-# Title
+# FEW-2.9-GraphQL
 
 ## Course Description
 
@@ -32,8 +32,6 @@ Students by the end of the course will be able to ...
 1. Compare & Contrast
 1. Design & Implement
 1. Master
-
-
 
 ## Schedule
 ---
