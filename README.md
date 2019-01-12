@@ -1,144 +1,164 @@
-# SEM-1.1-GraphQL
+# Title
 
-Senior Seminar with GraphQL
+## Course Description
 
-This is proposal for a possible class to run term 3 2019. 
+Describe your course here. A short elevator pitch for the course. This will be listed as the course description in the course catalog.
 
-Feel free to comment with any suggestions, words of encouragement, and expressions of interest.
+### Why you should know this (optional)
 
-# GraphQL Class Proposal
+Explain why students should care to learn the material presented in this class.
 
-This is a proposal for a senior seminar. To run in term 3 2018. 
+## Course Specifics
 
-## Overview 
+Weeks to Completion:  7 <br>
+Total Seat Hours:  37.5 hours <br>
+Total Out-of-Class Hours: 75 hours <br>
+Total Hours: 112.5 hours <br>
+Units:  3 units <br>
+Delivery Method:  Residential <br>
+Class Sessions:  14 classes, 7 labs
 
-GraphQL is an open source data query and manipulation language for APIs, and runtime for fulling data requests. 
+## Prerequisites:  
 
-Graph QL is a language and a specification and can be used with a variety of server technologies. 
+- Prerequisite 1
+- Prerequisite 2
 
-As a clientside language GraphQL allows a client to describe a request, including providing query parameters, and what it expects in return. 
+## Learning Objectives (5-8)
 
-As a server side specification GraphQL describes how a server should fullfill a query. The GraphQl spec can be implemented in any serverside technology for example SQL or Node. 
+Students by the end of the course will be able to ...
 
-### Advantages 
+1. Identify & Describe
+1. Explain
+1. Compare & Contrast
+1. Design & Implement
+1. Master
 
-Reduces a routes to a single endpoint. With REST you will need an endpoint for each of many different types of requests. With GraphQL you would use a **single endpoint for all requests**.
 
-Removes over and under fetching of data. With REST data returned from a request is usually a fixed dataset and includes a full range of data. Using GraphQL you can **specify exactly what you want returned**. 
 
-With REST there is a need to define an end point for each type of request at the server. With GraphQL all requests are written at the client. This makes product iteration faster. 
+## Schedule
+---
+### _INSTRUCTOR NOTE: PLEASE REMOVE THIS BEFORE SUBMITTING_
+If you teach **M/W** or **Tu/Th**, please pick from a template below and delete the other one
 
-- Develop applications faster since you can create new routes by just writing code on frontend. 
-- Using a single endpoint simplifies your work. 
-- Make more effecient applications by avoiding over fetching and under fetching data. 
+---
+### M/W Template
+**Course Dates:** Monday, January 21 – Wednesday, March 6, 2019 (7 weeks)
 
-## Core Concepts 
+**Class Times:** Monday and Wednesday at 3:30–5:20pm (10 class sessions)
 
-The GraphQL language uses a JS like syntax. Below are some examples of the code you would write in the GraphQL language. 
+| Class |          Date          |                 Topics                  |
+|:-----:|:----------------------:|:---------------------------------------:|
+|  -  | Monday, January 21             | **MLK Jr. Day** |
+|  1 | Wednesday, January 23    | [Lesson 1] |
+|  2 | Monday, January 28             | [Lesson 2] |
+|  3 |  Wednesday, January 30             | [Lesson 3] |
+|  4 | Monday, February 4             | [Lesson 4] |
+|  5 |  Wednesday, February 6             | [Lesson 5] |
+|  6 | Monday, February 11             | [Lesson 6] |
+|  7 |  Wednesday, February 13            | [Lesson 7] |
+|  -  | Monday, February 18             | **President's Day (Observed)** |
+|  8  | **Tuesday, February 19**             | [Lesson 8] |
+|  9 |  Wednesday, February 20            | [Lesson 9] |
+|  10 | Monday, February 25             | [Lesson 10] |
+|  11 |  Wednesday, February 27            | [Lesson 11] |
+|  12 | Monday, March 4             | Final Class (presentations, etc) |
+|  13 |  Wednesday, March 6            | Final Exams/Presentations |
 
-### SDL (Schema Definition Language)
+### Tu/Th Template
+**Course Dates:** Tuesday, January 22 – Thursday, March 7, 2019 (7 weeks)
 
-Strong Schemas make for more robust and reliable systems. 
+**Class Times:** Tuesday and Thursday at 3:30–5:20pm (12 class sessions)
 
-```
-type Post {
-  title: String!
-  author: Person!
-}
-```
+| Class |          Date          |                 Topics                  |
+|:-----:|:----------------------:|:---------------------------------------:|
+|  1 |  Tuesday, January 22              | [Lesson 1] |
+|  2 | Thursday, January 24             | [Lesson 2] |
+|  3 |  Tuesday, January 29             | [Lesson 3] |
+|  4 | Thursday, January 31             | [Lesson 4] |
+|  5 |  Tuesday, February 5             | [Lesson 5] |
+|  6 | Thursday, February 7             | [Lesson 6] |
+|  7 |  Tuesday, February 12             | [Lesson 7] |
+|  8 | Thursday, February 14             | [Lesson 8] |
+|  - |  Tuesday, February 19             | **President's Day (Observed)** |
+|  9 | Thursday, February 21             | [Lesson 9] |
+|  10 |  Tuesday, February 26             | [Lesson 10] |
+|  11 | Thursday, February 28             | [Lesson 11] |
+|  12 |  Tuesday, March 5             | Final Class (presentations, etc) |
+|  13 | Thursday, March 7             | Final Exams/Presentations |
 
-### Query 
+[Lesson 1]: Lessons/Lesson1.md
+[Lesson 2]: Lessons/Lesson2.md
+[Lesson 3]: Lessons/Lesson3.md
+[Lesson 4]: Lessons/Lesson4.md
+[Lesson 5]: Lessons/Lesson5.md
+[Lesson 6]: Lessons/Lesson6.md
+[Lesson 7]: Lessons/Lesson7.md
+[Lesson 8]: Lessons/Lesson8.md
+[Lesson 9]: Lessons/Lesson9.md
+[Lesson 10]: Lessons/Lesson10.md
+[Lesson 11]: Lessons/Lesson11.md
+[Lesson 12]: Lessons/Lesson12.md
 
-Queries written on the frontend make for faster more effecient development. 
+## Class Assignments [Remove header if you like]
+- List (with links) of all course-level assignments (i.e. tutorials, challenge sets, contractor project, custom projects, etc)
+- Under each assignment link the rubric used to evaluate it or describe how it is evaluated.
+- Projects should be linked to a project page which has a description & requirements.
 
-```
-{
-  allPosts {
-    title
-  }
-}
-```
+### Tutorials
+[REWORD AS RELEVANT TO YOUR COURSE] Tutorials are to help you get started in a topic.  They are graded on completion only.
 
-Nested data can be requested in a query. 
+- [Do Cool Stuff Tutorial]()
 
-```
-{
-  allPosts {
-    title
-		comments {
-			subject
-		}
-  }
-}
-```
+### Projects
+**All projects will require a minimum of 10 commits, and must take place throughout the entirety of the course**
 
-Queries can have parameters
+- **Good Example:** 40+ commits throughout the length of the course, looking for a healthy spattering of commits each week (such as 3-5 per day).
+- **Bad Example:** 10 commits on one day during the course and no others. Students who do this will be at severe risk of not passing the class.
+- **Unacceptable Example:** 2 commits the day before a project is due. Students who do this should not expect to pass the class. 
 
-```
-{
-  allPosts(first: 2) {
-    title
-  }
-}
-```
+#### Why are we doing this?
 
-Mutations are for CRUD
+We want to encourage best practices that you will see working as a professional software engineer. Breaking up a project by doing a large amount of commits helps engineers in the following ways:
 
-```
-mutation {
-  createPost(title: "Learn GraphQL", content: "...") {
-    title
-    content
-  }
-}
-```
+- It's much easier to retrace your steps if you break your project/product/code up into smaller pieces
+- It helps with being able to comprehend the larger problem, and also will help with your debugging (i.e. finding exactly when you pushed that piece of broken code)
+- It allows for more streamlined, iterative communication in your team, as it's much easier to hand off a small change to someone (updating a function) than a huge one (changed the architecture of the project)
 
-### Subscriptions
+Through this requirement, we hope to encourage you to think about projects with an iterative, modular mindset. Doing so will allow you to break projects down into smaller milestones that come together to make your fully-realized solution.
 
-GraphQL supports real time updates with Subscriptions. 
+[REWORD AS RELEVANT TO YOUR COURSE] Projects are a chance for you to build and ship code that is based on class concepts.  Many are open ended allowing you to be creative and to have individual work for your portfolio.
+- [Sample Project](Sample_Project.md)
+    -   [Sample Project Rubric](Sample_Rubric.md)
 
-### Backend technologies
+### Other Class assignments
 
-GraphQL integrates with all of the technologies you are familiar with: React, Node, Elixir, Ruby, Python, and more. 
+## Evaluation
+[MAKE SPECIFIC TO YOUR COURSE SO IT IS SUPER CLEAR]
+To pass this course you must meet the following requirements:
 
-On the clientside GraphQL queries are written as strings and so work with any frontend technology. 
+- Complete all required tutorials 
+- Pass all projects according to the associated project rubric
+- Pass the final summative assessment >=75%
+- Actively participate in class and abide by the attendance policy
+- Make up all classwork from all absences
 
-## Class Projects 
+## Attendance
+Just like any job, attendance at Make School is required and a key component of your success. Attendance is being onsite from 9:30 to 5:30 each day, attending all scheduled sessions including classes, huddles, coaching and school meetings, and working in the study labs when not in a scheduled session. Working onsite allows you to learn with your peers, have access to support from TAs, instructors and others, and is vital to your learning.
 
-- Hackernews Tutorial 
-- Contractor Project
-- Custom Project 
+Attendance requirements for scheduled sessions are:
+- No more than two no call no shows per term in any scheduled session.
+- No more than four excused absences per term in any scheduled session.
 
-## Syllabus
+Failure to meet these requirements will result in a PIP (Participation Improvement Plan).  Failure to improve after the PIP is cause for not being allowed to continue at Make School. 
 
-- Intro
-  - What is GraphQL?
-  - Benefits
-  - REST vs GraphQL
-  - Vocabulary
-  - GitHub GraphQL API Server
-    - https://developer.github.com/v4/
-- Getting started
-  - Writing a Query
-    - Formatting a query
-    - Passing arguments
-    - Required arguments
-- GraphQL Schemas
-  - Schemas
-  - Types 
-  - Querying a Schema
-- Handling Data
 
-### Other possible topics
+## Make School Course Policies
 
-- Queries and Mutations
-- Schemas and Types 
-- Validation
-- Execution
-- Best Practices
-- Thinking in Graphs
-- Authorization
-- Pagination
-- Caching
-  
-https://graphql.org/learn/
+[Academic Honesty](https://make.sc/academic-honesty)<br>
+[Accommodations for Students](https://make.sc/accommodations-for-students)<br>
+[Attendance Policy](https://make.sc/attendance-policy)  
+[Diversity and Inclusion Policy](https://make.sc/diversity-and-inclusion-policy)<br>
+[Grading System](https://make.sc/grading-system)
+<br>
+[Title IX Policy](https://make.sc/title-ix-policy)<br>
+[Program Learning Outcomes](https://make.sc/program-learning-outcomes)
