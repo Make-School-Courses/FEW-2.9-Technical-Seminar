@@ -2,7 +2,7 @@
 
 ## Course Description
 
-Describe your course here. A short elevator pitch for the course. This will be listed as the course description in the course catalog.
+A look at modern networking with GraphQL. 
 
 ### Why you should know this (optional)
 
