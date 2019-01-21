@@ -1,8 +1,8 @@
-# Title
+# FEW-2.9-GraphQL
 
 ## Course Description
 
-Describe your course here. A short elevator pitch for the course. This will be listed as the course description in the course catalog.
+A look at modern networking with GraphQL. 
 
 ### Why you should know this (optional)
 
@@ -18,7 +18,7 @@ Units:  3 units <br>
 Delivery Method:  Residential <br>
 Class Sessions:  14 classes, 7 labs
 
-## Prerequisites  
+## Prerequisites:  
 
 - Prerequisite 1
 - Prerequisite 2
@@ -32,8 +32,6 @@ Students by the end of the course will be able to ...
 1. Compare & Contrast
 1. Design & Implement
 1. Master
-
-
 
 ## Schedule
 ---

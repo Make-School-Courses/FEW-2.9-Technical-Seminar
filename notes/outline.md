@@ -1,16 +1,100 @@
 # Outline 
 
+- Week 1 Intro to GraphQL
+	- Class 1 Intro to GraphQL
+		- REST vs GraphQL
+		- GraphQL Concepts
+			- Schema
+			- Query
+			- Mutation
+			- Subscription
+		- In Class 
+			- Start on How to GraphQL
+		- After Class 
+			- First part of How to GraphQL
+	- Class 2 GraphQL + Express
+		- Add a GraphQL Schema over a REST API
+		- GraphQL Schemas
+		- GraphQL Queries
+		- In Class 
+			- express-graphql
+			- graphql
+		- After Class 
+			- 
+- Week 2 More GraphQL
+	- Class 3 Resolvers (root)
+		- In Class 
+			- Types
+		- After Class 
+			- 
+	- Class 4 Resolvers part 2 (buildSchema)
+		- In Class 
+			- 
+		- After Class 
+			- 
+- Week 3 GraphQL CRUD
+	- Class 5 Mutations
+		- Mutations 
+		- In Class 
+			- Simople Tweet Clone (fakeDB)
+		- After Class 
+			- 
+	- Class 6 Parisma
+		- 
+		- In Class 
+			- 
+		- After Class 
+			- Hacknews Tutorial 
+- Week 4
+	- Class 7 Pagination
+		- In Class 
+		- After Class
+	- Class 8 Workshop
+		- In Class 
+		- After Class 
+			- Start Custom Project
+- Week 5
+	- Class 9 Authentication
+		- In Class
+		- After Class
+	- Class 10 Workshop
+		- In Class
+		- After Class
+- Week 6 
+	- Class 11 Subscription
+		- In Class
+		- After Class
+	- Class 12 
+		- In Class 
+		- After Class
+- Week 7 
+	- Class 13
+		- In Class
+			- Show Final Projects
+	- Class 14
+		- In Class 
+			- Final Assessment 
+
+
+
+
+
+
+
+
+
 Intro
 
-
-
-- Class 1 - What is GraphQl focus on Query
+- Class 1 - What is GraphQl
 	- Review of REST 
 		- What is REST? 
 		- What does REST do? 
 		- 
 	- REST vs GraphQL
 		- It's a language and a Specification
+		- GraphQL uses a single end point
+		- The GraphQL language describes what the server should return
+		- Schema and types 
 		- 
 	- Basic GraphQL concepts 
 		- Query
