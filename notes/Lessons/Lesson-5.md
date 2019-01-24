@@ -42,4 +42,4 @@ The resolver needs to define sub properties representing each of the fields that
 
 ## After Class 
 
-Solve the challenge problems 
+Start GraphQL Node tutorial - due class 7 https://www.howtographql.com/graphql-js/0-introduction/
