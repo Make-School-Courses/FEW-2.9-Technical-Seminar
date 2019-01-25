@@ -1,12 +1,16 @@
-# Title
+# FEW 2.9 GraphQL
 
-## Course Description
+## GraphQL
 
-Describe your course here. A short elevator pitch for the course. This will be listed as the course description in the course catalog.
+Learn GraphQL the better replacement for REST! Invented at Facebook to solve problems imposed by REST. FB Open sourced GraphQL and 
 
 ### Why you should know this (optional)
 
-Explain why students should care to learn the material presented in this class.
+GraphQL provides many advantages over REST. It's used by all of the biggest services. 
+
+FaceBook, Coursera, GitHub and many others 
+
+GraphQL is built with a schema and strong types. GraphQL provides reliablity through it's strong typing system. If you want to work with a future of 
 
 ## Course Specifics
 
@@ -110,11 +114,33 @@ If you teach **M/W** or **Tu/Th**, please pick from a template below and delete 
 - [Do Cool Stuff Tutorial]()
 
 ### Projects
-**All projects will require a minimum of 10 commits, and must take place throughout the entirety of the course**
 
-- **Good Example:** 40+ commits throughout the length of the course, looking for a healthy spattering of commits each week (such as 3-5 per day).
-- **Bad Example:** 10 commits on one day during the course and no others. Students who do this will be at severe risk of not passing the class.
-- **Unacceptable Example:** 2 commits the day before a project is due. Students who do this should not expect to pass the class. 
+All projects should have a Gihub repo to document your work. You should commit each time your sit down to work. It's your goal to show a record of your progress throughg the commit history in each progress.
+
+- Project 1: [How to GraphQL Intro](https://www.howtographql.com/basics/0-introduction/)
+	- Complete all of the sections here. You don't have to make a repo for this. 
+	- Deliverable: Show all sections completed
+	- Start: Class 1 
+	- Complete: Class 2
+- Project 2: [GraphQL Node tutorial](https://www.howtographql.com/graphql-js/0-introduction/)
+	- Complete this tutorial. 
+	- Deliverable: The completed project in a GitHub Repo
+	- Start: Class 2
+	- Complete: Class 4
+- Project 3: [React + Apollo](https://www.howtographql.com/react-apollo/0-introduction/)
+	- Complete the entire tutorial
+	- Deliverable: A GitHub Repo containing the completed project
+	- Start: Class 4
+	- Complete: Class 6
+- Custom Project Proposal
+	- Define the form and features of yopur custom project
+	- Deliverable: Github repo with README.md describing the project. 
+	- Start: Class 6
+	- Complete: Class 7
+- Custom Project 
+	- Deliverable: See custom project proposal
+	- Start: Class 7
+	- Complete: Class 11
 
 #### Why are we doing this?
 
