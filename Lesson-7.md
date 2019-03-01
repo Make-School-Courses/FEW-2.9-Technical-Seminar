@@ -18,3 +18,9 @@ Review the tutorial. Look at its features and requirements.
 ## After Class 
 
 Start the GraphQL React Apollo tutorial - due class 9 https://www.howtographql.com
+
+## Bonus Lesson: React Hooks!
+
+Using state with functional components 
+
+`const [state, setState] = useState(defaultValue)`
