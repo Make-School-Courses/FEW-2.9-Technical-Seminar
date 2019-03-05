@@ -2,7 +2,7 @@
 
 ## GraphQL
 
-Learn GraphQL the better replacement for REST! Invented at Facebook to solve problems imposed by REST. FB Open sourced GraphQL and 
+Learn GraphQL the better replacement for REST! Invented at Facebook to solve problems imposed by REST. GraphQL is an open source alternative that offers a new way of managing network resources. 
 
 ### Why you should know this (optional)
 
@@ -10,7 +10,9 @@ GraphQL provides many advantages over REST. It's used by all of the biggest serv
 
 FaceBook, Coursera, GitHub and many others 
 
-GraphQL is built with a schema and strong types. GraphQL provides reliablity through it's strong typing system. If you want to work with a future of 
+GraphQL is built with a schema and strong types. GraphQL provides reliablity through it's strong typing system. GraphQL provides a solution to over fetching and unders fetching data, and allows front end requests to determine what data is returned from an endpoint. 
+
+If you want to work with a future of network resources learn GraphQL. 
 
 ## Course Specifics
 
