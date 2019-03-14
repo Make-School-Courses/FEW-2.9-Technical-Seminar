@@ -26,51 +26,22 @@ Class Sessions:  14 classes, 7 labs
 
 ## Prerequisites  
 
-- Prerequisite 1
-- Prerequisite 2
+- Senior Standing
+- Instructor Approval
 
 ## Learning Objectives (5-8)
 
 Students by the end of the course will be able to ...
 
-1. Identify & Describe
-1. Explain
-1. Compare & Contrast
-1. Design & Implement
-1. Master
+1. Compare GraphQL with REST
+1. Describe the Features of the GraphQL language
+1. Write a basic GraphQL Query and Schema
+1. Implement GraphQL in a CRUD Application
 
 
 
 ## Schedule
----
-### _INSTRUCTOR NOTE: PLEASE REMOVE THIS BEFORE SUBMITTING_
-If you teach **M/W** or **Tu/Th**, please pick from a template below and delete the other one
 
----
-### M/W Template
-**Course Dates:** Monday, January 21 – Wednesday, March 6, 2019 (7 weeks)
-
-**Class Times:** Monday and Wednesday at 3:30–5:20pm (10 class sessions)
-
-| Class |          Date          |                 Topics                  |
-|:-----:|:----------------------:|:---------------------------------------:|
-|  -  | Monday, January 21             | **MLK Jr. Day** |
-|  1 | Wednesday, January 23    | [Lesson 1] |
-|  2 | Monday, January 28             | [Lesson 2] |
-|  3 |  Wednesday, January 30             | [Lesson 3] |
-|  4 | Monday, February 4             | [Lesson 4] |
-|  5 |  Wednesday, February 6             | [Lesson 5] |
-|  6 | Monday, February 11             | [Lesson 6] |
-|  7 |  Wednesday, February 13            | [Lesson 7] |
-|  -  | Monday, February 18             | **President's Day (Observed)** |
-|  8  | **Tuesday, February 19**             | [Lesson 8] |
-|  9 |  Wednesday, February 20            | [Lesson 9] |
-|  10 | Monday, February 25             | [Lesson 10] |
-|  11 |  Wednesday, February 27            | [Lesson 11] |
-|  12 | Monday, March 4             | Final Class (presentations, etc) |
-|  13 |  Wednesday, March 6            | Final Exams/Presentations |
-
-### Tu/Th Template
 **Course Dates:** Tuesday, January 22 – Thursday, March 7, 2019 (7 weeks)
 
 **Class Times:** Tuesday and Thursday at 3:30–5:20pm (12 class sessions)
@@ -105,15 +76,6 @@ If you teach **M/W** or **Tu/Th**, please pick from a template below and delete 
 [Lesson 11]: Lessons/Lesson11.md
 [Lesson 12]: Lessons/Lesson12.md
 
-## Class Assignments [Remove header if you like]
-- List (with links) of all course-level assignments (i.e. tutorials, challenge sets, contractor project, custom projects, etc)
-- Under each assignment link the rubric used to evaluate it or describe how it is evaluated.
-- Projects should be linked to a project page which has a description & requirements.
-
-### Tutorials
-[REWORD AS RELEVANT TO YOUR COURSE] Tutorials are to help you get started in a topic.  They are graded on completion only.
-
-- [Do Cool Stuff Tutorial]()
 
 ### Projects
 
@@ -144,24 +106,7 @@ All projects should have a Gihub repo to document your work. You should commit e
 	- Start: Class 7
 	- Complete: Class 11
 
-#### Why are we doing this?
-
-We want to encourage best practices that you will see working as a professional software engineer. Breaking up a project by doing a large amount of commits helps engineers in the following ways:
-
-- It's much easier to retrace your steps if you break your project/product/code up into smaller pieces
-- It helps with being able to comprehend the larger problem, and also will help with your debugging (i.e. finding exactly when you pushed that piece of broken code)
-- It allows for more streamlined, iterative communication in your team, as it's much easier to hand off a small change to someone (updating a function) than a huge one (changed the architecture of the project)
-
-Through this requirement, we hope to encourage you to think about projects with an iterative, modular mindset. Doing so will allow you to break projects down into smaller milestones that come together to make your fully-realized solution.
-
-[REWORD AS RELEVANT TO YOUR COURSE] Projects are a chance for you to build and ship code that is based on class concepts.  Many are open ended allowing you to be creative and to have individual work for your portfolio.
-- [Sample Project](Sample_Project.md)
-    -   [Sample Project Rubric](Sample_Rubric.md)
-
-### Other Class assignments
-
 ## Evaluation
-[MAKE SPECIFIC TO YOUR COURSE SO IT IS SUPER CLEAR]
 To pass this course you must meet the following requirements:
 
 - Complete all required tutorials 
