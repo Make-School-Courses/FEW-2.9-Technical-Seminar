@@ -136,3 +136,11 @@ Any additional resources you may need (online books, etc.) can be found here. Yo
 <br>
 [Title IX Policy](https://make.sc/title-ix-policy)<br>
 [Program Learning Outcomes](https://make.sc/program-learning-outcomes)
+
+
+# Resources 
+
+- https://github.com/soggybag/BasicGraphQLExample
+- https://github.com/soggybag/react-apollo-github
+- https://github.com/soggybag/graphql-express-react
+- 

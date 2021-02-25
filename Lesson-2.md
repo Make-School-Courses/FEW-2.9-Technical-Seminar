@@ -4,7 +4,7 @@ Use a schema to define what your GraphQL API can provide.
 
 Types allow strong typing of data provided from the API. 
 
-## GRaphQL and Express
+## GraphQL and Express
 
 Today we will look at a simple example implementing GraphQL with Express. This is important since it put GraphQL in a context that you have experience with. 
 
@@ -32,7 +32,7 @@ const { buildSchema } = require('graphql')
 
 Define a schema 
 
-```JavaScript 
+```JavaScript
 const schema = buildSchema(`
   type About {
 		message: String
