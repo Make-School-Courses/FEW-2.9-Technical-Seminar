@@ -1,6 +1,6 @@
 # Why you should know this or industry application (optional) (5 min)
 
-GraphQL represents a new way to work with network transactions. It provides many benefits over REST. You should know GraphQL 
+GraphQL represents a new way to work with network transactions. It provides many benefits over REST. You should know GraphQL
 
 ## Class Learning Objectives/Competencies (5 min)
 
@@ -8,55 +8,106 @@ GraphQL represents a new way to work with network transactions. It provides many
 1. Define RESTful routes
 1. Descride the benefits of GraphQL
 
-## What is REST? 
+## What is REST?
 
-Before we look at GraphQL lets take a look at REST. This is important because GraphQL seeks to solve many issues and pain points of using REST. 
+Before we look at GraphQL lets take a look at REST. This is important because GraphQL seeks to solve many issues and pain points of using REST.
 
 - WHAT is REST?
 - Let's define a REST API
-	- Imagine a REST API that has three resources
-		- Images 
-		- Users
-		- Comments
-	- Define routes for these
 
-## What is GraphQL? 
+A REST API is an API that follows REST-ful Routing. REST-ful routing is a set of conventions/specifications for manipulating a collection of data hosted on a server.
+These conventions are common rules around the type of **HTTP request** and the **URLS** that are used for reading, updating, creating or deleting data on a server.
 
-GraphQL is both a language and a specification. The language allows you to query a server. The specification defines how the server should respond to those requests. 
+For instance, if we are working with a collection of Posts and User resources on a server. REST-ful routing for this type may look like this:
 
-- Imagine the same set of resources
-	- Images 
-	- Users
-	- Comments
+| URL | HTTP Method/Type | Operation |
+| ----------- | ----------- |----------- |
+| /posts | POST | Create new post|
+| /posts| GET | Read or Fetch all posts |
+| /posts/10 | PUT | Update post 10 |
+| /posts/23 | DELETE | Delete post 23 |
+| /posts/5 | GET | Fetch or Read post 5 |
+| /users/2/posts | POST | Create a post associated with User 2 |
+
+The last row on the table shows how REST-ful conventions are with associated or nested resources(in this case, posts and users)
+
+- Imagine a REST API that has three resources
+  - Images
+  - Users
+  - Comments
+- Define REST-ful routes for these resources
+
+## What is GraphQL?
+
+GraphQL is both a query language and a specification. The language allows you to _**QUERY**_ a server for data. The specification defines how the server should respond to those requests.
+
+Writing a query to fetch data with GraphQL on a collection of Post resources might look like this:
+
+```js
+// fetch the title of all users from server
+  {
+    posts {
+      title
+    }
+  }
+
+// fetch the title of post 46 from the server
+  {
+    post(id:'46') {
+      title
+    }
+  }
+```
+
+- Imagine these same set of resources
+  - Images
+  - Users
+  - Comments
 - Write GraphQL queries to access these resources
 
 ## Compare REST and GraphQL
 
-- What are the pros of REST? 
-- What are the cons of REST? 
-- What problems do you think GraphQL is trying to solve over REST? 
-- Are there any drawbacks to GraphQL? 
+- What are the pros of REST? Here are some. What others can you highlight?
+  - popular with many web frameworks and languages
+  - Stateless servers
+  - Structures Access to Resources
+
+- What are the cons of REST? Here are some. What others can you highlight?
+  - Makes many requestes for nested or deeply associated records/data
+  - Tightly coupled or server defined endpoints
+  - Vulnerable to over fetching or under fetchng data
+
+- What problems do you think GraphQL is trying to solve over REST? Here are some what others can you think of?
+  - Clients have the ability to dictate exactly what they need from the server
+  - Clients can receive data in a predictable way.
+
+- Are there any drawbacks to GraphQL? Here is one, can you highlight any other?
+  - One drawback for GraphQLis that queries always return a HTTP status code of 200 regardless of whether or not the query was successful.
 
 ## Core features of GraphQL
 
 GraphQL has a few core features.
 
 - Schema Definition Language
-	- Types 
-	- Introspection
+  - Types
+  - Introspection
 - Resolvers
 - Query Language
-	- Query
-	- Mutation
+  - Query
+  - Mutation
 - Subscription
 
-## After Class 
+## GraphQL vs REST: an example
 
-Learn more about GraphQL. Follow the lessons here: 
+GraphQl is very useful in solving for getting resources from highly relational or associated data.
 
-https://www.howtographql.com
+## After Class
 
-Complete both sections 
+Learn more about GraphQL. Follow the lessons here:
+
+<https://www.howtographql.com>
+
+Complete both sections
 
 - GraphQL Fundamentals
 - Advanced GraphQL
