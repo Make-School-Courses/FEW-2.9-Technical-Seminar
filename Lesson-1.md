@@ -179,8 +179,6 @@ query {
 }
 ```
 
-GraphQL helps with
-
 ## Activity
 
 Learn more about GraphQL. Follow the lessons here:
@@ -205,5 +203,4 @@ Complete these sections
 
 ## Additional Resources
 
-- [[Basic GraphQL Server using Node](https://github.com/soggybag/BasicGraphQLExample)
 - [ES6 Review](https://devhints.io/es6)
