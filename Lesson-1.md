@@ -112,7 +112,7 @@ type User {
 
 And we want to retrieve just a particular `User`'s name. With a REST API we would typically make a request `GET /users/<userid>` and get a JSON response that looks something like this:
 
-```json
+```js
 // GET /users/7
 
 "data": {
@@ -170,11 +170,11 @@ query {
 ```json
 {
   "users": {
-    "name": "Page Grandy"
+    "name": "Page Grandy",
     "followers": [
-      {name : "Meghan"},
-      {name: "Harry"},
-      //..other names of followers here
+      {"name" : "Meghan"},
+      {"name": "Harry"},
+      // more fields in here
     ]
   }
 }
