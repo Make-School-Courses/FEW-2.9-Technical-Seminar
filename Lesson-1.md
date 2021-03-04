@@ -174,7 +174,6 @@ query {
     "followers": [
       {"name" : "Meghan"},
       {"name": "Harry"},
-      // more fields in here
     ]
   }
 }
