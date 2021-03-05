@@ -13,6 +13,6 @@
     "express": "^4.16.4",
     "express-graphql": "^0.7.1",
     "graphql": "^14.0.2",
-    "node-fetch": "^2.3.0"
+    "node-fetch": "^2.6.1"
   }
 }
