@@ -90,7 +90,7 @@ GraphQL has a few core features.
 - Schema Definition Language: syntax for writing schemas.
   - Types
   - Introspection
-- Resolvers
+- Resolvers: A function on a GraphQL server that's responsible for fetching the data for a single field
 - Query Language
   - Query
   - Mutation
@@ -204,3 +204,5 @@ Complete these sections
 ## Additional Resources
 
 - [ES6 Review](https://devhints.io/es6)
+- [Reasons to use GraphQL](https://www.prisma.io/blog/top-5-reasons-to-use-graphql-b60cfa683511)
+- [Lessons From 4 Years of GraphQL](https://www.graphql.com/articles/4-years-of-graphql-lee-byron)
