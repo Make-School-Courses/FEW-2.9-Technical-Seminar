@@ -13,6 +13,7 @@ const fetch = require('node-fetch')
 // This example includes About and Weather 
 // It must also include a Query type 
 
+// TODO Challenge #1: write the type for AirPollution and query for fetchAirPolution
 const schema = buildSchema(`
   type About {
     message: String
@@ -28,19 +29,11 @@ const schema = buildSchema(`
     time: String
     date: String
   }
-
-  type AirPollution {
-    lat: Float
-    lon: Float
-    aqi: Float
-    er: String
-  }
   
   type Query {
     getAbout: String
     getWeather: Weather
     fetchWeather(zip: Int = 94122): Weather
-    fetchAirPollution(lat: Float, lon: Float): AirPollution
   }
 `)
 
@@ -54,14 +47,7 @@ class Weather {
   }
 }
 
-class AirPollution {
-  constructor(lat = 0.0, lon = 0.0, aqi = 0.0, er = "No Error") {
-    this.lat = lat
-    this.lon = lon
-    this.aqi = aqi
-    this.er = er
-  }
-}
+// TODO Challenge #2: Write the AirPollution class
 
 
 // ====================================
@@ -77,6 +63,7 @@ const root = {
   getWeather: () => {
     return new Weather()
   },
+  // helper function in case you need it
   Time: {
     time: () => new Date().toLocaleTimeString(), 
     date: () => new Date().toLocaleDateString()
@@ -98,28 +85,16 @@ const root = {
     })
   },
 
-  fetchAirPollution: ({ lat, lon }) => {
-    if (lat > 90 || lat < -90) {
-      const er = "Lat is out of bounds. Stay between 90 and -90"
-      return new AirPollution(0,0,0,er)
-    }
-    if (lon > 180 || lon < -180) {
-      const er = "Lon is out of bounds. Stay between 180 and -180"
-      return new AirPollution(0,0,0,er)
-    }
-    const apiKey = process.env.OPENWEATHERMAP_API_KEY
-    const url = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`
-    return fetch(url).then((res) => {
-      return res.json()
-    }).then((json) => {
-      const aqi = Number(json.list[0].main.aqi)
-      const lat = Number(json.coord.lat)
-      const lon = Number(json.coord.lon)
-      return new AirPollution(lat, lon, aqi)
-    }).catch((err) => {
-      return err
-    })
-  }
+  // TODO challenge #3: Write the fetchAirPollution resolver
+  // it should take in latitude and longitude,
+  // and return a new AirPollution object with the AQI
+
+  // fetchAirPollution: ({ lat, lon }) => {
+    
+  // }
+
+  // TODO challenge #4: Write a resolver that gives data on air pollution AND
+  // weather for a given zip coe. Make sure to define your query in the Schema too!
 }
 
 // ====================================
@@ -145,8 +120,8 @@ app.listen(4000, () => {
 
 /* 
 
-Challenges 
-Your goal is to make a graphql endpoint that returns
-data from several sources. 
+Stretch Challenges 
+- Create other queries using different endpoints from OpenWeather
+- Make a graphql endpoint that returns data from several endpoints. 
 
 */
