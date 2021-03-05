@@ -82,7 +82,10 @@ Here we'll be using a new endpoint from OpenWeather to find the AQI for a given 
 1. [Documentation](https://openweathermap.org/api/air-pollution) is your friend!
 1. test as you go through running queries at `localhost:4000/graphql`
 
-**Stretch challenge:** use other endpoints from OpenWeatherMap and create more queries!
+**Stretch challenge:** 
+
+- What if someone puts in an incorrect latitude or longitude? Put in safeguards for this and return an appropriate error!
+- use other endpoints from OpenWeatherMap and create more queries!
 
 <!-- > -->
 
