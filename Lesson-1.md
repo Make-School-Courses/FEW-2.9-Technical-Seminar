@@ -188,10 +188,14 @@ Learn more about GraphQL. Follow the lessons here:
 Complete these sections
 
 - [GraphQL Fundamentals](https://www.howtographql.com/basics/2-core-concepts/)
+- [Big Picture](https://www.howtographql.com/basics/3-big-picture/)
+- [Core Concepts](https://www.howtographql.com/basics/2-core-concepts/)
 - Advanced GraphQL
-  - [Clients](https://www.howtographql.com/advanced/0-clients/)
   - [Server](https://www.howtographql.com/advanced/1-server/)
   - [More GraphQL Concepts](https://www.howtographql.com/advanced/2-more-graphql-concepts/)
+
+- Discuss
+  - What's the difference between a GraphQl query and a GraphQL mutation?
 
 ## After Class
 
