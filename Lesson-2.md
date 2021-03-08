@@ -50,7 +50,7 @@ const { buildSchema } = require('graphql')
 
 ### Define a schema
 
-Schemas tell GraphQL about type of data one is working with and how different pieces of data are related. a schema is simply a collection of GraphQL types. Schemas are mostly defined using object types. Each field in these object types is mapped to another type. The syntax for defining an schema type looks like this:
+Schemas tell GraphQL about type of data one is working with and how different pieces of data are related. A schema is simply a collection of GraphQL types. Schemas are mostly defined using object types. Each field in these object types is mapped to another type. The syntax for defining an schema type looks like this:
 
 ```JavaScript
 type object_type_name
@@ -317,7 +317,7 @@ Your response should look like this:
 
 You could try out other query requests on GraphiQL to return just one of the weather fields(remove the desc or temp field) instead of the two; see in action the flexibility we get from using GraphQL.
 
-## Tell the curent Time and Date
+### Tell the curent Time and Date
 
 - Include a schema type definition `type Time`. It should return two fields `time`; of type `String` and `date`; of type `String` too.
 
