@@ -30,9 +30,11 @@ Import dependencies
 
 ```JavaScript
 // server.js file
+
 const express = require('express')
 // express-graphql is a glue or compatibility layer betwwen GraphQL and Express
-const graphqlHTTP = require('express-graphql')
+// see docs <https://www.npmjs.com/package/express-graphql> for more information
+const { graphqlHTTP } = require('express-graphql')
 const { buildSchema } = require('graphql')
 ```
 
@@ -55,6 +57,10 @@ const schema = buildSchema(`
 ```
 
 ### Define a resolver
+
+Resolver keys must match the schema under query, and returns values that match the type. In the example `getAbout` in the query maps to `getAbout` in the resolver. This function is required to returned an object with a key of `message` that has a value type of String.
+
+The root object below provides resolver functions. Resolvers return the data asked for by queries. Resolvers are used to determine what is returned from a query. At the bottom of the file, include this:
 
 ```JavaScript
 const root = {
@@ -124,9 +130,7 @@ app.listen(port, () => {
 })
 ```
 
-This is equivalent of a GraphQL "Hello World"
-
-## GraphiQL
+## GraphiQL and Simple Queries
 
 Test your GraphQL API in GraphiQL by visiting: <http://localhost:4000/graphql>
 
@@ -140,7 +144,7 @@ GraphiQL has three panels.
 
 Test a query
 
-```GraphQL
+```JavaScript
 query {
   getAbout{
     message
@@ -148,11 +152,19 @@ query {
 }
 ```
 
-## Simple Queries and Resolvers
+ You should get an output response that looks like this:
 
-Resolvers are used to determine what is returned from a query.
+ ```json
+ {
+  "data": {
+    "getAbout": {
+      "message": "Hello World"
+    }
+  }
+}
+ ```
 
-Resolver keys must match the schema under query, and returns values that match the type. In the example `getAbout` in the query maps to `getAbout` in the resolver. This function is required to returned an object with a key of `message` that has a value type of String.
+This is equivalent to a GraphQL "Hello World".
 
 ## Practice Challenges
 
@@ -161,6 +173,9 @@ Resolver keys must match the schema under query, and returns values that match t
 - Better to get both create a type has a date and a time
 - You need to return a random number
 - Return a random number in a range
+
+## Stretch Challenges
+
 - You need to return an array of rolls
 - Sepcify the number sides and the number rolls
 - Return the total along with the rolls
