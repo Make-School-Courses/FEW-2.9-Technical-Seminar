@@ -192,7 +192,7 @@ GraphiQL is an IDE or a client for exploring and testing GraphQL. Think of it li
 
 GraphiQL has three panels:
 
-![GraphiQL Interface Expanded](./assets/graphiql-expanded.png)
+![GraphiQL Interface Expanded](../assets/graphiql-expanded.png)
 
 - Left: Code editor: Write your GraphQL queries here
 - Center: Output: See the results of your query here
