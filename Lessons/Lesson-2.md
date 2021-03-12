@@ -422,6 +422,8 @@ The getAbout query returns an About which always has a message of type String.
 
 A resolver is responsible for resolving a query. Resolvers can be hierarchical and complicated. It's probably where most of your work will go when building a GraphQL system. 
 
+![GraphiQL Interface Expanded](../assets/graphiql-expanded.png)
+
 <!-- > -->
 
 This is the root resolver. <br> It maps queries to the schema.
