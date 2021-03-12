@@ -1,453 +1,771 @@
 # Schemas and Types
 
-Use a schema to define what your GraphQL API can provide.
+<!-- > -->
 
-Types allow strong typing of data provided from the API.
+Use a schema to define what your <br> GraphQL API can provide.
+
+Strong typing of data provide allows for introspection.
+
+<!-- > -->
 
 ## GraphQL and Express
 
 Today we will look at a simple example implementing GraphQL with Express. This is important since it puts GraphQL in a context that you have experience with.
+
+<!-- > -->
 
 ## Class Learning Objectives/Competencies
 
 1. Define a GraphQL Schema
 1. Define a GraphQL Resolver
 1. Use GraphQL Queries
-1. Define GraphQL Resolver
 1. Use GraphiQL
 
-## Getting Started
+<!-- > -->
 
-- Create a new directory with the command `mkdir GraphQLExpress`
-- change in to that directory `cd GraphQLExpress`
-- Create a `server.js` file with the command `touch server.js`. This file will contain code to start up and run the server
-- Now run these commands to setup your project:
-  - `npm init`
-  - `npm install --save express express-graphql graphql`
-- In your `package.josn` file include the start script to your scripts:
+## Review 
+
+<!-- > -->
+
+### GraphQL Queries 
+
+Use: https://graphql.org/swapi-graphql to answer these questions...
+
+<!-- > -->
+
+- Who is person 10?
+  - name?
+  - eyecolor?
+  - height?
+
+<!-- > -->
+
+- What movies did they appear in? 
+  - totalCount?
+  - titles?
+
+<!-- > -->
+
+- What about vehicles?
+  - totalCount?
+  - names?
+
+<!-- > -->
+
+## GraphQL Schemas
+
+<!-- > -->
+
+A GraphQL Schema contains a set of Types that describe the possible you can query from a service. 
+
+<!-- > -->
+
+Schemas are written in the GraphQL Schema language which is similar to the Query language. 
+
+<!-- > -->
+
+The SWAPI might define a person like this: 
+
+```JS
+type Person {
+  name: String!
+  ...
+}
+```
+
+name is a field and String is it's type. ! means the field is non-nullable (it will always return a value.)  
+
+<!-- > -->
+
+```JS
+type Person {
+  name: String!
+  height: Int!
+  eyecolor: String!
+  films: [films!]!
+}
+```
+
+You can use types like: Int and [ ... ] (array)
+
+<!-- > -->
+
+GraphQL supports: 
+
+- Int: Integer
+- Float: Decimal
+- String: String
+- Boolean: true or false
+- ID: Special type that represents a unique value
+- [Type]: Array of a type
+
+<!-- > -->
+
+The elements in a list are typed and they will all be the same type. 
+
+```JS
+type MyType {
+  favNumbers: [Int!]!
+  favFoods: [String!]!
+}
+```
+
+<!-- > -->
+
+What about a Recipe type: 
+
+```JS 
+type Recipe {
+  name: String! # Name is a string and must be there
+  description: String # Description is a string and 
+                      # might be missing
+}
+```
+
+<small>(the ! means a field must have a value)</small>
+
+<!-- > -->
+
+A recipe might have a list of ingredients. 
+
+```JS 
+type Recipe {
+  name: String!
+  description: String
+  ingredients: [String!]! # Must have a list of Strings
+                          # and none of those strings can be 
+                          # null
+}
+```
+
+<!-- > -->
+
+The Recipe type needs some more information: 
+
+```JS
+type Recipe {
+  name: String!
+  description: String
+  ingredients: [String!]! 
+  isSpicy: Boolean!
+  isVegetarian: Boolean!
+}
+```
+
+<!-- > -->
+
+### Enum
+
+<!-- > -->
+
+The GraphQL Schema language supports enumerations.
+
+<!-- > -->
+
+An enumeration is a list of set values.
+
+<!-- > -->
+
+The Recipe type needs some more information: 
+
+```JS
+enum MealType {
+  breakfast
+  lunch
+  dinner
+}
+
+type Recipe {
+  ...
+  mealType: MealType! # Can only be breakfast, lunch or dinner
+}
+```
+
+<small>(Validates and restricts values to one from the list)</small>
+
+<!-- > -->
+
+### Interface
+
+<!-- > -->
+
+An interface is a description or contract that describes types that conform to it. 
+
+<!-- > -->
+
+Imagine characters in the films could be humans or droids. 
+
+```JS 
+interface Character {
+  name: String!
+  films: [film!]!
+}
+
+type Human implements Character {
+  name: String!
+  eyeColor: String!
+  films: [film!]!
+}
+
+type Droid implements Character {
+  name: String!
+  films: [film!]!
+  primaryFunction: String!
+}
+```
+<small>(Anything that implements the interface must include name and films)</small>
+
+<!-- > -->
+
+An interface is also a type. For example: 
+
+```JS
+type Film {
+  title: String!
+  cast: [Character!]! 
+}
+```
+
+<small>(Here everyone in the cast is a Character but they might also be a Human or a Droid)</small>
+
+<!-- > -->
+
+## GraphQL and Express
+
+<!-- > -->
+
+Get started with GraphQL and Express. The goal of this section is to create an Express server that implements GraphQL.  
+
+<!-- > -->
+
+- Create a new folder
+- Initialize a new npm project: `npm init -y`
+- Install dependancies: `npm install --save express express-graphql graphql`
+- Create a new file: `server.js`
+
+<!-- > -->
+
+Edit `package.json`
 
 ```json
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon server.js"
   }
 ```
 
-- Setup a default boilerplate express project in `server.js`:
+You can now run your project with: 
 
-Import dependencies
+```bash
+npm start
+```
 
-```JavaScript
-// server.js file
+<!-- > -->
 
+Add the following to `server.js`. Import dependancies:
+
+```JS
+// Import dependancies
 const express = require('express')
-
-// express-graphql is a glue or compatibility layer betwwen GraphQL and Express
-// see docs <https://www.npmjs.com/package/express-graphql> for more information
-
 const { graphqlHTTP } = require('express-graphql')
 const { buildSchema } = require('graphql')
 ```
 
-### Define a schema
+<!-- > -->
 
-Schemas tell GraphQL about type of data one is working with and how different pieces of data are related. A schema is simply a collection of GraphQL types. Schemas are mostly defined using object types. Each field in these object types is mapped to another type. The syntax for defining a schema type looks like this:
+Build a schema. Add the following to `server.js`.  
 
-```JavaScript
-type object_type_name
-{
-  field1: dataType
-  field2: dataType
-  // ...
-  fieldn: dataType
-}
-```
-
- _fields_ are the names given to the data to be returned and _dataType_ can be primitive data types - **Int, Float, String, Boolean - and ID (a unique identifier )**.
-
-_dataType_ can also be of List type; lists can be used to represent an array of values of a specific type. Lists are defined with a `[]` that wraps the specific type. Syntax for a list type will look like this:
-
-```JavaScript
-field: [dataType]
-```
-
-The code snippet below returns a `User` schema definition with named fields and datatypes that include primitive types and a list type:
-
-```JavaScript
-type User {
-  userId: ID!
-  firstName: String
-  age: Int
-  balance: Float
-  friends: [String]
-}
-
-```
-
-By default, these types can return a value or they can have no value on query. To specify that a field must be defined, an exclamation mark (!) can be appended to a dataType. This will make sure that the value of that field is returned by a query. This can be very helpful with validation logic. In the example above, the `ID!` dataType implements this functionality.
-
-Schema definitions must also include a `Query` type. Query type is one of the root-level types in GraphQL.
-
-Our example defines a schema that includes an `About` object type and a `Query` type. In your `server.js` file, include this:
-
-```JavaScript
-// Defining a GraphQL schema
-
+```JS
+// Create a schema
 const schema = buildSchema(`
-  type About {
-  message: String
- }
-
- type Query {
-    getAbout: About
-  }
-`)
-```
-
-### Define a resolver
-
-A resolver is a function on a GraphQL server that's responsible for fetching the data for a single field. Resolvers return the data asked for by queries; they are used to determine what is returned from a query.. Resolver function keys/names must match the schema under query, and return values that match the type.
-
-In our example, `getAbout` in the query maps to `getAbout` resolver function we are going to define. This function is required to return an object with a key of `message` that has a value type of String.
-
-The root object below provides resolver functions. At the bottom of the file, after your schema definition, include this:
-
-```JavaScript
-const root = {
-  //define the getAbout resolver function
-  getAbout: () => {
-    return { message: 'Hello World' }
-  }
+type About {
+  message: String!
 }
+
+type Query {
+  getAbout: About
+}`)
 ```
 
-### Create Express, add middelware, and start the app
+<small>(The schema is written in the GraphQL schema language, buildSchema() takes the schema as a string and returns a schema object)</small>
 
-Finally, to create the the express app, add the middleware and start the app, add this to the end of the file:
+<!-- > -->
 
-```JavaScript
-const app = express()
+Define a resolver. A resolver 
 
-app.use('/graphql', graphqlHTTP({
-  schema,
-  rootValue: root,
-  graphiql: true
-}))
-
-const port = 4000
-app.listen(port, () => {
-  console.log('Running on port:'+port)
-})
-```
-
-The complete file should look like this:
-
-```JavaScript
-const express = require('express');
-// express-graphql is a glue or compatibility layer betwwen GraphQL and Express
-const { graphqlHTTP } = require('express-graphql');
-const { buildSchema } = require('graphql');
-
-const app = express();
-
-// Define a schema using GraphQL schema language
-const schema = buildSchema(`
-  type About {
-  message: String
- }
-
- type Query {
-    getAbout: About
-  }
-`)
-
+```JS
 // Define a resolver
-
 const root = {
   getAbout: () => {
     return { message: 'Hello World' }
   }
 }
+```
 
-// add middelware, and start the app
+<small>(A resolver is a function that's responsible for returning the results of a query. You might a say a resolver resolves a query.)</small>
 
+<!-- > -->
+
+Create an Express app: 
+
+```JS
+// Create an express app
+const app = express()
+```
+
+<small>(Standard Express.)</small>
+
+<!-- > -->
+
+Define a route. Use `graphqlHTTP` to handle requests to this route. 
+
+```JS
+// Define a route for GraphQL
 app.use('/graphql', graphqlHTTP({
   schema,
   rootValue: root,
   graphiql: true
 }))
+```
 
+We need to supply the schema, the root resolver, and last we'll activate the GraphiQL browser. 
+
+<!-- > -->
+
+last, start your app: 
+
+```JS
+// Start this app
 const port = 4000
 app.listen(port, () => {
   console.log('Running on port:'+port)
 })
 ```
 
-## GraphiQL and Simple Queries
+<small>(Standard Express app)</small>
 
-Start your server in your terminal with `npm start`
+<!-- > -->
 
-Test your GraphQL API in GraphiQL by visiting: <http://localhost:4000/graphql>
+Test your work! 
 
-GraphiQL is an IDE or a client for exploring and testing GraphQL. Think of it like PostMan for GraphQL.
+- `npm start` run your app
+- http://localhost:4000/graphql
 
-GraphiQL has three panels:
+This should open GraphiQL in your browser. 
 
-![GraphiQL Interface Expanded](./assets/graphiql-expanded.png)
+GraphiQL allows us to test our GraphQL Queries. Its the same tool you used in the last class. 
 
-- Left: Code editor: Write your GraphQL queries here
-- Center: Output: See the results of your query here
-- Right: Docs: Documents your GraphQL Schema
+<!-- > -->
 
-Test a query: Input the query below into the GraphiQL Code Editor and press the play button:
+Try a query: 
 
-```JavaScript
-query {
-  getAbout{
+```JS
+{
+  getAbout {
     message
   }
 }
 ```
 
-You should get an output response that looks like this:
+Compare this to schema and the resolver. 
 
-```json
+- query type: getAbout
+  - returns Type About
+    - An About has a field message of type String
+
+<!-- > -->
+
+Let's follow this backwards. Starting with this query: 
+
+```JS
 {
-  "data": {
-    "getAbout": {
-      "message": "Hello World"
-    }
+  getAbout {
+    message
   }
 }
 ```
 
-Well done! You have written your first GraphQl API. This is equivalent to a GraphQL "Hello World".
+<!-- > -->
 
-## Practice Challenges - Schema Types, Resolvers and Simple Queries
+GraphQL handles with a resolver: 
 
-### Challenge 1: Tell the Weather
-
-Let's practice an example that would return weather details we specify in our query. We would take these steps:
-
-- Define a `TellWeather` class that will take care of the logic for determining the weather.
-
-- Include a Weather type in our schema definition `type Weather`. It will return an object with two fields : `desc` - type `String` for description of the weather - and `temp`- type `Float` for weather temperature.
-
-- Include a resolver key `getWeather` as a field in `type Query` and map its value to the `Weather` type. This function returns the data asked for by the query to get weather details.
-
-- Write out the `getWeather` resolver function definition.
-
-Let's see this in code:
-
-```JavaScript
-  // define the TellWeather class: holds logic to deternine the weather
-  // include this at the top of your file after your dependency imports
-
-  class TellWeather {
-    // set default types on constructor
-    constructor(desc = 'overcast', temp = 56) {
-      this.desc = desc;
-      this.temp = temp;
-    }
+```JS
+const root = {
+  getAbout: () => {
+    return { message: 'Hello World' }
   }
-
-  // Include the Weather type into our schema definiton so GraphQL knows to return it as data
-  // in your schema  definition, include this with its fields.
-
-  const schema = buildSchema(`
-  type About {
-    message: String
-  }
-
-  type Weather {
-    desc: String
-    temp: Float
-  }
-
-  type Query {
-    getAbout: About
-    getWeather: Weather
-  }
-  `)
-
+}
 ```
 
-In the `Query` type the `getAbout` function maps to the About type and the getWeather function maps to the `Weather` type.
+It returns an object with a message property that is type string. 
 
-Now, let's defne the resolver function. In the `root` object, include the `getWeather` function definiton:
+<!-- > -->
 
-```JavaScript
+The Resolver checked this against the schema. 
+
+```JS
+type About {
+  message: String!
+}
+
+type Query {
+  getAbout: About
+}
+```
+
+The getAbout query returns an About which always has a message of type String. 
+
+<!-- > -->
+
+## GraphQL Resolvers 
+
+<!-- > -->
+
+A resolver is responsible for resolving a query. Resolvers can be hierarchical and complicated. It's probably where most of your work will go when building a GraphQL system. 
+
+<!-- > -->
+
+This is the root resolver. <br> It maps queries to the schema.
+
+```JS
 const root = {
-   // Simple resolver returns a string
+  getAbout: () => {
+    return { message: 'Hello World' }
+  }
+}
+```
+
+<small>(getAbout maps to the query type with the same name)</small>
+
+<!-- > -->
+
+Let's do it again from the top. 
+
+<!-- > -->
+
+Imagine you're making making API for yourself. Imagine a query is like asking you a question. The repsonse is like the answer you might provide. 
+
+<!-- > -->
+
+Define a new type in your schema. If someone asks what to eat? You would reply with a meal type. 
+
+```JS
+type Meal {
+	description: String!
+}
+```
+
+<!-- > -->
+
+Add a query type to handle meal queries. It will return a Meal. 
+
+```JS
+type Query {
+  getAbout: About
+	getmeal: Meal
+}
+```
+
+<!-- > -->
+
+Add a resolver function. This function returns something that must match the Meal type (has description field of type string)
+
+```JS
+const root = {
   getAbout: () => {
     return { message: 'Hello World' }
   },
-  // Resolver returns a DisplayWeather object with fields - desc and temp
-  getWeather: () => {
-    return new TellWeather()
-  }
+	getmeal: () => {
+		return { description: 'Noodles' }
+	}
 }
 ```
 
-We are set to make our query in GraphiQL now! Start up your server again, `npm start`, in your terminal and visit <http://localhost:4000/graphql> in your browser. In your GraphiQL editor, include the new query for weather details:
+<!-- > -->
 
-```JavaScript
-query {
- getAbout{
-   message
- }
- getWeather{
-   desc
-   temp
- }
+Some times it takes some information to get some information. Often you'll need to provide parameters to the data that you need. 
+
+<!-- > -->
+
+Queries can take parameters. You saw this in SWAPI. You can add arguments to your queries. 
+
+<!-- > -->
+
+Imagine there is a different meal depending on the time: breakfast, lunch, or dinner. 
+
+The Meal type will stay the same since it will still be a field description that is a string. 
+
+<!-- > -->
+
+Modify the Query type to accept an argument. 
+
+```JS
+type Query {
+  getAbout: About
+	getmeal(time: String!): Meal
 }
 ```
 
-Your response should look like this:
+<small>(getMeal now takes an argument: time, of type String which is required)</small>
 
-```json
-{
-  "data": {
-    "getAbout": {
-      "message": "Hello World"
-    },
-    "getWeather": {
-      "desc": "overcast",
-      "temp": 56
-    }
-  }
-}
-```
+<!-- > -->
 
-You could try out other query requests on GraphiQL to return just one of the weather fields(remove the desc or temp field) instead of the two; see in action the flexibility we get from using GraphQL.
+Modify the resolver to work with this argument. 
 
-### Challenge 2: Tell the curent Time and Date
-
-Now try out this challenge. Write out schema definitions and resolver functions to fetch the current time and date:
-
-- Include a schema type definition `type Time`. It should return two fields `time`; of type `String` and `date`; of type `String` too.
-
-- Define a resolver `getTime`. `getTime` should be an object that holds two function definitions for time and date. Use the standard built-in `Date` Object to tell/return the current time and date. See starter snippet below.
-
-- Remember to include the field to map the resolver defintion `getTime` to `Time` in the Query schema.
-- Run a query in GraphiQL to fetch the current time and date. Your output response should look like the sample below
-
-```js
+```JS
 const root = {
-  // Other defined resolver functions ...
-
-  // Resolver getTime
- getTime: {
-   time: '', // () => define function to return time,
-   date: '' // () => define function to return date
- }
+  getAbout: () => {
+    return { message: 'Hello World' }
+  },
+	getmeal: ({ time }) => {
+		const allMeals = { breakfast: 'toast', lunch: 'noodles', dinner: 'pizza' }
+		const meal = allMeals[time]
+		return { description: meal }
+	}
 }
-
 ```
 
-```json
+<small>(The resolver receives an args object with all of the parmeters defined in the query type)</small>
+
+<!-- > -->
+
+Test your query:
+
+```JS
+{
+  getmeal(time: "lunch") {
+    description
+  }
+}
+```
+
+Should return:
+
+```JSON
 {
   "data": {
-    "getAbout": {
-      "message": "Hello World"
-    },
-    "getWeather": {
-      "temp": 56
-    },
-    "getTime": {
-      "time": "11:23:37 AM",
-      "date": "3/10/2021"
+    "getmeal": {
+      "description": "noodles"
     }
   }
 }
 ```
 
-### Challenge 3: Queries with parameters
+<!-- > -->
 
-Instead of hard coding some some values, we can pass arguments to a query in GraphQL. We do this by defining the the argument and its type in the schema definition. We can pass as many arguments as we want and each argument MUST have a type indicated.
+### Working with Collections
 
-Let's try out this simple challenge to implement this:
+<!-- > -->
 
-- Add a field, `fetchZip(zip: Int)`, to our `Query` type that will return/fetch a zip code that we pass to it as an argument. This field receives its argument from the resolver function we would define.
+Ofert you'll want to work collections. You more often have posts, or users, or foods. Less often you have a single post, user, or food.
 
-- Define a type `Zip` in our schema definition that returns a an object with field `code` - type `Int`.
+<!-- > -->
 
-- Then, write the resolver function definition for `fetchZip` and include it to our `root` object.
+Imagine you want to define a list of pets. You might start with a Pet type. 
 
-Include this in your file:
-
-```js
-// add the fetchZip field to our schema definition. 
-const schema = buildSchema(`
-// ... other type definitions
-
-  type Zip {
-    code: Int
-  }
-
-  type Query {
-    getAbout: About
-    getWeather: Weather
-    getTime: Time
-    fetchZip(zip: Int): Zip
-  }
-`)
-
-// write out the function definition of the resolver function fetchZip
-
-/*
-* When a resolver function takes arguments, all its argumentss are contained in the "args" object as the first argument to the function. 
-* So the fetchZip function can be written as fetchZip(args){ ... return {code: args.zip } }.
-* But here, we are using the more conveninet Object destructuring to define the zip parameter
-*/
-
-   fetchZip: ({ zip }) => {
-  
-    // it returns an object with a code that carries the value of the zip argument we input
-    return {
-      code: zip,
-    }
-  },
-```
-
-Start the server again with `npm start` and head to <http://localhost:4000/graphql> in your browser. In the GraphiQL editor, you can run a query that would include our fetchZip field like so:
-
-```js
-query {
-  getAbout{
-    message
-  }
-  getWeather{
-    temp
-  }
- getTime{
-  time
-  date
-}
-  fetchZip(zip: 9317){
-    code
-  }
+```JS 
+type Pet {
+  name: String!
+  species: String!
 }
 ```
 
-You notice that we passed an argument to the fetchZip field in our query `(zip: 9317)`. What does your response look like?
+<!-- > -->
 
-## Stretch Challenges
+Imagine you have an array of pets. A query type might look like this: 
 
-- Write a GraphQL Schema for a query that would return a random number in a range of numbers
-- Write a GraphQL Schema for a query that would return an array of rolls from a dice roll
-  - Sepcify the number sides and the number rolls as query parameters
-  - Return the total number of rolls along with the array of rolls as fields in your resolver function
+```JS
+type Query {
+  ...
+  getPet(id: Int!): Pet # Add a query to get a single pet
+  allPets: [Pet!]!      # Returns an array of type Pet
+}
+```
+
+<!-- > -->
+
+Now set up a resolver for each of the new queries. 
+
+```JS 
+const root = {
+  ...
+	getPet: ({ id }) => {	
+		return petList[id]
+	},
+	allPets: () => {	
+		return petList
+	},
+	...
+}
+```
+
+<small>(getPet(id) takes the id an returns the pet at that index, allPets returns an array of all pets)</small>
+
+<!-- > -->
+
+Better define the petList! This could be defined by a database!
+
+```JS
+const petList = [
+	{ name: 'Fluffy', species: 'Dog' },
+	{ name: 'Sassy', species: 'Cat' },
+	{ name: 'Goldberg', species: 'Frog' }
+]
+```
+
+<!-- > -->
+
+Now write a query. Notice you can choose fields to fetch. 
+
+```JS
+{ # Get the names of all pets
+  allPets {
+    name
+  }
+}
+```
+
+```JS
+{ # Get pet 2 species
+  getPet(id: 2) {
+    species
+  }
+}
+```
+
+<!-- > -->
+
+## Challenges 
+
+<!-- > -->
+
+Try these challenges. 
+
+<!-- > -->
+
+Challenge 1 
+
+Make a list of your pets, or a list of things, song you wrote, favorite recipes, movies you've watched, anything really. 
+
+Make a type for this thing with at least three fields. 
+
+- Pet: name, species, age
+- Song: title, genre, length
+- Movie: title, genre, rating
+
+<!-- > -->
+
+Challenge 2 
+
+Make an array of the things with data for each. You should be able to get an array of things with a query like this: 
+
+```JS 
+{
+  Pets {
+    name
+  }
+}
+```
+
+<!-- > -->
+
+Challenge 3
+
+Make a query type for your collection. 
+
+Make a query that will return all of the things.
+
+Make another query that will take the index of a thing as the argument and return 1 of the things. 
+
+```JS 
+{
+  Pet(id: 1) {
+    name
+  }
+}
+```
+
+<!-- > -->
+
+Challenge 4
+
+Test your work by writing a query in GraphiQL. 
+
+Write queries: 
+
+- get all the things
+- get one of the things
+- query for a several fields
+
+<!-- > -->
+
+Challenge 5
+
+You need a server that returns the time. Write a type for the time. It should properties for: 
+
+- hour
+- minute
+- year
+
+Write a resolver that gets the time and returns an object with the properties: hour, minute, year. 
+
+```JS
+{
+  getTime {
+    hour
+    year
+    minute
+  }
+}
+```
+
+<!-- > -->
+
+Challenge 6 
+
+We need a server that returns a random number. 
+
+```JS
+{
+  getRandom(range: 100)
+}
+```
+
+Should return: 
+
+```JS
+{
+  "data": {
+    "getRandom": 77
+  }
+}
+```
+
+<!-- > -->
+
+Challenge 7 
+
+We need a type that represents a die roll. It should take the number of dice and the number of sides. 
+
+```JS 
+{
+  getRoll(sides:6, rolls: 3) {
+    total, 
+    sides,
+    rolls
+  }
+}
+```
+
+<!-- > -->
 
 ## After Class
 
-- Start the GraphQL + Node tutorial
+- Complete the challenges here. Submit them on GradeScope.
+- Watch https://www.howtographql.com videos up to the GraphQL Node Tutorial.
+
+<!-- > -->
 
 ## Resources
 
-- <https://graphql.org/graphql-js/graphql/>
-- <https://www.howtographql.com/basics/2-core-concepts/>
-- <https://graphql.org/graphql-js/passing-arguments/>
-- [Schemas and Types](https://graphql.org/learn/schema/)
-- <https://github.com/graphql/express-graphql>
-- [Schemas, TypeDefs and Resolvers Explained](https://www.prisma.io/blog/graphql-server-basics-the-schema-ac5e2950214e)
-[ES6 destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+- https://www.howtographql.com
+- https://medium.com/codingthesmartway-com-blog/creating-a-graphql-server-with-node-js-and-express-f6dddc5320e1
