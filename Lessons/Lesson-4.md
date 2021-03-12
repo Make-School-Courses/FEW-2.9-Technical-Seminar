@@ -10,7 +10,6 @@ By the end of today's lesson, you should be able to...
 
 1. Build a GraphQL API over a Public API
 
-
 <!-- > -->
 
 ## Why are we doing this?
