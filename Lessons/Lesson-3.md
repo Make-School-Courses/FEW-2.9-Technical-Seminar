@@ -1,169 +1,364 @@
-#  Mutations 
+# FEW 2.9 GraphQL + Express
 
-Mutations are queries that make changes or you could say mutate data. 
+<!-- ![banner_image](./assets/public_api_banner.jpg) -->
 
 <!-- > -->
 
-## Learning Objectives
+## Learning Outcomes
 
-1. Describe mutations
-1. Define mutation queries 
-1. Use Mutations 
-1. Describe Resolvers
+By the end of today's lesson, you should be able to...
+
+1. Build a GraphQL API over a Public API
+1. Use GraphQL and Express
+1. Define Resolvers for types
 
 <!-- > -->
 
 ## Review
 
-Schema's are a core feature of GraphQL. 
+Write a resolver for the following types: 
 
-- Write a schema to describe a video game
-	- title
-	- studio
-	- rating
-	- genre
-- Use an enum for the genre
-- Write a type that represents a list of Video Games
-
-<!-- > -->
-
-## Resolvers 
-
-Resolvers are where most of the magic happens in a GraphQL server. 
-
-<!-- > -->
-
-Each field in your schema is backed by a resolver function whose responsibility it is to return the data for that field. 
-
-<!-- > -->
-
-To turn that around, GraphQL queries are possible because there is a resolver function for each field. 
-
-<!-- > -->
-
-Imagine the type: 
-
-```JS
-type Time {
-	hour: Int!
-	minute: Int!
-	second: Int!
+```JS 
+type Mission {
+	codeName: String! 
+	securityLevel: Int!
 }
 
-type Query {
-	getTime: Time!
+type Agent {
+	name: String! 
+	handle: String!
+	securityClearance: Int!
+	missions: [Mission!]!
 }
 ```
 
 <!-- > -->
 
-To resolve Time we need a function that returns the values defined in it's fields: 
+## Overview
 
-```JS
-const root ={
-	getTime: () => {
-		const now = new Date()
-		const hour = now.getHours()
-		const minute = now.getMinutes()
-		const second = now.getSeconds()
-		return { hour, minute, second }
-	}
-}
-```
+What are doing and why? Today you will make a GraphQL service for a public API. 
 
-<small>(Here we're resolving the getTime Query to a Time type)</small>
+Why? This will give you a chance to practice the ideas from the previous class in a different context.
 
 <!-- > -->
 
-You might also define a resolver for each field. 
+## GraphQL and Express
+
+GraphQL is a specification and a langauge. It's not a framework or library of prewritten code. 
+
+This means people are free to write libraries or frameworks that implement the GraphQL spec. 
+
+<!-- > -->
+
+You'll find GraphQL libraries written for most most of popular frameworks. Today you will use Express.js and GraphQL. 
+
+<!-- > -->
+
+What do we need to use GraphQL with Express? 
+
+- express-graphql npm package
+- graphql npm package
+- express npm package
+
+<!-- > -->
+
+How do you set this up? 
+
+- import the npm packages
+	- express, graphql, express-graphql
+- define your schema
+- define your resolvers
+- define a route to act as the GraphQL endpoint
+	- Use graphqlHTTP to handle requests at this route
+		- configure graphqlHTTP with your schema and resolvers
+
+<!-- > -->
+
+## Challenge
+
+The challenge today is to build GraphQL front end for a public API. 
+
+<small>Think of this as an interview question practice.</small> 
+
+<!-- > -->
+
+For this example you'll use https://openweathermap.org. 
+
+<small>Q: Why are using OpenWeatherMap.org? A: It's free and easy. It's a good choice for a 2 hour assignment.</small>
+
+<!-- > -->
+
+**Challenge 1 - Setup Express and GraphQL**
+
+Follow these steps to setup Express and GraphQL. 
+
+<!-- > -->
+
+- Create a new folder
+- Initialize a new npm project: `npm init -y`
+- Install dependancies: `npm install --save express express-graphql graphql`
+- Create a new file: `server.js`
+- Add `"start": "nodemon server.js"` to package.json
+
+<!-- > -->
+
+**Important!** Be sure to include a .gitignore. 
+
+https://www.toptal.com/developers/gitignore/api/node
+
+<!-- > -->
+
+In server.js import your dependancies: 
 
 ```JS
-type Query {
-	Time: Time!
-}
+// Import dependancies
+const express = require('express')
+const { graphqlHTTP } = require('express-graphql')
+const { buildSchema } = require('graphql')
+```
 
+<!-- > -->
+
+Start your schema: 
+
+```JS 
+const schema = buildSchema(`
+# schema here
+type Test {
+	message: String!
+}
+`)
+```
+
+<!-- > -->
+
+Set up your resolver
+
+```JS
 const root = {
-	Time: {
-		hour: () => new Date().getHours(),
-		minute: () => new Date().getMinutes(),
-		second: () => new Date().getSeconds()
+	// resolvers here
+}
+```
+
+<!-- > -->
+
+Create an express app
+
+```js
+// Create an express app
+const app = express()
+```
+
+<!-- > -->
+
+Define a route/endpoint for your GraphQL API
+
+```js
+// Define a route for GraphQL
+app.use('/graphql', graphqlHTTP({
+  schema,
+  rootValue: root,
+  graphiql: true // Be sure to use graphiql
+}))
+```
+
+<!-- > -->
+
+Start your App 
+
+```JS 
+// Start this app
+const port = 4000
+app.listen(port, () => {
+  console.log('Running on port:'+port)
+})
+```
+
+<!-- > -->
+
+Start your GraphQL server: 
+
+`npm start`
+
+Open graphiql: 
+
+`http://localhost:4000/graphql`
+
+<!-- > -->
+
+**Challenge 3 - Get your API Key**
+
+Go to https://openweathermap.org
+
+- Sign up 
+- Make an API Key
+
+<!-- > -->
+
+**Challenge 4 - Define Schema**
+
+Define your schema
+
+```JS 
+type Weather {
+	temperature: Float!
+	description: String!
+}
+
+type Query {
+	getWeather(zip: Int!): Weather!
+}
+```
+
+<small>Define a weather type and a query type to get the weather.</small>
+
+<!-- > -->
+
+**Challenge 5 - Import node-fetch**
+
+Import node-fetch to make network calls. You can use Axios or other library of your choice. 
+
+`npm install node-fetch`
+
+<!-- > -->
+
+**Challenge 6 - Define your Resolver**
+
+Define your resolver: 
+
+```JS
+const root = {
+  getWeather: async ({ zip }) => {
+		const apikey = 'yourapikeyhere'
+		const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${apikey}`
+		const res = await fetch(url)
+		const json = await res.json()
+		const temperature = json.main.temp
+		const description = json.weather[0].description
+		return { temperature, description }
 	}
 }
 ```
 
-<small>Here the Time type defines a resolver for each field.</small>
+<small>I used `fetch` here you substitute your HTTP client of choice here</small>
 
 <!-- > -->
 
-## Mutations
+**Challenge 7 - Test your work in GraphiQL**
 
-<!-- > -->
-
-So far you've been using queries to get things from your GraphQL server. This is a like GET request with a REST server. 
-
-Mutations are used to make changes at your GraphQL server. This is like a POST request with a REST server. 
-
-<!-- > -->
-
-Define a mutation with: 
+Try out a query and solve any errors that might pop up. 
 
 ```JS
-type Mutation {
-	...
+{
+  getWeather(zip: 94010) {
+    temperature
+    description
+  }
 }
 ```
 
 <!-- > -->
 
-Usually a Mutation will a function that takes some parameters: 
+**Challenge 8 - Add units**
 
-```JS
-type Mutation {
-	createUser(name: String!): User!
-	post(url: String!, description: String!): Link!
-}
-```
-
-<small>Mutations often return the thing they create, User, or Link in this example.</small>
+The weather API supports a unit of `standard`, `metric`, or `imperial`. Currently you should be getting the weather in Kelvin (standard) this is hard to understand better to allow a request to include the unit. 
 
 <!-- > -->
 
-When making a mutation query you'll start with the word "mutation"
+Add an enum for the type to your schema.
 
 ```JS
-mutation {
-	createUser(name: "Jo") {
-		name
-		id
+enum Units {
+	standard
+	metric
+	imperial
+}
+```
+
+<!-- > -->
+
+Use the unit in your getWeather query. 
+
+```js
+type Query {
+	getWeather(zip: Int!, units: Units): Weather!
+}
+```
+
+<!-- > -->
+
+Handle the unit in your resolver. 
+
+```JS
+const root = {
+  getWeather: async ({ zip, units = 'imperial' }) => {
+		...
+		const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${apikey}&units=${units}`
+		...
 	}
 }
 ```
 
+<small>Be sure add `units` to the query string!</small>
+
 <!-- > -->
 
-Note! Queries start with the key word Query. But we've been omitting it. 
+Test your work! Write a query: 
 
 ```JS
-Query {
-	getUsers {
-		name
-	}
+{
+  getWeather(zip: 94122, units: metric) {
+    temperature
+    description
+  }
 }
 ```
 
-<!-- > -->
-
-
+<small>Notice that the enum value is NOT input as a string! Graphiql will code hint valid values! Go GraphQL introspection FTW!</small>
 
 <!-- > -->
 
-## After Class 
+**Challenge 9 - Stretch Challenges**
 
-- Start the GraphQL Node Tutorial: https://www.howtographql.com/graphql-js/0-introduction/
+Try as many of these stretch challenges as you can. 
+
+Take a look at the JSON response here: https://openweathermap.org/current#current_JSON
+
+<!-- > -->
+
+Add more fields to the Weather type. 
+
+- feels_like
+- humidity
+- name
+- add other fields you like...
+
+<!-- > -->
+
+Modify the resolver to add these new fields...
+
+<!-- > -->
+
+**Challenge 10 - Add City API**
+
+The OpenWeatherMap service supports weather requests by city name. 
+
+Add a query that takes the city name and returns the weather. 
+
+<!-- > -->
+
+**Challenge 11 - Use another API**
+
+Copy this project and replace the OpenWeatherMap API with another API of your choice...
+
+<!-- > -->
+
+## After Class
+
+Finish up as many of the challenges and stretch challenges as you can. Submit your project on Gradscope. 
 
 <!-- > -->
 
 ## Resources
 
-- https://www.howtographql.com/graphql-js/0-introduction/
-- 
+- https://www.toptal.com/developers/gitignore/api/node

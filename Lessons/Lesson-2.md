@@ -1,4 +1,4 @@
-# Schemas and Types
+# FEW 2.9 GraphQL Schemas and Types
 
 <!-- > -->
 
@@ -24,6 +24,8 @@ Today we will look at a simple example implementing GraphQL with Express. This i
 <!-- > -->
 
 ## Review 
+
+- Name three advantages of GraphQL over REST
 
 <!-- > -->
 
@@ -242,6 +244,12 @@ Get started with GraphQL and Express. The goal of this section is to create an E
 - Initialize a new npm project: `npm init -y`
 - Install dependancies: `npm install --save express express-graphql graphql`
 - Create a new file: `server.js`
+
+<!-- > -->
+
+**Important!** Be sure to include a .gitignore. You need to prevent uploading your node_module be sure add this to your .gitignore. 
+
+https://www.toptal.com/developers/gitignore/api/node
 
 <!-- > -->
 
@@ -644,7 +652,7 @@ Try these challenges.
 
 <!-- > -->
 
-Challenge 1 
+**Challenge 1**
 
 Make a list of your pets, or a list of things, song you wrote, favorite recipes, movies you've watched, anything really. 
 
@@ -656,7 +664,7 @@ Make a type for this thing with at least three fields.
 
 <!-- > -->
 
-Challenge 2 
+**Challenge 2** 
 
 Make an array of the things with data for each. You should be able to get an array of things with a query like this: 
 
@@ -670,7 +678,7 @@ Make an array of the things with data for each. You should be able to get an arr
 
 <!-- > -->
 
-Challenge 3
+**Challenge 3**
 
 Make a query type for your collection. 
 
@@ -688,7 +696,7 @@ Make another query that will take the index of a thing as the argument and retur
 
 <!-- > -->
 
-Challenge 4
+**Challenge 4**
 
 Test your work by writing a query in GraphiQL. 
 
@@ -700,7 +708,7 @@ Write queries:
 
 <!-- > -->
 
-Challenge 5
+**Challenge 5**
 
 You need a server that returns the time. Write a type for the time. It should properties for: 
 
@@ -722,7 +730,7 @@ Write a resolver that gets the time and returns an object with the properties: h
 
 <!-- > -->
 
-Challenge 6 
+**Challenge 6** 
 
 We need a server that returns a random number. 
 
@@ -744,7 +752,7 @@ Should return:
 
 <!-- > -->
 
-Challenge 7 
+**Challenge 7** 
 
 We need a type that represents a die roll. It should take the number of dice and the number of sides. 
 

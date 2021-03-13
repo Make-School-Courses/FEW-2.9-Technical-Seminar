@@ -1,4 +1,4 @@
-# FEW 2.9 GraphQL
+# FEW 2.9 GraphQL Intro
 
 Welcome to FEW 2.9
 

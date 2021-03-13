@@ -20,7 +20,7 @@ Simple and Stateful
 
 Props are values passed into a component from outside. 
 
-#### State 
+#### State
 
 Stateful components can hold values internally this is called state. 
 
