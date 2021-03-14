@@ -73,9 +73,25 @@ Students by the end of the course will be able to ...
 [Lesson 12]: Lessons/Lesson12.md
 
 
-### Projects
+### Homework
 
-All projects should have a Gihub repo to document your work. You should commit each time your sit down to work. It's your goal to show a record of your progress throughg the commit history in each progress.
+- Assignment 1
+	- Watch the videos here: https://www.howtographql.com
+		- Introduction
+		- GraphQL is the better REST
+		- Core Concepts
+		- Big Picture (Architecture)
+	- Answer the questions in assignment 1 on GradeScope.
+- Assignment 2 
+	- Complete the challenges in Class 2. Submit them on GradeScope.
+	- Watch https://www.howtographql.com videos up to the GraphQL Node Tutorial.
+- Assignment 3 
+	 - Finish up as many of the challenges and stretch challenges as you can in class 3. Submit your project on Gradscope. 
+- Assignment 4 
+	- 
+	
+
+<!-- All projects should have a Gihub repo to document your work. You should commit each time your sit down to work. It's your goal to show a record of your progress throughg the commit history in each progress.
 
 - Project 1: [How to GraphQL Intro](https://www.howtographql.com/basics/0-introduction/)
 	- Complete all of the sections here. You don't have to make a repo for this. 
@@ -100,7 +116,7 @@ All projects should have a Gihub repo to document your work. You should commit e
 - Custom Project 
 	- Deliverable: See custom project proposal
 	- Start: Class 7
-	- Complete: Class 11
+	- Complete: Class 11 -->
 
 ## Evaluation
 To pass this course you must meet the following requirements:
