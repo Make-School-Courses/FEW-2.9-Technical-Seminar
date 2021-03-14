@@ -1,4 +1,86 @@
-# Nested Queries and Resolvers
+# FEW 2.9 
+
+<!-- > -->
+
+## Review 
+
+Mutations 
+
+<!-- > -->
+
+## Prisma 
+
+Prisma is an ORM (Object-Relationship Mapper) you'll use this to connect your GraphQL resolvers to your data through your database. 
+
+<!-- > -->
+
+### Prisma Schema
+
+The Prisma Schema describes the data model used by your GraphQL server and how it should map your database. 
+
+<!-- > -->
+
+#### Prisma Datasource
+
+The datasource is the connection to the database that holds your data. 
+
+The tutorial uses Sqlite but Prisma can work with any other database. 
+
+<!-- > -->
+
+#### Prisma Generator
+
+Generates the Prisma client. 
+
+<!-- > -->
+
+#### Prisma Data Model 
+
+Defines your resources that are stored in your database. These map to the types in your GraphQL schema. 
+
+<!-- > -->
+
+
+
+<!-- > -->
+
+
+### Prisma Notes 
+
+<!-- > -->
+
+#### Summary of your workflow
+
+To recap, this is the typical workflow you will follow when updating your data:
+
+- Manually adjust your Prisma data model.
+- Migrate your database using the prisma migrate CLI commands we covered.
+- (Re-)generate Prisma Client
+- Use Prisma Client in your application code to access your database.
+
+<!-- > -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 One of GraphQLs biggest advantages is nested queries. 
 

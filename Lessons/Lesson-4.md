@@ -254,7 +254,7 @@ The project will also use Prisma. Prisma is an Object-Relationship Mapper (ORM.)
 
 <!-- > -->
 
-### In Class 
+## Challenges
 
 <!-- > -->
 
@@ -275,6 +275,12 @@ Explore the Apollo Browser.
 
 - Take a look at Docs on the right side
 - Take a look Schema on the right side
+
+<!-- > -->
+
+**Stretch Challenge**
+
+Solve the exercise at the end of section 4: A simple Mutation. 
 
 <!-- > -->
 
