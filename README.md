@@ -44,34 +44,33 @@ Students by the end of the course will be able to ...
 
 | Class |          Date          |                 Topics                  | Assignment |
 |:-----:|:----------------------:|:---------------------------------------:|:-----------|
-|  1 |  Tuesday, January 22      | [Lesson 1 - GraphQL Intro] |            |  |
+|  1 |  Tuesday, January 22      | [Lesson 1 - GraphQL Intro]              |  |
 |  2 | Thursday, January 24      | [Lesson 2 - GraphQL Schemas and Types]  |  |
 |  3 |  Tuesday, January 29      | [Lesson 3 - GraphQL + Express]          |  |
 |  4 | Thursday, January 31      | [Lesson 4 - GraphQL Mutations]          |  |
 |  5 |  Tuesday, February 5      | [Lesson 5 - GraphQL ORM]                |  |
-|  6 | Thursday, February 7      | [Lesson 6] |
-|  7 |  Tuesday, February 12             | [Lesson 7] |
-|  8 | Thursday, February 14             | [Lesson 8] |
-|  - |  Tuesday, February 19             | **President's Day (Observed)** |
-|  9 | Thursday, February 21             | [Lesson 9] |
-|  10 |  Tuesday, February 26             | [Lesson 10] |
-|  11 | Thursday, February 28             | [Lesson 11] |
-|  12 |  Tuesday, March 5             | Final Class (presentations, etc) |
-|  13 | Thursday, March 7             | Final Exams/Presentations |
+|  6 | Thursday, February 7      | [Lesson 6 - GraphQL Subscriptions]      |  |
+|  7 |  Tuesday, February 12     | [Lesson 7 - React Review]               |  |
+|  8 | Thursday, February 14     | [Lesson 8 - ]                           |  |
+|  - |  Tuesday, February 19     | **President's Day (Observed)**          |  |
+|  9 | Thursday, February 21     | [Lesson 9]                              |  |
+|  10 |  Tuesday, February 26    | [Lesson 10]                             |  |
+|  11 | Thursday, February 28    | [Lesson 11]                             |  |
+|  12 |  Tuesday, March 5        | Final Class (presentations, etc)        |  |
+|  13 | Thursday, March 7        | Final Exams/Presentations               |  |
 
 [Lesson 1 - GraphQL Intro]: Lessons/Lesson1.md
 [Lesson 2 - GraphQL Schemas and Types]: Lessons/Lesson2.md
 [Lesson 3 - GraphQL + Express]: Lessons/Lesson3.md
 [Lesson 4 - GraphQL Mutations]: Lessons/Lesson4.md
 [Lesson 5 - GraphQL ORM]: Lessons/Lesson5.md
-[Lesson 6]: Lessons/Lesson6.md
-[Lesson 7]: Lessons/Lesson7.md
-[Lesson 8]: Lessons/Lesson8.md
+[Lesson 6 - GraphQL Subscriptions]: Lessons/Lesson6.md
+[Lesson 7 - React Review]: Lessons/Lesson7.md
+[Lesson 8 - ]: Lessons/Lesson8.md
 [Lesson 9]: Lessons/Lesson9.md
 [Lesson 10]: Lessons/Lesson10.md
 [Lesson 11]: Lessons/Lesson11.md
 [Lesson 12]: Lessons/Lesson12.md
-
 
 ### Homework
 
