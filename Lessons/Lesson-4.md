@@ -1,4 +1,4 @@
-#  Mutations 
+# FEW 2.9 GraphQL Mutations 
 
 Mutations are queries that make changes or you could say mutate data. 
 
@@ -208,7 +208,7 @@ type Mutation {
 
 **Challenge 2 - Add a resolver**
 
-Add a resolver for your mutation. 
+Add a resolver for your mutation.
 
 ```JS
 const root = {

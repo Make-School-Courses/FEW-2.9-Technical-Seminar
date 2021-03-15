@@ -1,44 +1,30 @@
-# Lesson 8 
+# FEW 2.9 GRaphQL and React
 
-## Advanced queries 
 
-Using variables with GraphQL
 
-A query will often provide values to define and refine the expected results. GraphQL queries can define variables that may appear anywhere inside of a Query. This saves you the trouble of concatenating a long query string, and makes it easy to track variables used in a query by keeping them in one location. 
+# Apollo
 
-The following query looks for the first 15 market place listings via the GitHub API.
+Apollo is a client that works with GraphQL. It can send requests and receive responses from a GraphQL endpoint. 
 
-```GraphQL
-query {
-  marketplaceListings(first:15) {
-    edges {
-      node {
-        id
-        name
-        shortDescription
-      }
-    }
-  }
-}
-```
+Apollo also has a library of React components that make it easy to integrate with React front ends. 
 
-An obvious extension is to set a variable for the number of listings. 
+## Getting started 
 
-```GraphQL
-query MarketplaceListings($first: Int!) {
-  marketplaceListings(first:$first) {
-    edges {
-      node {
-        id
-        name
-        shortDescription
-      }
-    }
-  }
-}
-```
+Add Apollo to a React front end. 
 
-Here a variable is defined like this: 
+- Import dependencies 
+	- npm install --save graphql apollo-boost react-apollo graphql-tag
 
-`MarketplaceListings($first: Int!)`
+## In Class 
 
+Review the tutorial. Look at its features and requirements. 
+
+## After Class 
+
+Start the GraphQL React Apollo tutorial - due class 9 https://www.howtographql.com
+
+## Bonus Lesson: React Hooks!
+
+Using state with functional components 
+
+`const [state, setState] = useState(defaultValue)`

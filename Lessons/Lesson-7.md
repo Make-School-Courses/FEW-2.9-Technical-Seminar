@@ -1,26 +1,32 @@
-# Apollo
+# FEW 2.9 React Review
 
-Apollo is a client that works with GraphQL. It can send requests and receive responses from a GraphQL endpoint. 
+Any type of front end can connect to a GraphQL backend. We will React. This class will be a fast review of React. 
 
-Apollo also has a library of React components that make it easy to integrate with React front ends. 
+## In Class
 
-## Getting started 
+Build a simple React App. React is a library for creating user interfaces. 
 
-Add Apollo to a React front end. 
+React is built from several core features let's take a look at those. 
 
-- Import dependencies 
-	- npm install --save graphql apollo-boost react-apollo graphql-tag
+### ReactDOM
 
-## In Class 
+Virtual DOM
 
-Review the tutorial. Look at its features and requirements. 
+### Components 
+
+Simple and Stateful 
+
+#### Props 
+
+Props are values passed into a component from outside. 
+
+#### State
+
+Stateful components can hold values internally this is called state. 
+
+### JSX 
+
+JSX is an extension of the JS language that gives us an XML like syntax to write our UI code. 
 
 ## After Class 
 
-Start the GraphQL React Apollo tutorial - due class 9 https://www.howtographql.com
-
-## Bonus Lesson: React Hooks!
-
-Using state with functional components 
-
-`const [state, setState] = useState(defaultValue)`

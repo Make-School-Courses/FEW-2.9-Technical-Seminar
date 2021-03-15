@@ -1,16 +1,65 @@
-# FEW 2.9 
+# FEW 2.9 - GraphQL ORM
 
 <!-- > -->
 
 ## Review 
 
-Mutations 
+Imagine you are working on a GraphQL card game. 
+
+```JS
+enum Suit {
+	...
+}
+
+type Card {
+	value: Int!
+	suit: Suit!
+}
+
+type Hand {
+	cards: [Card!]!
+}
+```
+
+<!-- > -->
+
+- Define a mutation that draws a card. 
+- Define a mutation that discards a card.
+
+<!-- > -->
+
+# Learning Objectives
+
+1. Describe Object Relation Mapper
+1. Describe Prisma
+1. Use ORM (Prisma)
+1. Use Apollo Server
 
 <!-- > -->
 
 ## Prisma 
 
 Prisma is an ORM (Object-Relationship Mapper) you'll use this to connect your GraphQL resolvers to your data through your database. 
+
+<!-- > -->
+
+Prisma integrates with many databases: PostgreSQL, MySQL, SQLite.  
+
+<!-- > -->
+
+Much like GraphQL Prisma uses a Schema to define data models and relationships.
+
+In the tutorial you'll be defining models for Users, and Links. You'll also define a relationship: A Link is associated with a User, and Users have a list of Links. 
+
+<!-- > -->
+
+Prisma isn't the database. Instead it's the Glue that conttects the database with a client. 
+
+Client <-- --> **Prisma** <-- --> Database 
+
+<!-- > -->
+
+Prisma integrates with Express.js, GraphQL, Apollo and more. 
 
 <!-- > -->
 
@@ -22,32 +71,86 @@ The Prisma Schema describes the data model used by your GraphQL server and how i
 
 #### Prisma Datasource
 
+<!-- > -->
+
 The datasource is the connection to the database that holds your data. 
 
 The tutorial uses Sqlite but Prisma can work with any other database. 
+
+We need to tell Prisma what type of database we're working with. 
 
 <!-- > -->
 
 #### Prisma Generator
 
-Generates the Prisma client. 
+<!-- > -->
+
+Generates the Prisma client. Someone needs to write all of the code that connects Prisma with your database. 
+
+```JS
+generator client {
+  provider = "prisma-client-js"
+}
+```
+
+This generates the Prisma client code code. 
+
+<!-- > -->
+
+Take a look in: node_modules/prisma/prisma-client
+
+The code here is created by the generator. 
 
 <!-- > -->
 
 #### Prisma Data Model 
 
+<!-- > -->
+
 Defines your resources that are stored in your database. These map to the types in your GraphQL schema. 
 
 <!-- > -->
 
-
+A model should mirror your GraphQL types. 
 
 <!-- > -->
 
+```JS
+model Link {
+	// field  Type     is an id and the value is atomatically generated
+  id          Int      @id @default(autoincrement())
+	// field  Type     Automatically generated
+  createdAt   DateTime @default(now())
+  description String
+  url         String
+	// name  Type      
+  postedBy    User?    @relation(fields: [postedById], references: [id])
+  postedById  Int?
+}
+```
+
+<!-- > -->
 
 ### Prisma Notes 
 
 <!-- > -->
+
+
+
+<!-- > -->
+
+## Apollo Server
+
+<!-- > -->
+
+Apollo Server is ...
+
+<!-- > -->
+
+
+
+<!-- > -->
+
 
 #### Summary of your workflow
 
@@ -60,68 +163,18 @@ To recap, this is the typical workflow you will follow when updating your data:
 
 <!-- > -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-One of GraphQLs biggest advantages is nested queries. 
+<!-- > -->
 
 ## In Class 
 
-The example project mocks up a Twitter like service. The service has several types that are referenced by other types.
+<!-- > -->
 
-The example mocks up a database in memory for simplicity. 
+Work on the Hackernews clone tutorial. 
 
-The schema defines several types 
+- https://www.howtographql.com/graphql-js/0-introduction/
 
-- Tweet - An object representing a post
-	- id
-	- body
-	- date 
-	- Author
-	- Stats
-- User - An object describing a user in the system
-	- id 
-	- username
-	- first_name
-	- last_name
-	- full_name
-- Stat - An object with statistics about a Tweet
-	- views
-	- likes 
-	- retweets
-	- responses
-- Notification - 
-	- id
-	- date
-	- type 
-	
-## Nested Queries 
-
-One of the biggest advantages of GraphQl is being able to query nested data. 
-
-The root resolver doesn't allow for nested queries. Set up a resolver that handles nested queries by defining your schema. Then defining a object with property names that match your schema. 
-
-The resolver needs to define sub properties representing each of the fields that can be requested by a query. 
+<!-- > -->
 
 ## After Class 
 
-Start GraphQL Node tutorial - due class 7 https://www.howtographql.com/graphql-js/0-introduction/
+- Continue the Hackernews clone GraphQL tutorial
