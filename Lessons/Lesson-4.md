@@ -280,18 +280,23 @@ Explore the Apollo Browser.
 
 **Stretch Challenge**
 
-Solve the exercise at the end of section 4: A simple Mutation. 
+Solve the exercise at the end of section 4: A simple Mutation.
 
 <!-- > -->
 
 ## After Class 
 
-- Start the GraphQL Node Tutorial: https://www.howtographql.com/graphql-js/0-introduction/
+- GraphQL Hackernews clone - Tutorial
+	- Check out https://news.ycombinator.com	
+		- Make an account and use the site
+		- Ask yourself how it works? 
+	- Start the GraphQL Node Tutorial: https://www.howtographql.com/graphql-js/0-introduction/
 
 <!-- > -->
 
 ## Resources
 
+- https://news.ycombinator.com
 - https://www.howtographql.com/graphql-js/0-introduction/
 - https://www.prisma.io
 - https://github.com/apollographql/apollo-server/tree/main/packages/apollo-server

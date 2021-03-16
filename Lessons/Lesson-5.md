@@ -37,7 +37,15 @@ type Hand {
 
 <!-- > -->
 
-## Prisma 
+## Object Relational Mapper
+
+<!-- > -->
+
+Object Realtional Mappers act as a middle man between your code and your database. They act as a tranalator of sorts that allows you to write the code that works with your data in the language that the rest of your app is written in. 
+
+<!-- > -->
+
+## Prisma
 
 Prisma is an ORM (Object-Relationship Mapper) you'll use this to connect your GraphQL resolvers to your data through your database. 
 
@@ -135,7 +143,9 @@ model Link {
 
 <!-- > -->
 
-
+- Challenges 
+	- Create a Query to show the list of users
+	- 
 
 <!-- > -->
 

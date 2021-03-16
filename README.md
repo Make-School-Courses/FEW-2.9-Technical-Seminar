@@ -44,19 +44,19 @@ Students by the end of the course will be able to ...
 
 | Class |          Date          |                 Topics                  | Assignment |
 |:-----:|:----------------------:|:---------------------------------------:|:-----------|
-|  1 |  Tuesday, January 22      | [Lesson 1 - GraphQL Intro]              |  |
+|  1 |  Tuesday, January 22      | [Lesson 1 - GraphQL Intro]              | SWAPI Query Challenges |
 |  2 | Thursday, January 24      | [Lesson 2 - GraphQL Schemas and Types]  |  |
 |  3 |  Tuesday, January 29      | [Lesson 3 - GraphQL + Express]          |  |
-|  4 | Thursday, January 31      | [Lesson 4 - GraphQL Mutations]          |  |
+|  4 | Thursday, January 31      | [Lesson 4 - GraphQL Mutations]          | Start Hackernews backend |
 |  5 |  Tuesday, February 5      | [Lesson 5 - GraphQL ORM]                |  |
 |  6 | Thursday, February 7      | [Lesson 6 - GraphQL Subscriptions]      |  |
-|  7 |  Tuesday, February 12     | [Lesson 7 - React Review]               |  |
-|  8 | Thursday, February 14     | [Lesson 8 - ]                           |  |
+|  7 |  Tuesday, February 12     | [Lesson 7 - React Review]               | Hacknews backend |
+|  8 | Thursday, February 14     | [Lesson 8 - React and GraphQL]          | Start Hackernews fronend |
 |  - |  Tuesday, February 19     | **President's Day (Observed)**          |  |
-|  9 | Thursday, February 21     | [Lesson 9]                              |  |
-|  10 |  Tuesday, February 26    | [Lesson 10]                             |  |
-|  11 | Thursday, February 28    | [Lesson 11]                             |  |
-|  12 |  Tuesday, March 5        | Final Class (presentations, etc)        |  |
+|  9 | Thursday, February 21     | [Lesson 9 - ]                           |  |
+|  10 |  Tuesday, February 26    | [Lesson 10 - ]                          | Hackernew frontend |
+|  11 | Thursday, February 28    | [Lesson 11 - ]                          | Hackernews Stretch challenges |
+|  12 |  Tuesday, March 5        | Final Class (presentations, etc)        | Hackernews Stretch challenges |
 |  13 | Thursday, March 7        | Final Exams/Presentations               |  |
 
 [Lesson 1 - GraphQL Intro]: Lessons/Lesson1.md
@@ -74,20 +74,28 @@ Students by the end of the course will be able to ...
 
 ### Homework
 
-- Assignment 1
+- Assignment 1 - GraphQL Intro 
 	- Watch the videos here: https://www.howtographql.com
 		- Introduction
 		- GraphQL is the better REST
 		- Core Concepts
 		- Big Picture (Architecture)
 	- Answer the questions in assignment 1 on GradeScope.
-- Assignment 2 
+- Assignment 2 - GraphQL Types and Queries
 	- Complete the challenges in Class 2. Submit them on GradeScope.
 	- Watch https://www.howtographql.com videos up to the GraphQL Node Tutorial.
-- Assignment 3 
+- Assignment 3 - GraphQL Mutations
 	 - Finish up as many of the challenges and stretch challenges as you can in class 3. Submit your project on Gradscope. 
-- Assignment 4 
+- Assignment 4 - GraphQL Hackernews Clone
 	- 
+- Assignment 5 GraphQL + React 
+
+
+Hackernews Tutorial Node + GraphQL
+- Stretch challenges (Amy)
+React Review (Amy lesson 7)
+- 
+
 	
 
 <!-- All projects should have a Gihub repo to document your work. You should commit each time your sit down to work. It's your goal to show a record of your progress throughg the commit history in each progress.
