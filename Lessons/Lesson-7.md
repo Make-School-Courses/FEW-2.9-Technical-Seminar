@@ -69,9 +69,10 @@ React Projects are built from components. They encapsulate logic(methods and cod
 ### JSX
 
 JSX is an extension of the JavaScript language that gives us an HTML-like syntax to write our UI code.
-It is a set of instructions to tell React what content we want to display. It tells React to either create HTML elements or show another component.
 
-- JSX has its own special syntax
+- It is a set of instructions to tell React what content we want to display.
+- It tells React to either create HTML elements or show another component.
+- **IMPORTANT** JSX has its own special syntax
 
 <!-- > -->
 ### ReactDOM
@@ -87,7 +88,8 @@ Whenever we work with React, we work with two separate libraries: React library 
 
 <!-- > -->
 
-Putting these all together, here's a very simple React block of code with these three features.
+Putting these all together, here's a very simple React block of code with these three features. This code will show a simple form with a button that reads 'Click Me'.
+
 Check out the comments for some more details:
 
 ```js
@@ -133,21 +135,142 @@ const App = () => {
 // ReactDOM - the renderer - takes the component and renders it to the DOM
 ReactDOM.render(
     <App />,
-    document.querySelector('#root')
+    document.getElementById('root')
 )
 
 ```
 
 <!-- > -->
-#### Props
 
-Props are values passed into a component from outside.
+Some of the other React features we would look at are built into the first three:
 
+### Props
+
+Props are values passed into a component from outside. It essentially allows for communication between a parent component and its child component.
+
+- The parent component provides data/information and the child consumes that data/information.
+
+Let's look at an example.
+
+In this example, we would be using two components namely : `App`(parent component) and `Message`(child component). The `Message` component will be receiving props `header` and `text` from the parent `App` component.
+
+Agian, go through the comments for more details:
+
+```js
+// import libraries. Destructure Component to enable creating Class based React components
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+
+/*
+* This example creates Class-Based React Components. It follows the class defintion syntax for ES6 classes
+* In writing a class component we have to make sure the compnent inherits(extends) 
+* from the Component class avaliable by default in the react library
+* Components can be referred to in other components using the syntax <ComponentName/>
+* In this example, the Message component is referred to in its parent component with </Message>
+*/
+
+// create the App Component
+class App extends Component {
+  
+  // the render method is used to return a block a JSX. 
+  // It is an important method in class based React compnents
+  render() {
+      return (
+          <div>
+          {/* The App component here sends a text and header prop with their respective values*/}
+          <Message text="Sending text prop" header="Header Prop"/>
+          </div>
+      );
+
+  }
+}
+
+// create the Message component
+class Message extends Component {
+    
+  render() {
+      return (
+          <div className="ui message">
+            {/* 
+            * The header and text prop sent from the App component is consumed here in the Message component
+            * Their values are available on the this.props object
+            */}
+              <div className="header">{this.props.header}</div>
+              <p>{this.props.text}</p>
+          </div>
+      );
+
+  }
+}
+// The ReactDOM renderer looks into the html document for the element with id whose id is "root"
+ReactDOM.render(
+    <App />,
+  document.getElementById('root')
+);
+```
+
+<!-- > -->
 #### State
 
-Stateful components can hold values internally this is called state.
+Components can hold values internally this is called state.
+The State system in React is all about managing data inside of the application. Specifically data that will change over time.
 
-### Challenge
+- In React, `state` is a JavaScript Object that contains some amount of data strictly relevant to a single component
+_ `state` must be initialised when a component is created
+- `state` can only be updaed using the `setState` method.
+- updating `state` will cause components to almost instantly render
+
+The code snippet below shows an App component that has a state object initialized and updated.
+
+```js
+/*
+* This examples uses the browser's native geolocation object
+* to fetch the latitude of of a current positon
+*
+*/
+
+class App extends Component {
+  // the state object is initialized in the constructor of the class
+  constructor(props) {
+    super(props);
+    // the state object is usually defualted to a reasonable value. In this case, the null value
+    // initialising the state object is the only time we do direct assignment to this.state
+    this.state = { lat: null };
+
+    window.navigator.geolocation.getCurrentPosition(
+      position => {
+        // update the state object with latittude using setState
+        this.setState({lat: position.coords.latitude})
+      },
+      (err) => console.log(err)
+    );
+  }
+  
+  render() {
+
+    return (
+      <div>
+        Latitude: {this.state.lat}
+      </div>
+    )
+  }
+}
+```
+
+<!-- > -->
+## Generating a new React Project
+
+Generating a new React project with a template project structure is as easy as running the npm executable `npm create-react-app your_app_name`. Where `your_app_name` is the title you choose to give your poject.
+
+To make this run you should first 
+
+- The `create-react-app` helps install and set up dependencies (Babel, Webpack and Webpack Dev Server)
+- It sets up a project directory structure. In the new project folder it creates you will find:
+  - `src` folder -  will contain all React source code we write
+  - `public` folder - will contain static files and folders for app (e.g. html file, image file etc.)
+
+<!-- > -->
+## Challenge
 
 The challenge today is to build a React App
 
