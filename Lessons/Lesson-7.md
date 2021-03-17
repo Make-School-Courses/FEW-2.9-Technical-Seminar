@@ -210,7 +210,7 @@ ReactDOM.render(
 ```
 
 <!-- > -->
-#### State
+### State
 
 Components can hold values internally this is called state.
 The State system in React is all about managing data inside of the application. Specifically data that will change over time.
