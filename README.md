@@ -25,7 +25,7 @@ If you want to work with a future of network resources learn GraphQL.
 - Senior Standing
 - Instructor Approval
 
-## Learning Objectives (5-8)
+## Learning Objectives
 
 Students by the end of the course will be able to ...
 
@@ -33,8 +33,6 @@ Students by the end of the course will be able to ...
 1. Describe the Features of the GraphQL language
 1. Write a basic GraphQL Query and Schema
 1. Implement GraphQL in a CRUD Application
-
-
 
 ## Schedule
 
