@@ -44,6 +44,9 @@ Copy the token and add the following to the HTTP Headers tab (lower left)
 }
 ```
 
+	- Mutations: Creating Links > Writing the Mutation
+		- I ran into a  problem here: `Unhandled Rejection (Error): Argument id for data.postedBy.connect.id must not be null. Please use undefined instead.` I'm guessing this is becuase you're not logged in and can't provide a user id which seems to be required for the database. 
+
 
 
 

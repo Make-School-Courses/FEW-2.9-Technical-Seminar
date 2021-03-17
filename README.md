@@ -38,26 +38,26 @@ Students by the end of the course will be able to ...
 
 ## Schedule
 
-**Course Dates:** Tuesday, January 22 – Thursday, March 7, 2019 (7 weeks)
+**Course Dates:** Tuesday, March 30 – Thursday, May 13, 2019 (7 weeks)
 
-**Class Times:** Tuesday and Thursday at 3:30–5:20pm (12 class sessions)
+**Class Times:** Tuesday and Thursday at 2:45 PM - 5:30 PM (12 class sessions)
 
 | Class |          Date          |                 Topics                  | Assignment |
 |:-----:|:----------------------:|:---------------------------------------:|:-----------|
-|  1 |  Tuesday, January 22      | [Lesson 1 - GraphQL Intro]              | SWAPI Query Challenges |
-|  2 | Thursday, January 24      | [Lesson 2 - GraphQL Schemas and Types]  |  |
-|  3 |  Tuesday, January 29      | [Lesson 3 - GraphQL + Express]          |  |
-|  4 | Thursday, January 31      | [Lesson 4 - GraphQL Mutations]          | Start Hackernews backend |
-|  5 |  Tuesday, February 5      | [Lesson 5 - GraphQL ORM]                |  |
-|  6 | Thursday, February 7      | [Lesson 6 - GraphQL Subscriptions]      |  |
-|  7 |  Tuesday, February 12     | [Lesson 7 - React Review]               | Hacknews backend |
-|  8 | Thursday, February 14     | [Lesson 8 - React and GraphQL]          | Start Hackernews fronend |
-|  - |  Tuesday, February 19     | **President's Day (Observed)**          |  |
-|  9 | Thursday, February 21     | [Lesson 9 - ]                           |  |
-|  10 |  Tuesday, February 26    | [Lesson 10 - ]                          | Hackernew frontend |
-|  11 | Thursday, February 28    | [Lesson 11 - ]                          | Hackernews Stretch challenges |
-|  12 |  Tuesday, March 5        | Final Class (presentations, etc)        | Hackernews Stretch challenges |
-|  13 | Thursday, March 7        | Final Exams/Presentations               |  |
+|  1  | Tue, Mar 30   | [Lesson 1 - GraphQL Intro]              | SWAPI Query Challenges |
+|  -  |  Thu, Apr 1   | **No Class - Cesar Chavez** |
+|  2  | Tue, Apr 6    | [Lesson 2 - GraphQL Schemas and Types]  | - |
+|  3  | Thu, Apr 8    | [Lesson 3 - GraphQL + Express]          | - |
+|  4  | Tue, Apr 13   | [Lesson 4 - GraphQL Mutations]          | Start Hackernews backend |
+|  5  | Thu, Apr 15   | [Lesson 5 - GraphQL ORM]                | - |
+|  6  | Tue, Apr 20   | [Lesson 6 - GraphQL Subscriptions]      | - |
+|  7  | Thu, Apr 22   | [Lesson 7 - React Review]               | Hacknews backend |
+|  8  | Tue, Apr 27   | [Lesson 8 - React and GraphQL]          | Start Hackernews fronend |
+|  9  | Thu, Apr 29   | [Lesson 9 - ]               | - |
+|  10 | Tue, May 4    | [Lesson 10 - ]              | Hackernew frontend |
+|  11 | Thu, May 6    | [Lesson 11 - ]              | Hackernews Stretch challenges |
+|  12 | Tue, May 11   | Final Class                 | Hackernews Stretch challenges |
+|  13 | Thu, May 13   | Final Exams/Presentations               |  |
 
 [Lesson 1 - GraphQL Intro]: Lessons/Lesson1.md
 [Lesson 2 - GraphQL Schemas and Types]: Lessons/Lesson2.md
