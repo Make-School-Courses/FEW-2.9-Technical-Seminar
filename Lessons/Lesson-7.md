@@ -21,7 +21,7 @@ It's efficient and has a great workflow, developer experience and community.
 Discuss:
 
 - What is a subscription in GraphQL?
-- What features/functionalities are best GraphQL subscriptions best used for?
+- What features/functionalities are GraphQL subscriptions best used for?
 
 Write a GraphQL Subscription operation(schema and resolver) that notifies clients when a new book is created
 
