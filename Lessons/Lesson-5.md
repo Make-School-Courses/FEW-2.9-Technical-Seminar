@@ -45,11 +45,19 @@ Object Realtional Mappers act as a middle man between your code and your databas
 
 <!-- > -->
 
+Where's GraphQL? 
+
+Since GraphQL is just a specification and a language we need a tool that implements that spec and understands the language. For this project we'll use Prisma.
+
+<!-- > -->
+
 ## Prisma
 
 <!-- > -->
 
 Prisma is an ORM (Object-Relationship Mapper) you'll use this to connect your GraphQL resolvers to your data through your database. 
+
+Prisma implements GraphQL. 
 
 <!-- > -->
 
