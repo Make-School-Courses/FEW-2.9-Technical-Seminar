@@ -262,20 +262,226 @@ class App extends Component {
 
 Generating a new React project with a template project structure is as easy as running the npm executable `npm create-react-app your_app_name`. Where `your_app_name` is the title you choose to give your poject.
 
-To make this run you should first 
+To make this run you should first
 
 - The `create-react-app` helps install and set up dependencies (Babel, Webpack and Webpack Dev Server)
 - It sets up a project directory structure. In the new project folder it creates you will find:
   - `src` folder -  will contain all React source code we write
   - `public` folder - will contain static files and folders for app (e.g. html file, image file etc.)
+- Start your app with `npm start`
 
 <!-- > -->
 ## Challenge
 
-The challenge today is to build a React App
+The challenge today is to build a React App that fetches weather data from a public API.
+The app gets zip code from its users and returns data with weather details of the area with that zip code.
 
-### Async (fetch, async await)
+We would be using the free and easy to use [OpenWeatherMap.org](https://openweathermap.org/) API
 
-### Hooks
+To get started:
 
-### After Class
+- create a new React Project `npx create-react-app search-weather`
+- Go to <https://openweathermap.org>
+- Make an account or sign in to your account
+- Go to settings > API Keys
+- Generate an API Key
+- create a `.env` file in the root of your new project directory
+- Paste your newly generated API Key into your `.env` file
+  - It should follow this format `REACT_APP_MY_VAR=some_value_123`
+  
+  For example:
+
+  ```env
+  REACT_APP_WEATHER_API_KEY=<your-api-key-here>
+  ```
+
+<!-- > -->
+### Create Component - APP.js
+
+We would first create an App component that displays an input field.
+In your project folder the `src/App.js` include this piece of code. Take note of the comments for more details
+
+```js
+import React, {Component} from 'react'
+
+// ! Get your own API key !
+const apikey = process.env.REACT_APP_WEATHER_API_KEY
+
+class App extends React.Component {
+
+    constructor(props){
+      super(props)
+
+      //initialize state
+      this.state = {
+                    inputValue: '94010', // Used to store value entered in the input field - the zip  value
+                    weatherData: null, // Used to store the data loaded from the weather API
+                }
+    }
+
+     render() {
+        return (
+            <div className="container">
+            
+            <div className= "segment">
+                <form className ="form" }>
+                    <div className= "field">
+                        <label>Input Zip Code</label>
+                      {/** 
+                      This pattern is called controlled component patterm
+                      * used for input and other form elements 
+                      * Set the value of the input to a value held in component's state
+                      * Set the value held in component state when a change occurs(onChange) at the input
+                      * the OnChange method is a event handle available in React and is called everytime a change occurs on our input element  
+                      */}
+                        <input type="text" 
+                        value= {this.state.inputValue} 
+                        onChange={(e)=> this.setState({inputValue: e.target.value})}/>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+        )
+     }
+}
+
+export default App;
+
+```
+
+<!-- > -->
+### Render the Weather Details - Async (fetch, async, await)
+
+`Async` and `await` are keywords that are used for Promises in JavaScript.
+
+- The `Async` keyword identifies an asyncronous function. An `Async` function always returns a Promise!
+
+- The `await` keyword only works within an `Async` function. Use await at the beginning of any expression that would return a Promise. JavaScript will wait at that line until the Promise resolves.
+
+The syntax for using Async/Await looks like so:
+
+```js
+  const AsyncFuntion = async () => {
+
+    // wait until promise resolves
+    let result = await promise
+  }
+
+```
+
+The Fetch API provides a global `fetch()` method that provides an easy way to fetch data asynchronously across the HTTP network.
+
+We would be using this method here to fetch data when we make an API request to our weather API.
+
+Update your `App.js` file to include a `handleFormSubmit` method, a fetch request and a `renderWeather` method
+that displays the details of the fetched data:
+
+```js
+import { Component } from "react";
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    //initialize state
+
+    this.state = {
+      inputValue: "94010", // Used to store value entered in the input field - the zip  value
+      weatherData: null, // Used to store the data loaded from the weather API
+    };
+  }
+  // this method is called when the form is submitted and 
+  // it is triggered by the onSubmit eventhandler <form onSubmit={this.handleFormSubmit}>
+  async handleFormSubmit(e) {
+    e.preventDefault();
+    // ! Get your own API key !
+    const apikey = process.env.REACT_APP_WEATHER_API_KEY;
+    // Get the zip from the input
+    const zip = this.state.inputValue;
+    // Form an API request URL with the apikey and zip
+    const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=${apikey}`;
+
+    // make a GET request from the weather API
+    const response = await fetch(url);
+    // convert the data from JSON to a Javascript Object with json() method
+    const data = await response.json();
+    // If the request was successful assign the data to component state weatherData
+    this.setState({ weatherData: data });
+  }
+
+  renderWeather() {
+    if (this.state.weatherData === null) {
+      // If there is no data return this
+      return <div>Oops! No weather Data here... </div>
+    }
+
+    console.log(this.state.weatherData);
+    // Take the weather data apart to more easily populate the component
+    const { main, description, icon } = this.state.weatherData.weather[0];
+    const {
+      temp,
+      pressure,
+      humidity,
+      temp_min,
+      temp_max,
+    } = this.state.weatherData.main;
+
+    return (
+      <div>
+        <div>Title: {main}</div>
+        <div>Desc: {description}</div>
+        <div>Icon: {icon}</div>
+        <div>Temp: {temp}</div>
+        <div>Pressure: {pressure}</div>
+        <div>Humidity: {humidity}</div>
+        <div>
+          Temp Min: {temp_min} Max:{temp_max}
+        </div>
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <div className="container">
+        <div className="segment">
+                      {/** 
+                      * the onSubmit method is a event handle available in React and is called everytime the form is submitted  
+                      */}
+          <form className="form" onSubmit={(e) => this.handleFormSubmit(e)}>
+            <div className="field">
+              <label>Input Zip Code</label>
+                     {/** 
+                      This pattern is called controlled component patterm
+                      * used for input and other form elements 
+                      * Set the value of the input to a value held in component's state
+                      * Set the value held in component state when a change occurs(onChange) at the input
+                      * the onChange method is a event handle available in React and is called everytime a change occurs on our input element  
+                      */}
+              <input
+                type="text"
+                value={this.state.inputValue}
+                onChange={(e) => this.setState({ inputValue: e.target.value })}
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default App;
+
+```
+<!-- > -->
+
+<!-- ### Hooks -->
+
+## After Class
+
+## Resources
+
+- [Async/await](https://javascript.info/async-await)
+- [Using Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
