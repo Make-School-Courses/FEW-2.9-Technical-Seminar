@@ -73,7 +73,9 @@ Tour Prisma Studio...
 
 <!-- > -->
 
-Continue the tutorial...
+Continue the Hackernews tutorial
+
+- Complete the following chapters by the next class: `Connecting the Server and Database with Prisma Client` and `Authentication`
 
 <!-- > -->
 

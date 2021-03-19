@@ -286,11 +286,12 @@ Solve the exercise at the end of section 4: A simple Mutation.
 
 ## After Class 
 
+- Check out https://news.ycombinator.com
+	- Make an account and use the site
+	- Ask yourself how it works? 
 - GraphQL Hackernews clone - Tutorial
-	- Check out https://news.ycombinator.com	
-		- Make an account and use the site
-		- Ask yourself how it works? 
 	- Start the GraphQL Node Tutorial: https://www.howtographql.com/graphql-js/0-introduction/
+	   - Complete the following chapters by the next class: `Getting Started` and `A Simple Query`
 
 <!-- > -->
 

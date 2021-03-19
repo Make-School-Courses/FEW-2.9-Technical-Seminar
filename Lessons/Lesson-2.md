@@ -794,7 +794,13 @@ Below is an example query, and the response that should come back
 ## After Class
 
 - Complete the challenges here. Submit them on GradeScope.
-- Watch https://www.howtographql.com videos up to the GraphQL Node Tutorial.
+- Watch https://www.howtographql.com videos up to the GraphQL Node Tutorial:
+    - Clients
+    - Servers
+    - More GraphQL Concepts
+    - Tooling and Ecosystem
+    - Security
+    - Common Questions
 
 <!-- > -->
 

@@ -481,6 +481,10 @@ export default App;
 
 ## After Class
 
+Finish the Hackernews Node.js tutorial!
+
+- Complete the following chapters by the next class: `Realtime GraphQL Subscriptions`, `Filtering, Pagination & Sorting` and `Summary`
+
 ## Resources
 
 - [Async/await](https://javascript.info/async-await)

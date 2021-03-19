@@ -312,7 +312,9 @@ Work on the Hackernews clone tutorial.
 
 ## After Class 
 
-Continue the Hackernews clone GraphQL tutorial
+Continue the Hackernews clone GraphQL tutorial.
+
+- Complete the following chapters by the next class: `A Simple Mutation` and `Adding a Database`
 
 ## Resources
 
