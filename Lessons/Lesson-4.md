@@ -62,7 +62,7 @@ type Query {
 
 <!-- > -->
 
-To resolve Time we need a function that returns an object that has the fields defined by the type. 
+To resolve `Time` we need a function that returns an object that has the fields defined by the type. 
 
 ```JS
 const root = {
@@ -76,11 +76,11 @@ const root = {
 }
 ```
 
-<small>(Here we're resolving the getTime Query to a Time type)</small>
+<small>(Here we're resolving the `getTime` Query to a `Time` type)</small>
 
 <!-- > -->
 
-Here is another way you could write a resolver for the Time type. 
+Here is another way you could write a resolver for the `Time` type. 
 
 ```JS
 type Query {
@@ -98,9 +98,9 @@ const root = {
 }
 ```
 
-<small>Here the at the root is the Type and with a property that matches the name of each property that is a function that returns the value.</small>
+<small>Here the at the root is the `Time` and with a property that matches the name of each property that is a function that returns the value.</small>
 
-<small>Here the Time type defines a resolver for each field.</small>
+<small>Here the `Time` type defines a resolver for each field.</small>
 
 <!-- > -->
 
@@ -110,7 +110,7 @@ const root = {
 
 So far you've been using queries to get things from your GraphQL server. This is like a GET request with a REST server. 
 
-Mutations are used to make changes at your GraphQL server. This is like a POST, PUT, or DELETE request with a REST server. 
+**Mutations** are used to make changes at your GraphQL server. This is like a POST, PUT, or DELETE request with a REST server. 
 
 <!-- > -->
 
@@ -172,7 +172,7 @@ query {
 
 <!-- > -->
 
-Using assignment 2 solve these challenges. 
+Using your code from assignment 2, solve the following challenges. 
 
 <!-- > -->
 
@@ -180,7 +180,7 @@ Using assignment 2 solve these challenges.
 
 Your server should serve a list of things from an array.
 
-Add a mutation that adds a new thing to the list. Yout mutation function should take all of the required parameters need to create the new thing. 
+Add a mutation that adds a new thing to the list of things. For example, if we had a list of Shoes, you should write a function to add a new Shoe to our list. Your mutation function should take all of the required parameters needed to create the new thing. 
 
 <!-- > -->
 
@@ -196,7 +196,7 @@ type Shoe {
 
 <!-- > -->
 
-Add a mutation query in your schema: 
+Add a mutation query in your schema. Below is an example for the `Shoe` type: 
 
 ```JS
 type Mutation {
@@ -208,7 +208,7 @@ type Mutation {
 
 **Challenge 2 - Add a resolver**
 
-Add a resolver for your mutation.
+Add a resolver for your mutation:
 
 ```JS
 const root = {
@@ -246,11 +246,11 @@ The next assignment is to create a hacknews clone with GraphQL
 
 <!-- > -->
 
-This assignment will use Apollo Server. Apollo is a GraphQL Server built on Node.
+This assignment will use **Apollo Server**. Apollo is a GraphQL Server built on Node.
 
 <!-- > -->
 
-The project will also use Prisma. Prisma is an Object-Relationship Mapper (ORM.) Prisma will connect your resolvers to a data base. 
+The project will also use **Prisma**. Prisma is an Object-Relationship Mapper (ORM.) Prisma will connect your resolvers to a data base. 
 
 <!-- > -->
 
@@ -258,7 +258,7 @@ The project will also use Prisma. Prisma is an Object-Relationship Mapper (ORM.)
 
 <!-- > -->
 
-In class start on the Hacknews Clone: https://www.howtographql.com/graphql-js/0-introduction/
+In class start on the HackerNews Clone: https://www.howtographql.com/graphql-js/0-introduction/
 
 <!-- > -->
 
@@ -286,11 +286,12 @@ Solve the exercise at the end of section 4: A simple Mutation.
 
 ## After Class 
 
+- Check out https://news.ycombinator.com
+	- Make an account and use the site
+	- Ask yourself how it works? 
 - GraphQL Hackernews clone - Tutorial
-	- Check out https://news.ycombinator.com	
-		- Make an account and use the site
-		- Ask yourself how it works? 
 	- Start the GraphQL Node Tutorial: https://www.howtographql.com/graphql-js/0-introduction/
+	   - Complete the following chapters by the next class: `Getting Started`, `A Simple Query`, and `A Simple Mutation`
 
 <!-- > -->
 

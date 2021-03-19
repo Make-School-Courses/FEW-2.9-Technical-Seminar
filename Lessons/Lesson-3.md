@@ -16,7 +16,7 @@ By the end of today's lesson, you should be able to...
 
 ## Review
 
-Write a resolver for the following types: 
+**Write a resolver for the following types: **
 
 ```JS 
 type Mission {
@@ -36,9 +36,9 @@ type Agent {
 
 ## Overview
 
-What are doing and why? Today you will make a GraphQL service for a public API. 
+Today you will make a GraphQL service for a public API. 
 
-Why? This will give you a chance to practice the ideas from the previous class in a different context.
+*Why?* This will give you a chance to practice the ideas from the previous class in a different context.
 
 <!-- > -->
 
@@ -54,7 +54,7 @@ You'll find GraphQL libraries written for most most of popular frameworks. Today
 
 <!-- > -->
 
-What do we need to use GraphQL with Express? 
+### What do we need to use GraphQL with Express? 
 
 - express-graphql npm package
 - graphql npm package
@@ -62,7 +62,7 @@ What do we need to use GraphQL with Express?
 
 <!-- > -->
 
-How do you set this up? 
+### How do you set this up? 
 
 - import the npm packages
 	- express, graphql, express-graphql
@@ -94,21 +94,21 @@ Follow these steps to setup Express and GraphQL.
 
 <!-- > -->
 
-- Create a new folder
-- Initialize a new npm project: `npm init -y`
-- Install dependancies: `npm install --save express express-graphql graphql`
-- Create a new file: `server.js`
-- Add `"start": "nodemon server.js"` to package.json
+1. Create a new folder
+1. Initialize a new npm project: `npm init -y`
+1. Install dependancies: `npm install --save express express-graphql graphql`
+1. Create a new file: `server.js`
+1. Add `"start": "nodemon server.js"` to package.json
 
 <!-- > -->
 
-**Important!** Be sure to include a .gitignore. 
+**Important!** Be sure to include a `.gitignore`. 
 
 https://www.toptal.com/developers/gitignore/api/node
 
 <!-- > -->
 
-In server.js import your dependancies: 
+In `server.js` import your dependancies: 
 
 ```JS
 // Import dependancies
@@ -190,8 +190,25 @@ Open graphiql:
 
 Go to https://openweathermap.org
 
-- Sign up 
-- Make an API Key
+1. Create an account at [openweathermap.org](https://openweathermap.org/).
+1. After you make an account, click on your username, then on `My API Keys`. Enter an API key name, then click the `Generate` button to create your API key!
+
+![api_keys](../assets/api_keys.png)
+
+<!-- > -->
+
+**Quick Side Note for `.env` files**
+
+Having a `.env` file allows us to store our secrets (like an API Key) without it being exposed to the public on GitHub. Let's create that now so we can use our API Key in our project without exposing it!
+
+1. In the folder containing the sample project, run `touch .env` in the terminal
+1. Open the .env file, and place the following in it, replacing `MY_API_KEY` with your actual API Key:
+
+```
+OPENWEATHERMAP_API_KEY=MY_API_KEY
+```
+
+Save it when you're done. Alright, now we're ready to continue!
 
 <!-- > -->
 
@@ -229,7 +246,7 @@ Define your resolver:
 ```JS
 const root = {
   getWeather: async ({ zip }) => {
-		const apikey = 'yourapikeyhere'
+		const apikey = process.env.OPENWEATHERMAP_API_KEY
 		const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${apikey}`
 		const res = await fetch(url)
 		const json = await res.json()
@@ -318,7 +335,9 @@ Test your work! Write a query:
 
 <!-- > -->
 
-**Challenge 9 - Stretch Challenges**
+## Stretch Challenges
+
+**Challenge 9 - Add More Fields**
 
 Try as many of these stretch challenges as you can. 
 

@@ -81,12 +81,14 @@ Imagine we are working with a collection of Posts and User resources on a server
 
 | URL | HTTP Method/Type | Operation |
 | ----------- | ----------- |----------- |
-| /posts | POST | Create new post|
-| /posts| GET | Read all posts |
-| /posts/10 | PUT | Update post 10 |
-| /posts/23 | DELETE | Delete post 23 |
-| /posts/5 | GET | Read post 5 |
-| /users/2/posts | POST | Create a post for User 2 |
+| /posts | POST | ??? <!--Create new post-->|
+| /posts| GET | ??? <!--Read all posts--> |
+| /posts/10 | PUT | ??? <!--Update post 10--> |
+| /posts/23 | DELETE | ??? <!--Delete post 23--> |
+| /posts/5 | GET | ??? <!--Read post 5--> |
+| /users/2/posts | POST | ??? <!--Create a post for User 2--> |
+
+**What would be the operations for each of these routes? What do they do?**
 
 <!-- > -->
 
@@ -148,7 +150,7 @@ With REST you would send a request to one of two endpoints:
 
 <!-- > -->
 
-Try out REST 😴 with the SWAPI server.
+### Try out REST 😴 with the SWAPI server.
 
 <!-- > -->
 
@@ -158,7 +160,7 @@ Try the people 👯‍♀️ endpoint.
 - https://swapi.dev/api/people/3 - R2D2
 - https://swapi.dev/api/people/4 - Vader
 - https://swapi.dev/api/people/5 - Leia
-- Challenge: find C-3PO, Han, and Chewy
+- **Challenge: find C-3PO, Han, and Chewy**
 
 <!-- > -->
 
@@ -168,7 +170,7 @@ Use the planets 🪐 endpoint.
 - https://swapi.dev/api/planets/3 - Yavin VI
 - https://swapi.dev/api/planets/4 - Hoth
 - https://swapi.dev/api/planets/5 - Dagobah
-- Challenge: find Alderaan, Bespin, and Endor
+- **Challenge: find Alderaan, Bespin, and Endor**
 
 <!-- > -->
 
@@ -194,13 +196,13 @@ Or this:
 
 <!-- > -->
 
-Try out GraphQL 😎 with SWAPI! 
+### Try out GraphQL 😎 with SWAPI! 
 
 To do this you'll use GraphiQL. It's a web page that let's you write GraphQL queries and see the results.
 
 <!-- > -->
 
-Use GraphiQL browser: 
+First, open the GraphiQL browser: 
 
 http://graphql.org/swapi-graphql
 
@@ -211,7 +213,7 @@ http://graphql.org/swapi-graphql
 
 <!-- > -->
 
-Challenge: Get characters with GraphQL 😎
+### Challenge: Get characters with GraphQL 😎
 
 ```JS
 # Leia 
@@ -240,9 +242,9 @@ This happens often. Think of all of those fields that you never use. 🤔
 
 <!-- > -->
 
-Look at the results that are returned with the <br> REST vs the GraphQL. 
+Look at the results that are returned with <br> the REST response vs the GraphQL response. 
 
-What's the difference? 🤔
+**What's the difference? 🤔**
 
 <!-- > -->
 
@@ -336,7 +338,7 @@ Under fetching occurs when you don't get all of the data you need in a single re
 
 <!-- > -->
 
-Challenge: Use https://swapi.dev to find Leia's homeworld. 🌍
+### Challenge: Use https://swapi.dev to find Leia's homeworld. 🌍
 
 - https://swapi.dev/people/5
 
@@ -344,11 +346,11 @@ Challenge: Use https://swapi.dev to find Leia's homeworld. 🌍
 
 <!-- > -->
 
-Challenge: 
+### Challenge: 
 
-- Find Chewbacca's homeworld. 
-- Find R2-D2's homeworld
-- Find Han's homeworld
+1. Find Chewbacca's homeworld. 
+1. Find R2-D2's homeworld
+1. Find Han's homeworld
 
 <!-- > -->
 
@@ -375,18 +377,18 @@ Try this with GraphQL.
 
 <!-- > -->
 
-Challenge: 
+### Challenge: 
 
-- Get R2-D2's name and homeworld
-- Get Leia's name and homeworld
-- Get Han's name, height, and homeworld
-- Get R2's name, eyecolor, homeworld and it's diamter
+1. Get R2-D2's name and homeworld
+1. Get Leia's name and homeworld
+1. Get Han's name, height, and homeworld
+1. Get R2's name, eyecolor, homeworld and it's diamter
 
 <!-- > -->
 
 **Compare REST with GraphQL**
 
-REST over or under fetches fetches
+REST over or under fetches
 
 GraphQL fetches only what you ask for
 
@@ -394,7 +396,7 @@ GraphQL fetches only what you ask for
 
 ## GraphQL vs REST
 
-Pair and discuss the pros and cons of REST and GraphQL. 
+**Pair and discuss the pros and cons of REST and GraphQL. **
 
 <!-- > -->
 
@@ -424,23 +426,23 @@ Pair and discuss the pros and cons of REST and GraphQL.
 Schema Definition Language: 
 <br> syntax for writing schemas.
 
-- Types
-- Introspection
+- **Types**
+- **Introspection**
 
 <!-- > -->
 
-- Resolvers: A function on a GraphQL server that's responsible for fetching the data for a single field
+- **Resolvers**: A function on a GraphQL server that's responsible for fetching the data for a single field
 
 <!-- > -->
 
 Query Language
 
-  - Query
-  - Mutation
+  - **Query**
+  - **Mutation**
 
 <!-- > -->
 
-Subscriptions
+**Subscriptions**
 
 <!-- > -->
 
@@ -482,7 +484,9 @@ Returns the resource the personId
 
 ### Introspection
 
-GraphQL understands the features of a type and allows the system to see when we are making a mistake. You'll see this as GraphiQL browser provides code hints. 
+GraphQL understands the features of a type and allows the system to see when we are making a mistake.
+
+You'll see this as GraphiQL browser provides code hints. 
 
 <!-- > -->
 
@@ -538,7 +542,7 @@ Collections are like arrays they properties like totalCount.
 
 <!-- > -->
 
-A collection is a collection of a type. You can get fields of that type like this: 
+A **collection** is a collection of a type. You can get fields of that type like this: 
 
 ```JS
 {
@@ -577,11 +581,11 @@ Collections allow you to get nested resources also:
 
 <!-- > -->
 
-Since the query describes the structure of what is returned sometimes you need change the names. 
+Since the query describes the structure of what is returned sometimes you need to change the names. 
 
 <!-- > -->
 
-Consider this you need two people: 
+Consider a scenario where you need two people: 
 
 ```JS 
 {
@@ -616,7 +620,7 @@ The results have a problem
 
 <!-- > -->
 
-Use an alias to solve the problem!
+Use an **alias** to solve the problem!
 
 ```JS 
 {

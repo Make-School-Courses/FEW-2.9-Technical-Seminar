@@ -25,13 +25,15 @@ Today we will look at a simple example implementing GraphQL with Express. This i
 
 ## Review 
 
-- Name three advantages of GraphQL over REST
+- **Name three advantages of GraphQL over REST**
 
 <!-- > -->
 
 ### GraphQL Queries 
 
-Use: https://graphql.org/swapi-graphql to answer these questions...
+**Use: https://graphql.org/swapi-graphql to answer these questions...**
+
+**HINT:** If you get stuck, refer back to the [examples from the previous lesson](https://github.com/Make-School-Courses/FEW-2.9-Technical-Seminar/blob/master/Lessons/Lesson-1.md#nested-types) 
 
 <!-- > -->
 
@@ -58,7 +60,7 @@ Use: https://graphql.org/swapi-graphql to answer these questions...
 
 <!-- > -->
 
-A GraphQL Schema contains a set of Types that describe the possible you can query from a service. 
+A GraphQL **Schema** contains a set of Types that describe the possible you can query from a service. 
 
 <!-- > -->
 
@@ -75,7 +77,7 @@ type Person {
 }
 ```
 
-name is a field and String is it's type. ! means the field is non-nullable (it will always return a value.)  
+`name` is a field and `String` is it's type. `!` means the field is non-nullable (it will always return a value.)  
 
 <!-- > -->
 
@@ -88,18 +90,18 @@ type Person {
 }
 ```
 
-You can use types like: Int and [ ... ] (array)
+You can use types like: `Int` and `[ ... ]` (an array)
 
 <!-- > -->
 
 GraphQL supports: 
 
-- Int: Integer
-- Float: Decimal
-- String: String
-- Boolean: true or false
-- ID: Special type that represents a unique value
-- [Type]: Array of a type
+- `Int`: Integer
+- `Float`: Decimal
+- `String`: String
+- `Boolean`: true or false
+- `ID`: Special type that represents a unique value
+- `[Type]`: Array of a type
 
 <!-- > -->
 
@@ -124,7 +126,7 @@ type Recipe {
 }
 ```
 
-<small>(the ! means a field must have a value)</small>
+<small>(the `!` means a field _must_ have a value)</small>
 
 <!-- > -->
 
@@ -164,7 +166,7 @@ The GraphQL Schema language supports enumerations.
 
 <!-- > -->
 
-An enumeration is a list of set values.
+An **enumeration** is a list of set values.
 
 <!-- > -->
 
@@ -191,7 +193,7 @@ type Recipe {
 
 <!-- > -->
 
-An interface is a description or contract that describes types that conform to it. 
+An **interface** is a description or contract that describes types that conform to it. 
 
 <!-- > -->
 
@@ -236,20 +238,22 @@ type Film {
 
 <!-- > -->
 
-Get started with GraphQL and Express. The goal of this section is to create an Express server that implements GraphQL.  
+Let's get started with GraphQL and Express. **The goal of this section is to create an Express server that implements GraphQL.**
 
 <!-- > -->
 
-- Create a new folder
-- Initialize a new npm project: `npm init -y`
-- Install dependancies: `npm install --save express express-graphql graphql`
-- Create a new file: `server.js`
+### Setup
+
+1. Create a new folder
+1. Initialize a new npm project: `npm init -y`
+1. Install dependancies: `npm install --save express express-graphql graphql`
+1. Create a new file: `server.js`
 
 <!-- > -->
 
-**Important!** Be sure to include a .gitignore. You need to prevent uploading your node_module be sure add this to your .gitignore. 
+**Important!** Be sure to include a `.gitignore`. You need to prevent uploading your `node_modules` folder, so be sure add this to your `.gitignore`. 
 
-https://www.toptal.com/developers/gitignore/api/node
+**How to add a `.gitignore`:** https://www.toptal.com/developers/gitignore/api/node
 
 <!-- > -->
 
@@ -268,6 +272,8 @@ npm start
 ```
 
 <!-- > -->
+
+### Schema Buildout
 
 Add the following to `server.js`. Import dependancies:
 
@@ -294,11 +300,11 @@ type Query {
 }`)
 ```
 
-<small>(The schema is written in the GraphQL schema language, buildSchema() takes the schema as a string and returns a schema object)</small>
+<small>(The schema is written in the GraphQL schema language, `buildSchema()` takes the schema as a string and returns a schema object)</small>
 
 <!-- > -->
 
-Define a resolver. A resolver 
+Define a resolver:
 
 ```JS
 // Define a resolver
@@ -309,11 +315,13 @@ const root = {
 }
 ```
 
-<small>(A resolver is a function that's responsible for returning the results of a query. You might a say a resolver resolves a query.)</small>
+<small>(A **resolver** is a function that's responsible for returning the results of a query. *You might a say a resolver resolves a query.*)</small>
 
 <!-- > -->
 
-Create an Express app: 
+### Create an Express app
+
+Add this to `server.js`:
 
 ```JS
 // Create an express app
@@ -335,11 +343,11 @@ app.use('/graphql', graphqlHTTP({
 }))
 ```
 
-We need to supply the schema, the root resolver, and last we'll activate the GraphiQL browser. 
+In the `use` function above, we supplied the schema, the root resolver, and activated the GraphiQL browser for our app. 
 
 <!-- > -->
 
-last, start your app: 
+Finally, start your app: 
 
 ```JS
 // Start this app
@@ -353,7 +361,7 @@ app.listen(port, () => {
 
 <!-- > -->
 
-Test your work! 
+### Test your work! 
 
 - `npm start` run your app
 - http://localhost:4000/graphql
@@ -364,7 +372,7 @@ GraphiQL allows us to test our GraphQL Queries. Its the same tool you used in th
 
 <!-- > -->
 
-Try a query: 
+### Try a query: 
 
 ```JS
 {
@@ -374,11 +382,11 @@ Try a query:
 }
 ```
 
-Compare this to schema and the resolver. 
+Compare this to the schema and the resolver:
 
-- query type: getAbout
-  - returns Type About
-    - An About has a field message of type String
+- query type: `getAbout`
+  - returns Type `About`
+    - An `About` has a field `message` of type `String`
 
 <!-- > -->
 
@@ -404,7 +412,7 @@ const root = {
 }
 ```
 
-It returns an object with a message property that is type string. 
+It returns an object with a `message` property that is type `String`. 
 
 <!-- > -->
 
@@ -420,7 +428,7 @@ type Query {
 }
 ```
 
-The getAbout query returns an About which always has a message of type String. 
+The `getAbout` query returns an `About` which always has a `message` of type `String`. 
 
 <!-- > -->
 
@@ -434,7 +442,7 @@ A resolver is responsible for resolving a query. Resolvers can be hierarchical a
 
 <!-- > -->
 
-This is the root resolver. <br> It maps queries to the schema.
+This is the **root resolver**. <br> It maps queries to the schema.
 
 ```JS
 const root = {
@@ -444,7 +452,7 @@ const root = {
 }
 ```
 
-<small>(getAbout maps to the query type with the same name)</small>
+<small>(`getAbout` maps to the query type with the same name)</small>
 
 <!-- > -->
 
@@ -452,11 +460,13 @@ Let's do it again from the top.
 
 <!-- > -->
 
-Imagine you're making making API for yourself. Imagine a query is like asking you a question. The repsonse is like the answer you might provide. 
+Imagine you're making an API for yourself. Imagine a query is like asking you a question. The repsonse is like the answer you might provide. 
 
 <!-- > -->
 
-Define a new type in your schema. If someone asks what to eat? You would reply with a meal type. 
+###Define a new type in your schema
+
+If someone asks what to eat? You would reply with a meal type. 
 
 ```JS
 type Meal {
@@ -466,7 +476,7 @@ type Meal {
 
 <!-- > -->
 
-Add a query type to handle meal queries. It will return a Meal. 
+**Add a query type to handle meal queries.** It will return a Meal.
 
 ```JS
 type Query {
@@ -477,7 +487,7 @@ type Query {
 
 <!-- > -->
 
-Add a resolver function. This function returns something that must match the Meal type (has description field of type string)
+**Add a resolver function**. This function returns something that must match the Meal type (has description field of type string)
 
 ```JS
 const root = {
@@ -492,7 +502,7 @@ const root = {
 
 <!-- > -->
 
-Some times it takes some information to get some information. Often you'll need to provide parameters to the data that you need. 
+Sometimes it takes some information to get some information. Often you'll need to provide parameters to the data that you need. 
 
 <!-- > -->
 
@@ -506,7 +516,7 @@ The Meal type will stay the same since it will still be a field description that
 
 <!-- > -->
 
-Modify the Query type to accept an argument. 
+**Modify the Query type to accept an argument. **
 
 ```JS
 type Query {
@@ -515,11 +525,11 @@ type Query {
 }
 ```
 
-<small>(getMeal now takes an argument: time, of type String which is required)</small>
+<small>(`getMeal` now takes an argument: `time`, of type `String` which is required)</small>
 
 <!-- > -->
 
-Modify the resolver to work with this argument. 
+**Modify the resolver to work with this argument. **
 
 ```JS
 const root = {
@@ -538,7 +548,7 @@ const root = {
 
 <!-- > -->
 
-Test your query:
+**Test your query:**
 
 ```JS
 {
@@ -566,11 +576,11 @@ Should return:
 
 <!-- > -->
 
-Ofert you'll want to work collections. You more often have posts, or users, or foods. Less often you have a single post, user, or food.
+Often you'll want to work with collections. You more often have posts, or users, or foods. Less often you have a single post, user, or food.
 
 <!-- > -->
 
-Imagine you want to define a list of pets. You might start with a Pet type. 
+Imagine you want to define a list of pets. You might start with a `Pet` type. 
 
 ```JS 
 type Pet {
@@ -608,13 +618,14 @@ const root = {
 }
 ```
 
-<small>(getPet(id) takes the id an returns the pet at that index, allPets returns an array of all pets)</small>
+<small>(`getPet(id)` takes the `id` and returns the pet at that index, `allPets` returns an array of all pets)</small>
 
 <!-- > -->
 
-Better define the petList! This could be defined by a database!
+Better define the `petList`! This could be defined by a database!
 
 ```JS
+# Mock datatbase in this case:
 const petList = [
 	{ name: 'Fluffy', species: 'Dog' },
 	{ name: 'Sassy', species: 'Cat' },
@@ -654,9 +665,11 @@ Try these challenges.
 
 **Challenge 1**
 
-Make a list of your pets, or a list of things, song you wrote, favorite recipes, movies you've watched, anything really. 
+Make a list of your pets, or a list of things: songs you wrote, favorite recipes, movies you've watched, anything really. 
 
 Make a type for this thing with at least three fields. 
+
+*Examples*:
 
 - Pet: name, species, age
 - Song: title, genre, length
@@ -676,15 +689,15 @@ Make an array of the things with data for each. You should be able to get an arr
 }
 ```
 
+Should return the names of all Pets in the database
+
 <!-- > -->
 
 **Challenge 3**
 
-Make a query type for your collection. 
-
-Make a query that will return all of the things.
-
-Make another query that will take the index of a thing as the argument and return 1 of the things. 
+1. Make a query type for your collection. 
+1. Make a query that will return all of the things.
+1. Make another query that will take the index of a thing as the argument and return 1 of the things. 
 
 ```JS 
 {
@@ -700,17 +713,13 @@ Make another query that will take the index of a thing as the argument and retur
 
 Test your work by writing a query in GraphiQL. 
 
-Write queries: 
-
-- get all the things
-- get one of the things
-- query for a several fields
+Try writing a query for a several fields to make sure they return properly
 
 <!-- > -->
 
 **Challenge 5**
 
-You need a server that returns the time. Write a type for the time. It should properties for: 
+You need a server that returns the time. Write a type for the time. It should have properties for: 
 
 - hour
 - minute
@@ -732,7 +741,7 @@ Write a resolver that gets the time and returns an object with the properties: h
 
 **Challenge 6** 
 
-We need a server that returns a random number. 
+We need a way to return a random number. Write the below resolver:
 
 ```JS
 {
@@ -740,7 +749,7 @@ We need a server that returns a random number.
 }
 ```
 
-Should return: 
+Which should return: 
 
 ```JS
 {
@@ -754,7 +763,11 @@ Should return:
 
 **Challenge 7** 
 
-We need a type that represents a die roll. It should take the number of dice and the number of sides. 
+Create a type that represents a die roll. It should take the number of dice and the number of sides.
+
+Below is an example query, and the response that should come back
+
+**Example Query**
 
 ```JS 
 {
@@ -766,12 +779,28 @@ We need a type that represents a die roll. It should take the number of dice and
 }
 ```
 
+**Example Response**
+
+```JS
+{
+  total: 10, // total of all rolls (see below)
+  sides: 6,  // each roll should be 1 to 6 based on the original sides parameter
+  rolls: [5, 2, 3] // 3 rolls based on the original rools parameter (5+2+3=10)
+}
+```
+
 <!-- > -->
 
 ## After Class
 
 - Complete the challenges here. Submit them on GradeScope.
-- Watch https://www.howtographql.com videos up to the GraphQL Node Tutorial.
+- Watch https://www.howtographql.com videos up to the GraphQL Node Tutorial:
+    - Clients
+    - Servers
+    - More GraphQL Concepts
+    - Tooling and Ecosystem
+    - Security
+    - Common Questions
 
 <!-- > -->
 

@@ -89,7 +89,9 @@ Tour Prisma Studio...
 
 <!-- > -->
 
-Continue the tutorial...
+Finish the Hackernews Node.js tutorial!
+
+- Complete the following chapters by the next class: `Realtime GraphQL Subscriptions`, `Filtering, Pagination & Sorting` and `Summary`
 
 <!-- > -->
 
