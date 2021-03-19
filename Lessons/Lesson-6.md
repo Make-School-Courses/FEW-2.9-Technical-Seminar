@@ -55,9 +55,164 @@ When you create a connection with a websocket the connection is persistent and a
 
 What can you do with a websocket? 
 
-- Chatrooms
 - Push notifications
 - Real time communications
+
+<!-- > -->
+
+What are these good for? 
+
+- Social media
+- Games
+- Real time updates
+
+<!-- > -->
+
+### Try out Websockets
+
+<!-- > -->
+
+Start by making a new Node project: 
+
+- `npm init -y`
+- `npm install ws express`
+
+<!-- > -->
+
+Create a server: 
+
+- Create: `server.js`
+
+<!-- > -->
+
+Add this code to server.js:
+
+```JS
+// Import dependencies
+const express = require('express');
+const http = require('http');
+const WebSocket = require('ws');
+```
+
+<!-- > -->
+
+```JS
+// Define a port
+const port = 6969;
+// create a server
+const server = http.createServer(express);
+// Open a web socket
+const wss = new WebSocket.Server({ server })
+```
+
+<!-- > -->
+
+```JS
+// Handle a web socket connection
+wss.on('connection', function connection(ws) {
+	// After making a connection start listening for messages
+	console.log('client connecting')
+
+  ws.on('message', function incoming(data) {
+		// For each client broadcast the data
+    wss.clients.forEach(function each(client) {
+      if (client !== ws && client.readyState === WebSocket.OPEN) {
+        client.send(data);
+      }
+    })
+  })
+})
+```
+
+<!-- > -->
+
+```JS
+// Start the server
+server.listen(port, function() {
+  console.log(`Server is listening on ${port}!`)
+})
+```
+
+<!-- > -->
+
+Make a client. This will be a simple web page that will connect to the server.
+
+- Create index.html
+
+<!-- > -->
+
+```HTML
+<!DOCTYPE html>
+<html>
+	<head></head>
+	<link href="styles.css" rel="stylesheet">
+	<body>
+		<h1>Real Time Messaging</h1>
+
+		<pre id="messages"></pre>
+		
+		<input type="text" id="message-input" placeholder="Type your message here">
+
+		<button id="send" title="Send Message!" style="width: 100%; height: 30px;">Send Message</button>
+		
+		<script src="index.js"></script>
+	</body>
+</html>
+```
+
+<!-- > -->
+
+Create index.js and add the following: 
+
+```JS
+// Get references to DOM elements
+const sendBtn = document.querySelector('#send');
+const messages = document.querySelector('#messages');
+const messageInput = document.querySelector('#message-input');
+
+let ws;
+
+function showMessage(message) {
+  messages.innerHTML += `${message}\n\n`;
+  messages.scrollTop = messages.scrollHeight;
+  messageInput.value = '';
+}
+
+function init() {
+  // Clean up before restarting a websocket connection
+  if (ws) {
+    ws.onerror = ws.onopen = ws.onclose = null;
+    ws.close();
+  }
+
+  // Make a new Websocket
+  ws = new WebSocket('ws://localhost:6969');
+  // Handle the connection when it opens
+  ws.onopen = () => {
+    console.log('Connection opened!');
+  }
+  // handle a message event
+  ws.onmessage = ({ data }) => showMessage(data);
+  // Handle a close event
+  ws.onclose = function () {
+    ws = null;
+  }
+}
+
+// Handle button clicks
+sendBtn.onclick = function () {
+  // Send a message
+  if (!ws) {
+    showMessage("No WebSocket connection :(");
+    return;
+  }
+
+  ws.send(messageInput.value);
+  showMessage(messageInput.value);
+}
+
+init();
+```
 
 <!-- > -->
 
