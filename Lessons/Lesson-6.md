@@ -73,9 +73,9 @@ Tour Prisma Studio...
 
 <!-- > -->
 
-Continue the Hackernews tutorial
+Finish the Hackernews Node.js tutorial!
 
-- Complete the following chapters by the next class: `Connecting the Server and Database with Prisma Client` and `Authentication`
+- Complete the following chapters by the next class: `Realtime GraphQL Subscriptions`, `Filtering, Pagination & Sorting` and `Summary`
 
 <!-- > -->
 

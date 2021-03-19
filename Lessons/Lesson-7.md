@@ -481,9 +481,12 @@ export default App;
 
 ## After Class
 
-Finish the Hackernews Node.js tutorial!
+Time to start working on the frontend of hacker news!
 
-- Complete the following chapters by the next class: `Realtime GraphQL Subscriptions`, `Filtering, Pagination & Sorting` and `Summary`
+Start working on the React + Apollo tutorial: https://www.howtographql.com/react-apollo/0-introduction/
+
+- Complete the following chapters by next class: `Introduction`, `Getting Started`, `Queries: Loading Links`
+
 
 ## Resources
 

@@ -314,7 +314,7 @@ Work on the Hackernews clone tutorial.
 
 Continue the Hackernews clone GraphQL tutorial.
 
-- Complete the following chapters by the next class: `A Simple Mutation` and `Adding a Database`
+- Complete the following chapters by the next class: `Adding a Database`, `Connecting the Server and Database with Prisma Client`, and `Authentication`
 
 ## Resources
 

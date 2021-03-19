@@ -291,7 +291,7 @@ Solve the exercise at the end of section 4: A simple Mutation.
 	- Ask yourself how it works? 
 - GraphQL Hackernews clone - Tutorial
 	- Start the GraphQL Node Tutorial: https://www.howtographql.com/graphql-js/0-introduction/
-	   - Complete the following chapters by the next class: `Getting Started` and `A Simple Query`
+	   - Complete the following chapters by the next class: `Getting Started`, `A Simple Query`, and `A Simple Mutation`
 
 <!-- > -->
 
