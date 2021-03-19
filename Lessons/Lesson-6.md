@@ -18,6 +18,8 @@
 1. Describe Subscriptions
 1. Use Subscriptions with GraphQL
 1. Use Graphiql to test subscriptions
+1. Describe Websockets
+1. Implement a websocket 
 
 <!-- > -->
 
@@ -31,15 +33,39 @@ Use them to send push notifications and real time updates to connected GraphQL c
 
 <!-- > -->
 
-GraphQL doesn't implement the code that backs up subscriptions. This is handled the framework or library that implements the GraphQL Spec. For web based projects this is most often a websocket. 
+GraphQL *doesn't* implement the code that backs up subscriptions. This is handled by the framework or library that implements the GraphQL Spec. For web based projects this is most often a websocket. 
 
 <!-- > -->
 
-Websockets represent a persistent connection. Which is different from the standard call and response cycle we use most often. 
+### Websockets
 
 <!-- > -->
 
+Websockets represent a persistent connection. Which is different from the standard call and response cycle we use most often.
 
+<!-- > -->
+
+Simple Websocket example in JS: https://dev.to/karlhadwen/node-js-websocket-tutorial-real-time-chat-room-using-multiple-clients-24ad
+
+<!-- > -->
+
+...
+
+<!-- > -->
+
+## Using Prisma Studio
+
+<!-- > -->
+
+Prisma provides a tool called Studio. You can use this to browse and edit your databases. 
+
+<!-- > -->
+
+Launching Prisma Studio...
+
+<!-- > -->
+
+Tour Prisma Studio...
 
 <!-- > -->
 
@@ -47,7 +73,7 @@ Websockets represent a persistent connection. Which is different from the standa
 
 <!-- > -->
 
-
+Continue the tutorial...
 
 <!-- > -->
 

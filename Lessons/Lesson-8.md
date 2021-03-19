@@ -4,7 +4,11 @@
 
 - After Class/In classs activity 
 	- https://www.howtographql.com/react-apollo/0-introduction/
+	- You can check your work agains the completed to tutorial here if you run into a problem: 
+		- https://github.com/howtographql/react-apollo
 - hackernews-react-apollo tutorial notes
+	- Pay close atttention to the tutorial code snippets. The highlighted changes are not always correct! 
+		- Stretch goal: make a pull request on the soruce repo for the tutorial if you see a mistake!
 	- You'll be running two separate node projects from within the hackernews-react-apollo folder
 		- in the root folder it will be the react project
 		- in server folder will be the express server
@@ -22,9 +26,7 @@ mutation {
   }
 }
 ```
-
 Now log in to this user account: 
-
 ```graphql
 mutation {
   login(email:"test@test.com", password:"test") {
@@ -35,9 +37,7 @@ mutation {
   }
 }
 ```
-
 Copy the token and add the following to the HTTP Headers tab (lower left)
-
 ```graphql
 {
   "Authorization":" Bearer <paste-token-here>"
@@ -46,8 +46,8 @@ Copy the token and add the following to the HTTP Headers tab (lower left)
 
 	- Mutations: Creating Links > Writing the Mutation
 		- I ran into a  problem here: `Unhandled Rejection (Error): Argument id for data.postedBy.connect.id must not be null. Please use undefined instead.` I'm guessing this is becuase you're not logged in and can't provide a user id which seems to be required for the database. 
-
-
+		- I didn't find a good solution to allow posts without authenticating, and this is really the behavior that we want, for now I skipped the errors and continued with the tutorial. 
+	
 
 
 
