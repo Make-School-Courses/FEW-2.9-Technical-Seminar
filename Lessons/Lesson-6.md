@@ -45,6 +45,22 @@ Websockets represent a persistent connection. Which is different from the standa
 
 <!-- > -->
 
+Normally when we connect to a web server we make a temporary connection that sends a message, notes that the message was received and then close down the connection. 
+
+<!-- > -->
+
+When you create a connection with a websocket the connection is persistent and allows for data to be passed back and forth without the overhead of opening and closing a connection with each transaction. 
+
+<!-- > -->
+
+What can you do with a websocket? 
+
+- Chatrooms
+- Push notifications
+- Real time communications
+
+<!-- > -->
+
 Simple Websocket example in JS: https://dev.to/karlhadwen/node-js-websocket-tutorial-real-time-chat-room-using-multiple-clients-24ad
 
 <!-- > -->
