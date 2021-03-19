@@ -570,6 +570,6 @@ Finish up the [Node + GraphQL](https://www.howtographql.com/graphql-js/1-getting
 
 ## Resources
 
-- https://reactjs.org/tutorial/tutorial.html
+- <https://reactjs.org/tutorial/tutorial.html>
 - [Async/await](https://javascript.info/async-await)
 - [Using Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
