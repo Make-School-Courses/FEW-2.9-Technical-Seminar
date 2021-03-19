@@ -477,11 +477,99 @@ export default App;
 ```
 <!-- > -->
 
+### Create a child component - Weather.js
+
+Right now, all the work for fetching and rendering data is handled by one component - `<App/`. Remember we mentioned components should be simple and reusable.
+
+Your next challenge will be make sure that there is a new component - `<Weather/>` - to handle loading and displaying weather details. See starter code below.
+
+- Create a new file `Weather.js`. This file will contain the Weather component and load and display the weather data
+- Import the `Weather` component into `App.js`
+- Display the `<Weather/>` compnent in `App.js`
+
+```js
+  /*
+  * Weather.js file
+  * This file contains the Weather  component
+  *
+  */
+  import { Component } from "react";
+
+  class Weather extends Component {
+    constructor(props){
+      super(props)
+      // todo: initialiaze state here. Remember this component will have to 
+      // support the values in state - this.state.InputValue and this.state.weatherData
+      this.state = {}
+    }
+    render() {
+      // todo: write code for loading and displaying weather details here
+    }
+    
+  }
+
+  // export the component as a module
+  export default Weather;
+```
+
+```js
+  /*
+  * App.js file
+  * This file contains the App parent component
+  *
+  */
+  import { Component } from "react";
+  //import Weather component into App.js
+  import Weather from "./weather";
+
+  class App extends Component {
+
+    constructor(props){
+      super(props)
+      // todo: initialise state here where necessary
+    }
+
+    render() {
+      // todo: Display the Weather Component with its props
+
+      return(
+        <div>
+          <Weather/>
+        </div>
+      );
+    }
+    
+  }
+
+  
+  export default App;
+```
+<!-- > -->
+
+### Stretch Challenges
+
+Finish up the [Node + GraphQL](https://www.howtographql.com/graphql-js/1-getting-started/) tutorial and build the following functionalities off the completed version:
+
+- Implement a functionality on your GraphQL Server that allows your users add comments to the links
+- Implement a functionality on your GraphQL Server that allows users to upvote comments
+
+<!-- > -->
+
+<!-- Use an API of your choice in place of OpenWeatherMap API. Build components and sub-components to the fetch and display your data. Some API services you can use are:
+
+- [Unsplash API for images](unsplash.com/developers)
+- [Rapid API](https://rapidapi.com/)
+- [API List](https://apilist.fun/)
+- [Any API](https://any-api.com/)
+- [Google API Console](http://console.developers.google.com/)
+- [Programmable Web](https://www.programmableweb.com/apis/directory) -->
+
 <!-- ### Hooks -->
 
 ## After Class
 
 ## Resources
 
+- https://reactjs.org/tutorial/tutorial.html
 - [Async/await](https://javascript.info/async-await)
 - [Using Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
