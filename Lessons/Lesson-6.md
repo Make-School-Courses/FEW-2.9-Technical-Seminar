@@ -72,6 +72,17 @@ What are these good for?
 
 <!-- > -->
 
+This example creates a simple server using Express.js and a web page that communicates with the server via a websocket.
+
+<!-- > -->
+
+There two pieces to this example. 
+
+- The server handles a websocket connections and broadcasts messages received to all connected clients. This portion, in `server.js`, is written with node and express. The code here is specific to that environment! 
+- The client code is written using the browser websocket API. This code is written in `index.js`. This client code opens a websocket connection with the server. It sends messages to the server and receives messages from the server.
+
+<!-- > -->
+
 Start by making a new Node project: 
 
 - `npm init -y`
@@ -216,11 +227,80 @@ init();
 
 <!-- > -->
 
-Simple Websocket example in JS: https://dev.to/karlhadwen/node-js-websocket-tutorial-real-time-chat-room-using-multiple-clients-24ad
+### Websockey Challenges
 
 <!-- > -->
 
-...
+**Challenge 1 - Implement and test websocket example**
+
+Implement the code above and test your code.
+
+- launch the server with `node server.js` or `nodemon server.js`
+- Open `index.html` in two windows or tabs
+- Sending a message from on of the tabs/windows should display that message in both windws. 
+
+Every tab/window running the client should get messages broadcast by the server. 
+
+<!-- > -->
+
+**Challenge 2 - Mod the client**
+
+Here the client is made up of a couple functions: 
+
+- `init()` - initializes the web socket 
+- `showMessage()` - displays a new line of text
+
+Currently the text displayed is just added to the `innerHTML` of the `messages` element. Wrap the message in an html tag. 
+
+- Wrap the message in the list element `<li>` and `</li>`
+- In `index.html` change the `<pre id="messages">` to `<ul id="messages">`
+
+<!-- > -->
+
+**Challenge 3 - Mod the client**
+
+Let's mod the client and in;cude a name with each message. 
+
+- Add a input field to add a name. 
+	- `<input type="text" id="input-name">`
+- Create a reference to the new element
+	`const nameInput = document.querySelector('#name-input')`
+- When sending the message you need to send both the name and the message. You can do this one of two ways. In both cases you'll be modifying the data that is sent to the websocket. This appears on the last line. 
+	1. Combine both the name and message into a single string. 
+	2. Send an object with two fields. This solution will require that you modify the show message function since `message` would now be an object. 
+- Show the name before the message.  
+
+To solve this problem you will have to convert the data sent to the server to JSON and parse the JSON from the server back to JS. The data field is always a string for websockets! 
+
+This means at the send button: 
+
+```JS
+// Create an object:
+const data = { message: messageInput.value, name: nameInput.value }
+// Convert to JSON to send to server
+ws.send(JSON.stringify(data))
+showMessage(data)
+```
+
+When receivibg data you'll need to parse the JSON into JS: 
+
+```JS
+showMessage(JSON.parse(e.data))
+```
+
+The ouptut should look something like: 
+
+```
+Andy: Hello
+Bob: World
+```
+
+<!-- > -->
+
+### Websocket Resources
+
+- https://github.com/websockets/ws
+- Simple Websocket example in JS: https://dev.to/karlhadwen/node-js-websocket-tutorial-real-time-chat-room-using-multiple-clients-24ad
 
 <!-- > -->
 
@@ -233,9 +313,6 @@ Prisma provides a tool called Studio. You can use this to browse and edit your d
 <!-- > -->
 
 Launching Prisma Studio...
-
-<!-- > -->
-
 Tour Prisma Studio...
 
 <!-- > -->
