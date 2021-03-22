@@ -1,10 +1,13 @@
 # FEW 2.9 React Review
 
+<!-- > -->
+
 Any type of front end client can connect to a GraphQL backend server. We will be using React.
-This class will be a fast review of React.
 
 React is a library for creating user interfaces. It is one of the most popular web frameworks.
+
 It's efficient and has a great workflow, developer experience and community.
+
 <!-- > -->
 
 ## Class Learning Objectives/Competencies
@@ -16,12 +19,18 @@ It's efficient and has a great workflow, developer experience and community.
 5. Use Hooks
 
 <!-- > -->
+
 ## Review
+
+<!-- > -->
 
 Discuss:
 
 - What is a subscription in GraphQL?
 - What features/functionalities are GraphQL subscriptions best used for?
+- How are Subscriptions implemented in a JavaScript environment?
+
+<!-- > -->
 
 Write a GraphQL Subscription operation(schema and resolver) that notifies clients when a new book is created
 
@@ -53,36 +62,78 @@ type Mutation {
 
 ## Overview
 
+<!-- > -->
+
 The React library has several core features let's take a look at those:
+
+- Components
+- JSX
+- ReactDOM
+
+<!-- > -->
 
 ### Components
 
-React Projects are built from components. They encapsulate logic(methods and code), state(properties) and the view of a React App.
+<!-- > -->
 
-- Components return [JSX](#jsx) and handle user events using event handlers.
-- Components can have children(a component shown inside another) or be the child to another component.
-- The App (in the App.js) component in a React Project is the base or parent component for all other components.
-- Components in React can either be Functional components or Class Components
-- When we write React Compnents we shpuld target making them Simple, Stateful(where needed) and easily reusable throughout the application.
+Components are the foundational building block of React Applications. Most often a component represents a view.
+
+Components are composable. Components can be nested within other components. Complex components are made from smaller less complex components.
 
 <!-- > -->
+
+- A component can be written as a function or a class.
+- A component must return JSX
+- Components can contain other components.
+
+<!-- > -->
+
+Example component
+
+```JS
+function Header(props) {
+	return (
+		<h1>{props.title}</h1>
+	)
+}
+```
+
+<!-- > -->
+
 ### JSX
 
-JSX is an extension of the JavaScript language that gives us an HTML-like syntax to write our UI code.
+<!-- > -->
 
-- It is a set of instructions to tell React what content we want to display.
-- It tells React to either create HTML elements or show another component.
-- **IMPORTANT** JSX has its own special syntax
+- JSX is an extension of the JavaScript language.
+- JSX uses an HTML like syntax based on XML
+- JSX is translated to HTML
+- We use JSX to render our views
 
 <!-- > -->
+
+JSX example:
+
+```JS
+function Header(props) {
+	return (
+		<header>
+			<h1 className="Header-title">{props.title}</h1>
+			<p className="Header-subtitle">{props.subtitle}</p>
+			<PostDate date={props.date} />
+		</header>
+	)
+}
+```
+
+<!-- > -->
+
 ### ReactDOM
 
-Whenever we work with React, we work with two separate libraries: React library itself and  the ReactDOM.
+<!-- > -->
 
-- React creates and manipulates a virtual DOM to make the process of updating the DOM a faster one.
-- The ReactDOM looks at the virtual DOM, compares it to the real DOM and makes changes where necessary.
-- Making changes to the DOM directly will not work as expected a React App.
-- Manipulating the DOM in React Apps should be handled mostly by a [Component](#components)
+React uses a virtual DOM to increase effeciency. The virtual DOM is managed through `ReactDOM`. 
+
+Since the virtual DOM is used to generate the real DOM you should never modify the DOM directly with JS! Instead make changes only via components. 
 
 <small>Read [here](https://reactjs.org/docs/faq-internals.html) for more on the Virtual DOM</small>
 
@@ -137,24 +188,53 @@ ReactDOM.render(
     <App />,
     document.getElementById('root')
 )
-
 ```
 
 <!-- > -->
 
-Some of the other React features we would look at are built into the first three:
-
 ### Props
 
-Props are values passed into a component from outside. It essentially allows for communication between a parent component and its child component.
+<!-- > -->
+
+Props are values passed into a component from outside. It essentially allows for communication between a parent component and its child component. Use props to configure a component.
+
+<!-- > -->
+
+Every component receives props as a parameter. Keys on the props object are assigned via attributes where the component is defiend.  
+
+<!-- > -->
+
+```JS
+function Title(props) {
+	return (
+		<h1>{props.title}</h1>
+	)
+}
+
+function Header() {
+	return (
+		<header>
+			<Title title="Hello World!" />
+		</header>
+	)
+} 
+```
+
+<!-- > -->
 
 - The parent component provides data/information and the child consumes that data/information.
 
+<!-- > -->
+
 Let's look at an example.
+
+<!-- > -->
 
 In this example, we would be using two components namely : `App`(parent component) and `Message`(child component). The `Message` component will be receiving props `header` and `text` from the parent `App` component.
 
-Agian, go through the comments for more details:
+<!-- > -->
+
+Again, go through the comments for more details:
 
 ```js
 // import libraries. Destructure Component to enable creating Class based React components
@@ -210,17 +290,23 @@ ReactDOM.render(
 ```
 
 <!-- > -->
+
 ### State
 
+<!-- > -->
+
 Components can hold values internally this is called state.
-The State system in React is all about managing data inside of the application. Specifically data that will change over time.
+The State system in React is all about managing data inside of a component. 
 
-- In React, `state` is a JavaScript Object that contains some amount of data strictly relevant to a single component
-_ `state` must be initialised when a component is created
-- `state` can only be updaed using the `setState` method.
-- updating `state` will cause components to almost instantly render
+The state of a component controls it's appearance since a component will render when it's state changes. 
 
-The code snippet below shows an App component that has a state object initialized and updated.
+<!-- > -->
+
+State can be used with class based components and it stored on `this.state` within the component. 
+
+State can be used with function based components using the `useState` hook. 
+
+<!-- > -->
 
 ```js
 /*
@@ -247,7 +333,6 @@ class App extends Component {
   }
   
   render() {
-
     return (
       <div>
         Latitude: {this.state.lat}
@@ -258,23 +343,55 @@ class App extends Component {
 ```
 
 <!-- > -->
-## Generating a new React Project
 
-Generating a new React project with a template project structure is as easy as running the npm executable `npm create-react-app your_app_name`. Where `your_app_name` is the title you choose to give your poject.
 
-To make this run you should first
 
-- The `create-react-app` helps install and set up dependencies (Babel, Webpack and Webpack Dev Server)
-- It sets up a project directory structure. In the new project folder it creates you will find:
-  - `src` folder -  will contain all React source code we write
-  - `public` folder - will contain static files and folders for app (e.g. html file, image file etc.)
-- Start your app with `npm start`
+```js
+import { useState, useEffect } from 'react'
+
+function App(props) {
+	const [lat, setLat] = useState(undefined)
+
+	useEffect(() => {
+		window.navigator.geolocation.getCurrentPosition(
+      position => {
+        // update the state object with latittude using setState
+        setLat({lat: position.coords.latitude})
+      },
+      (err) => console.log(err)
+    )
+	}, [lat])
+
+	return (
+		<div>
+			Latitude: {lat}
+		</div>
+	)
+}
+```
 
 <!-- > -->
+
+## Generating a new React Project
+
+<!-- > -->
+
+Follow these 
+
+- `npx create-react-app <project-name>`
+- Start your app with `yarn start`
+
+<!-- > -->
+
 ## Challenge
 
+<!-- > -->
+
 The challenge today is to build a React App that fetches weather data from a public API.
+
 The app gets zip code from its users and returns data with weather details of the area with that zip code.
+
+<!-- > -->
 
 We would be using the free and easy to use [OpenWeatherMap.org](https://openweathermap.org/) API
 

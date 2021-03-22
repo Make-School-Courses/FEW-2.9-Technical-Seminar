@@ -295,6 +295,8 @@ Andy: Hello
 Bob: World
 ```
 
+
+
 <!-- > -->
 
 ### Websocket Resources
@@ -331,4 +333,6 @@ Finish the Hackernews Node.js tutorial!
 
 <!-- > -->
 
-1. 
+1. https://github.com/websockets/ws
+1. Simple Websocket example in JS: https://dev.to/karlhadwen/node-js-websocket-tutorial-real-time-chat-room-using-multiple-clients-24ad
+1. https://github.com/prisma/studio
