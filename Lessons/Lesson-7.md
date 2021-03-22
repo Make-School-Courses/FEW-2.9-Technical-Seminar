@@ -64,6 +64,17 @@ React Projects are built from components. They encapsulate logic(methods and cod
 - The App (in the App.js) component in a React Project is the base or parent component for all other components.
 - Components in React can either be Functional components or Class Components
 - When we write React Compnents we shpuld target making them Simple, Stateful(where needed) and easily reusable throughout the application.
+- Each **Class based** component has several lifecycle methods that can be used at particular times. Some of the commonly used ones are:
+
+| LifeCycle Method | When it's called |
+| ----------- | ----------- |
+| [`constructor()`](https://reactjs.org/docs/react-component.html#constructor) | When component is being created and inserted into the DOM |
+| [`render()`](https://reactjs.org/docs/react-component.html#render) | When component is being created and inserted into the DOM(rendered) and when it being re-rendered or updated. It is a required method. |
+| [`componentDidMount()`](https://reactjs.org/docs/react-component.html#componentdidmount) |  After the component is rendered |
+| [`componentDidUpdate()`](https://reactjs.org/docs/react-component.html#componentdidupdate) | After a component updates|
+| [`componentWillUnmount()`](https://reactjs.org/docs/react-component.html#componentwillunmount) | Before a component is destroyed. It is a clean up method.|
+
+![React Lifecyle methods](https://reactjs.org/docs/react-component.html)
 
 <!-- > -->
 ### JSX
@@ -254,6 +265,77 @@ class App extends Component {
       </div>
     )
   }
+}
+```
+
+<!-- > -->
+
+### Hooks
+
+Handling state and implementing operations **similar** to the [lifecycle methods](https://reactjs.org/docs/react-component.html) in Functional React Components takes a different approach.
+The Hooks system in React takes charge of this approach. Some popular Hook mehtods are:
+
+- `useState()` : gives access to state in a functional component
+- `useEffect()` : helps implement some similar operations to the lifecycle methods
+- `useRef()` : creates 'ref' in a functional component
+
+#### useState
+
+ The code snippet below show a simple implementation of the `useState` method. Check the comments for more details.
+
+```js
+// import the useState method from the library
+import React, { useState } from 'react';
+
+function Example() {
+  // Initialization: Declare a new state variable, which we'll call "count"
+  /*
+  * whenever we call useState(), we get back an array with exactly two items.
+  * First item = the piece of state; Second item = setter function used to update state
+  * Destructure two items from the useState function with Array destructuring
+  * here the state value= count, setter = setCount
+  * set default value of count to 0
+  */
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+    {/* Referencing the state value {count} */}
+      <p>You clicked {count} times</p>
+      {/* updating state: call setter function - setCount() - on button click to update state value */}
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
+
+#### useEffect
+
+ The code snippet below shows a simple implementation of the `useEffect()` method.
+
+```js
+//  import the useEffect method from the react library
+import React, { useState, useEffect } from 'react';
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `You clicked ${count} times`;
+  });
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
 }
 ```
 
@@ -555,21 +637,13 @@ Finish up the [Node + GraphQL](https://www.howtographql.com/graphql-js/1-getting
 
 <!-- > -->
 
-<!-- Use an API of your choice in place of OpenWeatherMap API. Build components and sub-components to the fetch and display your data. Some API services you can use are:
-
-- [Unsplash API for images](unsplash.com/developers)
-- [Rapid API](https://rapidapi.com/)
-- [API List](https://apilist.fun/)
-- [Any API](https://any-api.com/)
-- [Google API Console](http://console.developers.google.com/)
-- [Programmable Web](https://www.programmableweb.com/apis/directory) -->
-
-<!-- ### Hooks -->
-
 ## After Class
 
 ## Resources
 
 - <https://reactjs.org/tutorial/tutorial.html>
+- [Component Lifecycle](https://reactjs.org/docs/react-component.html)
+- [Hooks](https://reactjs.org/docs/hooks-intro.html)
 - [Async/await](https://javascript.info/async-await)
 - [Using Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+- [Array Destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
