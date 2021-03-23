@@ -13,6 +13,16 @@ Mutations are queries that make changes or you could say mutate data.
 
 <!-- > -->
 
+## Warm up - Code Review (10 mins)
+
+Break out into pairs and choose who will be the reviewer and reviewee for the challenges you were able to finish in lesson 3.
+
+- Reviewee: Share your screen and explain what your code does from top to bottom.
+- Reviewer: Listen, ask questions, and make suggestions for improvement.
+
+After 5 minutes, switch roles.
+
+<!-- > -->
 ## Review
 
 Write a Query and a Resolver for this schema: 
