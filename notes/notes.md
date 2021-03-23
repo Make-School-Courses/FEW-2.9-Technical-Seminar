@@ -1,3 +1,22 @@
+
+Assignments 
+
+- GraphQL Query challenges SWAPI
+- Write your own Express graphQL Server challenges 
+- OpenWeatherMap graphQL API
+- 
+
+
+
+
+
+
+
+
+
+
+**** Old Notes ****
+
 Intro
 
 - Are the students already familiar with REST/HTTP? If so, I’d do the REST vs GraphQL part even before the benefits. If students are not yet familiar with REST, maybe leave the comparison out altogether? I think the comparison with REST can be a super helpful tool in explaining how GraphQL works, but if the students don’t know REST it would be somewhat pointless. (Although I’d assume most students are familiar with REST?!).

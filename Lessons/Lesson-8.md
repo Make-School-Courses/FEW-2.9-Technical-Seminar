@@ -1,8 +1,8 @@
 # FEW 2.9 GRaphQL and React
 
+## 
 
-
-- After Class/In classs activity 
+- After Class/In classs activity
 	- https://www.howtographql.com/react-apollo/0-introduction/
 	- You can check your work agains the completed to tutorial here if you run into a problem: 
 		- https://github.com/howtographql/react-apollo
