@@ -20,7 +20,15 @@ GraphQL represents a new way to work with network transactions. It provides many
 
 
 <!-- > -->
+## Warm Up (5 mins)
 
+ELI5 (Explain Like I'm 5). Choose one of these to explain
+
+- How do Web Pages work?
+- How do web browsers work?
+- What are Web APIs?
+
+<!-- > -->
 ## What makes the web work? 
 
 REST 😴 and SOAP 🧼

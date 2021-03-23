@@ -15,14 +15,11 @@ It's efficient and has a great workflow, developer experience and community.
 1. We would build a simple React app.
 2. Build and use a reusable component
 3. Use fundamental features JSX, State and Props
-4. Build an app that works with a public API using use fetch to load data
-5. Use Hooks
+4. Use Hooks
 
 <!-- > -->
 
 ## Review
-
-<!-- > -->
 
 Discuss:
 
@@ -31,7 +28,6 @@ Discuss:
 - How are Subscriptions implemented in a JavaScript environment?
 
 <!-- > -->
-
 Write a GraphQL Subscription operation(schema and resolver) that notifies clients when a new book is created
 
 ```js
@@ -80,12 +76,11 @@ Components are the foundational building block of React Applications. Most often
 
 Components are composable. Components can be nested within other components. Complex components are made from smaller less complex components.
 
-- Components return [JSX](#jsx) and handle user events using event handlers.
-- Components can have children(a component shown inside another) or be the child to another component.
-- The App (in the App.js) component in a React Project is the base or parent component for all other components.
-- Components in React can either be Functional components or Class Components
-- When we write React Compnents we shpuld target making them Simple, Stateful(where needed) and easily reusable throughout the application.
-- Each **Class based** component has several lifecycle methods that can be used at particular times. Some of the commonly used ones are:
+- Components must return [JSX](#jsx) and handle user events using event handlers.
+- Components in React can either be Functional components or Class Components i.e. they can be written as a function or a class
+
+<!-- > -->
+Class components have several lifecycle methods that can be used at particular times. Some of the commonly used ones are:
 
 | LifeCycle Method | When it's called |
 | ----------- | ----------- |
@@ -94,14 +89,6 @@ Components are composable. Components can be nested within other components. Com
 | [`componentDidMount()`](https://reactjs.org/docs/react-component.html#componentdidmount) |  After the component is rendered |
 | [`componentDidUpdate()`](https://reactjs.org/docs/react-component.html#componentdidupdate) | After a component updates|
 | [`componentWillUnmount()`](https://reactjs.org/docs/react-component.html#componentwillunmount) | Before a component is destroyed. It is a clean up method.|
-
-[Common React Lifecyle methods](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
-
-<!-- > -->
-
-- A component can be written as a function or a class.
-- A component must return JSX
-- Components can contain other components.
 
 <!-- > -->
 
@@ -148,20 +135,19 @@ function Header(props) {
 
 <!-- > -->
 
-React uses a virtual DOM to increase effeciency. The virtual DOM is managed through `ReactDOM`.
+React uses a virtual DOM to increase efficiency. The virtual DOM is managed through `ReactDOM`.
 
 Since the virtual DOM is used to generate the real DOM you should never modify the DOM directly with JS! Instead make changes only via components.
 
 <small>Read [here](https://reactjs.org/docs/faq-internals.html) for more on the Virtual DOM</small>
 
 <!-- > -->
+The next block shows a very simple React app with these three features.
 
-Putting these all together, here's a very simple React block of code with these three features. This code will show a simple form with a button that reads 'Click Me'.
-
-Check out the comments for some more details:
+<!-- > -->
 
 ```js
-//Import React and ReactDOM librariea
+//Import React and ReactDOM libraries
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -176,23 +162,9 @@ const App = () => {
     return (
         <div>
 
-            {/* Notice the use of "className" attribute instead of "class"
-             * the use of "htmlFor" instead of "for"
-             */}
-
             <label className="label" htmlFor="name">Enter Name:</label>
             <input id="name" type="text" />
-            
-            {/*
-            * Inline styling also has a different syntax
-            * notice the html attribute 'background-color' is written as camel case 'backgroundColor'
-            */}
             <button style={{backgroundColor:'blue', color: 'white'}}>
-
-            {/*
-            * Referencing a variable in JSX we make use of curly braces around the variable name
-            * In this example we refrence the {buttonText} variable we declared before
-            */}
 
                 {buttonText}
             </button>
@@ -217,7 +189,7 @@ Props are values passed into a component from outside. It essentially allows for
 
 <!-- > -->
 
-Every component receives props as a parameter. Keys on the props object are assigned via attributes where the component is defiend.  
+Every component receives props as a parameter. Keys on the props object are assigned via attributes where the component is defined.  
 
 <!-- > -->
 
@@ -247,34 +219,16 @@ Let's look at an example.
 
 <!-- > -->
 
-In this example, we would be using two components namely : `App`(parent component) and `Message`(child component). The `Message` component will be receiving props `header` and `text` from the parent `App` component.
-
-<!-- > -->
-
-Again, go through the comments for more details:
-
 ```js
-// import libraries. Destructure Component to enable creating Class based React components
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
-/*
-* This example creates Class-Based React Components. It follows the class defintion syntax for ES6 classes
-* In writing a class component we have to make sure the compnent inherits(extends) 
-* from the Component class avaliable by default in the react library
-* Components can be referred to in other components using the syntax <ComponentName/>
-* In this example, the Message component is referred to in its parent component with </Message>
-*/
-
-// create the App Component
+// Create App parent component
 class App extends Component {
   
-  // the render method is used to return a block a JSX. 
-  // It is an important method in class based React compnents
   render() {
       return (
           <div>
-          {/* The App component here sends a text and header prop with their respective values*/}
           <Message text="Sending text prop" header="Header Prop"/>
           </div>
       );
@@ -282,16 +236,12 @@ class App extends Component {
   }
 }
 
-// create the Message component
+// create Message child component
 class Message extends Component {
     
   render() {
       return (
-          <div className="ui message">
-            {/* 
-            * The header and text prop sent from the App component is consumed here in the Message component
-            * Their values are available on the this.props object
-            */}
+          <div className="message">
               <div className="header">{this.props.header}</div>
               <p>{this.props.text}</p>
           </div>
@@ -324,20 +274,14 @@ State can be used with class based components and it stored on `this.state` with
 State can be used with function based components using the `useState` hook.
 
 <!-- > -->
+State with Class Component
 
 ```js
-/*
-* This examples uses the browser's native geolocation object
-* to fetch the latitude of of a current positon
-*
-*/
 
 class App extends Component {
-  // the state object is initialized in the constructor of the class
   constructor(props) {
     super(props);
-    // the state object is usually defualted to a reasonable value. In this case, the null value
-    // initialising the state object is the only time we do direct assignment to this.state
+    // initialise state
     this.state = { lat: null };
 
     window.navigator.geolocation.getCurrentPosition(
@@ -360,6 +304,9 @@ class App extends Component {
 ```
 
 <!-- > -->
+
+State with Function Component
+
 ```js
 import { useState, useEffect } from 'react'
 
@@ -388,6 +335,7 @@ function App(props) {
 
 ### Hooks
 
+<!-- > -->
 Handling state and implementing operations **similar** to the [lifecycle methods](https://reactjs.org/docs/react-component.html) in Functional React Components takes a different approach.
 The Hooks system in React takes charge of this approach. Some popular Hook mehtods are:
 
@@ -395,30 +343,20 @@ The Hooks system in React takes charge of this approach. Some popular Hook mehto
 - `useEffect()` : helps implement some similar operations to the lifecycle methods
 - `useRef()` : creates 'ref' in a functional component
 
-#### useState
-
- The code snippet below show a simple implementation of the `useState` method. Check the comments for more details.
+<!-- > -->
+ The code snippet below shows a simple implementation of the `useState()` method.
 
 ```js
 // import the useState method from the library
 import React, { useState } from 'react';
 
 function Example() {
-  // Initialization: Declare a new state variable, which we'll call "count"
-  /*
-  * whenever we call useState(), we get back an array with exactly two items.
-  * First item = the piece of state; Second item = setter function used to update state
-  * Destructure two items from the useState function with Array destructuring
-  * here the state value= count, setter = setCount
-  * set default value of count to 0
-  */
+  // Declare a new state variable, which we'll call "count"
   const [count, setCount] = useState(0);
 
   return (
     <div>
-    {/* Referencing the state value {count} */}
       <p>You clicked {count} times</p>
-      {/* updating state: call setter function - setCount() - on button click to update state value */}
       <button onClick={() => setCount(count + 1)}>
         Click me
       </button>
@@ -426,8 +364,9 @@ function Example() {
   );
 }
 ```
+<!-- > -->
 
-#### useEffect
+<!-- > -->
 
  The code snippet below shows a simple implementation of the `useEffect()` method.
 
@@ -471,13 +410,26 @@ Follow these
 
 <!-- > -->
 
-The challenge today is to build a React App that fetches weather data from your GraphQL Weather server. We would be using the Apollo client for GraphQL.
+You will build a React App that fetches weather data from your GraphQL Weather server. It will be use the Apollo client for GraphQL for query.
 
-To get started
+<!-- > -->
 
-- Your GraphQL server needs to support Cross-Origin Resource Sharing (CORS)
-  - Go to your server directory and run `npm i cors`
-  - include the following piece of code to your GraphQL server file
+To get started, your GraphQL server needs to support Cross-Origin Resource Sharing (CORS)
+
+<!-- > -->
+
+What's CORS?
+
+Cross-Origin Resource Sharing is a mechanism that uses additional HTTP headers.
+
+It uses these headers to tell a browser to let a web application running at one origin have permission to access selected resources from a server at a different origin.
+
+<!-- > -->
+- Go to your GraphQL server directory and run `npm i cors`
+- `cors` is a node.js package that can be used to enable CORS.
+
+<!-- > -->
+Include the following piece of code to your GraphQL server file
 
   ```js
   // after importing other dependencies
@@ -488,6 +440,7 @@ To get started
     app.use(cors());
   ```
 
+<!-- > -->
 - Start your GraphQL Weather server
 - Create a new react project
 - install Apollo `npm install @apollo/client graphql`
@@ -495,8 +448,9 @@ To get started
 <!-- > -->
 ### Create Component - APP.js
 
+<!-- > -->
 We would first create an App component that displays an input field.
-In your project folder the `src/App.js` include this piece of code. Take note of the comments for more details
+In your project folder the `src/App.js` include this piece of code.
 
 ```js
 // import dependencies
@@ -534,15 +488,18 @@ function App() {
 
 export default App;
 ```
+
 <!-- > -->
 ### Render the Weather Details - Asynchronous operations (async, await)
 
+<!-- > -->
 `Async` and `await` are keywords that are used for Promises in JavaScript.
 
 - The `Async` keyword identifies an asyncronous function. An `Async` function always returns a Promise!
 
 - The `await` keyword only works within an `Async` function. Use await at the beginning of any expression that would return a Promise. JavaScript will wait at that line until the Promise resolves.
 
+<!-- > -->
 The syntax for using Async/Await looks like so:
 
 ```js
@@ -554,14 +511,13 @@ The syntax for using Async/Await looks like so:
 
 ```
 
-Update your `App.js` file to include an asynchronous `fetchWeather` function.
-
 <!-- > -->
-
+- Update your `App.js` file to include an asynchronous `fetchWeather` function.
 - Wrap your App in the ApolloProvider
 - Make an instance of the Apollo client
 - Define a GraphQL query
 
+<!-- > -->
 ```js
 import { useState, useEffect } from 'react'
 import { gql } from '@apollo/client';
@@ -616,17 +572,21 @@ function App() {
 
 export default App;
 ```
+
 <!-- > -->
 ### Create a child component - Weather.js
 
+<!-- > -->
 Right now, all the work for fetching and rendering data is handled by one component - `<App/>`. Remember, components should be simple and reusable.
 
-Your next challenge will be make sure that there is a new component - `<Weather/>` - to handle loading and displaying weather details. See starter code below.
+Your next challenge is to create a new component - `<Weather/>` - to handle loading and displaying weather details.
 
+<!-- > -->
 - Create a new file `Weather.js`. This file will contain the Weather component and load and display the weather data
 - Import the `Weather` component into `App.js`
 - Display the `<Weather/>` compnent in `App.js`
 
+<!-- > -->
 ```js
   /*
   * Weather.js file
@@ -655,6 +615,7 @@ import { client } from './index';
   export default Weather;
 ```
 
+<!-- > -->
 ```js
   /*
   * App.js file
@@ -679,6 +640,7 @@ import { client } from './index';
   
   export default App;
 ```
+
 <!-- > -->
 
 ### Stretch Challenges
@@ -698,6 +660,7 @@ Start working on the React + Apollo tutorial: <https://www.howtographql.com/reac
 
 - Complete the following chapters by next class: `Introduction`, `Getting Started`, `Queries: Loading Links`
 
+<!-- > -->
 ## Resources
 
 - <https://reactjs.org/tutorial/tutorial.html>
@@ -707,3 +670,5 @@ Start working on the React + Apollo tutorial: <https://www.howtographql.com/reac
 - [Using Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 - [Array Destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 - <https://www.apollographql.com/docs/react/get-started/>
+
+<!-- > -->

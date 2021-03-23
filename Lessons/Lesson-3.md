@@ -14,6 +14,12 @@ By the end of today's lesson, you should be able to...
 
 <!-- > -->
 
+## Warm Up (5 mins)
+
+Discuss:
+If GraphQL was a vehicle. What feature of the language do you think will be its engine?
+
+<!-- > -->
 ## Review
 
 **Write a resolver for the following types: **

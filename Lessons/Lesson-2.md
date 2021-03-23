@@ -23,6 +23,12 @@ Today we will look at a simple example implementing GraphQL with Express. This i
 
 <!-- > -->
 
+## Warm Up (5 mins)
+
+Discuss:
+GraphQL and SQL are both Query languages. How do they differ?
+
+<!-- > -->
 ## Review 
 
 - **Name three advantages of GraphQL over REST**
