@@ -79,6 +79,7 @@ The React library has several core features let's take a look at those:
 Components are the foundational building block of React Applications. Most often a component represents a view.
 
 Components are composable. Components can be nested within other components. Complex components are made from smaller less complex components.
+
 - Components return [JSX](#jsx) and handle user events using event handlers.
 - Components can have children(a component shown inside another) or be the child to another component.
 - The App (in the App.js) component in a React Project is the base or parent component for all other components.
@@ -94,7 +95,7 @@ Components are composable. Components can be nested within other components. Com
 | [`componentDidUpdate()`](https://reactjs.org/docs/react-component.html#componentdidupdate) | After a component updates|
 | [`componentWillUnmount()`](https://reactjs.org/docs/react-component.html#componentwillunmount) | Before a component is destroyed. It is a clean up method.|
 
-![React Lifecyle methods](https://reactjs.org/docs/react-component.html)
+[Common React Lifecyle methods](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 
 <!-- > -->
 
@@ -108,9 +109,9 @@ Example component
 
 ```JS
 function Header(props) {
-	return (
-		<h1>{props.title}</h1>
-	)
+ return (
+  <h1>{props.title}</h1>
+ )
 }
 ```
 
@@ -131,13 +132,13 @@ JSX example:
 
 ```JS
 function Header(props) {
-	return (
-		<header>
-			<h1 className="Header-title">{props.title}</h1>
-			<p className="Header-subtitle">{props.subtitle}</p>
-			<PostDate date={props.date} />
-		</header>
-	)
+ return (
+  <header>
+   <h1 className="Header-title">{props.title}</h1>
+   <p className="Header-subtitle">{props.subtitle}</p>
+   <PostDate date={props.date} />
+  </header>
+ )
 }
 ```
 
@@ -147,9 +148,9 @@ function Header(props) {
 
 <!-- > -->
 
-React uses a virtual DOM to increase effeciency. The virtual DOM is managed through `ReactDOM`. 
+React uses a virtual DOM to increase effeciency. The virtual DOM is managed through `ReactDOM`.
 
-Since the virtual DOM is used to generate the real DOM you should never modify the DOM directly with JS! Instead make changes only via components. 
+Since the virtual DOM is used to generate the real DOM you should never modify the DOM directly with JS! Instead make changes only via components.
 
 <small>Read [here](https://reactjs.org/docs/faq-internals.html) for more on the Virtual DOM</small>
 
@@ -222,17 +223,17 @@ Every component receives props as a parameter. Keys on the props object are assi
 
 ```JS
 function Title(props) {
-	return (
-		<h1>{props.title}</h1>
-	)
+ return (
+  <h1>{props.title}</h1>
+ )
 }
 
 function Header() {
-	return (
-		<header>
-			<Title title="Hello World!" />
-		</header>
-	)
+ return (
+  <header>
+   <Title title="Hello World!" />
+  </header>
+ )
 } 
 ```
 
@@ -312,15 +313,15 @@ ReactDOM.render(
 <!-- > -->
 
 Components can hold values internally this is called state.
-The State system in React is all about managing data inside of a component. 
+The State system in React is all about managing data inside of a component.
 
-The state of a component controls it's appearance since a component will render when it's state changes. 
+The state of a component controls it's appearance since a component will render when it's state changes.
 
 <!-- > -->
 
-State can be used with class based components and it stored on `this.state` within the component. 
+State can be used with class based components and it stored on `this.state` within the component.
 
-State can be used with function based components using the `useState` hook. 
+State can be used with function based components using the `useState` hook.
 
 <!-- > -->
 
@@ -359,30 +360,27 @@ class App extends Component {
 ```
 
 <!-- > -->
-
-
-
 ```js
 import { useState, useEffect } from 'react'
 
 function App(props) {
-	const [lat, setLat] = useState(undefined)
+ const [lat, setLat] = useState(undefined)
 
-	useEffect(() => {
-		window.navigator.geolocation.getCurrentPosition(
+ useEffect(() => {
+  window.navigator.geolocation.getCurrentPosition(
       position => {
-        // update the state object with latittude using setState
+        // update the state object with latittude using setLat
         setLat({lat: position.coords.latitude})
       },
       (err) => console.log(err)
     )
-	}, [lat])
+ }, [lat])
 
-	return (
-		<div>
-			Latitude: {lat}
-		</div>
-	)
+ return (
+  <div>
+   Latitude: {lat}
+  </div>
+ )
 }
 ```
 
@@ -462,7 +460,7 @@ function Example() {
 
 <!-- > -->
 
-Follow these 
+Follow these
 
 - `npx create-react-app <project-name>`
 - Start your app with `yarn start`
@@ -473,30 +471,26 @@ Follow these
 
 <!-- > -->
 
-The challenge today is to build a React App that fetches weather data from a public API.
+The challenge today is to build a React App that fetches weather data from your GraphQL Weather server. We would be using the Apollo client for GraphQL.
 
-The app gets zip code from its users and returns data with weather details of the area with that zip code.
+To get started
 
-<!-- > -->
+- Your GraphQL server needs to support Cross-Origin Resource Sharing (CORS)
+  - Go to your server directory and run `npm i cors`
+  - include the following piece of code to your GraphQL server file
 
-We would be using the free and easy to use [OpenWeatherMap.org](https://openweathermap.org/) API
-
-To get started:
-
-- create a new React Project `npx create-react-app search-weather`
-- Go to <https://openweathermap.org>
-- Make an account or sign in to your account
-- Go to settings > API Keys
-- Generate an API Key
-- create a `.env` file in the root of your new project directory
-- Paste your newly generated API Key into your `.env` file
-  - It should follow this format `REACT_APP_MY_VAR=some_value_123`
-  
-  For example:
-
-  ```env
-  REACT_APP_WEATHER_API_KEY=<your-api-key-here>
+  ```js
+  // after importing other dependencies
+  const cors = require( `cors` );
+    //Schema code here
+  // Create an express app
+    const app = express()
+    app.use(cors());
   ```
+
+- Start your GraphQL Weather server
+- Create a new react project
+- install Apollo `npm install @apollo/client graphql`
 
 <!-- > -->
 ### Create Component - APP.js
@@ -505,56 +499,43 @@ We would first create an App component that displays an input field.
 In your project folder the `src/App.js` include this piece of code. Take note of the comments for more details
 
 ```js
-import React, {Component} from 'react'
+// import dependencies
+import { useState, useEffect } from 'react'
+import { gql } from '@apollo/client';
+import { client } from './index'
 
-// ! Get your own API key !
-const apikey = process.env.REACT_APP_WEATHER_API_KEY
+function App() {
+  // initialize state and the setter method to set the zip value
+  const [zip, setZip] = useState('') 
+  // initialize state and the setter method to set weather data
+  const [weather, setWeather] = useState(null)
 
-class App extends React.Component {
-
-    constructor(props){
-      super(props)
-
-      //initialize state
-      this.state = {
-                    inputValue: '94010', // Used to store value entered in the input field - the zip  value
-                    weatherData: null, // Used to store the data loaded from the weather API
-                }
-    }
-
-     render() {
-        return (
-            <div className="container">
-            
-            <div className= "segment">
-                <form className ="form" }>
-                    <div className= "field">
-                        <label>Input Zip Code</label>
-                      {/** 
-                      This pattern is called controlled component patterm
-                      * used for input and other form elements 
-                      * Set the value of the input to a value held in component's state
-                      * Set the value held in component state when a change occurs(onChange) at the input
-                      * the OnChange method is a event handle available in React and is called everytime a change occurs on our input element  
-                      */}
-                        <input type="text" 
-                        value= {this.state.inputValue} 
-                        onChange={(e)=> this.setState({inputValue: e.target.value})}/>
-                    </div>
-                    
-                </form>
-            </div>
-        </div>
-        )
-     }
+  return (
+    <div className="App">
+        <form>
+        <label>Input Zip Code</label>
+        {/** 
+        This pattern is called controlled component patterm
+        * used for input and other form elements 
+        * Set the value of the input to a value held in component's state
+        * Set the value held in component state when a change occurs(onChange) at the input
+        * the OnChange method is a event handler available in React and is called everytime a change occurs on our input element  
+        */}
+          <input
+            type="text" 
+            placeholder="zip code"
+            value={zip}
+            onChange={(e) => setZip(e.target.value)}
+          />
+        </form>
+    </div>
+  );
 }
 
 export default App;
-
 ```
-
 <!-- > -->
-### Render the Weather Details - Async (fetch, async, await)
+### Render the Weather Details - Asynchronous operations (async, await)
 
 `Async` and `await` are keywords that are used for Promises in JavaScript.
 
@@ -573,116 +554,72 @@ The syntax for using Async/Await looks like so:
 
 ```
 
-The Fetch API provides a global `fetch()` method that provides an easy way to fetch data asynchronously across the HTTP network.
+Update your `App.js` file to include an asynchronous `fetchWeather` function.
 
-We would be using this method here to fetch data when we make an API request to our weather API.
+<!-- > -->
 
-Update your `App.js` file to include a `handleFormSubmit` method, a fetch request and a `renderWeather` method
-that displays the details of the fetched data:
+- Wrap your App in the ApolloProvider
+- Make an instance of the Apollo client
+- Define a GraphQL query
 
 ```js
-import { Component } from "react";
+import { useState, useEffect } from 'react'
+import { gql } from '@apollo/client';
+import { client } from './index'
 
-class App extends Component {
-  constructor(props) {
-    super(props);
 
-    //initialize state
-
-    this.state = {
-      inputValue: "94010", // Used to store value entered in the input field - the zip  value
-      weatherData: null, // Used to store the data loaded from the weather API
-    };
-  }
-  // this method is called when the form is submitted and 
-  // it is triggered by the onSubmit eventhandler <form onSubmit={this.handleFormSubmit}>
-  async handleFormSubmit(e) {
-    e.preventDefault();
-    // ! Get your own API key !
-    const apikey = process.env.REACT_APP_WEATHER_API_KEY;
-    // Get the zip from the input
-    const zip = this.state.inputValue;
-    // Form an API request URL with the apikey and zip
-    const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=${apikey}`;
-
-    // make a GET request from the weather API
-    const response = await fetch(url);
-    // convert the data from JSON to a Javascript Object with json() method
-    const data = await response.json();
-    // If the request was successful assign the data to component state weatherData
-    this.setState({ weatherData: data });
-  }
-
-  renderWeather() {
-    if (this.state.weatherData === null) {
-      // If there is no data return this
-      return <div>Oops! No weather Data here... </div>
-    }
-
-    console.log(this.state.weatherData);
-    // Take the weather data apart to more easily populate the component
-    const { main, description, icon } = this.state.weatherData.weather[0];
-    const {
-      temp,
-      pressure,
-      humidity,
-      temp_min,
-      temp_max,
-    } = this.state.weatherData.main;
-
-    return (
-      <div>
-        <div>Title: {main}</div>
-        <div>Desc: {description}</div>
-        <div>Icon: {icon}</div>
-        <div>Temp: {temp}</div>
-        <div>Pressure: {pressure}</div>
-        <div>Humidity: {humidity}</div>
-        <div>
-          Temp Min: {temp_min} Max:{temp_max}
-        </div>
-      </div>
-    );
-  }
-
-  render() {
-    return (
-      <div className="container">
-        <div className="segment">
-                      {/** 
-                      * the onSubmit method is a event handle available in React and is called everytime the form is submitted  
-                      */}
-          <form className="form" onSubmit={(e) => this.handleFormSubmit(e)}>
-            <div className="field">
-              <label>Input Zip Code</label>
-                     {/** 
-                      This pattern is called controlled component patterm
-                      * used for input and other form elements 
-                      * Set the value of the input to a value held in component's state
-                      * Set the value held in component state when a change occurs(onChange) at the input
-                      * the onChange method is a event handle available in React and is called everytime a change occurs on our input element  
-                      */}
-              <input
-                type="text"
-                value={this.state.inputValue}
-                onChange={(e) => this.setState({ inputValue: e.target.value })}
-              />
-            </div>
-          </form>
-        </div>
-      </div>
-    );
+async function fetchWeather(zip, setter) {
+  try {
+    // define a query
+    const json = await client.query({
+      query: gql`
+        query {
+          getWeather(zip:${zip}) {
+            temperature
+            description
+          }
+        }
+      `
+    });
+    setter(json)
+  } catch(err) {
+    console.log(err.message)
   }
 }
 
-export default App;
 
+function App() {
+  const [zip, setZip] = useState('') 
+  const [weather, setWeather] = useState(null)
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        {weather ? <h1>{weather.data.getWeather.temperature}</h1>: null}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault()
+            fetchWeather(zip, setWeather)
+          }}
+        >
+          <input
+            type="text" 
+            placeholder="zip code"
+            value={zip}
+            onChange={(e) => setZip(e.target.value)}
+          />
+        </form>
+      </header>
+    </div>
+  );
+}
+
+export default App;
 ```
 <!-- > -->
-
 ### Create a child component - Weather.js
 
-Right now, all the work for fetching and rendering data is handled by one component - `<App/`. Remember we mentioned components should be simple and reusable.
+Right now, all the work for fetching and rendering data is handled by one component - `<App/>`. Remember, components should be simple and reusable.
 
 Your next challenge will be make sure that there is a new component - `<Weather/>` - to handle loading and displaying weather details. See starter code below.
 
@@ -696,18 +633,21 @@ Your next challenge will be make sure that there is a new component - `<Weather/
   * This file contains the Weather  component
   *
   */
-  import { Component } from "react";
+ import { useState, useEffect } from 'react';
+ import { gql } from '@apollo/client';
+import { client } from './index';
 
-  class Weather extends Component {
-    constructor(props){
-      super(props)
+  function Weather(props) {
       // todo: initialiaze state here. Remember this component will have to 
-      // support the values in state - this.state.InputValue and this.state.weatherData
-      this.state = {}
-    }
-    render() {
+      // support the values in state - zip and weather
+  
+    async fetchWeather() {
       // todo: write code for loading and displaying weather details here
     }
+
+    return (
+      // to do: write jsx block to render weather data
+    )
     
   }
 
@@ -721,26 +661,18 @@ Your next challenge will be make sure that there is a new component - `<Weather/
   * This file contains the App parent component
   *
   */
-  import { Component } from "react";
+
   //import Weather component into App.js
-  import Weather from "./weather";
+  import Weather from "./Weather";
 
-  class App extends Component {
-
-    constructor(props){
-      super(props)
-      // todo: initialise state here where necessary
-    }
-
-    render() {
-      // todo: Display the Weather Component with its props
+  function App() {
+      // todo: Display the Weather Component with its props, if any
 
       return(
         <div>
           <Weather/>
         </div>
       );
-    }
     
   }
 
@@ -762,10 +694,9 @@ Finish up the [Node + GraphQL](https://www.howtographql.com/graphql-js/1-getting
 
 Time to start working on the frontend of hacker news!
 
-Start working on the React + Apollo tutorial: https://www.howtographql.com/react-apollo/0-introduction/
+Start working on the React + Apollo tutorial: <https://www.howtographql.com/react-apollo/0-introduction/>
 
 - Complete the following chapters by next class: `Introduction`, `Getting Started`, `Queries: Loading Links`
-
 
 ## Resources
 
@@ -775,3 +706,4 @@ Start working on the React + Apollo tutorial: https://www.howtographql.com/react
 - [Async/await](https://javascript.info/async-await)
 - [Using Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 - [Array Destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+- <https://www.apollographql.com/docs/react/get-started/>
