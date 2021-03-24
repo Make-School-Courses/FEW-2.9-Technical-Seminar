@@ -437,25 +437,6 @@ The results would look like this:
 
 ## Stretch Challenges
 
-**Challenge - Add More Fields**
-
-Try as many of these stretch challenges as you can. 
-
-Take a look at the JSON response here: https://openweathermap.org/current#current_JSON
-
-<!-- > -->
-
-Add more fields to the Weather type. 
-
-- feels_like
-- humidity
-- name
-- add other fields you like...
-
-<!-- > -->
-
-Modify the resolver to add these new fields...
-
 <!-- > -->
 
 **Challenge - Add City API**
@@ -463,6 +444,8 @@ Modify the resolver to add these new fields...
 The OpenWeatherMap service supports weather requests by city name. 
 
 Add a query that takes the city name and returns the weather. 
+
+You can extend this challenge to include 
 
 <!-- > -->
 
