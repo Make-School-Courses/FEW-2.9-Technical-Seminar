@@ -271,7 +271,7 @@ const root = {
 
 **Challenge 7 - Test your work in GraphiQL**
 
-Try out a query and solve any errors that might pop up. 
+Try out a query and solve any errors that might pop up.
 
 ```JS
 {
@@ -343,9 +343,101 @@ Test your work! Write a query:
 
 <!-- > -->
 
+**Challenge 9 - Expand the API**
+
+If you followed all of the instructions here your API should allow fetching the temperature and description. The OpenWeatherMap response provides a lot more information. The goal of this challenge is to expand the getWeather query type. 
+
+Challenge, expand your query to include the following properties:
+
+- feels_like
+- temp_min
+- temp_max
+- pressure
+- humidity
+
+<!-- > -->
+
+**Challenge 10 - Handle Errors**
+
+The OpenWeatherMap API provides a cod property that includes an error code. If you provide a zip code that doesn't exist you'll get a JSON object with a code of 404 and a message property with a message string. It might look something like: 
+
+```JSON
+{ cod: '404', message: 'city not found' }
+```
+
+Notice that `'404'` is a string. If you get a successful request the JSON will look like this: 
+
+```JSON 
+{ ..., cod: 200 }
+```
+
+When COD is 200 it's a number! 
+
+Think about the results that returned by your GraphQL API... What happens when you make a request like this: 
+
+```
+{
+  getWeather(zip:99999) {
+    temperature
+  }
+}
+```
+
+99999 is not a valid zip the JSON object from OpenWeatherMap will include `"cod": "404"` and `"message":"city not found"`. All of the other information will be missing. 
+
+Think about the data types defined in your getWeather query Type... 
+
+In this case you won't have the temperature. But you will have a message. 
+
+Your goal here is to return temperature, humidity, etc. sometimes, and include cod, and message sometimes. Don't overthink the solution (it may be easier than you first think). Talk it over with other students. 
+
+Here's a clue: if you make a query for temperature with an invalid zip code then temperature should be null!
+
+Here's what this situation might look like in code.
+
+The Query might look like this: 
+
+```JS
+{
+  getWeather(zip:99999) {
+    temperature
+    description
+    feels_like
+    temp_min
+    temp_max
+    pressure
+    humidity
+    cod
+    message
+  }
+}
+```
+
+The results would look like this: 
+
+```JS
+{
+  "data": {
+    "getWeather": {
+      "temperature": null,
+      "description": null,
+      "feels_like": null,
+      "temp_min": null,
+      "temp_max": null,
+      "pressure": null,
+      "humidity": null,
+      "cod": 404,
+      "message": "city not found"
+    }
+  }
+}
+```
+
+<!-- > -->
+
 ## Stretch Challenges
 
-**Challenge 9 - Add More Fields**
+**Challenge - Add More Fields**
 
 Try as many of these stretch challenges as you can. 
 
@@ -366,7 +458,7 @@ Modify the resolver to add these new fields...
 
 <!-- > -->
 
-**Challenge 10 - Add City API**
+**Challenge - Add City API**
 
 The OpenWeatherMap service supports weather requests by city name. 
 
@@ -374,7 +466,7 @@ Add a query that takes the city name and returns the weather.
 
 <!-- > -->
 
-**Challenge 11 - Use another API**
+**Challenge - Use another API**
 
 Copy this project and replace the OpenWeatherMap API with another API of your choice...
 
