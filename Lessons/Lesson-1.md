@@ -670,7 +670,7 @@ The result would look like this:
   - GraphQL is the better REST
   - Core Concepts
   - Big Picture (Architecture)
-- Answer the questions in assignment 1 on GradeScope. 
+- Answer the questions in assignment 1 on GradeScope.
 
 <!-- > -->
 

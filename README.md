@@ -72,6 +72,25 @@ Students by the end of the course will be able to ...
 
 ### Homework
 
+-----------------------------
+- Class 1 -
+	- Watch How To GraphQL (first 4 sections)
+	- Answer Questions on Gradescope
+- Class 2 - 
+	- Watch How to GraphQL (remaining videos)
+	- Complete challenges in Lesson-2 #challenges
+		- Submit to GradeScope
+- Class 3 - 
+	- OpenWeatherMap graphQL API
+		- Complete as many of the challenges as you can
+- Class 4 - 
+	- 
+-----------------------------
+
+
+
+
+
 - Assignment 1 - GraphQL Intro 
 	- Watch the videos here: https://www.howtographql.com
 		- Introduction

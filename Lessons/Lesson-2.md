@@ -685,7 +685,7 @@ Make a type for this thing with at least three fields.
 
 **Challenge 2** 
 
-Make an array of the things with data for each. You should be able to get an array of things with a query like this: 
+Make an array of the things with data for each. You should be able to get an array of things with a query like this:
 
 ```JS 
 {
@@ -703,7 +703,7 @@ Should return the names of all Pets in the database
 
 1. Make a query type for your collection. 
 1. Make a query that will return all of the things.
-1. Make another query that will take the index of a thing as the argument and return 1 of the things. 
+1. Make another query that will take the index of a thing as the argument and return 1 of the things.
 
 ```JS 
 {
@@ -731,7 +731,7 @@ You need a server that returns the time. Write a type for the time. It should ha
 - minute
 - year
 
-Write a resolver that gets the time and returns an object with the properties: hour, minute, year. 
+Write a resolver that gets the time and returns an object with the properties: hour, minute, year.
 
 ```JS
 {
@@ -747,11 +747,11 @@ Write a resolver that gets the time and returns an object with the properties: h
 
 **Challenge 6** 
 
-We need a way to return a random number. Write the below resolver:
+Imagine we need the server to return a random random number. Your job is to write a resolve that makes the GraphQL quer below function: 
 
 ```JS
 {
-  getRandom(range: 100)
+  getRandom(range: 100) 
 }
 ```
 
@@ -769,7 +769,7 @@ Which should return:
 
 **Challenge 7** 
 
-Create a type that represents a die roll. It should take the number of dice and the number of sides.
+Create a type that represents a die roll. It should take the number of dice and the number of sides on each die.
 
 Below is an example query, and the response that should come back
 
@@ -807,6 +807,7 @@ Below is an example query, and the response that should come back
     - Tooling and Ecosystem
     - Security
     - Common Questions
+- Submit your work to GradeScope.
 
 <!-- > -->
 

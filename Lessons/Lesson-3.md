@@ -96,7 +96,7 @@ For this example you'll use https://openweathermap.org.
 
 **Challenge 1 - Setup Express and GraphQL**
 
-Follow these steps to setup Express and GraphQL. 
+Follow these steps to setup Express and GraphQL.
 
 <!-- > -->
 
@@ -164,9 +164,11 @@ Define a route/endpoint for your GraphQL API
 app.use('/graphql', graphqlHTTP({
   schema,
   rootValue: root,
-  graphiql: true // Be sure to use graphiql
+  graphiql: true
 }))
 ```
+
+Be sure to set `graphiql` to true since this will enable the graphiql browser that you will be using 
 
 <!-- > -->
 
@@ -211,7 +213,7 @@ Having a `.env` file allows us to store our secrets (like an API Key) without it
 1. Open the .env file, and place the following in it, replacing `MY_API_KEY` with your actual API Key:
 
 ```
-OPENWEATHERMAP_API_KEY=MY_API_KEY
+OPENWEATHERMAP_API_KEY=__MY_API_KEY__
 ```
 
 Save it when you're done. Alright, now we're ready to continue!
@@ -239,7 +241,7 @@ type Query {
 
 **Challenge 5 - Import node-fetch**
 
-Import node-fetch to make network calls. You can use Axios or other library of your choice. 
+Import node-fetch to make network calls. You can also use Axios or other library of your choice. You need something to make network requests.
 
 `npm install node-fetch`
 
