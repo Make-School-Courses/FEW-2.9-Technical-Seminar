@@ -49,9 +49,14 @@ Copy the token and add the following to the HTTP Headers tab (lower left)
 		- I didn't find a good solution to allow posts without authenticating, and this is really the behavior that we want, for now I skipped the errors and continued with the tutorial. 
 	
 
+<!-- > -->
 
 
+## After Class 
 
+Continue working on the React + Apollo tutorial: <https://www.howtographql.com/react-apollo/0-introduction/>
+
+- Complete the following chapters by next class: `Mutations: Creating Links`, `Routing`
 
 
 
@@ -85,9 +90,6 @@ Add Apollo to a React front end.
 
 Review the tutorial. Look at its features and requirements. 
 
-## After Class 
-
-Start the GraphQL React Apollo tutorial - due class 9 https://www.howtographql.com
 
 ## Bonus Lesson: React Hooks!
 

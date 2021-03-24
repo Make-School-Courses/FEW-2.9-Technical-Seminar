@@ -57,18 +57,18 @@ Students by the end of the course will be able to ...
 |  12 | Tue, May 11   | Final Class                 | Hackernews Stretch challenges |
 |  13 | Thu, May 13   | Final Exams/Presentations               |  |
 
-[Lesson 1 - GraphQL Intro]: Lessons/Lesson1.md
-[Lesson 2 - GraphQL Schemas and Types]: Lessons/Lesson2.md
-[Lesson 3 - GraphQL + Express]: Lessons/Lesson3.md
-[Lesson 4 - GraphQL Mutations]: Lessons/Lesson4.md
-[Lesson 5 - GraphQL ORM]: Lessons/Lesson5.md
-[Lesson 6 - GraphQL Subscriptions]: Lessons/Lesson6.md
-[Lesson 7 - React Review]: Lessons/Lesson7.md
-[Lesson 8 - ]: Lessons/Lesson8.md
-[Lesson 9]: Lessons/Lesson9.md
-[Lesson 10]: Lessons/Lesson10.md
-[Lesson 11]: Lessons/Lesson11.md
-[Lesson 12]: Lessons/Lesson12.md
+[Lesson 1 - GraphQL Intro]: Lessons/Lesson-1.md
+[Lesson 2 - GraphQL Schemas and Types]: Lessons/Lesson-2.md
+[Lesson 3 - GraphQL + Express]: Lessons/Lesson-3.md
+[Lesson 4 - GraphQL Mutations]: Lessons/Lesson-4.md
+[Lesson 5 - GraphQL ORM]: Lessons/Lesson-5.md
+[Lesson 6 - GraphQL Subscriptions]: Lessons/Lesson-6.md
+[Lesson 7 - React Review]: Lessons/Lesson-7.md
+[Lesson 8 - ]: Lessons/Lesson-8.md
+[Lesson 9]: Lessons/Lesson-9.md
+[Lesson 10]: Lessons/Lesson-10.md
+[Lesson 11]: Lessons/Lesson-11.md
+[Lesson 12]: Lessons/Lesson-12.md
 
 ### Homework
 
