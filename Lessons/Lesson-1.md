@@ -17,7 +17,7 @@ GraphQL represents a new way to work with network transactions. It provides many
 1. Define RESTful routes
 1. Describe the benefits of GraphQL
 1. Compare and contrast REST and GraphQL
-
+1. Write GraphQL Queries 
 
 <!-- > -->
 ## Warm Up (5 mins)
@@ -676,9 +676,17 @@ The result would look like this:
 
 ### Evaluate your Work!
 
+1. Compare REST with GraphQL
+1. Define RESTful routes
+1. Describe the benefits of GraphQL
+1. Compare and contrast REST and GraphQL
+1. Write GraphQL Queries
+
 | -   | Does not meet | Meets | Exceeds |
 |:---:|:-------------:|:-----:|:-------:|
-| | |
+| Understanding | Can't describe GraphQL | Could describe GraphQL it basic features and usage | Can confidently describe GraphQL and suggest use cases |
+| Comprehension | Can't compare GraphQL and REST | Could compare GraphQL and REST and identify the features unique to each | Can contrast GraphQL and REST and posit use cases suitable for each |
+| GraphQL Query Language | Can't write a query with graphQL | Can write a graphQL Query | Can see a path to writing GraphQL queries for a wide variety of operations |
 
 <!-- > -->
 
