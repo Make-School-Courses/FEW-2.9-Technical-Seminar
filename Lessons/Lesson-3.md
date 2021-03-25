@@ -461,6 +461,20 @@ Finish up as many of the challenges and stretch challenges as you can. Submit yo
 
 <!-- > -->
 
+### Evaluate your work 
+
+1. Build a GraphQL API over a Public API
+1. Use GraphQL and Express
+1. Define Resolvers for types
+
+| - | Does not meet expectations | Meets Expectation | Exceeds Expectations | 
+|:---:|:---:|:---:|:---:|
+| Comprehension of Resolvers | Can't explain what a resolver is | Can describe a resolver | Could teach another student what a resolver is |
+| Using express-graphql | Can't set up a simple server with express-graphql | Could set up a simple server using express-graphql | Could teach a new student how to set up a simple express-graphql server |
+| Using Resolvers | Can't write a simple resolver | Could write a simple resolver | Could expand on the resolvers from the homework solution to add new features and functionality |
+
+<!-- > -->
+
 ## Resources
 
 - https://www.toptal.com/developers/gitignore/api/node
