@@ -40,51 +40,61 @@ Students by the end of the course will be able to ...
 
 **Class Times:** Tuesday and Thursday at 2:45 PM - 5:30 PM (12 class sessions)
 
-| Class |          Date          |                 Topics                  | Assignment |
-|:-----:|:----------------------:|:---------------------------------------:|:-----------|
-|  1  | Tue, Mar 30   | [Lesson 1 - GraphQL Intro]              | SWAPI Query Challenges |
-|  -  |  Thu, Apr 1   | **No Class - Cesar Chavez** |
-|  2  | Tue, Apr 6    | [Lesson 2 - GraphQL Schemas and Types]  | - |
-|  3  | Thu, Apr 8    | [Lesson 3 - GraphQL + Express]          | - |
-|  4  | Tue, Apr 13   | [Lesson 4 - GraphQL Mutations]          | Start Hackernews backend |
-|  5  | Thu, Apr 15   | [Lesson 5 - GraphQL ORM]                | - |
-|  6  | Tue, Apr 20   | [Lesson 6 - GraphQL Subscriptions]      | - |
-|  7  | Thu, Apr 22   | [Lesson 7 - React Review]               | Hacknews backend |
-|  8  | Tue, Apr 27   | [Lesson 8 - React and GraphQL]          | Start Hackernews fronend |
-|  9  | Thu, Apr 29   | [Lesson 9 - ]               | - |
-|  10 | Tue, May 4    | [Lesson 10 - ]              | Hackernew frontend |
-|  11 | Thu, May 6    | [Lesson 11 - ]              | Hackernews Stretch challenges |
-|  12 | Tue, May 11   | Final Class                 | Hackernews Stretch challenges |
-|  13 | Thu, May 13   | Final Exams/Presentations               |  |
+| Class |    Date   |                Topics                  | Assignment |
+|:-----:|:---------:|:--------------------------------------:|:-----------|
+|  1  | Tue, Mar 30 | [Lesson 1 - GraphQL Intro]             | SWAPI Query Challenges |
+|  -  |  Thu, Apr 1 | **No Class - Cesar Chavez**            | - |
+|  2  | Tue, Apr 6  | [Lesson 2 - GraphQL Schemas and Types] | GraphQL Resolver Challenges |
+|  3  | Thu, Apr 8  | [Lesson 3 - GraphQL + Express]         | GraphQL OpenWeatherMap API |
+|  4  | Tue, Apr 13 | [Lesson 4 - GraphQL Mutations]         | GraphQL Mutation Challenges |
+|  5  | Thu, Apr 15 | [Lesson 5 - GraphQL Subscriptions]     | GraphQL Subscription Challenges |
+|  6  | Tue, Apr 20 | [Lesson 6 - React Review]              | - |
+|  7  | Thu, Apr 22 | [Lesson 7 - React and GraphQL]         | React + Apollo |
+|  8  | Tue, Apr 27 | [Lesson 8 - Lab]                       | - |
+|  9  | Thu, Apr 29 | [Lesson 9 - GraphQL ORM]               | GraphQL Hackernews |
+|  10 | Tue, May 4  | [Lesson 10 - Advanced Queries]         | - |
+|  11 | Thu, May 6  | [Lesson 11 - Lab]                      | - |
+|  12 | Tue, May 11 | Final Class                            | - |
+|  13 | Thu, May 13 | Final Exams/Presentations              | - |
 
 [Lesson 1 - GraphQL Intro]: Lessons/Lesson-1.md
 [Lesson 2 - GraphQL Schemas and Types]: Lessons/Lesson-2.md
 [Lesson 3 - GraphQL + Express]: Lessons/Lesson-3.md
 [Lesson 4 - GraphQL Mutations]: Lessons/Lesson-4.md
-[Lesson 5 - GraphQL ORM]: Lessons/Lesson-5.md
-[Lesson 6 - GraphQL Subscriptions]: Lessons/Lesson-6.md
-[Lesson 7 - React Review]: Lessons/Lesson-7.md
-[Lesson 8 - ]: Lessons/Lesson-8.md
-[Lesson 9]: Lessons/Lesson-9.md
-[Lesson 10]: Lessons/Lesson-10.md
-[Lesson 11]: Lessons/Lesson-11.md
+[Lesson 5 - GraphQL Subscriptions]: Lessons/Lesson-5.md
+[Lesson 6 - React Review]: Lessons/Lesson-6.md
+[Lesson 7 - React and GraphQL]: Lessons/Lesson-7.md
+[Lesson 8 - Lab]: Lessons/Lesson-8.md
+[Lesson 9 - GraphQL ORM]: Lessons/Lesson-9.md
+[Lesson 10 - Advanced Queries]: Lessons/Lesson-10.md
+[Lesson 11 - Lab]: Lessons/Lesson-11.md
 [Lesson 12]: Lessons/Lesson-12.md
 
 ### Homework
 
 -----------------------------
-- Class 1 -
+- Class 1 - Start: Tues Mar 30 Due: Tues Apr 6
 	- Watch How To GraphQL (first 4 sections)
 	- Answer Questions on Gradescope
-- Class 2 - 
+	- Due Class 2
+- Class 2 - Start: Tues Apr 6 Due: Thurs Apr 8
 	- Watch How to GraphQL (remaining videos)
 	- Complete challenges in Lesson-2 #challenges
 		- Submit to GradeScope
-- Class 3 - 
+		- Due Class 3
+- Class 3 - Start: Thurs Apr 8 Due: Tues Apr 13
 	- OpenWeatherMap graphQL API
-		- Complete as many of the challenges as you can
-- Class 4 - 
-	- 
+		- Complete the challenges in Lesson-3
+		- Submit to GradeScope
+		- Due Class 5
+- Class 4 - Start: Tues Apr 13 Due: Tues Apr 20
+	- **Could be a lab for assignment 3**
+	- GraphQL Express server and Mutations
+	- Complete the challenges in Lesson-4
+		- Submit to Gradscope
+- Class 5 - **Lab day for assignment 3 and 4**
+- Class 6 - Start: Tue, Apr 20 Due: Tue, Apr 27
+	- How to GraphQL
 -----------------------------
 
 

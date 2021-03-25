@@ -279,7 +279,7 @@ npm start
 
 <!-- > -->
 
-### Schema Buildout
+### GraphQL Express Server setup
 
 Add the following to `server.js`. Import dependancies:
 
