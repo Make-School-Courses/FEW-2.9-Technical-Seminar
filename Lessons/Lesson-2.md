@@ -811,6 +811,21 @@ Below is an example query, and the response that should come back
 
 <!-- > -->
 
+### Evaulate your Work
+
+1. Define a GraphQL Schema
+1. Define a GraphQL Resolver
+1. Use GraphQL Queries
+1. Use GraphiQL
+
+| -   | Does not meet expectations | Meets Expectations | Exceeds Expectations |
+|:---:|:---:|:---:|:---:|
+| GraphQL Schemas | Can't describe or explain GraphQL schemas | Can describe GraphQL schemas | Could teach the basic concepts of GraphQL schemas |
+| Writing Schemas | Can't write a GraphQL schema | Can write a GraphQL schema | Feel confident you could write a GraphQL schema for a variety of situations beyond the homework examples |
+| GraphQL Queries | Can't write a GraphQL Query | Caould write a graphQL query | Feel confident you could write GraphQL queries beyond the solutions to the homework problems |
+
+<!-- > -->
+
 ## Resources
 
 - https://www.howtographql.com
