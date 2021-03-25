@@ -72,7 +72,6 @@ Students by the end of the course will be able to ...
 
 ### Homework
 
------------------------------
 - Class 1 - Start: Tues Mar 30 Due: Tues Apr 6
 	- Watch How To GraphQL (first 4 sections)
 	- Answer Questions on Gradescope
@@ -95,62 +94,6 @@ Students by the end of the course will be able to ...
 - Class 5 - **Lab day for assignment 3 and 4**
 - Class 6 - Start: Tue, Apr 20 Due: Tue, Apr 27
 	- How to GraphQL
------------------------------
-
-
-
-
-
-- Assignment 1 - GraphQL Intro 
-	- Watch the videos here: https://www.howtographql.com
-		- Introduction
-		- GraphQL is the better REST
-		- Core Concepts
-		- Big Picture (Architecture)
-	- Answer the questions in assignment 1 on GradeScope.
-- Assignment 2 - GraphQL Types and Queries
-	- Complete the challenges in Class 2. Submit them on GradeScope.
-	- Watch https://www.howtographql.com videos up to the GraphQL Node Tutorial.
-- Assignment 3 - GraphQL Mutations
-	 - Finish up as many of the challenges and stretch challenges as you can in class 3. Submit your project on Gradscope. 
-- Assignment 4 - GraphQL Hackernews Clone
-	- 
-- Assignment 5 GraphQL + React 
-
-
-Hackernews Tutorial Node + GraphQL
-- Stretch challenges (Amy)
-React Review (Amy lesson 7)
-- 
-
-	
-
-<!-- All projects should have a Gihub repo to document your work. You should commit each time your sit down to work. It's your goal to show a record of your progress throughg the commit history in each progress.
-
-- Project 1: [How to GraphQL Intro](https://www.howtographql.com/basics/0-introduction/)
-	- Complete all of the sections here. You don't have to make a repo for this. 
-	- Deliverable: Show all sections completed
-	- Start: Class 1 
-	- Complete: Class 2
-- Project 2: [GraphQL Node tutorial](https://www.howtographql.com/graphql-js/0-introduction/)
-	- Complete this tutorial. 
-	- Deliverable: The completed project in a GitHub Repo
-	- Start: Class 2
-	- Complete: Class 4
-- Project 3: [React + Apollo](https://www.howtographql.com/react-apollo/0-introduction/)
-	- Complete the entire tutorial
-	- Deliverable: A GitHub Repo containing the completed project
-	- Start: Class 4
-	- Complete: Class 6
-- Custom Project Proposal
-	- Define the form and features of yopur custom project
-	- Deliverable: Github repo with README.md describing the project. 
-	- Start: Class 6
-	- Complete: Class 7
-- Custom Project 
-	- Deliverable: See custom project proposal
-	- Start: Class 7
-	- Complete: Class 11 -->
 
 ## Evaluation
 To pass this course you must meet the following requirements:
@@ -178,19 +121,18 @@ Any additional resources you may need (online books, etc.) can be found here. Yo
 
 ## Make School Course Policies
 
-[Academic Honesty](https://make.sc/academic-honesty)<br>
-[Accommodations for Students](https://make.sc/accommodations-for-students)<br>
-[Attendance Policy](https://make.sc/attendance-policy)  
-[Diversity and Inclusion Policy](https://make.sc/diversity-and-inclusion-policy)<br>
-[Grading System](https://make.sc/grading-system)
-<br>
-[Title IX Policy](https://make.sc/title-ix-policy)<br>
-[Program Learning Outcomes](https://make.sc/program-learning-outcomes)
-
+- [Program Learning Outcomes](https://make.sc/program-learning-outcomes) - What you will achieve after finishing Make School, all courses are designed around these outcomes.
+- [Grading System](https://make.sc/grading-system) - How grading is done at Make School
+- [Code of Conduct, Equity, and Inclusion](https://make.sc/code-of-conduct) - Learn about Diversity and Inclusion at Make School
+- [Academic Honesty](https://make.sc/academic-honesty-policy) - Our policies around plagerism, cheating, and other forms of academic misconduct
+- [Attendance Policy](https://make.sc/attendance-policy) - What we expect from you in terms of attendance for all classes at Make School
+- [Course Credit Policy](https://make.sc/course-credit-policy) - Our policy for how you obtain credit for your courses
+- [Disability Services (Academic Accommodations)](https://make.sc/disability-services) - Services and accommodations we provide for students
+- [Online Learning Tutorial](https://make.sc/online-learning-tutorial) - How to succeed in online learning at Make School
+- [Student Handbook](https://make.sc/student-handbook) - Guidelines, policies, and resources for all Make School students
 
 # Resources 
 
 - https://github.com/soggybag/BasicGraphQLExample
 - https://github.com/soggybag/react-apollo-github
 - https://github.com/soggybag/graphql-express-react
-- 

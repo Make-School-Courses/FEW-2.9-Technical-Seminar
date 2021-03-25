@@ -674,6 +674,14 @@ The result would look like this:
 
 <!-- > -->
 
+### Evaluate your Work!
+
+| -   | Does not meet | Meets | Exceeds |
+|:---:|:-------------:|:-----:|:-------:|
+| | |
+
+<!-- > -->
+
 ## Additional Resources
 
 - https://www.howtographql.com
