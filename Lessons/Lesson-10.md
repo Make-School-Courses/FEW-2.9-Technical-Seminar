@@ -44,6 +44,14 @@ Here a variable is defined like this:
 
 ## After Class 
 
-Continue working on the React + Apollo tutorial: <https://www.howtographql.com/react-apollo/0-introduction/>
+Finish the React + Apollo tutorial: <https://www.howtographql.com/react-apollo/0-introduction/>
 
-- Complete the following chapters by next class: `Authentication`, `More Mutations and Updating the Store`
+- Complete the following chapters by next class: `Realtime Updates with GraphQL Subscriptions`, `Pagination`, `Summary`
+
+<!-- > -->
+
+### Tutorial Stretch Challenges
+
+1. Implement the component that renders comments of authenticated users on links.
+1. Finish off the Logout functionality
+1. Implement a functionality that enables users to vote on comments of the links (one vote per link and user)

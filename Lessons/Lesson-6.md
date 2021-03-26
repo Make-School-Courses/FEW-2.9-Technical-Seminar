@@ -643,22 +643,18 @@ import { client } from './index';
 
 <!-- > -->
 
+## After Class
+
+Finish up the [Node + GraphQL](https://www.howtographql.com/graphql-js/1-getting-started/) tutorial
+
+<!-- > -->
+
 ### Stretch Challenges
 
 Finish up the [Node + GraphQL](https://www.howtographql.com/graphql-js/1-getting-started/) tutorial and build the following functionalities off the completed version:
 
 - Implement a functionality on your GraphQL Server that allows your users add comments to the links
 - Implement a functionality on your GraphQL Server that allows users to upvote comments
-
-<!-- > -->
-
-## After Class
-
-Time to start working on the frontend of hacker news!
-
-Start working on the React + Apollo tutorial: <https://www.howtographql.com/react-apollo/0-introduction/>
-
-- Complete the following chapters by next class: `Introduction`, `Getting Started`, `Queries: Loading Links`
 
 <!-- > -->
 ## Resources

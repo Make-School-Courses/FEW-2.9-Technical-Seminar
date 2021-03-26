@@ -305,9 +305,9 @@ Work on the Hackernews clone tutorial.
 
 ## After Class 
 
-Continue the Hackernews clone GraphQL tutorial.
+Continue working on the React + Apollo tutorial: <https://www.howtographql.com/react-apollo/0-introduction/>
 
-- Complete the following chapters by the next class: `Adding a Database`, `Connecting the Server and Database with Prisma Client`, and `Authentication`
+- Complete the following chapters by next class: `More Mutations and Updating the Store`, `Filtering: Searching the List of Links`
 
 ## Resources
 

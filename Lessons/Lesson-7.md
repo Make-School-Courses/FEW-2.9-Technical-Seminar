@@ -54,9 +54,11 @@ Copy the token and add the following to the HTTP Headers tab (lower left)
 
 ## After Class 
 
-Continue working on the React + Apollo tutorial: <https://www.howtographql.com/react-apollo/0-introduction/>
+Time to start working on the frontend of hacker news!
 
-- Complete the following chapters by next class: `Mutations: Creating Links`, `Routing`
+Start working on the React + Apollo tutorial: <https://www.howtographql.com/react-apollo/0-introduction/>
+
+- Complete the following chapters by next class: `Introduction`, `Getting Started`, `Queries: Loading Links`
 
 
 
