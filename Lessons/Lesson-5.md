@@ -16,10 +16,9 @@
 <!-- > -->
 
 1. Describe Subscriptions
-1. Use Subscriptions with GraphQL
-1. Use Graphiql to test subscriptions
 1. Describe Websockets
-1. Implement a websocket 
+1. Implement a websocket server
+1. Implement a websocket client
 
 <!-- > -->
 
@@ -326,6 +325,22 @@ Tour Prisma Studio...
 Finish the Hackernews Node.js tutorial!
 
 - Complete the following chapters by the next class: `Realtime GraphQL Subscriptions`, `Filtering, Pagination & Sorting` and `Summary`
+
+<!-- > -->
+
+### Evaluate your progress
+
+1. Describe Subscriptions
+1. Describe Websockets
+1. Implement a websocket 
+1. Implement a websocket client
+
+| - | Does not meet expectations | Meets expectations | Exceeds expectations | 
+|:---:|:---:|:---:|:---:|
+| Conprension of Subscriptions | Can't explain GraphQL subscriptions | Can explain GraphQL subscriptions | Could teach the basics of GraphQL subscriptions to another student |
+| Websockets | Can't describe websockets | Can describe websockets | Could describe uses cases for websockets |
+| Implementing websocket server | Can't implement a simple web socket | Can implement a websocket server | Could expand upon the challenge solution server |
+| Create a Websocket client | Can't create a simple websocket client | Can create a simple websocket client | Could expand on the challenge solution |
 
 <!-- > -->
 

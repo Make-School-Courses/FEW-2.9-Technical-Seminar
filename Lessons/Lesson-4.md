@@ -474,6 +474,22 @@ Compelete the challenegs above and submit them to gradescope.
 
 <!-- > -->
 
+### Evaluate your work
+
+1. Describe mutations
+1. Define mutation queries 
+1. Use Mutations 
+1. Describe Resolvers
+1. Write resolvers
+
+| - | Does not meet expectations | Meets Expectations | Exceeds Expectations |
+|:---:|:---:|:---|:---:|
+| Comprehension | Can't describe GraphQL mutations | Can describe GraphQL mutations | Could describe potential use cases for GraphQL mutations |
+| Mutation Queries | Can't write a mutation query | Can write mutation queries | Can write mutation queries that expand on the challenge solutions |
+| Mutation Resolvers | Can't write a Mutation reolsver | Can write a mutation resolver | Could write mutation resolvers that expand upon the solutions to the challenges |
+
+<!-- > -->
+
 ## Resources
 
 - 
