@@ -4,27 +4,7 @@
 
 ## Review 
 
-Imagine you are working on a GraphQL card game. 
 
-```JS
-enum Suit {
-	...
-}
-
-type Card {
-	value: Int!
-	suit: Suit!
-}
-
-type Hand {
-	cards: [Card!]!
-}
-```
-
-<!-- > -->
-
-- Define a mutation that draws a card. 
-- Define a mutation that discards a card.
 
 <!-- > -->
 

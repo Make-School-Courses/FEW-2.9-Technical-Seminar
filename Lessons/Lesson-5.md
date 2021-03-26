@@ -6,8 +6,33 @@
 
 <!-- > -->
 
-- Q: What is an ORM?
-- Q: What is Prisma? 
+## Review 
+
+Imagine you are working on a GraphQL card game. 
+
+```JS
+enum Suit {
+	...
+}
+
+type Card {
+	value: Int!
+	suit: Suit!
+}
+
+type Hand {
+	cards: [Card!]!
+}
+```
+
+<!-- > -->
+
+Write two GraphQL mutation *queries*: 
+
+- Define a mutation that draws a card.
+  - This is a mutation since it will remove a card from the deck and add it to your hand
+- Define a mutation that discards a card. 
+  - This is a mutation since it will add a card to the discard pile and remove it from your hand
 
 <!-- > -->
 
@@ -33,6 +58,18 @@ Use them to send push notifications and real time updates to connected GraphQL c
 <!-- > -->
 
 GraphQL *doesn't* implement the code that backs up subscriptions. This is handled by the framework or library that implements the GraphQL Spec. For web based projects this is most often a websocket. 
+
+<!-- > -->
+
+Most often you should not use subscriptions to stay up to date with your backend. 
+
+Instead poll intermittently or execute queries on user interaction. 
+
+<!-- > -->
+
+Subscriptions are best used for small incremental changes. Loading large objects is expensive and doing this overwesocket could waste resources. 
+
+Best use case: Low latency real tiem updates. 
 
 <!-- > -->
 

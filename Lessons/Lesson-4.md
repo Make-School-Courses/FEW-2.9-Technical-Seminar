@@ -24,7 +24,10 @@ Break out into pairs and choose who will be the reviewer and reviewee for the ch
 After 5 minutes, switch roles.
 
 <!-- > -->
+
 ## Review
+
+<!-- > -->
 
 Write a Query and a Resolver for this schema: 
 
