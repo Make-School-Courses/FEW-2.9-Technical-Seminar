@@ -8,7 +8,6 @@ Welcome to FEW 2.9
 
 GraphQL represents a new way to work with network transactions. It provides many benefits over REST.
 
-
 <!-- > -->
 
 ## Class Learning Objectives
@@ -102,16 +101,13 @@ Imagine we are working with a collection of Posts and User resources on a server
 
 Each route points to a url/address/endpoint <br> at the server. 
 
-- http://yourdomain.com/posts
 - http://yourdomain.com/posts 
-- http://yourdomain.com/posts/10
-- http://yourdomain.com/posts/23 
-- http://yourdomain.com/posts/5
+- http://yourdomain.com/post/10
 - http://yourdomain.com/users/2/posts
 
 <!-- > -->
 
-Here's a real api. 
+Here's a real API. 
 
 The Star Wars API (SWAPI) uses the following routes: 
 
@@ -135,11 +131,11 @@ The **specification** defines how the server should respond to those requests.
 
 Unlike REST 😴 a GraphQL 😎 server would use a single ☝️ endpoint to serve all of it's resources. 
 
-The sample API we looked used at least three routes and the Star Wars API had 5. 
+The sample API we looked at used at least three routes and the Star Wars API had 5. 
 
 <!-- > -->
 
-If SWAPI used GraphQL 😎 <br> it would only use a single end point: 
+If SWAPI used GraphQL 😎 <br> it would only use a single ☝️ end point: 
 
 - https://swapi.dev/api/
 
@@ -147,11 +143,11 @@ If SWAPI used GraphQL 😎 <br> it would only use a single end point:
 
 ## GraphQL Queries 
 
-With GraphQL you write a Query that describes the data you want.
+With GraphQL you write a Query that describes the data you want from any related resources.
 
 <!-- > -->
 
-With REST you would send a request to one of two endpoints: 
+With REST 😴 you send a request to the end point of each resource you want: 
 
 - http://yourdomain.com/posts/
 - http://yourdomain.com/users/
@@ -186,7 +182,7 @@ With GraphQL 😎 you only have a single endpoint to which you send a query that
 
 ```JS
 {
-  posts: {
+  posts {
     title
   }
 }
@@ -196,7 +192,7 @@ Or this:
 
 ```JS
 {
-  users: {
+  users {
     name
   }
 }
@@ -216,7 +212,7 @@ http://graphql.org/swapi-graphql
 
 - Type a Query in the left side
 - Click the ▶️ button at the top 
-- Look at the results on the right
+- Look 👁 at the results on the right
 - Try the following queries...
 
 <!-- > -->
@@ -231,14 +227,16 @@ http://graphql.org/swapi-graphql
   }
 }
 
-# Challenge: Find Luke, Han, R2, C3PO and Vader
+# Challenge: find Luke, Han, R2, C3PO and Vader
 ```
 
 <!-- > -->
 
 **Compare REST with GraphQL**
 
-REST multiple endpoints | GraphQL single endpoint
+REST 😴 multiple endpoints 
+
+GraphQL 😎 single endpoint
 
 <!-- > -->
 
@@ -307,11 +305,11 @@ With GraphQL we only received:
 }
 ```
 
-<small>(of course we only asked for the name.)</small>
+<small>(Of course we only asked for the name, if we needed more!)</small>
 
 <!-- > -->
 
-If we *only* wanted the name the GraphQL <br> query would have saved some bandwidth!
+If we *only* wanted the name the GraphQL 😎 <br> query would have saved some bandwidth! 🗜
 
 <!-- > -->
 
@@ -325,18 +323,16 @@ Describe the fields you want in the query:
   }
 }
 
-# Try these fields: height, mass
+# Try these fields: height, mass, eyeColor
 ```
 
 <!-- > -->
 
+**Compare REST with GraphQL**
+
 With GraphQL 😎 we describe what we want <br> in our query and server returns <br> 🎁 data that matches the query. 
 
-<!-- > -->
-
-This prevents **over fetching** where we get <br> more data than we need. 
-
-Instead we get only the data we ask for. 
+With REST 😴 you most often get everything. <br> (**over fetching**)
 
 <!-- > -->
 
@@ -362,9 +358,10 @@ Under fetching occurs when you don't get all of the data you need in a single re
 
 <!-- > -->
 
-Each time you found a person, *you had to make a second request* to find their  homeworld (under fetching). 
+Each time you found a person, *you had to make a second request* to find their  homeworld. <br> 
+<small>(under fetching)</small>
 
-Along the way you loaded *more* data than you needed (over-fetched.)
+Along the way you loaded *more* data than you needed. <small>(over-fetched)</small>
 
 <!-- > -->
 
@@ -390,33 +387,35 @@ Try this with GraphQL.
 1. Get R2-D2's name and homeworld
 1. Get Leia's name and homeworld
 1. Get Han's name, height, and homeworld
-1. Get R2's name, eyecolor, homeworld and it's diamter
+1. Get R2's name, eyecolor, homeworld and it's diameter
 
 <!-- > -->
 
 **Compare REST with GraphQL**
 
-REST over or under fetches
+REST 😴 over or under fetches
 
-GraphQL fetches only what you ask for
+GraphQL 😎 fetches only what you ask for in a single ☝️ query!
 
 <!-- > -->
 
 ## GraphQL vs REST
 
-**Pair and discuss the pros and cons of REST and GraphQL. **
+**Pair and discuss the pros and cons of REST and GraphQL.**
+
+Tell your partner everything that was just covered. Think how this might improve your work or where there might be problems. 
 
 <!-- > -->
 
-- REST
+- **REST** 😴
   - Requires multiple endpoints. Makes for a complex API.
     - Harder to make changes to your API. 
-  - Often over fetches providing more data that your need and eating bandwidth
-  - Often under fetchs, requiring more complex queries.
+  - Often over fetches providing more data than you need eating bandwidth
+  - Often under fetchs, requiring more complex queries and more bandwidth. 
 
 <!-- > -->
 
-- GraphQL
+- **GraphQL** 😎
   - Uses a single endpoint.
     - Easier to manage
     - More tolerant to changes
@@ -427,50 +426,68 @@ GraphQL fetches only what you ask for
 
 <!-- > -->
 
+- **GraphQL** 😎 provides other benefits!
+  - Type safety 🛡
+  - Introspection 🔎
+
+<!-- > -->
+
 ## Core features of GraphQL
 
 <!-- > -->
 
-Schema Definition Language: 
-<br> syntax for writing schemas.
+Schema Definition Language:
 
 - **Types**
 - **Introspection**
 
 <!-- > -->
 
-- **Resolvers**: A function on a GraphQL server that's responsible for fetching the data for a single field
-
-<!-- > -->
-
 Query Language
 
-  - **Query**
-  - **Mutation**
+- **Query**
+- **Mutation**
+- **Subscriptions**
 
 <!-- > -->
 
-**Subscriptions**
+**What is GraphQL** 🤔
+
+<!-- > -->
+
+GraphQL is an open-source data query and manipulation language for APIs, and a runtime for fulfilling queries with existing data.
+
+<small>From wikipedia</Small>
 
 <!-- > -->
 
 ## GraphQL Query Language
 
-The GraphQL query language looks a lot like objects and dictionaries that you have seen in other languages. 
+The GraphQL query language looks a lot like objects and dictionaries that you have seen in other languages.
 
 <!-- > -->
 
-### GraphQL Types
+You were writing queries in the GraphQL Query language when in the GraphiQL browser. 
 
 <!-- > -->
 
-Start a query with the `{` and `}`
+GraphQL queries can be one of three types: 
+
+- Query
+- Mutation
+- Subscription
+
+<!-- > -->
+ 
+ Start a query with the type and `{` and `}`:
 
 ```JS
-{
-  # query
+query {
+
 }
 ```
+
+ <small>For queries you can leave `query` out</small>
 
 <!-- > -->
 
@@ -486,7 +503,22 @@ You can Query any valid resource by naming it. Some resources will take paramete
 
 For example using SWAPI you can query a person and include it's `personId`
 
-Returns the resource the personId
+This returns a Person type.
+
+<!-- > -->
+
+From here you can list any fields you want that exist on the Type: 
+
+```JS
+{
+  person(personID: 5) {
+    name
+    eyeColor
+  }
+}
+```
+
+<small>The Person Type defines `name` and `eyeColor` as fields</small>
 
 <!-- > -->
 
@@ -496,9 +528,11 @@ GraphQL understands the features of a type and allows the system to see when we 
 
 You'll see this as GraphiQL browser provides code hints. 
 
+<small>This works because we have defined the types!</small>
+
 <!-- > -->
 
-### Nested Types
+### Nested Fields
 
 <!-- > -->
 
@@ -528,7 +562,7 @@ Getting the fields of a nested resource is like making query within a query.
 }
 ```
 
-Homeworld is another object type. With it's own fields. 
+<small>Homeworld is another object type. With it's own fields.</small> 
 
 <!-- > -->
 
@@ -554,7 +588,7 @@ A **collection** is a collection of a type. You can get fields of that type like
 
 ```JS
 {
-  allPeople { # All people 
+  allPeople { # Returns a collection of people
     people {  # for each person
       name    # fetch their name
     }
@@ -570,9 +604,9 @@ Collections allow you to get nested resources also:
 
 ```JS
 {
-  allPlanets { # Get all planets
+  allPlanets { # Returns a collection of Planets
     planets {  # for each planet
-      name     # Fetch the name
+      name     # Display the name
       filmConnection { # get the films connected to this planet
         films { # for each film
           title # fetch the title
@@ -611,7 +645,7 @@ Consider a scenario where you need two people:
 
 <!-- > -->
 
-The results have a problem
+The results would have a problem
 
 ```JS
 {
