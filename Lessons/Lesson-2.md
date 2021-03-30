@@ -10,13 +10,14 @@ Strong typing of data allows for introspection.
 
 ## GraphQL 😎 and Express 🚂
 
-Today we will look at a simple example implementing GraphQL with Express. This is important since it puts GraphQL in a context that you have experience with.
+Today we will look at a simple example implementing GraphQL with Express. This will give us a chance to look at GrapQL from the server side.
 
 <!-- > -->
 
 ## Class Learning Objectives/Competencies
 
 1. Define a GraphQL Schema
+1. Use the GraphQL Schema Language
 1. Define a GraphQL Resolver
 1. Use GraphQL Queries
 1. Use GraphiQL
@@ -33,15 +34,15 @@ GraphQL and SQL are both Query languages. How do they differ?
 
 ## Review 
 
-- **Name three advantages of GraphQL over REST**
+**Name three advantages of GraphQL 😎 over REST 😴**
 
 <!-- > -->
 
-### GraphQL Queries 
+### GraphQL Queries
 
-**Use: https://graphql.org/swapi-graphql to answer these questions...**
+**Use: https://graphql.org/swapi-graphql to answer the following questions...**
 
-**HINT:** If you get stuck, refer back to the [examples from the previous lesson](https://github.com/Make-School-Courses/FEW-2.9-Technical-Seminar/blob/master/Lessons/Lesson-1.md#nested-types) 
+<small>**HINT:** If you get stuck, refer back to the [examples from the previous lesson](https://github.com/Make-School-Courses/FEW-2.9-Technical-Seminar/blob/master/Lessons/Lesson-1.md#nested-types)</small> 
 
 <!-- > -->
 
@@ -64,19 +65,19 @@ GraphQL and SQL are both Query languages. How do they differ?
 
 <!-- > -->
 
-## GraphQL Schemas
+## GraphQL 😎 Schemas 🛠
 
 <!-- > -->
 
-A GraphQL **Schema** contains a set of Types that describe everything you can query from a service. 
+A GraphQL **Schema** 🛠 contains a set of Types that describe everything you can query from a service. 
 
 <!-- > -->
 
-Schemas are written in the GraphQL Schema language which is similar to the Query language. 
+Schemas 🛠 are written in the GraphQL 😎 **Schema language** which is similar to the Query language. 
 
 <!-- > -->
 
-The SWAPI might define a person like this: 
+SWAPI might define a person 💁 like this: 
 
 ```JS
 type Person {
@@ -86,7 +87,9 @@ type Person {
 }
 ```
 
-`name` is a field and `String` is it's type. `!` means the field is non-nullable (it will always return a value.)  
+- `name` is a field 
+- `String` is it's type
+- `!` means the field is non-nullable (it will always return a value.)  
 
 <!-- > -->
 
@@ -99,11 +102,15 @@ type Person {
 }
 ```
 
-You can use types like: `Int` and `[ ... ]` (a collection)
+You can use types like: 
+
+- `Int`
+- `Float`
+- `[ SomeType ]` (a collection)
 
 <!-- > -->
 
-GraphQL supports: 
+GraphQL includes these default types: 
 
 - `Int`: Integer
 - `Float`: Decimal
@@ -118,14 +125,16 @@ The elements in a collection are typed and they will all be the same type.
 
 ```JS
 type MyType {
-  favNumbers: [Int!]!
+  favNumbers: [Int!]
   favFoods: [String!]!
+  favWebsites: [URL]!
+  favFavs: [Favs]
 }
 ```
 
 <!-- > -->
 
-What about a Recipe type: 
+What about a Recipe 🍛 type: 
 
 ```JS 
 type Recipe {
@@ -139,7 +148,7 @@ type Recipe {
 
 <!-- > -->
 
-A recipe might have a list of ingredients. 
+A recipe 🍝 might have a list of ingredients. 
 
 ```JS 
 type Recipe {
@@ -165,21 +174,11 @@ type Recipe {
 }
 ```
 
-<!-- > -->
-
-```JS
-type Recipe {
-  name: String!
-  description: String
-  ingredients: [String!]! 
-  isSpicy: Boolean!
-  isVegetarian: Boolean!
-}
-```
+<small>What are the types for `isSpicy` and `isVegetarian`?</small>
 
 <!-- > -->
 
-### Enum
+### Enum ☎️
 
 <!-- > -->
 
@@ -187,7 +186,7 @@ The GraphQL Schema language supports enumerations.
 
 <!-- > -->
 
-An **enumeration** is a list of set values.
+An **enumeration** ☎️ is a list of set values.
 
 <!-- > -->
 
@@ -212,10 +211,10 @@ type Recipe {
 
 Write an enum that defines the diet type: 
 
-- ominvore
-- paleo
-- vegitarian
-- vegan
+- ominvore 🍱
+- paleo 🍖
+- vegetarian 🧁
+- vegan 🥗
 
 <!-- > -->
 
@@ -235,15 +234,15 @@ type Recipe {
 
 <!-- > -->
 
-### Interface
+### Interface 🔌
 
 <!-- > -->
 
-An **interface** is a description or contract that describes types that conform to it. 
+An **interface** 🔌 is a description or contract that describes types that conform to it. 
 
 <!-- > -->
 
-Imagine characters in the films could be humans or droids. 
+Imagine characters 👯‍♂️ in the films 🎬 could be humans 👷 or droids 🤖. 
 
 ```JS 
 interface Character {
@@ -263,11 +262,11 @@ type Droid implements Character {
   primaryFunction: String!
 }
 ```
-<small>(Anything that implements the interface must include name and films)</small>
+<small>(Anything that implements the interface must include the fields: `name` and `films`)</small>
 
 <!-- > -->
 
-An interface is also a type. For example: 
+An interface 🔌 is also a type. For example: 
 
 ```JS
 type Film {
@@ -280,11 +279,11 @@ type Film {
 
 <!-- > -->
 
-## GraphQL and Express
+## GraphQL 😎 and Express 🚂
 
 <!-- > -->
 
-Let's get started with GraphQL and Express. **The goal of this section is to create an Express server that implements GraphQL.**
+Let's get started with GraphQL 😎 and Express 🚂. **The goal of this section is to create an Express server that implements GraphQL.**
 
 <!-- > -->
 

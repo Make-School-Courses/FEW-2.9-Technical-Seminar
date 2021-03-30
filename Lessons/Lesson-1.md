@@ -42,6 +42,16 @@ Simple Object Access Protcol
 
 is the official standard maintained by the W3C. 
 
+```xml
+<book>
+  <isbn>1929394</isbn>
+  <author>Secret Agent Man</author>
+  ...
+</book>
+```
+
+<small>xml</small>
+
 <!-- > -->
 
 ### REST 😴
@@ -50,23 +60,11 @@ Representational State Transfer
 
 is an architectural 🏛 principal and guidelines <br> for creating public APIs.
 
-<!-- > -->
-
-### REST 😴 vs SOAP 🧼
-
-SOAP is the orignal protocol and is officially maintained by the the W3C. SOAP relies on XML exclusively. 
-
-<small>(which is why it's not as widely used)</small>
+<small>Wikipedia says: REST is a software architectural *style*...</small>
 
 <!-- > -->
 
-REST on the other hand is simpler to use and is open to any data format so it works with JSON. This makes it a popular for APIs that rely on JSON. 
-
-<small>(Works with JSON and is open)</small>
-
-<!-- > -->
-
-## What is REST? 😴
+## How does REST 😴 work?
 
 Before we look at GraphQL lets take a look at REST. 
 
@@ -74,15 +72,11 @@ This is important because GraphQL seeks to solve many issues and pain points of 
 
 <!-- > -->
 
-A REST API is an API that follows REST-ful Routing. REST-ful routing is a set of conventions/specifications for manipulating a collection of data hosted on a server. 
+A REST API is an API that follows REST-ful Routing. REST-ful routing is a set of conventions/specifications for implementing CRUD on a server. 
 
 <!-- > -->
 
 These conventions are common rules around the type of **HTTP request** and the **URLS** that are used for reading, updating, creating or deleting data on a server.
-
-<!-- > -->
-
-Imagine we are working with a collection of Posts and User resources on a server. A REST-ful API might define the following routes: 
 
 <!-- > -->
 
@@ -95,15 +89,7 @@ Imagine we are working with a collection of Posts and User resources on a server
 | /posts/5 | GET | ??? <!--Read post 5--> |
 | /users/2/posts | POST | ??? <!--Create a post for User 2--> |
 
-**What would be the operations for each of these routes? What do they do?**
-
-<!-- > -->
-
-Each route points to a url/address/endpoint <br> at the server. 
-
-- http://yourdomain.com/posts 
-- http://yourdomain.com/post/10
-- http://yourdomain.com/users/2/posts
+<small>What would be the operations for each of these routes? What do they do?</small>
 
 <!-- > -->
 
@@ -119,42 +105,13 @@ The Star Wars API (SWAPI) uses the following routes:
 
 <!-- > -->
 
-## What is GraphQL?
-
-GraphQL 😎 is both a query language and a specification.
-
-The **language** allows you to _**QUERY**_ a server for data. 
-
-The **specification** defines how the server should respond to those requests.
-
-<!-- > -->
-
 Unlike REST 😴 a GraphQL 😎 server would use a single ☝️ endpoint to serve all of it's resources. 
 
-The sample API we looked at used at least three routes and the Star Wars API had 5. 
+The SWAPI (REST) had 5 endpoints! 
 
 <!-- > -->
 
-If SWAPI used GraphQL 😎 <br> it would only use a single ☝️ end point: 
-
-- https://swapi.dev/api/
-
-<!-- > -->
-
-## GraphQL Queries 
-
-With GraphQL you write a Query that describes the data you want from any related resources.
-
-<!-- > -->
-
-With REST 😴 you send a request to the end point of each resource you want: 
-
-- http://yourdomain.com/posts/
-- http://yourdomain.com/users/
-
-<!-- > -->
-
-### Try out REST 😴 with the SWAPI server.
+### Try out REST 😴 with the SWAPI server (REST).
 
 <!-- > -->
 
@@ -178,6 +135,10 @@ Use the planets 🪐 endpoint.
 
 <!-- > -->
 
+## Try it with GraphQL 😎
+
+<!-- > -->
+
 With GraphQL 😎 you only have a single endpoint to which you send a query that might look like this: 
 
 ```JS
@@ -194,6 +155,42 @@ Or this:
 {
   users {
     name
+  }
+}
+```
+
+<!-- > -->
+
+A query begins with: 
+
+```JS
+{
+  ...
+}
+```
+
+<!-- > -->
+
+Next add a type and any parameters for that type. In this case person is our type and personID is the parameter:
+
+```js
+{
+  person(personID: 5) {
+    ...
+  }
+}
+```
+
+<!-- > -->
+
+last, name the fields that you want. Note that person() returns a Person type and we can only include fields that exist on Person.
+
+```js
+{
+  person(personID: 5) {
+    name
+    eyeColor
+    ...
   }
 }
 ```
@@ -226,9 +223,9 @@ http://graphql.org/swapi-graphql
     name
   }
 }
-
-# Challenge: find Luke, Han, R2, C3PO and Vader
 ```
+
+<small>Challenge: change the id to find Luke, Han, R2, C3PO and Vader</small>
 
 <!-- > -->
 
@@ -305,7 +302,7 @@ With GraphQL we only received:
 }
 ```
 
-<small>(Of course we only asked for the name, if we needed more!)</small>
+<small>If we needed more we could ask for more!</small>
 
 <!-- > -->
 
@@ -322,9 +319,9 @@ Describe the fields you want in the query:
     eyeColor # includes eye color
   }
 }
-
-# Try these fields: height, mass, eyeColor
 ```
+
+<small>Try these fields: height, mass, eyeColor</small>
 
 <!-- > -->
 
@@ -342,15 +339,18 @@ Under fetching occurs when you don't get all of the data you need in a single re
 
 <!-- > -->
 
-### Challenge: Use https://swapi.dev to find Leia's homeworld. 🌍
+**Challenge:** Use REST to find Leia's homeworld. 🌍
 
 - https://swapi.dev/people/5
 
-<small>The results include a homeworld field. Use this to get the name of Leia's homeworld...</small>
+- Get the people results find the homeworld 
+- Use that to get the name of the homeworld
 
 <!-- > -->
 
 ### Challenge: 
+
+Use the REST API to find: 
 
 1. Find Chewbacca's homeworld. 
 1. Find R2-D2's homeworld
@@ -365,7 +365,7 @@ Along the way you loaded *more* data than you needed. <small>(over-fetched)</sma
 
 <!-- > -->
 
-Try this with GraphQL. 
+**Try this with GraphQL.**
 
 ```JS
 {
@@ -393,9 +393,9 @@ Try this with GraphQL.
 
 **Compare REST with GraphQL**
 
-REST 😴 over or under fetches
+- REST 😴 over or under fetches
 
-GraphQL 😎 fetches only what you ask for in a single ☝️ query!
+- GraphQL 😎 fetches only what you ask for in a single ☝️ query!
 
 <!-- > -->
 
@@ -436,186 +436,23 @@ Tell your partner everything that was just covered. Think how this might improve
 
 <!-- > -->
 
-Schema Definition Language:
-
-- **Types**
-- **Introspection**
-
-<!-- > -->
-
-Query Language
-
-- **Query**
-- **Mutation**
-- **Subscriptions**
+- Query Language
+  - Query
+  - Mutation
+  - Subscription
+- Schema Definition Language
+  - Strong Typing
+  - Introspection
 
 <!-- > -->
 
-**What is GraphQL** 🤔
+**So, What is GraphQL** 🤔
 
 <!-- > -->
 
 GraphQL is an open-source data query and manipulation language for APIs, and a runtime for fulfilling queries with existing data.
 
 <small>From wikipedia</Small>
-
-<!-- > -->
-
-## GraphQL Query Language
-
-The GraphQL query language looks a lot like objects and dictionaries that you have seen in other languages.
-
-<!-- > -->
-
-You were writing queries in the GraphQL Query language when in the GraphiQL browser. 
-
-<!-- > -->
-
-GraphQL queries can be one of three types: 
-
-- Query
-- Mutation
-- Subscription
-
-<!-- > -->
- 
- Start a query with the type and `{` and `}`:
-
-```JS
-query {
-
-}
-```
-
- <small>For queries you can leave `query` out</small>
-
-<!-- > -->
-
-You can Query any valid resource by naming it. Some resources will take parameters that describe the resource you are looking for. 
-
-```JS
-{
-  person(personID: 5) {
-    # ...
-  }
-}
-```
-
-For example using SWAPI you can query a person and include it's `personId`
-
-This returns a Person type.
-
-<!-- > -->
-
-From here you can list any fields you want that exist on the Type: 
-
-```JS
-{
-  person(personID: 5) {
-    name
-    eyeColor
-  }
-}
-```
-
-<small>The Person Type defines `name` and `eyeColor` as fields</small>
-
-<!-- > -->
-
-### Introspection
-
-GraphQL understands the features of a type and allows the system to see when we are making a mistake.
-
-You'll see this as GraphiQL browser provides code hints. 
-
-<small>This works because we have defined the types!</small>
-
-<!-- > -->
-
-### Nested Fields
-
-<!-- > -->
-
-A type might point to other types. A person for example has a homeworld which points to a planet. 
-
-```JS
-{
-  person(personID: 5) {
-    name
-    homeworld
-  }
-}
-```
-
-<!-- > -->
-
-Getting the fields of a nested resource is like making query within a query. 
-
-```JS
-{
-  person(personID: 3) {
-    name
-    homeworld {
-      name
-    }
-  }
-}
-```
-
-<small>Homeworld is another object type. With it's own fields.</small> 
-
-<!-- > -->
-
-### GraphQL Collections
-
-<!-- > -->
-
-Collections are like arrays they properties like totalCount.
-
-```JS
-{
-  allFilms{
-    totalCount
-  }
-}
-```
-
-<small>Gets the number of films</small>
-
-<!-- > -->
-
-A **collection** is a collection of a type. You can get fields of that type like this: 
-
-```JS
-{
-  allPeople { # Returns a collection of people
-    people {  # for each person
-      name    # fetch their name
-    }
-  }
-}
-```
-
-<small>Returns a list of persons.</small>
-
-<!-- > -->
-
-Collections allow you to get nested resources also: 
-
-```JS
-{
-  allPlanets { # Returns a collection of Planets
-    planets {  # for each planet
-      name     # Display the name
-      filmConnection { # get the films connected to this planet
-        films { # for each film
-          title # fetch the title
-        }
-      }
-    }
-  }
-}
-```
 
 <!-- > -->
 
