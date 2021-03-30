@@ -16,7 +16,7 @@ GraphQL represents a new way to work with network transactions. It provides many
 1. Define RESTful routes
 1. Describe the benefits of GraphQL
 1. Compare and contrast REST and GraphQL
-1. Write GraphQL Queries 
+1. Write GraphQL Queries
 
 <!-- > -->
 ## Warm Up (5 mins)
@@ -40,7 +40,7 @@ These are two different approaches to online data transmission. These describe h
 
 Simple Object Access Protcol 
 
-is the official standard maintained by the W3C. 
+is the official standard maintained by the W3C. SOAP uses XML exclusively!
 
 ```xml
 <book>
@@ -50,7 +50,7 @@ is the official standard maintained by the W3C.
 </book>
 ```
 
-<small>xml</small>
+<small>xml: Extensible Markup Language</small>
 
 <!-- > -->
 
@@ -66,13 +66,7 @@ is an architectural 🏛 principal and guidelines <br> for creating public APIs.
 
 ## How does REST 😴 work?
 
-Before we look at GraphQL lets take a look at REST. 
-
-This is important because GraphQL seeks to solve many issues and pain points of using REST.
-
-<!-- > -->
-
-A REST API is an API that follows REST-ful Routing. REST-ful routing is a set of conventions/specifications for implementing CRUD on a server. 
+A REST API is an API that follows REST-ful Routing. REST-ful routing is a set of conventions for implementing CRUD on an HTTP server. 
 
 <!-- > -->
 
@@ -111,6 +105,13 @@ The SWAPI (REST) had 5 endpoints!
 
 <!-- > -->
 
+**Compare REST and GraphQL**
+
+- REST 😴 - Multiple endpoints 🖐
+- GrapQL 😎 - Single endpoint ☝️
+
+<!-- > -->
+
 ### Try out REST 😴 with the SWAPI server (REST).
 
 <!-- > -->
@@ -121,7 +122,8 @@ Try the people 👯‍♀️ endpoint.
 - https://swapi.dev/api/people/3 - R2D2
 - https://swapi.dev/api/people/4 - Vader
 - https://swapi.dev/api/people/5 - Leia
-- **Challenge: find C-3PO, Han, and Chewy**
+
+**Challenge: find C-3PO, Han Solo, Chewbacca and Boba Fett**
 
 <!-- > -->
 
@@ -139,7 +141,7 @@ Use the planets 🪐 endpoint.
 
 <!-- > -->
 
-With GraphQL 😎 you only have a single endpoint to which you send a query that might look like this: 
+With GraphQL 😎 you will send a query that might look like this: 
 
 ```JS
 {
@@ -183,7 +185,7 @@ Next add a type and any parameters for that type. In this case person is our typ
 
 <!-- > -->
 
-last, name the fields that you want. Note that person() returns a Person type and we can only include fields that exist on Person.
+Add fields that you want. Note that person() returns a Person type and we can only include fields that exist on Person!
 
 ```js
 {
@@ -229,14 +231,6 @@ http://graphql.org/swapi-graphql
 
 <!-- > -->
 
-**Compare REST with GraphQL**
-
-REST 😴 multiple endpoints 
-
-GraphQL 😎 single endpoint
-
-<!-- > -->
-
 ## Over Fetching
 
 Over fetching occurs when you make a request and receive more 🗑 data than you need. 
@@ -245,7 +239,7 @@ This happens often. Think of all of those fields that you never use. 🤔
 
 <!-- > -->
 
-Look at the results that are returned with <br> the REST response vs the GraphQL response. 
+Look at the results that are returned with <br> the REST response vs the GraphQL 😎 response. 
 
 **What's the difference? 🤔**
 
@@ -290,7 +284,7 @@ The REST API returns the following when you use the /people route:
 
 <!-- > -->
 
-With GraphQL we only received: 
+With GraphQL 😎 we only received: 
 
 ```JS 
 {
@@ -306,7 +300,7 @@ With GraphQL we only received:
 
 <!-- > -->
 
-If we *only* wanted the name the GraphQL 😎 <br> query would have saved some bandwidth! 🗜
+If we *only* wanted the `name` field the GraphQL 😎 <br> query would have saved some bandwidth! 🗜
 
 <!-- > -->
 
@@ -321,30 +315,28 @@ Describe the fields you want in the query:
 }
 ```
 
-<small>Try these fields: height, mass, eyeColor</small>
+<small>Challenge: Get Vader's, height, and eyeColor</small>
 
 <!-- > -->
 
 **Compare REST with GraphQL**
 
-With GraphQL 😎 we describe what we want <br> in our query and server returns <br> 🎁 data that matches the query. 
-
-With REST 😴 you most often get everything. <br> (**over fetching**)
+- GraphQL 😎 - we describe what we want <br> in our query and server returns 🎁 data that matches the query. 
+- REST 😴 - you get everything (often **over fetching**)
 
 <!-- > -->
 
-## Under Fetching 
+## Under Fetching 🥚
 
-Under fetching occurs when you don't get all of the data you need in a single request and have to make another request to get the data you require. 
+Under fetching 🥚 occurs when you don't get all of the data you need in a single request and have to make another request to get the data you require. 
 
 <!-- > -->
 
 **Challenge:** Use REST to find Leia's homeworld. 🌍
 
 - https://swapi.dev/people/5
-
 - Get the people results find the homeworld 
-- Use that to get the name of the homeworld
+- Call the homeworld endpoint to get the homeworld
 
 <!-- > -->
 
@@ -358,14 +350,16 @@ Use the REST API to find:
 
 <!-- > -->
 
+**What happened? 🧐**
+
 Each time you found a person, *you had to make a second request* to find their  homeworld. <br> 
 <small>(under fetching)</small>
 
-Along the way you loaded *more* data than you needed. <small>(over-fetched)</small>
+Along the way you loaded *more* data than you needed.<small>(over fetching)</small>
 
 <!-- > -->
 
-**Try this with GraphQL.**
+**Try it with GraphQL 😎**
 
 ```JS
 {
@@ -393,9 +387,8 @@ Along the way you loaded *more* data than you needed. <small>(over-fetched)</sma
 
 **Compare REST with GraphQL**
 
-- REST 😴 over or under fetches
-
-- GraphQL 😎 fetches only what you ask for in a single ☝️ query!
+- REST 😴 - over or under fetches
+- GraphQL 😎 - fetches only what you ask for in a single ☝️ query!
 
 <!-- > -->
 
@@ -450,7 +443,7 @@ Tell your partner everything that was just covered. Think how this might improve
 
 <!-- > -->
 
-GraphQL is an open-source data query and manipulation language for APIs, and a runtime for fulfilling queries with existing data.
+> GraphQL is an open-source data query and manipulation language for APIs, and a runtime for fulfilling queries with existing data.
 
 <small>From wikipedia</Small>
 
@@ -497,6 +490,8 @@ The results would have a problem
 }
 ```
 
+<small>(Hypothetical results from the previous query)</small>
+
 <!-- > -->
 
 Use an **alias** to solve the problem!
@@ -532,6 +527,8 @@ The result would look like this:
 }
 ```
 
+<small>(Results from the previous query)</small>
+
 <!-- > -->
 
 ## After Class
@@ -542,6 +539,7 @@ The result would look like this:
   - Core Concepts
   - Big Picture (Architecture)
 - Answer the questions in assignment 1 on GradeScope.
+  - For each question provide the GraphQL query that would provide what was asked for. 
 
 <!-- > -->
 
