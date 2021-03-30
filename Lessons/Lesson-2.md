@@ -4,11 +4,11 @@
 
 Use a schema to define what your <br> GraphQL API can provide.
 
-Strong typing of data provide allows for introspection.
+Strong typing of data allows for introspection.
 
 <!-- > -->
 
-## GraphQL and Express
+## GraphQL 😎 and Express 🚂
 
 Today we will look at a simple example implementing GraphQL with Express. This is important since it puts GraphQL in a context that you have experience with.
 
@@ -25,10 +25,12 @@ Today we will look at a simple example implementing GraphQL with Express. This i
 
 ## Warm Up (5 mins)
 
-Discuss:
+**Discuss:**
+
 GraphQL and SQL are both Query languages. How do they differ?
 
 <!-- > -->
+
 ## Review 
 
 - **Name three advantages of GraphQL over REST**
@@ -66,7 +68,7 @@ GraphQL and SQL are both Query languages. How do they differ?
 
 <!-- > -->
 
-A GraphQL **Schema** contains a set of Types that describe the possible you can query from a service. 
+A GraphQL **Schema** contains a set of Types that describe everything you can query from a service. 
 
 <!-- > -->
 
@@ -79,6 +81,7 @@ The SWAPI might define a person like this:
 ```JS
 type Person {
   name: String!
+  eyeColor: String!
   ...
 }
 ```
@@ -96,7 +99,7 @@ type Person {
 }
 ```
 
-You can use types like: `Int` and `[ ... ]` (an array)
+You can use types like: `Int` and `[ ... ]` (a collection)
 
 <!-- > -->
 
@@ -111,7 +114,7 @@ GraphQL supports:
 
 <!-- > -->
 
-The elements in a list are typed and they will all be the same type. 
+The elements in a collection are typed and they will all be the same type. 
 
 ```JS
 type MyType {
@@ -157,6 +160,18 @@ type Recipe {
   name: String!
   description: String
   ingredients: [String!]! 
+  isSpicy: ?      # what type?
+  isVegetarian: ? # what type?
+}
+```
+
+<!-- > -->
+
+```JS
+type Recipe {
+  name: String!
+  description: String
+  ingredients: [String!]! 
   isSpicy: Boolean!
   isVegetarian: Boolean!
 }
@@ -192,6 +207,31 @@ type Recipe {
 ```
 
 <small>(Validates and restricts values to one from the list)</small>
+
+<!-- > -->
+
+Write an enum that defines the diet type: 
+
+- ominvore
+- paleo
+- vegitarian
+- vegan
+
+<!-- > -->
+
+```JS
+enum DietType {
+  ominvore
+  paleo
+  vegitarian
+  vegan
+}
+
+type Recipe {
+  ...
+  dietType: DietType! 
+}
+```
 
 <!-- > -->
 
@@ -257,7 +297,7 @@ Let's get started with GraphQL and Express. **The goal of this section is to cre
 
 <!-- > -->
 
-**Important!** Be sure to include a `.gitignore`. You need to prevent uploading your `node_modules` folder, so be sure add this to your `.gitignore`. 
+**Important!** Be sure to include a `.gitignore`. You need to prevent uploading your `node_modules` folder to GradeScope!
 
 **How to add a `.gitignore`:** https://www.toptal.com/developers/gitignore/api/node
 
@@ -359,7 +399,7 @@ Finally, start your app:
 // Start this app
 const port = 4000
 app.listen(port, () => {
-  console.log('Running on port:'+port)
+  console.log(`Running on port: ${port}`)
 })
 ```
 
