@@ -8,7 +8,7 @@ Strong typing of data allows for introspection.
 
 <!-- > -->
 
-## GraphQL 😎 and Express 🚂
+## GraphQL 😎 Schemas and Types
 
 Today we will look at a simple example implementing GraphQL with Express. This will give us a chance to look at GrapQL from the server side.
 
@@ -106,7 +106,7 @@ You can use types like:
 
 - `Int`
 - `Float`
-- `[ SomeType ]` (a collection)
+- `[...Type...]` (a collection)
 
 <!-- > -->
 
@@ -136,11 +136,11 @@ type MyType {
 
 What about a Recipe 🍛 type: 
 
-```JS 
+```python
 type Recipe {
-  name: String! # Name is a string and must be there
+  name: String! # Name is a string can't be null
   description: String # Description is a string and 
-                      # might be missing
+                      # might be null
 }
 ```
 
@@ -150,13 +150,13 @@ type Recipe {
 
 A recipe 🍝 might have a list of ingredients. 
 
-```JS 
+```python
 type Recipe {
   name: String!
   description: String
   ingredients: [String!]! # Must have a list of Strings
                           # and none of those strings can be 
-                          # null
+                          # null 
 }
 ```
 
@@ -215,6 +215,7 @@ Write an enum that defines the diet type:
 - paleo 🍖
 - vegetarian 🧁
 - vegan 🥗
+- insectivore 🐝
 
 <!-- > -->
 
@@ -224,6 +225,7 @@ enum DietType {
   paleo
   vegitarian
   vegan
+  insectivore
 }
 
 type Recipe {
@@ -283,7 +285,9 @@ type Film {
 
 <!-- > -->
 
-Let's get started with GraphQL 😎 and Express 🚂. **The goal of this section is to create an Express server that implements GraphQL.**
+Let's get started with GraphQL 😎 and Express 🚂. 
+
+**The goal of this section is to create an Express server that implements GraphQL.**
 
 <!-- > -->
 
@@ -320,7 +324,7 @@ npm start
 
 ### GraphQL Express Server setup
 
-Add the following to `server.js`. Import dependancies:
+Add the following to `server.js`.
 
 ```JS
 // Import dependancies
@@ -328,6 +332,8 @@ const express = require('express')
 const { graphqlHTTP } = require('express-graphql')
 const { buildSchema } = require('graphql')
 ```
+
+<small>Import dependancies</small>
 
 <!-- > -->
 
@@ -345,7 +351,7 @@ type Query {
 }`)
 ```
 
-<small>(The schema is written in the GraphQL schema language, `buildSchema()` takes the schema as a string and returns a schema object)</small>
+<small>The schema is written in the GraphQL schema language, `buildSchema()` takes the schema as a string and returns a schema object</small>
 
 <!-- > -->
 
@@ -360,7 +366,7 @@ const root = {
 }
 ```
 
-<small>(A **resolver** is a function that's responsible for returning the results of a query. *You might a say a resolver resolves a query.*)</small>
+<small>A **resolver** is a function that's responsible for returning the results of a query. You might a say a resolver *resolves a query.*</small>
 
 <!-- > -->
 
@@ -373,7 +379,7 @@ Add this to `server.js`:
 const app = express()
 ```
 
-<small>(Standard Express.)</small>
+<small>Standard Express.</small>
 
 <!-- > -->
 
@@ -388,7 +394,9 @@ app.use('/graphql', graphqlHTTP({
 }))
 ```
 
-In the `use` function above, we supplied the schema, the root resolver, and activated the GraphiQL browser for our app. 
+<small>In the `use` function above, we supplied the schema, the root resolver, and activated the GraphiQL browser for our app.</small>
+
+<small>The endpoint will be: `/graphql`</small>
 
 <!-- > -->
 
@@ -427,11 +435,13 @@ GraphiQL allows us to test our GraphQL Queries. Its the same tool you used in th
 }
 ```
 
+<!-- > -->
+
 Compare this to the schema and the resolver:
 
 - query type: `getAbout`
-  - returns Type `About`
-    - An `About` has a field `message` of type `String`
+  - Returns: About type
+- About has a field of message of type string
 
 <!-- > -->
 
@@ -445,6 +455,8 @@ Let's follow this backwards. Starting with this query:
 }
 ```
 
+<small>Sending this query...</small>
+
 <!-- > -->
 
 GraphQL handles with a resolver: 
@@ -457,7 +469,9 @@ const root = {
 }
 ```
 
-It returns an object with a `message` property that is type `String`. 
+<small>It returns an object with a `message` property that is type `String`.</small>
+
+getAbout has to return something that looks the the About type. 
 
 <!-- > -->
 
@@ -477,13 +491,13 @@ The `getAbout` query returns an `About` which always has a `message` of type `St
 
 <!-- > -->
 
-## GraphQL Resolvers 
+## GraphQL Resolvers ⚙️
 
 <!-- > -->
 
-A resolver is responsible for resolving a query. Resolvers can be hierarchical and complicated. It's probably where most of your work will go when building a GraphQL system. 
+A resolver is responsible for resolving a query. Resolvers can be hierarchical and complicated. You might spend more time here in some projects. 
 
-![GraphiQL Interface Expanded](../assets/graphiql-expanded.png)
+<!-- ![GraphiQL Interface Expanded](../assets/graphiql-expanded.png) -->
 
 <!-- > -->
 
@@ -499,9 +513,15 @@ const root = {
 
 <small>(`getAbout` maps to the query type with the same name)</small>
 
+```python
+type Query {
+  getAbout: About
+}
+```
+
 <!-- > -->
 
-Let's do it again from the top. 
+### Your turn! 
 
 <!-- > -->
 
@@ -509,26 +529,30 @@ Imagine you're making an API for yourself. Imagine a query is like asking you a 
 
 <!-- > -->
 
-###Define a new type in your schema
+Define a new type in your schema
 
 If someone asks what to eat? You would reply with a meal type. 
 
-```JS
+```python
 type Meal {
 	description: String!
 }
 ```
 
+<small>Add a data type</small>
+
 <!-- > -->
 
 **Add a query type to handle meal queries.** It will return a Meal.
 
-```JS
+```python
 type Query {
   getAbout: About
 	getmeal: Meal
 }
 ```
+
+<small>Add a query type</small>
 
 <!-- > -->
 
@@ -617,6 +641,23 @@ Should return:
 
 <!-- > -->
 
+Since there are only three possible values you can use an enum!
+
+```python
+enum MealTime {
+  breakfast
+  lunch 
+  dinner
+}
+
+type Query {
+  getAbout: About
+    getmeal(time: MealTime!): Meal
+}
+```
+
+<!-- > -->
+
 ### Working with Collections
 
 <!-- > -->
@@ -638,7 +679,7 @@ type Pet {
 
 Imagine you have an array of pets. A query type might look like this: 
 
-```JS
+```python
 type Query {
   ...
   getPet(id: Int!): Pet # Add a query to get a single pet
@@ -663,11 +704,11 @@ const root = {
 }
 ```
 
-<small>(`getPet(id)` takes the `id` and returns the pet at that index, `allPets` returns an array of all pets)</small>
+<small>`getPet(id)` takes the `id` and returns the pet at that index, `allPets` returns an array of all pets</small>
 
 <!-- > -->
 
-Better define the `petList`! This could be defined by a database!
+Better define the `petList`!
 
 ```JS
 # Mock datatbase in this case:
@@ -677,6 +718,8 @@ const petList = [
 	{ name: 'Goldberg', species: 'Frog' }
 ]
 ```
+
+<small>This could be defined by a database!</small>
 
 <!-- > -->
 
@@ -704,15 +747,15 @@ Now write a query. Notice you can choose fields to fetch.
 
 <!-- > -->
 
-Try these challenges. 
+Your goal is to make a list of things, not unlike SWAPI. This could be a list of pets, songs, recipes, movies, anything really. 
+
+You are going to make a GraphQL server that serves the things in your list.
 
 <!-- > -->
 
 **Challenge 1**
 
-Make a list of your pets, or a list of things: songs you wrote, favorite recipes, movies you've watched, anything really. 
-
-Make a type for this thing with at least three fields. 
+Make an Array of objects. Each object should have at least three properties.
 
 *Examples*:
 
@@ -722,31 +765,117 @@ Make a type for this thing with at least three fields.
 
 <!-- > -->
 
+In code this might look something like: 
+
+```JS
+const petList = [
+	{ name: 'Fluffy', species: 'Dog' },
+	{ name: 'Sassy', species: 'Cat' },
+	{ name: 'Goldberg', species: 'Frog' }
+]
+```
+
+<!-- > -->
+
 **Challenge 2** 
 
-Make an array of the things with data for each. You should be able to get an array of things with a query like this:
+Make a Type in your schema for your objects:
 
-```JS 
-{
-  Pets {
-    name
-  }
+```python
+type Pet {
+	name: String!
+	species: Species! # use an enum!
 }
 ```
 
-Should return the names of all Pets in the database
+Use an enum for something!
+
+Advanced: Use an interface!
 
 <!-- > -->
 
 **Challenge 3**
 
-1. Make a query type for your collection. 
-1. Make a query that will return all of the things.
-1. Make another query that will take the index of a thing as the argument and return 1 of the things.
+Make a Query type that will return all of the things: 
 
-```JS 
+```python
+type Query {
+  allPets: [Pet!]! # returns a collection of Pet
+}
+```
+
+<!-- > -->
+
+**Challenge 3**
+
+Write a resolver for your query: 
+
+```JS
+const root = {
+  allPets: () => {	
+		return petList
+	},
+  ...
+}
+```
+
+This returns the entire list. 
+
+<!-- > -->
+
+**Challenge 4**
+
+Test your work in Graphiql: 
+
+```python
+{ 
+  allPets {
+    name
+  }
+}
+```
+
+Shoule display a list of names.
+
+<!-- > -->
+
+**Challenge 5**
+
+Add a query that returns a thing at an index: 
+
+```python
+type Query {
+  allPets: [Pet!]! 
+  getPet(index: Int!): Pet
+}
+```
+
+Add the new query to your Query types in your schema. 
+
+<!-- > -->
+
+**Challenge 6**
+
+Add a new resolver. The parameters from the query will be received in resolver function: 
+
+```JS
+const root = {
+  ...
+  getPet: ({ index }) => { // index is a param from the query
+		return petList[index]
+	}
+}
+```
+
+<!-- > -->
+
+**Challenge 7**
+
+Test your work, write a query in Graphiql. 
+
+```python
 {
-  Pet(id: 1) {
+  getPet(index: 0) {
     name
   }
 }
@@ -754,29 +883,35 @@ Should return the names of all Pets in the database
 
 <!-- > -->
 
-**Challenge 4**
+**Challenge 8**
 
-Test your work by writing a query in GraphiQL. 
+Write a query that gets the last item and the first item from the collection.
 
-Try writing a query for a several fields to make sure they return properly
+Schema: 
+
+- `firstPet: Pet`
+
+Resolver: 
+
+- `firstPet: () => ???`
 
 <!-- > -->
 
-**Challenge 5**
+**Challenge 9**
 
-You need a server that returns the time. Write a type for the time. It should have properties for: 
+We need a type that represents the time. 
 
 - hour
 - minute
-- year
+- second
 
-Write a resolver that gets the time and returns an object with the properties: hour, minute, year.
+Write a resolver that gets the time and returns an object with the properties: hour, minute, second.
 
 ```JS
 {
   getTime {
     hour
-    year
+    second
     minute
   }
 }
@@ -784,9 +919,9 @@ Write a resolver that gets the time and returns an object with the properties: h
 
 <!-- > -->
 
-**Challenge 6** 
+**Challenge 10** 
 
-Imagine we need the server to return a random random number. Your job is to write a resolve that makes the GraphQL quer below function: 
+Imagine we need the server to return a random random number. Your job is to write a query type and resolver that makes the GraphQL query below function: 
 
 ```JS
 {
@@ -806,9 +941,11 @@ Which should return:
 
 <!-- > -->
 
-**Challenge 7** 
+**Challenge 11** 
 
-Create a type that represents a die roll. It should take the number of dice and the number of sides on each die.
+Create a type that represents a die roll. It should take the number of dice and the number of sides on each die. It should return the total of all dice, sides, and an array of the rolls. 
+
+<!-- > -->
 
 Below is an example query, and the response that should come back
 
@@ -836,16 +973,54 @@ Below is an example query, and the response that should come back
 
 <!-- > -->
 
+**Stretch Challenge**
+
+Add a query that returns the count of elements in your collection. You'll need to add a query and a resolver.
+
+The trick of this problem is how to form this query. 
+
+<!-- > -->
+
+**Stretch Challenge**
+
+Add a query that returns some of your collection in a range. Imagine the query below for pets:
+
+```python
+{
+  petsInRange(start: 0, count: 2) {
+    name
+  }
+}
+```
+
+The results of the query should return two pets starting with the pet at index 0.
+
+<!-- > -->
+
+**Stretch Challenge**
+
+Get a thing by one of it's features. This works best when that feature is an enum. Here's an example qurey using pets:
+
+```python
+{
+  getPetBySpecies(species: "Cat") {
+    name
+  }
+}
+```
+
+<!-- > -->
+
 ## After Class
 
 - Complete the challenges here. Submit them on GradeScope.
 - Watch https://www.howtographql.com videos up to the GraphQL Node Tutorial:
-    - Clients
-    - Servers
-    - More GraphQL Concepts
-    - Tooling and Ecosystem
-    - Security
-    - Common Questions
+  - Clients
+  - Servers
+  - More GraphQL Concepts
+  - Tooling and Ecosystem
+  - Security
+  - Common Questions
 - Submit your work to GradeScope.
 
 <!-- > -->
