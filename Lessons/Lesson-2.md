@@ -98,7 +98,7 @@ type Person {
   name: String!
   height: Int!
   eyecolor: String!
-  films: [films!]!
+  films: [Film!]!
 }
 ```
 
@@ -123,12 +123,12 @@ GraphQL includes these default types:
 
 The elements in a collection are typed and they will all be the same type. 
 
-```JS
+```python
 type MyType {
-  favNumbers: [Int!]
-  favFoods: [String!]!
-  favWebsites: [URL]!
-  favFavs: [Favs]
+  favNumbers: [Int!]   # null, [], [1,4,7] Not [1,null,7]
+  favFoods: [String!]! # [], ["a", "b"] Not null, ["a", null]
+  favWebsites: [URL]!  # [], ["http://", null] 
+  favFavs: [Favs]      # null, [], [Fav1, null Fav2]
 }
 ```
 
@@ -164,7 +164,7 @@ type Recipe {
 
 The Recipe type needs some more information: 
 
-```JS
+```python
 type Recipe {
   name: String!
   description: String
@@ -192,7 +192,7 @@ An **enumeration** ☎️ is a list of set values.
 
 The Recipe type needs some more information: 
 
-```JS
+```python
 enum MealType {
   breakfast
   lunch
@@ -201,7 +201,7 @@ enum MealType {
 
 type Recipe {
   ...
-  mealType: MealType! # Can only be breakfast, lunch or dinner
+  mealType: MealType! # Only "breakfast", "lunch" or "dinner"
 }
 ```
 
@@ -219,7 +219,7 @@ Write an enum that defines the diet type:
 
 <!-- > -->
 
-```JS
+```python
 enum DietType {
   ominvore
   paleo
@@ -240,27 +240,27 @@ type Recipe {
 
 <!-- > -->
 
-An **interface** 🔌 is a description or contract that describes types that conform to it. 
+An **interface** 🔌 is a description (or contract) that describes types that conform to it. 
 
 <!-- > -->
 
-Imagine characters 👯‍♂️ in the films 🎬 could be humans 👷 or droids 🤖. 
+Imagine characters 👯‍♂️ in the Star Wars films 🎬 could be humans 👷 or droids 🤖. 
 
-```JS 
-interface Character {
+```python
+interface Character { # All Character have...
   name: String!
   films: [film!]!
 }
 
-type Human implements Character {
-  name: String!
-  eyeColor: String!
+type Human implements Character { 
+  name: String!     # Character
+  eyeColor: String! # Character
   films: [film!]!
 }
 
 type Droid implements Character {
-  name: String!
-  films: [film!]!
+  name: String!   # Character
+  films: [film!]! # Character
   primaryFunction: String!
 }
 ```
@@ -270,14 +270,14 @@ type Droid implements Character {
 
 An interface 🔌 is also a type. For example: 
 
-```JS
+```python
 type Film {
   title: String!
-  cast: [Character!]! 
+  cast: [Character!]! # Can be Humans or Droids
 }
 ```
 
-<small>(Here everyone in the cast is a Character but they might also be a Human or a Droid)</small>
+<small>(Cast contains Humans or Droids, or any type with fields name and films)</small>
 
 <!-- > -->
 
@@ -313,6 +313,8 @@ Edit `package.json`
     "start": "nodemon server.js"
   }
 ```
+
+<small>If you don't have nodemon use: "start": "node server.js"</small>
 
 You can now run your project with: 
 
@@ -440,8 +442,8 @@ GraphiQL allows us to test our GraphQL Queries. Its the same tool you used in th
 Compare this to the schema and the resolver:
 
 - query type: `getAbout`
-  - Returns: About type
-- About has a field of message of type string
+  - Returns: an `About` type
+- `About` has a field of `message` of type string
 
 <!-- > -->
 
@@ -585,7 +587,7 @@ The Meal type will stay the same since it will still be a field description that
 
 <!-- > -->
 
-**Modify the Query type to accept an argument. **
+**Modify the Query type to accept an argument.**
 
 ```JS
 type Query {
@@ -598,7 +600,7 @@ type Query {
 
 <!-- > -->
 
-**Modify the resolver to work with this argument. **
+**Modify the resolver to work with this argument.**
 
 ```JS
 const root = {
@@ -656,19 +658,21 @@ type Query {
 }
 ```
 
+<small>Note! Using an enum prevents spelling errors or things assumptions like bunch...</small>
+
 <!-- > -->
 
 ### Working with Collections
 
 <!-- > -->
 
-Often you'll want to work with collections. You more often have posts, or users, or foods. Less often you have a single post, user, or food.
+Often you'll want to work with collections. You'll often return posts, or users, or foods.
 
 <!-- > -->
 
 Imagine you want to define a list of pets. You might start with a `Pet` type. 
 
-```JS 
+```python
 type Pet {
   name: String!
   species: String!
@@ -711,7 +715,7 @@ const root = {
 Better define the `petList`!
 
 ```JS
-# Mock datatbase in this case:
+// Mock datatbase in this case:
 const petList = [
 	{ name: 'Fluffy', species: 'Dog' },
 	{ name: 'Sassy', species: 'Cat' },
@@ -725,7 +729,7 @@ const petList = [
 
 Now write a query. Notice you can choose fields to fetch. 
 
-```JS
+```python
 { # Get the names of all pets
   allPets {
     name
@@ -733,7 +737,7 @@ Now write a query. Notice you can choose fields to fetch.
 }
 ```
 
-```JS
+```python
 { # Get pet 2 species
   getPet(id: 2) {
     species
@@ -743,7 +747,7 @@ Now write a query. Notice you can choose fields to fetch.
 
 <!-- > -->
 
-## Challenges 
+## Challenges 🎳
 
 <!-- > -->
 
@@ -889,11 +893,11 @@ Write a query that gets the last item and the first item from the collection.
 
 Schema: 
 
-- `firstPet: Pet`
+`firstPet: Pet` 
 
 Resolver: 
 
-- `firstPet: () => ???`
+`firstPet: () => ???`
 
 <!-- > -->
 
@@ -973,7 +977,7 @@ Below is an example query, and the response that should come back
 
 <!-- > -->
 
-**Stretch Challenge**
+**Challenge 12**
 
 Add a query that returns the count of elements in your collection. You'll need to add a query and a resolver.
 
@@ -981,7 +985,7 @@ The trick of this problem is how to form this query.
 
 <!-- > -->
 
-**Stretch Challenge**
+**Challenge 13**
 
 Add a query that returns some of your collection in a range. Imagine the query below for pets:
 
@@ -997,9 +1001,9 @@ The results of the query should return two pets starting with the pet at index 0
 
 <!-- > -->
 
-**Stretch Challenge**
+**Challenge 14**
 
-Get a thing by one of it's features. This works best when that feature is an enum. Here's an example qurey using pets:
+Get things by one of their features. For example if the Type was Pet we could get pets by their species:
 
 ```python
 {
@@ -1008,6 +1012,22 @@ Get a thing by one of it's features. This works best when that feature is an enu
   }
 }
 ```
+
+**Challenge 15**
+
+Choose a field. This query should return all of these values that exist in the things in your list. This would work best for a field with a fixed or limited set of values, like a field that uses an enum as it's type: 
+
+Here is a sample query:
+
+```python
+{
+  allSpecies {
+    name
+  }
+}
+```
+
+Returns: "Cat", "Dog", "Frog"
 
 <!-- > -->
 
@@ -1034,9 +1054,10 @@ Get a thing by one of it's features. This works best when that feature is an enu
 
 | -   | Does not meet expectations | Meets Expectations | Exceeds Expectations |
 |:---:|:---:|:---:|:---:|
-| GraphQL Schemas | Can't describe or explain GraphQL schemas | Can describe GraphQL schemas | Could teach the basic concepts of GraphQL schemas |
+| GraphQL Schemas | Can't describe or explain GraphQL schemas | Can describe GraphQL schemas | Could teach the basic concepts of GraphQL schemas to someone else |
 | Writing Schemas | Can't write a GraphQL schema | Can write a GraphQL schema | Feel confident you could write a GraphQL schema for a variety of situations beyond the homework examples |
-| GraphQL Queries | Can't write a GraphQL Query | Caould write a graphQL query | Feel confident you could write GraphQL queries beyond the solutions to the homework problems |
+| GraphQL Queries | Can't write a GraphQL Query | Could write a graphQL query | Feel confident you could write GraphQL queries beyond the solutions to the homework problems |
+| Resolvers | Can't explain resolvers, couldn't find them in your code | Could explain how the resolver works in the sample code from the lesson | Could expand on the resolvers from this lesson adding more use cases |
 
 <!-- > -->
 
