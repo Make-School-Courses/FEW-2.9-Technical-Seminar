@@ -4,8 +4,6 @@
 
 Use a schema to define what your <br> GraphQL API can provide.
 
-Strong typing of data allows for introspection.
-
 <!-- > -->
 
 ## GraphQL 😎 Schemas and Types
