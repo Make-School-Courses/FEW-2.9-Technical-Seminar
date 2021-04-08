@@ -22,29 +22,41 @@ Pop Quiz!
 
 Write a GraphQL schema for these types
 
-- Kaiju type, this is a giant monster like Godzilla
-- City type, what fields does a city have?
-- Battle type should include two monsters and a city
-- Query type that returns a battle
-- Write a query that summons Godzilla and Mothra to battle in tokyo
-  - print the a monsters name, and power
-  - print a city's name and population
+**Monster Battle**
 
-- Card type for a playing card
-- Hand type for a hand of cards
-- Query type that returns a hand of cards
-- Write a query that gets a hand of cards 
-  - print the value and suit of each card
+- Write the following in the GraphQL Schema language
+  - Kaiju type, this is a giant monster like Godzilla
+  - City type, what fields does a city have?
+  - Battle type should include two monsters and a city
+  - Query type that returns a battle
+- Write the followeing in the graphql Query language!
+  - Write a query that summons Godzilla and Mothra to battle in tokyo
+    - print the a monsters name, and power
+    - print a city's name and population
 
-- Image type should know the url and size an image
-- Location type needs latitude and longitude
-- Image type should include a location
-- User Type
-- User type needs a list of images
-- Query type that returns a User
-- Write a query that gets users images
-  - Display the user name
-  - Display the image url
+**Card Game**
+
+- Use the GraphQL Schema language
+  - Card type for a playing card
+  - Hand type for a hand of cards
+  - Query type that returns a hand of cards
+- Write a query in the graphql query language
+  - Write a query that gets a hand of cards 
+    - print the value and suit of each card
+
+**Users and Images**
+
+- Use the GraphQL Schema language to generate these types
+  - Image type should know the url and size an image
+  - Location type needs latitude and longitude
+  - Image type should include a location
+  - User Type
+  - User type needs a list of images
+  - Query type that returns a User
+- Use the graphQL Query language to query: 
+  - Write a query that gets users images
+    - Display the user name
+    - Display the image url
 
 <!-- > -->
 
