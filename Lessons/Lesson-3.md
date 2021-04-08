@@ -26,23 +26,25 @@ Write a GraphQL schema for these types
 - City type, what fields does a city have?
 - Battle type should include two monsters and a city
 - Query type that returns a battle
+- Write a query that summons Godzilla and Mothra to battle in tokyo
+  - print the a monsters name, and power
+  - print a city's name and population
 
 - Card type for a playing card
-- Deck type for a deck of cards
 - Hand type for a hand of cards
 - Query type that returns a hand of cards
+- Write a query that gets a hand of cards 
+  - print the value and suit of each card
 
-- Image type
+- Image type should know the url and size an image
 - Location type needs latitude and longitude
 - Image type should include a location
 - User Type
 - User type needs a list of images
 - Query type that returns a User
-
-- Location type needs a latitude and longitude
-- Time type needs a should have date and time
-- Trip type needs to map out a sequence of locations
-- Write a query type for a trip
+- Write a query that gets users images
+  - Display the user name
+  - Display the image url
 
 <!-- > -->
 
@@ -308,7 +310,7 @@ enum Units {
 
 <!-- > -->
 
-Use the unit in your getWeather query. 
+Use the unit in your getWeather query.
 
 ```js
 type Query {
@@ -318,7 +320,7 @@ type Query {
 
 <!-- > -->
 
-Handle the unit in your resolver. 
+Handle the unit in your resolver.
 
 ```JS
 const root = {
