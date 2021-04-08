@@ -1063,3 +1063,32 @@ Returns: "Cat", "Dog", "Frog"
 
 - https://www.howtographql.com
 - https://medium.com/codingthesmartway-com-blog/creating-a-graphql-server-with-node-js-and-express-f6dddc5320e1
+
+
+<!-- 
+
+Pop Quiz - After Break 
+
+Write a schema for these types
+
+
+- Kaiju type this is a gian monster like Godzilla
+- City type
+- Monster battle type should
+
+- Card type for a playing card
+- Deck type for a deck of cards
+- Hand type for a hand of cards
+- Discard pile type
+
+- Image type
+- Location type
+- Image type needs a location
+- User Type
+- User type needs a list of images
+
+- Write a location type?
+- Write walk type needs to map out a sequence of locations
+- Write a query type for a a walk
+
+-->
