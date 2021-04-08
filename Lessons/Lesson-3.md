@@ -12,41 +12,43 @@ By the end of today's lesson, you should be able to...
 1. Use GraphQL and Express
 1. Define Resolvers for types
 
-<!-- > -->
-
-## Warm Up (5 mins)
-
-Discuss:
-
-If GraphQL was a vehicle. What feature of the language do you think will be its engine?
-
-<!-- > -->
-
 ## Review
 
 <!-- > -->
 
-**Write a resolver for the following types:**
+Pop Quiz!
 
-```JS 
-type Mission {
-	codeName: String! 
-	securityLevel: Int!
-}
+<!-- > -->
 
-type Agent {
-	name: String! 
-	handle: String!
-	securityClearance: Int!
-	missions: [Mission!]!
-}
-```
+Write a GraphQL schema for these types
+
+- Kaiju type, this is a giant monster like Godzilla
+- City type, what fields does a city have?
+- Battle type should include two monsters and a city
+- Query type that returns a battle
+
+- Card type for a playing card
+- Deck type for a deck of cards
+- Hand type for a hand of cards
+- Query type that returns a hand of cards
+
+- Image type
+- Location type needs latitude and longitude
+- Image type should include a location
+- User Type
+- User type needs a list of images
+- Query type that returns a User
+
+- Location type needs a latitude and longitude
+- Time type needs a should have date and time
+- Trip type needs to map out a sequence of locations
+- Write a query type for a trip
 
 <!-- > -->
 
 ## Overview
 
-Today you will make a GraphQL service for a public API. 
+Today you will make a GraphQL service for a public API.
 
 *Why?* This will give you a chance to practice the ideas from the previous class in a different context.
 
@@ -205,7 +207,7 @@ Go to https://openweathermap.org
 1. Create an account at [openweathermap.org](https://openweathermap.org/).
 1. After you make an account, click on your username, then on `My API Keys`. Enter an API key name, then click the `Generate` button to create your API key!
 
-![api_keys](../assets/api_keys.png)
+<!-- ![api_keys](../assets/api_keys.png) -->
 
 <!-- > -->
 
@@ -351,6 +353,8 @@ Test your work! Write a query:
 
 If you followed all of the instructions here your API should allow fetching the temperature and description. The OpenWeatherMap response provides a lot more information. The goal of this challenge is to expand the getWeather query type. 
 
+<!-- > -->
+
 Challenge, expand your query to include the following properties:
 
 - feels_like
@@ -375,6 +379,8 @@ Notice that `'404'` is a string. If you get a successful request the JSON will l
 { ..., cod: 200 }
 ```
 
+<!-- > -->
+
 When COD is 200 it's a number! 
 
 Think about the results that returned by your GraphQL API... What happens when you make a request like this: 
@@ -389,13 +395,19 @@ Think about the results that returned by your GraphQL API... What happens when y
 
 99999 is not a valid zip the JSON object from OpenWeatherMap will include `"cod": "404"` and `"message":"city not found"`. All of the other information will be missing. 
 
-Think about the data types defined in your getWeather query Type... 
+<!-- > -->
+
+Think about the data types defined in your getWeather query Type...
 
 In this case you won't have the temperature. But you will have a message. 
+
+<!-- > -->
 
 Your goal here is to return temperature, humidity, etc. sometimes, and include cod, and message sometimes. Don't overthink the solution (it may be easier than you first think). Talk it over with other students. 
 
 Here's a clue: if you make a query for temperature with an invalid zip code then temperature should be null!
+
+<!-- > -->
 
 Here's what this situation might look like in code.
 
@@ -416,6 +428,8 @@ The Query might look like this:
   }
 }
 ```
+
+<!-- > -->
 
 The results would look like this: 
 
@@ -441,21 +455,21 @@ The results would look like this:
 
 ## Stretch Challenges
 
-<!-- > -->
+Try as many of these stretch goals as you can!
 
-**Challenge - Add City API**
-
-The OpenWeatherMap service supports weather requests by city name. 
-
-Add a query that takes the city name and returns the weather. 
-
-You can extend this challenge to include 
-
-<!-- > -->
-
-**Challenge - Use another API**
-
-Copy this project and replace the OpenWeatherMap API with another API of your choice...
+- Expand the Weather API
+  - Expand your the OpenWeatherMap other request parameters
+    - Currently your API supports zip code but the current weather forecast supports
+      - city name
+      - city id
+      - latitude and longitude
+  - The example above uses the Current Weather API. OpenWeathermap also provides several other APIs that you can use. Make your GraphQL server support one of these: 
+    - [Minute Forecast 1 hour*](https://openweathermap.org/api/one-call-api)
+    - [Hourly Forecast 2 days*](https://openweathermap.org/api/one-call-api)
+    - [Daily Forecast 7 days*](https://openweathermap.org/api/one-call-api)
+    - [National Weather Alerts*](https://openweathermap.org/api/one-call-api)
+    - [Historical weather 5 days*](https://openweathermap.org/api/one-call-api)
+- Build a GrpahQL API on top another API (you choose the API)
 
 <!-- > -->
 
