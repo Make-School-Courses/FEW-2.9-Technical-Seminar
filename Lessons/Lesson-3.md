@@ -227,6 +227,12 @@ Go to https://openweathermap.org
 
 **Quick Side Note for `.env` files**
 
+Install dotenv: 
+
+```
+npm install dotenv
+```
+
 Having a `.env` file allows us to store our secrets (like an API Key) without it being exposed to the public on GitHub. Let's create that now so we can use our API Key in our project without exposing it!
 
 1. In the folder containing the sample project, run `touch .env` in the terminal
@@ -237,6 +243,21 @@ OPENWEATHERMAP_API_KEY=__MY_API_KEY__
 ```
 
 Save it when you're done. Alright, now we're ready to continue!
+
+<!-- > -->
+
+Be sure to initialize dotenv in your server.js:
+
+```JS
+// require dotenv and call cofig
+require('dotenv').config()
+```
+
+Use your API key in your code with: 
+
+```JS
+const apikey = process.env.OPENWEATHERMAP_API_KEY
+```
 
 <!-- > -->
 
