@@ -7,8 +7,8 @@ Mutations are queries that make changes or you could say mutate data.
 ## Learning Objectives
 
 1. Describe mutations
-1. Define mutation queries 
-1. Use Mutations 
+1. Define mutation queries
+1. Use Mutations
 1. Describe Resolvers
 1. Write resolvers
 
@@ -122,15 +122,26 @@ const root = {
 
 <!-- > -->
 
-So far you've been using queries to get things from your GraphQL server. This is like a GET request with a REST server. 
+So far you've been using queries to get things from your GraphQL server. This is like a GET request with a REST 😴 server. 
 
-**Mutations** are used to make changes at your GraphQL server. This is like a POST, PUT, or DELETE request with a REST server. 
+**Mutations** are used to make changes at your GraphQL server. This is like a POST, PUT, or DELETE request with a REST server.
 
 <!-- > -->
 
-Define a mutation in your schema with: 
+Mutations should probably have a name that describes what they do: 
 
-```JS
+```python
+newUser
+createUser
+makeUserAccount
+addUser
+```
+
+<!-- > -->
+
+Define a mutation in your schema with type Mutation: 
+
+```python
 # Schema
 type Mutation {
 	...
@@ -141,9 +152,13 @@ type Mutation {
 
 <!-- > -->
 
-Usually a Mutation will take some parameters and resolve to a type: 
+Usually a Mutation will take some parameters and resolve to a type. For example you might supply a username and password and resolve/return a User type. You might provide a url and description and Resolve to a Post type. 
 
-```JS
+<!-- > -->
+
+Here is an example in code.
+
+```python
 # Schema
 type Mutation {
 	createUser(name: String!): User!
@@ -155,9 +170,9 @@ type Mutation {
 
 <!-- > -->
 
-When making a mutation **query** you'll start with the word "mutation"
+When making a mutation **query** you start with the word "mutation"
 
-```JS
+```python
 # Query 
 mutation {
 	createUser(name: "Jo") {
@@ -171,7 +186,7 @@ mutation {
 
 Note! Queries start with the key word Query. But we've been omitting it. 
 
-```JS
+```python
 # Query
 query {
 	getUsers {
@@ -179,6 +194,10 @@ query {
 	}
 }
 ```
+
+<!-- > -->
+
+
 
 <!-- > -->
 

@@ -1,4 +1,33 @@
-# FEW 2.9 GraphQL Subscriptions
+# FEW 2.9 React Review
+
+<!-- > -->
+
+Your GraphQL Projects need a frontend!
+
+<!-- > -->
+
+Any type of front end client can connect to a GraphQL backend server. We will be using React.
+
+<!-- > -->
+
+React is a library for creating user interfaces. It is one of the most popular web frameworks.
+
+<!-- > -->
+
+Why use React?
+
+<!-- > -->
+
+It's efficient and has a great workflow, developer experience and community.
+
+<!-- > -->
+
+## Class Learning Objectives/Competencies
+
+1. Build a React app
+2. Create reusable components
+3. Use JSX, State and Props
+4. Use Hooks
 
 <!-- > -->
 
@@ -6,455 +35,696 @@
 
 <!-- > -->
 
-## Review 
 
-Imagine you are working on a GraphQL card game. 
+
+<!-- > -->
+
+## Overview
+
+<!-- > -->
+
+The React library has several core features let's take a look at those:
+
+- Components
+- JSX
+- ReactDOM
+
+<!-- > -->
+
+## Creating a React App
+
+<!-- > -->
+
+Creat a React using: 
+
+```
+npx create-react-app <app-name>
+```
+
+This creates a new folder containing a complete React project. 
+
+<!-- > -->
+
+Let tour the project.
+
+- public/
+- src/
+  - index.js
+  - index.css
+  - App.js
+  - App.css
+
+<!-- > -->
+
+### Components
+
+<!-- > -->
+
+Components are the foundational building block of React Applications. Most often a component represents a view.
+
+<!-- > -->
+
+Components are composable. Components can be nested within other components. Complex components are made from smaller less complex components.
+
+- Components must return [JSX](#jsx)
+- Components can be built from a function or a class
+
+<!-- > -->
+
+This is a Component
 
 ```JS
-enum Suit {
-	...
+function Header(props) {
+ return (
+  <h1>{props.title}</h1>
+ )
+}
+```
+
+<small>In it's simplest form a Component is a function that returns JSX.</small>
+
+<!-- > -->
+
+What's JSX? 
+
+JSX is an extension of the JavaScript Lanaguage. 
+
+JSX === JavaScript and XML. 
+
+<!-- > -->
+
+JSX provides a HTML like syntax that compiles to standard JS. For example: 
+
+```js
+<h1>{props.title}</h1>
+```
+
+Becomes: 
+
+```JS
+React.createElement("h1", null, props.title);
+```
+
+<small>The magic is that the first line looks exactly like what will be generated for the browser to display.</small> 
+
+<!-- > -->
+
+Why use JSX? 
+
+- Looks like the HTML it will generate
+- Easier to reason about
+
+<!-- > -->
+
+## JSX has it's own rules! 
+
+<!-- > -->
+
+1. Must have a top level node
+
+```JS
+// Good!
+<div>
+  <h1>Hello</h1>
+  <p>World</p>
+</div>
+```
+
+```JS
+// Error!
+<h1>Hello</h1>
+<p>World</p>
+```
+
+<!-- > -->
+
+If you don't want to create an extra tag use a fragment!
+
+```JS
+// Good!
+<>
+  <h1>Hello</h1>
+  <p>World</p>
+</>
+```
+
+<!-- > -->
+
+Can't use `class`, use `className` instead!
+
+```JS
+// Good!
+<div className="App">
+  <h1 className="title">Hello</h1>
+  <p>World</p>
+</div>
+```
+
+```JS
+// Error!
+<div class="App">
+  <h1 class="title">Hello</h1>
+  <p>World</p>
+</div>
+```
+
+<!-- > -->
+
+A tag with no children can be self closing by adding a `/` be the closing `>`.
+
+```JS
+// Error!
+<div class="App">
+  <br />
+  <img />
+  <hr />
+  <Game />
+  <Map />
+</div>
+```
+
+<!-- > -->
+
+Values in JSX are strings (use double quotes!) Other values use `{}`.
+
+```JS
+<div>
+  <img src={url} width={100} height={150} />
+</div>
+```
+
+<small>Imagine `url` is a variable</small>
+
+<!-- > -->
+
+Any JS expression can be used in a JSX expression as long as it appears in the `{}`.
+
+```JS
+<div>
+  <img 
+    src={`${path}/${filename}`} 
+    width={w * 0.5} 
+    height={h * 0.5} 
+    onClick={() => {
+      ...
+    }}
+  />
+</div>
+```
+
+<small>Move attributes to their own line for clarity.</small>
+
+<!-- > -->
+
+### Composing Components
+
+<!-- > -->
+
+Store components each in their own file. 
+
+```JS
+// Title.js
+function Title() {
+  return <h1>Hello World</h1>
 }
 
-type Card {
-	value: Int!
-	suit: Suit!
+export default Title
+```
+
+```JS
+// App.js
+import Title from './Title.js'
+
+function App() {
+  return <Title />
+}
+```
+
+<!-- > -->
+
+If you're returning more than one line of JSX wrap in `()`.
+
+```JS
+// App.js
+import Title from './Title.js'
+
+function App() {
+  return (
+    <div className="App">
+      <Title />
+    </div>
+  )
+}
+```
+
+<!-- > -->
+
+## Props
+
+<!-- > -->
+
+Props are values passed to a component. 
+
+When props change the component renders. 
+
+Props come from outside the component and are passed into the the component.
+
+<!-- > -->
+
+Pass props to a component via attributes: 
+
+```JS
+// Imagine we're using the component somewhere
+<Heading title="Hello" subtitle="world" />
+```
+
+```JS
+// Heading.js
+function Heading(props) {
+  // { title: "Hello", subtitle: "world" }
+  return (
+    <>
+      <h1>{props.title}</h1>
+      <p>{props.subtitle}</p>
+    </>
+  )
+} 
+```
+
+<!-- > -->
+
+## State 
+
+<!-- > -->
+
+State presents values the component stores internally. 
+
+When state change the component renders. 
+
+<!-- > -->
+
+Define state like this: 
+
+```JS
+import { useState } from 'react'
+
+function Counter() {
+  const [ count, setCount ] = useState(0)
+  return (
+    <>
+      <h1>{count}</h1>
+      <button 
+        onClick={() => setCount(count + 1)}
+      >Add 1</button>
+    </>
+  )
+}
+```
+
+<small>Here `count` is increased by 1 with each click.</small>
+
+<!-- > -->
+
+## Controlled Component Pattern
+
+<!-- > -->
+
+The controlled component pattern is used to handle form elements. 
+
+<!-- > -->
+
+```JS
+import { useState } from 'react'
+
+function Counter() {
+  const [ zip, setZip ] = useState('')
+  return (
+    <>
+      <input 
+        value={zip}
+        onChange={(e) => setZip(e.target.value)}
+      />
+    </>
+  )
+}
+```
+
+<small>Here state holds the value set on the input and is updated when the input changes.</small>
+
+<!-- > -->
+
+## Connecting a Client to GraphQL
+
+<!-- > -->
+
+For the client side you'll be using Apollo GraphQL client.
+
+<!-- > -->
+
+The goal of this project is to create a client built with React that connects to your GraphQL OpenWeatherMap server. 
+
+<!-- > -->
+
+The server will run at locahost:4000 and the client will run on localhost:3000. You need so start both for the project ti work locally. 
+
+<!-- > -->
+
+I find it easier to keep both projects in seprate folders.
+
+<!-- > -->
+
+## Apollo Client
+
+<!-- > -->
+
+Your React project should import
+
+<!-- > -->
+
+
+
+
+Steps 
+
+- npx create-react-app weather-client
+- npm install @apollo/client
+- In index.js - setup Apollo client
+```js
+// make an instance of the Apollo client
+export const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql',
+  cache: new InMemoryCache()
+});
+```
+- Still in index.js Wrap your app in the ApolloProvider
+```js
+ReactDOM.render(
+  <React.StrictMode>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+- The following can be used in any component that is a child of App!
+- Import your `client` and `gql`
+```js
+import { gql } from '@apollo/client'
+import { client } from './index'
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Challenge
+
+<!-- > -->
+
+You will build a React App that fetches weather data from your GraphQL Weather server. It will be use the Apollo client for GraphQL for query.
+
+<!-- > -->
+
+To get started, your GraphQL server needs to support Cross-Origin Resource Sharing (CORS)
+
+<!-- > -->
+
+What's CORS?
+
+Cross-Origin Resource Sharing is a mechanism that uses additional HTTP headers.
+
+It uses these headers to tell a browser to let a web application running at one origin have permission to access selected resources from a server at a different origin.
+
+<!-- > -->
+- Go to your GraphQL server directory and run `npm i cors`
+- `cors` is a node.js package that can be used to enable CORS.
+
+<!-- > -->
+Include the following piece of code to your GraphQL server file
+
+```js
+// after importing other dependencies
+const cors = require( `cors` );
+//Schema code here
+// Create an express app
+const app = express()
+app.use(cors());
+```
+
+<!-- > -->
+- Start your GraphQL Weather server
+- Create a new react project
+- install Apollo `npm install @apollo/client graphql`
+
+<!-- > -->
+### Create Component - APP.js
+
+<!-- > -->
+We would first create an App component that displays an input field.
+In your project folder the `src/App.js` include this piece of code.
+
+```js
+// import dependencies
+import { useState, useEffect } from 'react'
+import { gql } from '@apollo/client';
+import { client } from './index'
+
+function App() {
+  // initialize state and the setter method to set the zip value
+  const [zip, setZip] = useState('') 
+  // initialize state and the setter method to set weather data
+  const [weather, setWeather] = useState(null)
+
+  return (
+    <div className="App">
+        <form>
+        <label>Input Zip Code</label>
+        {/** 
+        This pattern is called controlled component patterm
+        * used for input and other form elements 
+        * Set the value of the input to a value held in component's state
+        * Set the value held in component state when a change occurs(onChange) at the input
+        * the OnChange method is a event handler available in React and is called everytime a change occurs on our input element  
+        */}
+          <input
+            type="text" 
+            placeholder="zip code"
+            value={zip}
+            onChange={(e) => setZip(e.target.value)}
+          />
+        </form>
+    </div>
+  );
 }
 
-type Hand {
-	cards: [Card!]!
-}
+export default App;
 ```
 
 <!-- > -->
-
-Write two GraphQL mutation *queries*: 
-
-- Define a mutation that draws a card.
-  - This is a mutation since it will remove a card from the deck and add it to your hand
-- Define a mutation that discards a card. 
-  - This is a mutation since it will add a card to the discard pile and remove it from your hand
+### Render the Weather Details - Asynchronous operations (async, await)
 
 <!-- > -->
+`Async` and `await` are keywords that are used for Promises in JavaScript.
 
-## Learning Objectives
+- The `Async` keyword identifies an asyncronous function. An `Async` function always returns a Promise!
 
-<!-- > -->
-
-1. Describe Subscriptions
-1. Describe Websockets
-1. Implement a websocket server
-1. Implement a websocket client
+- The `await` keyword only works within an `Async` function. Use await at the beginning of any expression that would return a Promise. JavaScript will wait at that line until the Promise resolves.
 
 <!-- > -->
+The syntax for using Async/Await looks like so:
 
-## GraphQL Subscriptions
+```js
+  const AsyncFuntion = async () => {
 
-<!-- > -->
-
-Subscriptions represent a real time presistent connection to a GraphQL server.
-
-Use them to send push notifications and real time updates to connected GraphQL clients.
-
-<!-- > -->
-
-GraphQL *doesn't* implement the code that backs up subscriptions. This is handled by the framework or library that implements the GraphQL Spec. For web based projects this is most often a websocket. 
-
-<!-- > -->
-
-Most often you should not use subscriptions to stay up to date with your backend. 
-
-Instead poll intermittently or execute queries on user interaction. 
-
-<!-- > -->
-
-Subscriptions are best used for small incremental changes. Loading large objects is expensive and doing this overwesocket could waste resources. 
-
-Best use case: Low latency real tiem updates. 
-
-<!-- > -->
-
-### Websockets
-
-<!-- > -->
-
-Websockets represent a persistent connection. Which is different from the standard call and response cycle we use most often.
-
-<!-- > -->
-
-Normally when we connect to a web server we make a temporary connection that sends a message, notes that the message was received and then close down the connection. 
-
-<!-- > -->
-
-When you create a connection with a websocket the connection is persistent and allows for data to be passed back and forth without the overhead of opening and closing a connection with each transaction. 
-
-<!-- > -->
-
-What can you do with a websocket? 
-
-- Push notifications
-- Real time communications
-
-<!-- > -->
-
-What are these good for? 
-
-- Social media
-- Games
-- Real time updates
-
-<!-- > -->
-
-### Try out Websockets
-
-<!-- > -->
-
-This example creates a simple server using Express.js and a web page that communicates with the server via a websocket.
-
-<!-- > -->
-
-There two pieces to this example. 
-
-- The server handles a websocket connections and broadcasts messages received to all connected clients. This portion, in `server.js`, is written with node and express. The code here is specific to that environment! 
-- The client code is written using the browser websocket API. This code is written in `index.js`. This client code opens a websocket connection with the server. It sends messages to the server and receives messages from the server.
-
-<!-- > -->
-
-Start by making a new Node project: 
-
-- `npm init -y`
-- `npm install ws express`
-
-<!-- > -->
-
-Create a server: 
-
-- Create: `server.js`
-
-<!-- > -->
-
-Add this code to server.js:
-
-```JS
-// Import dependencies
-const express = require('express');
-const http = require('http');
-const WebSocket = require('ws');
-```
-
-<!-- > -->
-
-```JS
-// Define a port
-const port = 6969;
-// create a server
-const server = http.createServer(express);
-// Open a web socket
-const wss = new WebSocket.Server({ server })
-```
-
-<!-- > -->
-
-```JS
-// Handle a web socket connection
-wss.on('connection', function connection(ws) {
-	// After making a connection start listening for messages
-	console.log('client connecting')
-
-  ws.on('message', function incoming(data) {
-		// For each client broadcast the data
-    wss.clients.forEach(function each(client) {
-      if (client !== ws && client.readyState === WebSocket.OPEN) {
-        client.send(data);
-      }
-    })
-  })
-})
-```
-
-<!-- > -->
-
-```JS
-// Start the server
-server.listen(port, function() {
-  console.log(`Server is listening on ${port}!`)
-})
-```
-
-<!-- > -->
-
-Make a client. This will be a simple web page that will connect to the server.
-
-- Create index.html
-
-<!-- > -->
-
-```HTML
-<!DOCTYPE html>
-<html>
-	<head></head>
-	<link href="styles.css" rel="stylesheet">
-	<body>
-		<h1>Real Time Messaging</h1>
-
-		<pre id="messages"></pre>
-		
-		<input type="text" id="message-input" placeholder="Type your message here">
-
-		<button id="send" title="Send Message!" style="width: 100%; height: 30px;">Send Message</button>
-		
-		<script src="index.js"></script>
-	</body>
-</html>
-```
-
-<!-- > -->
-
-Create index.js and add the following: 
-
-```JS
-// Get references to DOM elements
-const sendBtn = document.querySelector('#send');
-const messages = document.querySelector('#messages');
-const messageInput = document.querySelector('#message-input');
-
-let ws;
-
-function showMessage(message) {
-  messages.innerHTML += `${message}\n\n`;
-  messages.scrollTop = messages.scrollHeight;
-  messageInput.value = '';
-}
-
-function init() {
-  // Clean up before restarting a websocket connection
-  if (ws) {
-    ws.onerror = ws.onopen = ws.onclose = null;
-    ws.close();
+    // wait until promise resolves
+    let result = await promise
   }
 
-  // Make a new Websocket
-  ws = new WebSocket('ws://localhost:6969');
-  // Handle the connection when it opens
-  ws.onopen = () => {
-    console.log('Connection opened!');
-  }
-  // handle a message event
-  ws.onmessage = ({ data }) => showMessage(data);
-  // Handle a close event
-  ws.onclose = function () {
-    ws = null;
+```
+
+<!-- > -->
+- Update your `App.js` file to include an asynchronous `fetchWeather` function.
+- Wrap your App in the ApolloProvider
+- Make an instance of the Apollo client
+- Define a GraphQL query
+
+<!-- > -->
+```js
+import { useState, useEffect } from 'react'
+import { gql } from '@apollo/client';
+import { client } from './index'
+
+
+async function fetchWeather(zip, setter) {
+  try {
+    // define a query
+    const json = await client.query({
+      query: gql`
+        query {
+          getWeather(zip:${zip}) {
+            temperature
+            description
+          }
+        }
+      `
+    });
+    setter(json)
+  } catch(err) {
+    console.log(err.message)
   }
 }
 
-// Handle button clicks
-sendBtn.onclick = function () {
-  // Send a message
-  if (!ws) {
-    showMessage("No WebSocket connection :(");
-    return;
-  }
 
-  ws.send(messageInput.value);
-  showMessage(messageInput.value);
+function App() {
+  const [zip, setZip] = useState('') 
+  const [weather, setWeather] = useState(null)
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        {weather ? <h1>{weather.data.getWeather.temperature}</h1>: null}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault()
+            fetchWeather(zip, setWeather)
+          }}
+        >
+          <input
+            type="text" 
+            placeholder="zip code"
+            value={zip}
+            onChange={(e) => setZip(e.target.value)}
+          />
+        </form>
+      </header>
+    </div>
+  );
 }
 
-init();
+export default App;
+```
+
+<!-- > -->
+### Create a child component - Weather.js
+
+<!-- > -->
+Right now, all the work for fetching and rendering data is handled by one component - `<App/>`. Remember, components should be simple and reusable.
+
+Your next challenge is to create a new component - `<Weather/>` - to handle loading and displaying weather details.
+
+<!-- > -->
+- Create a new file `Weather.js`. This file will contain the Weather component and load and display the weather data
+- Import the `Weather` component into `App.js`
+- Display the `<Weather/>` compnent in `App.js`
+
+<!-- > -->
+```js
+  /*
+  * Weather.js file
+  * This file contains the Weather  component
+  *
+  */
+ import { useState, useEffect } from 'react';
+ import { gql } from '@apollo/client';
+import { client } from './index';
+
+  function Weather(props) {
+      // todo: initialiaze state here. Remember this component will have to 
+      // support the values in state - zip and weather
+  
+    async fetchWeather() {
+      // todo: write code for loading and displaying weather details here
+    }
+
+    return (
+      // to do: write jsx block to render weather data
+    )
+    
+  }
+
+  // export the component as a module
+  export default Weather;
+```
+
+<!-- > -->
+```js
+  /*
+  * App.js file
+  * This file contains the App parent component
+  *
+  */
+
+  //import Weather component into App.js
+  import Weather from "./Weather";
+
+  function App() {
+      // todo: Display the Weather Component with its props, if any
+
+      return(
+        <div>
+          <Weather/>
+        </div>
+      );
+    
+  }
+
+  
+  export default App;
 ```
 
 <!-- > -->
 
-### Websockey Challenges
+## After Class
+
+Finish up the [Node + GraphQL](https://www.howtographql.com/graphql-js/1-getting-started/) tutorial
 
 <!-- > -->
 
-**Challenge 1 - Implement and test websocket example**
+### Stretch Challenges
 
-Implement the code above and test your code.
+Finish up the [Node + GraphQL](https://www.howtographql.com/graphql-js/1-getting-started/) tutorial and build the following functionalities off the completed version:
 
-- launch the server with `node server.js` or `nodemon server.js`
-- Open `index.html` in two windows or tabs
-- Sending a message from on of the tabs/windows should display that message in both windws. 
-
-Every tab/window running the client should get messages broadcast by the server. 
+- Implement a functionality on your GraphQL Server that allows your users add comments to the links
+- Implement a functionality on your GraphQL Server that allows users to upvote comments
 
 <!-- > -->
-
-**Challenge 2 - Mod the client**
-
-Here the client is made up of a couple functions: 
-
-- `init()` - initializes the web socket 
-- `showMessage()` - displays a new line of text
-
-Currently the text displayed is just added to the `innerHTML` of the `messages` element. Wrap the message in an html tag. 
-
-- Wrap the message in the list element `<li>` and `</li>`
-- In `index.html` change the `<pre id="messages">` to `<ul id="messages">`
-
-<!-- > -->
-
-**Challenge 3 - Mod the client**
-
-Let's mod the client and in;cude a name with each message. 
-
-- Add a input field to add a name. 
-	- `<input type="text" id="input-name">`
-- Create a reference to the new element
-	`const nameInput = document.querySelector('#name-input')`
-- When sending the message you need to send both the name and the message. You can do this one of two ways. In both cases you'll be modifying the data that is sent to the websocket. This appears on the last line. 
-	1. Combine both the name and message into a single string. 
-	2. Send an object with two fields. This solution will require that you modify the show message function since `message` would now be an object. 
-- Show the name before the message.  
-
-To solve this problem you will have to convert the data sent to the server to JSON and parse the JSON from the server back to JS. The data field is always a string for websockets! 
-
-This means at the send button: 
-
-```JS
-// Create an object:
-const data = { message: messageInput.value, name: nameInput.value }
-// Convert to JSON to send to server
-ws.send(JSON.stringify(data))
-showMessage(data)
-```
-
-When receivibg data you'll need to parse the JSON into JS: 
-
-```JS
-showMessage(JSON.parse(e.data))
-```
-
-The ouptut should look something like: 
-
-```
-Andy: Hello
-Bob: World
-```
-
-<!-- > -->
-
-### Websocket Resources
-
-- https://github.com/websockets/ws
-- Simple Websocket example in JS: https://dev.to/karlhadwen/node-js-websocket-tutorial-real-time-chat-room-using-multiple-clients-24ad
-
-<!-- > -->
-
-## Subscriptions with GraphQL
-
-<!-- > -->
-
-Subscriptions are described in the GraphQL docs but the implementation is left up to developers. Usually these would be implemented with a websocket.
-
-<!-- > -->
-
-There are several GraphQL librasries:
-
-- express-graphql
-- apollo-server-express
-- graphql-yoga
-
-<!-- > -->
-
-For this I chose graphql-yoga. It seemed be to be the easiest to use. 
-
-<small>(I started with express-graphql and coudln't get subscriptions to work.)</small>
-
-<!-- > -->
-
-### Build a GraphQL chat with Subscriptions 
-
-Make a new folder for this project and navigate to that folder. 
-
-Start by initializing a new npm project. 
-
-```bash
-npm init -y
-```
-
-Install graphql-yoga:
-
-```bash
-npm install graphql-yoga
-```
-
-Create a new file: server.js
-
-In server.js follow these steps: 
-
-Import dependencies: 
-
-```JS
-const { GraphQLServer, PubSub } = require('graphql-yoga')
-```
-
-Define the GraphQL Schema:
-
-```JS
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Using Prisma Studio
-
-<!-- > -->
-
-Prisma provides a tool called Studio. You can use this to browse and edit your databases. 
-
-<!-- > -->
-
-Launching Prisma Studio...
-Tour Prisma Studio...
-
-<!-- > -->
-
-## After Class 
-
-<!-- > -->
-
-Finish the Hackernews Node.js tutorial!
-
-- Complete the following chapters by the next class: `Realtime GraphQL Subscriptions`, `Filtering, Pagination & Sorting` and `Summary`
-
-<!-- > -->
-
-### Evaluate your progress
-
-1. Describe Subscriptions
-1. Describe Websockets
-1. Implement a websocket 
-1. Implement a websocket client
-
-| - | Does not meet expectations | Meets expectations | Exceeds expectations | 
-|:---:|:---:|:---:|:---:|
-| Conprension of Subscriptions | Can't explain GraphQL subscriptions | Can explain GraphQL subscriptions | Could teach the basics of GraphQL subscriptions to another student |
-| Websockets | Can't describe websockets | Can describe websockets | Could describe uses cases for websockets |
-| Implementing websocket server | Can't implement a simple web socket | Can implement a websocket server | Could expand upon the challenge solution server |
-| Create a Websocket client | Can't create a simple websocket client | Can create a simple websocket client | Could expand on the challenge solution |
-
-<!-- > -->
-
 ## Resources
 
-<!-- > -->
+- <https://reactjs.org/tutorial/tutorial.html>
+- [Component Lifecycle](https://reactjs.org/docs/react-component.html)
+- [Hooks](https://reactjs.org/docs/hooks-intro.html)
+- [Async/await](https://javascript.info/async-await)
+- [Using Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+- [Array Destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+- <https://www.apollographql.com/docs/react/get-started/>
 
-1. https://github.com/websockets/ws
-1. Simple Websocket example in JS: https://dev.to/karlhadwen/node-js-websocket-tutorial-real-time-chat-room-using-multiple-clients-24ad
-1. https://github.com/prisma/studio
+<!-- > -->
