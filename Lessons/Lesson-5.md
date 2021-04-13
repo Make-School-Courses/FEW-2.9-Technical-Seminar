@@ -482,8 +482,8 @@ Your Server needs to support CORS. Follow these steps to enable CORS for your Ex
 
 - `npm install cors`
 - In `server.js`
-  - `const cors = require( 'cors' );`
-  - `app.use(cors());`
+  - `const cors = require('cors')`
+  - `app.use(cors())`
 
 <!-- > -->
 
@@ -510,6 +510,7 @@ Install dependencies:
 In `index.js` - setup Apollo client
 
 ```js
+import { ApolloProvider, InMemoryCache, ApolloClient } from '@apollo/client'
 // make an instance of the Apollo client
 export const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql',
