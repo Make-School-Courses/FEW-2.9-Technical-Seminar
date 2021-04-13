@@ -482,7 +482,7 @@ Your Server needs to support CORS. Follow these steps to enable CORS for your Ex
 
 - `npm install cors`
 - In `server.js`
-  - `const cors = require( `cors` );`
+  - `const cors = require( 'cors' );`
   - `app.use(cors());`
 
 <!-- > -->
