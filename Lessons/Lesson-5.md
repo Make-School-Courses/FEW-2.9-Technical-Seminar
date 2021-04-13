@@ -57,7 +57,7 @@ The React library has several core features let's take a look at those:
 
 Creat a React using: 
 
-```
+```bash
 npx create-react-app <app-name>
 ```
 
@@ -190,7 +190,7 @@ Can't use `class`, use `className` instead!
 
 <!-- > -->
 
-A tag with no children can be self closing by adding a `/` be the closing `>`.
+A tag with no children must be self closing by adding a `/` be the closing `>`.
 
 ```JS
 // Error!
@@ -244,6 +244,7 @@ Store components each in their own file.
 
 ```JS
 // Title.js
+
 function Title() {
   return <h1>Hello World</h1>
 }
@@ -253,6 +254,7 @@ export default Title
 
 ```JS
 // App.js
+
 import Title from './Title.js'
 
 function App() {
@@ -269,11 +271,11 @@ If you're returning more than one line of JSX wrap in `()`.
 import Title from './Title.js'
 
 function App() {
-  return (
+  return ( // <-- (
     <div className="App">
       <Title />
     </div>
-  )
+  ) // <-- )
 }
 ```
 
@@ -317,7 +319,7 @@ function Heading(props) {
 
 <!-- > -->
 
-State presents values the component stores internally. 
+State presents values a component stores internally. 
 
 When state change the component renders. 
 
@@ -351,7 +353,11 @@ function Counter() {
 
 The controlled component pattern is used to handle form elements. 
 
+An input value is stored as state.
+
 <!-- > -->
+
+Controlled component pattern in action!
 
 ```JS
 import { useState } from 'react'
@@ -373,6 +379,71 @@ function Counter() {
 
 <!-- > -->
 
+## Inputs and forms
+
+<!-- > -->
+
+Forms are really important. They have some some behaviors that can make them a little confusing. 
+
+<!-- > -->
+
+Group all of your form elements in a form!
+
+```JS
+<form>
+  <p>Send us a message</p>
+  <input type="email" />
+  <textarea></textarea>
+  <label>
+    Sing up for out news letter!
+    <input type="checkbox" />
+  </label>
+  ...
+</form>
+```
+
+<!-- > -->
+
+Submit a form with a submit button!
+
+```JS
+<form>
+  ...
+  <button type="submit">Submit</button>
+</form>
+```
+
+<small>A button with `type="submit" will submit a form!`</small>
+
+<!-- > -->
+
+Handle submitting a form with `onSubmit`
+
+```JS
+<form onSubmit={(e) => {
+  // Handle your form submission here!
+}}>
+  ...
+</form>
+```
+
+<small>Like other event handlers `onSubmit` receives an event object! (`e` in the sample above)</small>
+
+<!-- > -->
+
+Submitting a form will reload the current page, you need to prevent this in a React App!
+
+```JS
+<form onSubmit={(e) => {
+  e.preventDefault() // prevent the page from loading!
+  ...
+}}>
+  ...
+</form>
+```
+
+<!-- > -->
+
 ## Connecting a Client to GraphQL
 
 <!-- > -->
@@ -385,7 +456,9 @@ The goal of this project is to create a client built with React that connects to
 
 <!-- > -->
 
-The server will run at locahost:4000 and the client will run on localhost:3000. You need so start both for the project ti work locally. 
+The server will run at locahost:4000 and the client will run on localhost:3000. 
+
+You need so start **both** for the project to work locally. 
 
 <!-- > -->
 
@@ -397,84 +470,20 @@ I find it easier to keep both projects in seprate folders.
 
 <!-- > -->
 
-Your React project should import
+**Apollo Client** is a comprehensive state management library for JavaScript that enables you to manage both local and remote data with GraphQL. Use it to fetch, cache, and modify application data, all while automatically updating your UI.
 
 <!-- > -->
 
-
-
-
-Steps 
-
-- npx create-react-app weather-client
-- npm install @apollo/client
-- In index.js - setup Apollo client
-```js
-// make an instance of the Apollo client
-export const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
-  cache: new InMemoryCache()
-});
-```
-- Still in index.js Wrap your app in the ApolloProvider
-```js
-ReactDOM.render(
-  <React.StrictMode>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-```
-- The following can be used in any component that is a child of App!
-- Import your `client` and `gql`
-```js
-import { gql } from '@apollo/client'
-import { client } from './index'
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Challenge
+You will use Apollo Client in this project to handle transactions between your React project and your GraphQL server. 
 
 <!-- > -->
 
-You will build a React App that fetches weather data from your GraphQL Weather server. It will be use the Apollo client for GraphQL for query.
+Your Server needs to support CORS. Follow these steps to enable CORS for your Express server. 
 
-<!-- > -->
-
-To get started, your GraphQL server needs to support Cross-Origin Resource Sharing (CORS)
+- `npm install cors`
+- In `server.js`
+  - `const cors = require( `cors` );`
+  - `app.use(cors());`
 
 <!-- > -->
 
@@ -485,238 +494,325 @@ Cross-Origin Resource Sharing is a mechanism that uses additional HTTP headers.
 It uses these headers to tell a browser to let a web application running at one origin have permission to access selected resources from a server at a different origin.
 
 <!-- > -->
-- Go to your GraphQL server directory and run `npm i cors`
-- `cors` is a node.js package that can be used to enable CORS.
+
+Follow these steps to setup Apollo Client with React.
+
+Create a new React project: 
+
+`npx create-react-app weather-client`
+
+Install dependencies: 
+
+`npm install @apollo/client`
 
 <!-- > -->
-Include the following piece of code to your GraphQL server file
+
+In `index.js` - setup Apollo client
 
 ```js
-// after importing other dependencies
-const cors = require( `cors` );
-//Schema code here
-// Create an express app
-const app = express()
-app.use(cors());
+// make an instance of the Apollo client
+export const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql',
+  cache: new InMemoryCache()
+});
 ```
 
 <!-- > -->
-- Start your GraphQL Weather server
-- Create a new react project
-- install Apollo `npm install @apollo/client graphql`
 
-<!-- > -->
-### Create Component - APP.js
-
-<!-- > -->
-We would first create an App component that displays an input field.
-In your project folder the `src/App.js` include this piece of code.
+Still in index.js Wrap your app in the ApolloProvider:
 
 ```js
-// import dependencies
-import { useState, useEffect } from 'react'
-import { gql } from '@apollo/client';
+ReactDOM.render(
+  <React.StrictMode>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+
+<!-- > -->
+
+The following can be used in any component that is a child of App!
+
+Import your `client` and `gql`
+```js
+import { gql } from '@apollo/client'
+import { client } from './index'
+```
+
+<!-- > -->
+
+Now you're ready to make requests to your GraphQL server from your React project. 
+
+- Here are a few ideas: 
+  - The requests are async. You will need to handle them with Promise. 
+  - You will need to render your components conditionally. 
+  - Store the data you load on state. This will cause your components to render when state changes. 
+
+<!-- > -->
+
+Make a component to handle a request to the weather server. 
+
+```JS
+import { useState } from 'react'
+import { gql } from '@apollo/client'
 import { client } from './index'
 
-function App() {
-  // initialize state and the setter method to set the zip value
-  const [zip, setZip] = useState('') 
-  // initialize state and the setter method to set weather data
-  const [weather, setWeather] = useState(null)
-
+function Weather() {
   return (
-    <div className="App">
-        <form>
-        <label>Input Zip Code</label>
-        {/** 
-        This pattern is called controlled component patterm
-        * used for input and other form elements 
-        * Set the value of the input to a value held in component's state
-        * Set the value held in component state when a change occurs(onChange) at the input
-        * the OnChange method is a event handler available in React and is called everytime a change occurs on our input element  
-        */}
-          <input
-            type="text" 
-            placeholder="zip code"
-            value={zip}
-            onChange={(e) => setZip(e.target.value)}
-          />
-        </form>
+    <div className="Weather">
+      <form>
+        ...
+      </form>
     </div>
   );
 }
 
-export default App;
+export default Weather
 ```
 
 <!-- > -->
-### Render the Weather Details - Asynchronous operations (async, await)
 
-<!-- > -->
-`Async` and `await` are keywords that are used for Promises in JavaScript.
+Add state to handle the form input and the weather data. 
 
-- The `Async` keyword identifies an asyncronous function. An `Async` function always returns a Promise!
+```JS
+function Weather() {
+  const [ zip, setZip ] = useState('')
+  const [ weather, setWeather ] = useState(null)
 
-- The `await` keyword only works within an `Async` function. Use await at the beginning of any expression that would return a Promise. JavaScript will wait at that line until the Promise resolves.
-
-<!-- > -->
-The syntax for using Async/Await looks like so:
-
-```js
-  const AsyncFuntion = async () => {
-
-    // wait until promise resolves
-    let result = await promise
-  }
-
+  return (
+    <div className="Weather">
+      <form>
+        ...
+      </form>
+    </div>
+  );
+}
 ```
 
 <!-- > -->
-- Update your `App.js` file to include an asynchronous `fetchWeather` function.
-- Wrap your App in the ApolloProvider
-- Make an instance of the Apollo client
-- Define a GraphQL query
+
+Add an input and submit button.
+
+```JS
+<div className="Weather">
+  <form>
+    <input 
+        value={zip}
+        onChange={(e) => setZip(e.target.value)}
+      />
+      <button type="submit">Submit</button>
+  </form>
+</div>
+```
 
 <!-- > -->
+
+Add a function to handle requests to your GraphQL server. 
+
 ```js
-import { useState, useEffect } from 'react'
-import { gql } from '@apollo/client';
-import { client } from './index'
-
-
-async function fetchWeather(zip, setter) {
-  try {
-    // define a query
-    const json = await client.query({
-      query: gql`
-        query {
-          getWeather(zip:${zip}) {
-            temperature
-            description
+function Weather() {
+  ...
+  async function getWeather() {
+    try {
+      const json = await client.query({
+        query: gql`
+          query {
+            getWeather(zip:${zip}) {
+              temperature
+              description
+            }
           }
-        }
-      `
-    });
-    setter(json)
-  } catch(err) {
-    console.log(err.message)
-  }
-}
-
-
-function App() {
-  const [zip, setZip] = useState('') 
-  const [weather, setWeather] = useState(null)
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        {weather ? <h1>{weather.data.getWeather.temperature}</h1>: null}
-        <form
-          onSubmit={(e) => {
-            e.preventDefault()
-            fetchWeather(zip, setWeather)
-          }}
-        >
-          <input
-            type="text" 
-            placeholder="zip code"
-            value={zip}
-            onChange={(e) => setZip(e.target.value)}
-          />
-        </form>
-      </header>
-    </div>
-  );
-}
-
-export default App;
-```
-
-<!-- > -->
-### Create a child component - Weather.js
-
-<!-- > -->
-Right now, all the work for fetching and rendering data is handled by one component - `<App/>`. Remember, components should be simple and reusable.
-
-Your next challenge is to create a new component - `<Weather/>` - to handle loading and displaying weather details.
-
-<!-- > -->
-- Create a new file `Weather.js`. This file will contain the Weather component and load and display the weather data
-- Import the `Weather` component into `App.js`
-- Display the `<Weather/>` compnent in `App.js`
-
-<!-- > -->
-```js
-  /*
-  * Weather.js file
-  * This file contains the Weather  component
-  *
-  */
- import { useState, useEffect } from 'react';
- import { gql } from '@apollo/client';
-import { client } from './index';
-
-  function Weather(props) {
-      // todo: initialiaze state here. Remember this component will have to 
-      // support the values in state - zip and weather
-  
-    async fetchWeather() {
-      // todo: write code for loading and displaying weather details here
+        `
+      })
+      setWeather(json)
+    } catch(err) {
+      console.log(err.message)
     }
-
-    return (
-      // to do: write jsx block to render weather data
-    )
-    
   }
 
-  // export the component as a module
-  export default Weather;
+  ...
+}
 ```
 
 <!-- > -->
+
+Handle the submit event: 
+
 ```js
-  /*
-  * App.js file
-  * This file contains the App parent component
-  *
-  */
-
-  //import Weather component into App.js
-  import Weather from "./Weather";
-
-  function App() {
-      // todo: Display the Weather Component with its props, if any
-
-      return(
-        <div>
-          <Weather/>
-        </div>
-      );
-    
-  }
-
-  
-  export default App;
+<form onSubmit={(e) => {
+    e.preventDefault()
+    getWeather()
+  }}>
+    <input 
+    value={zip}
+    onChange={(e) => setZip(e.target.value)}
+  />
+  <button type="submit">Submit</button>
+</form>
 ```
+
+<!-- > -->
+
+Handle displaying the your weather data. 
+
+```JS
+<div className="Weather">
+  
+  {weather ? <h1>{weather.data.getWeather.temperature}</h1>: null}
+  
+  <form onSubmit={(e) => {
+    e.preventDefault()
+    getWeather()
+  }}>
+    ...
+  </form>
+</div>
+```
+
+<small>This conditional rendering technique looks at `weather`, if its truthy displays the h1, otherweise `null`</small>
+
+<!-- > -->
+
+All of the examples here may need some name changes to work with your server or components!
+
+<!-- > -->
+
+## Challenges
+
+<!-- > -->
+
+You will build a React App that fetches weather data from your GraphQL Weather server. It will be use the Apollo client for GraphQL for query.
+
+<!-- > -->
+
+**Challenge 0 - Weather Server**
+
+Complete your GraphQL Express Weather server. 
+
+- Be sure to add cors (see the instructions above)
+
+<!-- > -->
+
+**Challenge 1 - Create your React Project**
+
+Follow the instructions above and get your React Project running. 
+
+<!-- > -->
+
+**Challenge 2 - Run your GraphQL Express Server**
+
+Your Express project will run on port 4000 (or another port check!) and the React project will run on port 3000. 
+
+- React and GraphQL servers need to be running on different ports.
+
+<!-- > -->
+
+**Challenge 3 - Add Apollo Client**
+
+Add Apollo Client to your React Project. Follow the instructions above.
+
+- Check the port! and the end point.
+- The `uri: 'http://localhost:4000/graphql'` must match the port and endpoint that your server uses! 
+
+<!-- > -->
+
+**Challenge 4 - Create a Component**
+
+This component will connect to the GraphQL Server. See the instructions above. 
+
+- Import `gql` and `client`
+- Set up your form and an async function to handle requests
+
+<!-- > -->
+
+**Challenge 5 - Handle your data with conditional rendering**
+
+Handle data with conditional rendering. See the instructions above. 
+
+The goal here is to display data after it's loaded and display nothing or alternate content when no data is available.
+
+- Display the temperature
+
+<!-- > -->
+
+**Challenge 6 - Make a component to display the Weather**
+
+React is all about components. Write a specialized component that is used just to display the weather data. 
+
+Supply data as props. Display: 
+
+- temp
+- description
+- and three or more properties!
+
+<!-- > -->
+
+**Challenge 7 - Handle Errors**
+
+If you enter a zip code that doesn't exist you'll get an error or nothing will happen. You should handle this situation. 
+
+- Check for an error, use the cod and message value from openweather map. Your Server should provide this! 
+- Display the message when cod != 200.
+
+<!-- > -->
+
+**Challenge 8 - Style Your work**
+
+This is an open ended challenge. Do as much work here as you like!
+
+- Style the form
+- Style the weather results
+- Display an image for the weather
+
+<!-- > -->
+
+**Challenge 9 - Use Units**
+
+Add radio button or other method to set the unit type: metric or imperial. And display the weather with that unit. 
+
+- Add two radio buttons to the UI. 
+- Send the unit to the server
+- Server should request data in the unit from openweathermap
+
+<!-- > -->
+
+**Challenge 10 - Get the current location**
+
+OpenWeatherMap supports getting the weather by location. You can get the geocoordinates with the browser API. 
+
+Make a button that gets the coordinates. 
+
+- https://developer.mozilla.org/en-US/docs/Web/API/Navigator/geolocation
+
+<!-- > -->
+
+**Challenge 11 - Add Weather by location to your GraphQL API**
+
+Spends some time on your GraphQL server. Add a query type that gets weather by geolocation. 
+
+<!-- > -->
+
+**Challenge 12 - Get weather by geolocation**
+
+Add a button to your React project that gets the geolocation from the browser and makes a reques to the GraphQL API. 
+
+<!-- > -->
+
+**Challenge 13 - Sub another API**
+
+This is an openended stretch challenge. Substitute another API for the OpenWeatherMap API.
 
 <!-- > -->
 
 ## After Class
 
-Finish up the [Node + GraphQL](https://www.howtographql.com/graphql-js/1-getting-started/) tutorial
+Complete the challenges above and submit your work to GradeScope. 
 
 <!-- > -->
 
-### Stretch Challenges
-
-Finish up the [Node + GraphQL](https://www.howtographql.com/graphql-js/1-getting-started/) tutorial and build the following functionalities off the completed version:
-
-- Implement a functionality on your GraphQL Server that allows your users add comments to the links
-- Implement a functionality on your GraphQL Server that allows users to upvote comments
-
-<!-- > -->
 ## Resources
 
 - <https://reactjs.org/tutorial/tutorial.html>
