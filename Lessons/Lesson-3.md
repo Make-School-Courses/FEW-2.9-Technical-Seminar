@@ -286,6 +286,10 @@ Import node-fetch to make network calls. You can also use Axios or other library
 
 `npm install node-fetch`
 
+Add import to server.js
+
+`const fetch = require('node-fetch')`
+
 <!-- > -->
 
 **Challenge 6 - Define your Resolver**
