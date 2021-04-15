@@ -189,6 +189,5 @@ Review the tutorial. Look at its features and requirements.
 
 Using state with functional components 
 
-`const [state, setState] = useState(defaultValue)` 
-
+`const [state, setState] = useState(defaultValue)`
 -->
