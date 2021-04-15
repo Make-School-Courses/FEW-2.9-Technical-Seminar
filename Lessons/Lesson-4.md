@@ -1,27 +1,33 @@
-# FEW 2.9 GraphQL Mutations 
-
-Mutations are queries that make changes or you could say mutate data.
+# FEW 2.9 React Review
 
 <!-- > -->
 
-## Learning Objectives
-
-1. Describe mutations
-1. Define mutation queries
-1. Use Mutations
-1. Describe Resolvers
-1. Write resolvers
+Your GraphQL Projects need a frontend!
 
 <!-- > -->
 
-## Warm up - Code Review (10 mins)
+Any type of front end client can connect to a GraphQL backend server. We will be using React.
 
-Break out into pairs and choose who will be the reviewer and reviewee for the challenges you were able to finish in lesson 3.
+<!-- > -->
 
-- Reviewee: Share your screen and explain what your code does from top to bottom.
-- Reviewer: Listen, ask questions, and make suggestions for improvement.
+React is a library for creating user interfaces. It is one of the most popular web frameworks.
 
-After 5 minutes, switch roles.
+<!-- > -->
+
+Why use React?
+
+<!-- > -->
+
+It's efficient and has a great workflow, developer experience and community.
+
+<!-- > -->
+
+## Class Learning Objectives/Competencies
+
+1. Build a React app
+2. Create reusable components
+3. Use JSX, State and Props
+4. Use Hooks
 
 <!-- > -->
 
@@ -29,489 +35,793 @@ After 5 minutes, switch roles.
 
 <!-- > -->
 
-Write a Query and a Resolver for this schema: 
+
+
+<!-- > -->
+
+## Overview
+
+<!-- > -->
+
+The React library has several core features let's take a look at those:
+
+- Components
+- JSX
+- ReactDOM
+
+<!-- > -->
+
+## Creating a React App
+
+<!-- > -->
+
+Creat a React using: 
+
+```bash
+npx create-react-app <app-name>
+```
+
+This creates a new folder containing a complete React project. 
+
+<!-- > -->
+
+Let tour the project.
+
+- public/
+- src/
+  - index.js
+  - index.css
+  - App.js
+  - App.css
+
+<!-- > -->
+
+### Components
+
+<!-- > -->
+
+Components are the foundational building block of React Applications. Most often a component represents a view.
+
+<!-- > -->
+
+Components are composable. Components can be nested within other components. Complex components are made from smaller less complex components.
+
+- Components must return [JSX](#jsx)
+- Components can be built from a function or a class
+
+<!-- > -->
+
+This is a Component
 
 ```JS
-enum Zodiac {
-	...
-}
-type Horoscope {
-	date: String! 
-	zodiac: Zodiac!
-	desc: String!
+function Header(props) {
+ return (
+  <h1>{props.title}</h1>
+ )
 }
 ```
 
-Your resolver should take the a zodiac sign as a parameter and return a Horoscope.
+<small>In it's simplest form a Component is a function that returns JSX.</small>
 
 <!-- > -->
 
-## Resolvers 
+What's JSX? 
 
-Resolvers are where most of the magic happens in a GraphQL server. 
+JSX is an extension of the JavaScript Lanaguage. 
 
-<!-- > -->
-
-Each field in your schema is backed by a resolver function whose responsibility it is to return the data for that field. 
+JSX === JavaScript and XML. 
 
 <!-- > -->
 
-To turn that around, GraphQL queries are possible because there is a resolver function for each field. 
+JSX provides a HTML like syntax that compiles to standard JS. For example: 
 
-<!-- > -->
-
-Imagine the type: 
-
-```JS
-type Time {
-	hour: Int!
-	minute: Int!
-	second: Int!
-}
-
-type Query {
-	getTime: Time!
-}
+```js
+<h1>{props.title}</h1>
 ```
 
-<!-- > -->
-
-To resolve `Time` we need a function that returns an object that has the fields defined by the type. 
+Becomes: 
 
 ```JS
-const root = {
-	getTime: () => {
-		const now = new Date()
-		const hour = now.getHours()
-		const minute = now.getMinutes()
-		const second = now.getSeconds()
-		return { hour, minute, second }
-	}
-}
+React.createElement("h1", null, props.title);
 ```
 
-<small>(Here we're resolving the `getTime` Query to a `Time` type)</small>
+<small>The magic is that the first line looks exactly like what will be generated for the browser to display.</small> 
 
 <!-- > -->
 
-Here is another way you could write a resolver for the `Time` type. 
+Why use JSX? 
+
+- Looks like the HTML it will generate
+- Easier to reason about
+
+<!-- > -->
+
+## JSX has it's own rules! 
+
+<!-- > -->
+
+1. Must have a top level node
 
 ```JS
-type Query {
-	Time: Time!
-}
+// Good!
+<div>
+  <h1>Hello</h1>
+  <p>World</p>
+</div>
 ```
 
 ```JS
-const root = {
-	Time: {
-		hour: () => new Date().getHours(),
-		minute: () => new Date().getMinutes(),
-		second: () => new Date().getSeconds()
-	}
-}
-```
-
-<small>Here the at the root is the `Time` and with a property that matches the name of each property that is a function that returns the value.</small>
-
-<small>Here the `Time` type defines a resolver for each field.</small>
-
-<!-- > -->
-
-## Mutations
-
-<!-- > -->
-
-So far you've been using queries to get things from your GraphQL server. This is like a GET request with a REST 😴 server. 
-
-**Mutations** are used to make changes at your GraphQL server. This is like a POST, PUT, or DELETE request with a REST server.
-
-<!-- > -->
-
-Mutations should probably have a name that describes what they do: 
-
-```python
-newUser
-createUser
-makeUserAccount
-addUser
+// Error!
+<h1>Hello</h1>
+<p>World</p>
 ```
 
 <!-- > -->
 
-Define a mutation in your schema with type Mutation: 
-
-```python
-# Schema
-type Mutation {
-	...
-}
-```
-
-<small>starts with `type Mutation`</small>
-
-<!-- > -->
-
-Usually a Mutation will take some parameters and resolve to a type. For example you might supply a username and password and resolve/return a User type. You might provide a url and description and Resolve to a Post type. 
-
-<!-- > -->
-
-Here is an example in code.
-
-```python
-# Schema
-type Mutation {
-	createUser(name: String!): User!
-	post(url: String!, description: String!): Link!
-}
-```
-
-<small>Mutations often return the thing they create, User, or Link in this example.</small>
-
-<!-- > -->
-
-When making a mutation **query** you start with the word "mutation"
-
-```python
-# Query 
-mutation {
-	createUser(name: "Jo") {
-		name
-		id
-	}
-}
-```
-
-<!-- > -->
-
-Note! Queries start with the key word Query. But we've been omitting it. 
-
-```python
-# Query
-query {
-	getUsers {
-		name
-	}
-}
-```
-
-<!-- > -->
-
-
-
-<!-- > -->
-
-## Mutation Challenges 
-
-<!-- > -->
-
-Using your code from assignment 2, solve the following challenges. 
-
-Note! The challenges here will use an "in memory" data source so the data will only exist while the server is running.
-
-<!-- > -->
-
-**Challenge 1 - Serve a list of things**
-
-Choose something to serve. This can be a list of anything pets, shoes, music, movies, whatever you want. Just make sure that it's something with a couple fields. 
-
-Define an array of these objects. For example here's a list of pets: 
+If you don't want to create an extra tag use a fragment!
 
 ```JS
-const petList = [
-	{ name: 'Fluffy', species: 'Dog' },
-	{ name: 'Sassy', species: 'Cat' },
-	{ name: 'Goldberg', species: 'Frog' }
-]
+// Good!
+<>
+  <h1>Hello</h1>
+  <p>World</p>
+</>
 ```
 
-You'll need to define a GraphQL Type in your schema. The Pet Type might look like this:
+<!-- > -->
+
+Can't use `class`, use `className` instead!
 
 ```JS
-type Pet {
-	name: String!
-	species: String!
-}
+// Good!
+<div className="App">
+  <h1 className="title">Hello</h1>
+  <p>World</p>
+</div>
 ```
-
-Now you need a resolver to return the array. For the petList it might look like:
 
 ```JS
-const root = {
-	allPets: () => {	
-			return petList
-	}
-}
+// Error!
+<div class="App">
+  <h1 class="title">Hello</h1>
+  <p>World</p>
+</div>
 ```
 
-Yopu'll know you're done when you can get the list of pets and any of their fields in Graphiql. For example the following query: 
+<!-- > -->
+
+A tag with no children must be self closing by adding a `/` be the closing `>`.
 
 ```JS
-{
-  allPets {
-    name
-    species
-  }
-}
+// Error!
+<div class="App">
+  <br />
+  <img />
+  <hr />
+  <Game />
+  <Map />
+</div>
 ```
 
-...would return:
+<!-- > -->
 
-```JSON
-{
-  "data": {
-    "allPets": [
-      {
-        "name": "Fluffy",
-        "species": "Dog"
-      },
-      {
-        "name": "Sassy",
-        "species": "Cat"
-      },
-      {
-        "name": "Goldberg",
-        "species": "Frog"
-      }
-    ]
-  }
+Values in JSX are strings (use double quotes!) Other values use `{}`.
+
+```JS
+<div>
+  <img src={url} width={100} height={150} />
+</div>
+```
+
+<small>Imagine `url` is a variable</small>
+
+<!-- > -->
+
+Any JS expression can be used in a JSX expression as long as it appears in the `{}`.
+
+```JS
+<div>
+  <img 
+    src={`${path}/${filename}`} 
+    width={w * 0.5} 
+    height={h * 0.5} 
+    onClick={() => {
+      ...
+    }}
+  />
+</div>
+```
+
+<small>Move attributes to their own line for clarity.</small>
+
+<!-- > -->
+
+### Composing Components
+
+<!-- > -->
+
+Store components each in their own file. 
+
+```JS
+// Title.js
+
+function Title() {
+  return <h1>Hello World</h1>
+}
+
+export default Title
+```
+
+```JS
+// App.js
+
+import Title from './Title.js'
+
+function App() {
+  return <Title />
 }
 ```
 
 <!-- > -->
 
-**Challenge 2 - Add new thing**
-
-Now that your server serves a list of things you need to give it the ability to add new things. This will require a mutation! 
-
-<!-- > -->
-
-Add a mutation query in your schema. Below is an example for the `Pet` type to your schema: 
+If you're returning more than one line of JSX wrap in `()`.
 
 ```JS
-type Mutation {
-	addPet(name: String!, species: String!): Pet!
+// App.js
+import Title from './Title.js'
+
+function App() {
+  return ( // <-- (
+    <div className="App">
+      <Title />
+    </div>
+  ) // <-- )
 }
 ```
 
-Add a resolver for your mutation:
+<!-- > -->
+
+## Props
+
+<!-- > -->
+
+Props are values passed to a component. 
+
+When props change the component renders. 
+
+Props come from outside the component and are passed into the the component.
+
+<!-- > -->
+
+Pass props to a component via attributes: 
 
 ```JS
-const root = {
+// Imagine we're using the component somewhere
+<Heading title="Hello" subtitle="world" />
+```
+
+```JS
+// Heading.js
+function Heading(props) {
+  // { title: "Hello", subtitle: "world" }
+  return (
+    <>
+      <h1>{props.title}</h1>
+      <p>{props.subtitle}</p>
+    </>
+  )
+} 
+```
+
+<!-- > -->
+
+## State 
+
+<!-- > -->
+
+State presents values a component stores internally. 
+
+When state change the component renders. 
+
+<!-- > -->
+
+Define state like this: 
+
+```JS
+import { useState } from 'react'
+
+function Counter() {
+  const [ count, setCount ] = useState(0)
+  return (
+    <>
+      <h1>{count}</h1>
+      <button 
+        onClick={() => setCount(count + 1)}
+      >Add 1</button>
+    </>
+  )
+}
+```
+
+<small>Here `count` is increased by 1 with each click.</small>
+
+<!-- > -->
+
+## Controlled Component Pattern
+
+<!-- > -->
+
+The controlled component pattern is used to handle form elements. 
+
+An input value is stored as state.
+
+<!-- > -->
+
+Controlled component pattern in action!
+
+```JS
+import { useState } from 'react'
+
+function Counter() {
+  const [ zip, setZip ] = useState('')
+  return (
+    <>
+      <input 
+        value={zip}
+        onChange={(e) => setZip(e.target.value)}
+      />
+    </>
+  )
+}
+```
+
+<small>Here state holds the value set on the input and is updated when the input changes.</small>
+
+<!-- > -->
+
+## Inputs and forms
+
+<!-- > -->
+
+Forms are really important. They have some some behaviors that can make them a little confusing. 
+
+<!-- > -->
+
+Group all of your form elements in a form!
+
+```JS
+<form>
+  <p>Send us a message</p>
+  <input type="email" />
+  <textarea></textarea>
+  <label>
+    Sing up for out news letter!
+    <input type="checkbox" />
+  </label>
   ...
-	addPet: ({ name, species }) => {
-		const pet = { name, species }
-		petList.push(pet)
-		return pet
-	}
-}
+</form>
 ```
 
-This new method on the resolver should take the name and species, create a new object and add it to the array of pets. 
+<!-- > -->
 
-**Stretch goal:** Use a class to define your Pet Object!
-
-Test your work. You should be able to add a new pet with a query like this:
+Submit a form with a submit button!
 
 ```JS
-mutation {
-  addPet(name:"Edamame", species:"Mameshiba") {
-    name
-    species
-  }
-}
+<form>
+  ...
+  <button type="submit">Submit</button>
+</form>
 ```
 
-The results for this should look like this: 
+<small>A button with `type="submit" will submit a form!`</small>
 
-```JSON
-{
-  "data": {
-    "addPet": {
-      "name": "Edamame"
-    }
-  }
-}
-```
+<!-- > -->
 
-**Challenge 3 - Get one thing**
-
-You need to write a new resolver that returns a single item from the array. 
-
-To do this each item in the array will need to have a unique id. In my example a Pet's name and Species might be duplicated in the list. This means that pets must look more like this: 
+Handle submitting a form with `onSubmit`
 
 ```JS
-type Pet {
-	id: Int!
-	name: String!
-	species: String!
-}
+<form onSubmit={(e) => {
+  // Handle your form submission here!
+}}>
+  ...
+</form>
 ```
 
-Every Pet should have an id and it can't be null. 
+<small>Like other event handlers `onSubmit` receives an event object! (`e` in the sample above)</small>
 
-You could use the index of the array but break if you can remove items since the index would change. 
+<!-- > -->
 
-Now with and id for each Pet create a mutation in your GraphQL schema that lets you get a pet via it's id. Imagine the query would look like this: 
+Submitting a form will reload the current page, you need to prevent this in a React App!
 
 ```JS
-query {
-  getPet(id:1) {
-    species
-    id
-    name
-  }
-}
+<form onSubmit={(e) => {
+  e.preventDefault() // prevent the page from loading!
+  ...
+}}>
+  ...
+</form>
 ```
 
-Should return something like: 
+<!-- > -->
 
-```JSON
-{
-  "data": {
-    "getPet": {
-      "species": "Cat",
-      "id": 1,
-      "name": "Sassy"
-    }
-  }
-}
+## Connecting a Client to GraphQL
+
+<!-- > -->
+
+For the client side you'll be using Apollo GraphQL client.
+
+<!-- > -->
+
+The goal of this project is to create a client built with React that connects to your GraphQL OpenWeatherMap server. 
+
+<!-- > -->
+
+The server will run at locahost:4000 and the client will run on localhost:3000. 
+
+You need so start **both** for the project to work locally. 
+
+<!-- > -->
+
+I find it easier to keep both projects in seprate folders.
+
+<!-- > -->
+
+## Apollo Client
+
+<!-- > -->
+
+**Apollo Client** is a comprehensive state management library for JavaScript that enables you to manage both local and remote data with GraphQL. Use it to fetch, cache, and modify application data, all while automatically updating your UI.
+
+<!-- > -->
+
+You will use Apollo Client in this project to handle transactions between your React project and your GraphQL server. 
+
+<!-- > -->
+
+Your Server needs to support CORS. Follow these steps to enable CORS for your Express server. 
+
+- `npm install cors`
+- In `server.js`
+  - `const cors = require('cors')`
+  - `app.use(cors())`
+
+<!-- > -->
+
+What's CORS?
+
+Cross-Origin Resource Sharing is a mechanism that uses additional HTTP headers.
+
+It uses these headers to tell a browser to let a web application running at one origin have permission to access selected resources from a server at a different origin.
+
+<!-- > -->
+
+Follow these steps to setup Apollo Client with React.
+
+Create a new React project: 
+
+`npx create-react-app weather-client`
+
+Install dependencies: 
+
+`npm install @apollo/client`
+
+<!-- > -->
+
+In `index.js` - setup Apollo client
+
+```js
+import { ApolloProvider, InMemoryCache, ApolloClient } from '@apollo/client'
+// make an instance of the Apollo client
+export const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql',
+  cache: new InMemoryCache()
+});
 ```
 
-Getting a Pet with invalid id should return something like:
+<!-- > -->
 
-```JSON
-{
-  "data": {
-    "getPet": null
-  }
-}
+Still in index.js Wrap your app in the ApolloProvider:
+
+```js
+ReactDOM.render(
+  <React.StrictMode>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 ```
 
-**Challenge 4 - Edit a thing**
+<!-- > -->
 
-In this challenge you'll make a new mutation that edits a thing. You'll need to include the id of the item and any fields and their values. If a field isn't included then the old value should be used. 
+The following can be used in any component that is a child of App!
 
-Write a mustation query in your schema. 
+Import your `client` and `gql`
+```js
+import { gql } from '@apollo/client'
+import { client } from './index'
+```
 
-Write a a resolver. 
+<!-- > -->
 
-You should be able to edit a thing in your array with a graphql query something like: 
+Now you're ready to make requests to your GraphQL server from your React project. 
+
+- Here are a few ideas: 
+  - The requests are async. You will need to handle them with Promise. 
+  - You will need to render your components conditionally. 
+  - Store the data you load on state. This will cause your components to render when state changes. 
+
+<!-- > -->
+
+Make a component to handle a request to the weather server. 
 
 ```JS
-mutation {
-  updatePet(id:1, name:"Felonious") {
-    name
-    id
-    species
-  }
+import { useState } from 'react'
+import { gql } from '@apollo/client'
+import { client } from './index'
+
+function Weather() {
+  return (
+    <div className="Weather">
+      <form>
+        ...
+      </form>
+    </div>
+  );
 }
+
+export default Weather
 ```
 
-And the results should be something like: 
+<!-- > -->
 
-```JSON
-{
-  "data": {
-    "updatePet": {
-      "name": "Felonious",
-      "id": 1,
-      "species": "Cat"
-    }
-  }
-}
-```
-
-**Challenge 5 - Delete thing**
-
-Add a delete mutation to complete CRUD functionality! The new mutation should take the id of a thing, remove that thing from the array, and return the the thing. If the thing doesn't exist it should return null. 
-
-Here's an example set of queries. First add a new item: 
+Add state to handle the form input and the weather data. 
 
 ```JS
-mutation {
-  addPet(name:"Oops", species:"Adder") {
-    name
-    species
-    id
-  }
-}
-```
+function Weather() {
+  const [ zip, setZip ] = useState('')
+  const [ weather, setWeather ] = useState(null)
 
-Should return soemthing like this creating a new thing: 
-
-```JS
-{
-  "data": {
-    "addPet": {
-      "name": "Oops",
-      "species": "Adder",
-      "id": 3
-    }
-  }
-}
-```
-
-Notice the id is 3. You should be able to remove the item with: 
-
-```JS
-mutation {
-  deletePet(id:3) {
-  	name
-  }
-}
-```
-
-And the returned results should be the removed item: 
-
-```JS
-{
-  "data": {
-    "deletePet": {
-      "name": "Oops"
-    }
-  }
+  return (
+    <div className="Weather">
+      <form>
+        ...
+      </form>
+    </div>
+  );
 }
 ```
 
 <!-- > -->
 
-### Stretch Challenges
+Add an input and submit button.
+
+```JS
+<div className="Weather">
+  <form>
+    <input 
+        value={zip}
+        onChange={(e) => setZip(e.target.value)}
+      />
+      <button type="submit">Submit</button>
+  </form>
+</div>
+```
 
 <!-- > -->
 
-If you solved all of the challenges above try these stretch goals: 
+Add a function to handle requests to your GraphQL server. 
 
-Create a second array of new things. Write mutations that enable CRUD operations. 
+```js
+function Weather() {
+  ...
+  async function getWeather() {
+    try {
+      const json = await client.query({
+        query: gql`
+          query {
+            getWeather(zip:${zip}) {
+              temperature
+              description
+            }
+          }
+        `
+      })
+      setWeather(json)
+    } catch(err) {
+      console.log(err.message)
+    }
+  }
 
-Create an array of owners that have the fields and things where things is an array of the thing Type you created earlier. 
+  ...
+}
+```
+
+<!-- > -->
+
+Handle the submit event: 
+
+```js
+<form onSubmit={(e) => {
+    e.preventDefault()
+    getWeather()
+  }}>
+    <input 
+    value={zip}
+    onChange={(e) => setZip(e.target.value)}
+  />
+  <button type="submit">Submit</button>
+</form>
+```
+
+<!-- > -->
+
+Handle displaying the your weather data. 
+
+```JS
+<div className="Weather">
+  
+  {weather ? <h1>{weather.data.getWeather.temperature}</h1>: null}
+  
+  <form onSubmit={(e) => {
+    e.preventDefault()
+    getWeather()
+  }}>
+    ...
+  </form>
+</div>
+```
+
+<small>This conditional rendering technique looks at `weather`, if its truthy displays the h1, otherweise `null`</small>
+
+<!-- > -->
+
+All of the examples here may need some name changes to work with your server or components!
+
+<!-- > -->
+
+## Challenges
+
+<!-- > -->
+
+You will build a React App that fetches weather data from your GraphQL Weather server. It will be use the Apollo client for GraphQL for query.
+
+<!-- > -->
+
+**Challenge 0 - Weather Server**
+
+Complete your GraphQL Express Weather server. 
+
+- Be sure to add cors (see the instructions above)
+
+<!-- > -->
+
+**Challenge 1 - Create your React Project**
+
+Follow the instructions above and get your React Project running. 
+
+<!-- > -->
+
+**Challenge 2 - Run your GraphQL Express Server**
+
+Your Express project will run on port 4000 (or another port check!) and the React project will run on port 3000. 
+
+- React and GraphQL servers need to be running on different ports.
+
+<!-- > -->
+
+**Challenge 3 - Add Apollo Client**
+
+Add Apollo Client to your React Project. Follow the instructions above.
+
+- Check the port! and the end point.
+- The `uri: 'http://localhost:4000/graphql'` must match the port and endpoint that your server uses! 
+
+<!-- > -->
+
+**Challenge 4 - Create a Component**
+
+This component will connect to the GraphQL Server. See the instructions above. 
+
+- Import `gql` and `client`
+- Set up your form and an async function to handle requests
+
+<!-- > -->
+
+**Challenge 5 - Handle your data with conditional rendering**
+
+Handle data with conditional rendering. See the instructions above. 
+
+The goal here is to display data after it's loaded and display nothing or alternate content when no data is available.
+
+- Display the temperature
+
+<!-- > -->
+
+**Challenge 6 - Make a component to display the Weather**
+
+React is all about components. Write a specialized component that is used just to display the weather data. 
+
+Supply data as props. Display: 
+
+- temp
+- description
+- and three or more properties!
+
+<!-- > -->
+
+**Challenge 7 - Handle Errors**
+
+If you enter a zip code that doesn't exist you'll get an error or nothing will happen. You should handle this situation. 
+
+- Check for an error, use the cod and message value from openweather map. Your Server should provide this! 
+- Display the message when cod != 200.
+
+<!-- > -->
+
+**Challenge 8 - Style Your work**
+
+This is an open ended challenge. Do as much work here as you like!
+
+- Style the form
+- Style the weather results
+- Display an image for the weather
+
+<!-- > -->
+
+**Challenge 9 - Use Units**
+
+Add radio button or other method to set the unit type: metric or imperial. And display the weather with that unit. 
+
+- Add two radio buttons to the UI. 
+- Send the unit to the server
+- Server should request data in the unit from openweathermap
+
+<!-- > -->
+
+**Challenge 10 - Get the current location**
+
+OpenWeatherMap supports getting the weather by location. You can get the geocoordinates with the browser API. 
+
+Make a button that gets the coordinates. 
+
+- https://developer.mozilla.org/en-US/docs/Web/API/Navigator/geolocation
+
+<!-- > -->
+
+**Challenge 11 - Add Weather by location to your GraphQL API**
+
+Spends some time on your GraphQL server. Add a query type that gets weather by geolocation. 
+
+<!-- > -->
+
+**Challenge 12 - Get weather by geolocation**
+
+Add a button to your React project that gets the geolocation from the browser and makes a reques to the GraphQL API. 
+
+<!-- > -->
+
+**Challenge 13 - Sub another API**
+
+This is an openended stretch challenge. Substitute another API for the OpenWeatherMap API.
 
 <!-- > -->
 
 ## After Class
 
-<!-- > -->
-
-Compelete the challenegs above and submit them to gradescope. 
-
-<!-- > -->
-
-### Evaluate your work
-
-1. Describe mutations
-1. Define mutation queries 
-1. Use Mutations 
-1. Describe Resolvers
-1. Write resolvers
-
-| - | Does not meet expectations | Meets Expectations | Exceeds Expectations |
-|:---:|:---:|:---|:---:|
-| Comprehension | Can't describe GraphQL mutations | Can describe GraphQL mutations | Could describe potential use cases for GraphQL mutations |
-| Mutation Queries | Can't write a mutation query | Can write mutation queries | Can write mutation queries that expand on the challenge solutions |
-| Mutation Resolvers | Can't write a Mutation reolsver | Can write a mutation resolver | Could write mutation resolvers that expand upon the solutions to the challenges |
+Complete the challenges above and submit your work to GradeScope. 
 
 <!-- > -->
 
 ## Resources
 
-- 
+- <https://reactjs.org/tutorial/tutorial.html>
+- [Component Lifecycle](https://reactjs.org/docs/react-component.html)
+- [Hooks](https://reactjs.org/docs/hooks-intro.html)
+- [Async/await](https://javascript.info/async-await)
+- [Using Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+- [Array Destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+- <https://www.apollographql.com/docs/react/get-started/>
+
+<!-- > -->

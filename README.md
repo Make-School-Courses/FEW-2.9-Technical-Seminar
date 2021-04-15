@@ -46,9 +46,9 @@ Students by the end of the course will be able to ...
 |  -  |  Thu, Apr 1 | **No Class - Cesar Chavez**            | - |
 |  2  | Tue, Apr 6  | [Lesson 2 - GraphQL Schemas and Types] | GraphQL Resolver Challenges |
 |  3  | Thu, Apr 8  | [Lesson 3 - GraphQL + Express]         | GraphQL OpenWeatherMap API |
-|  4  | Tue, Apr 13 | [Lesson 4 - GraphQL Mutations]         | GraphQL Mutation Challenges |
-|  5  | Thu, Apr 15 | [Lesson 5 - GraphQL Subscriptions]     | GraphQL Subscription Challenges |
-|  6  | Tue, Apr 20 | [Lesson 6 - React Review]              | - |
+|  4  | Tue, Apr 13 | [Lesson 4 - React Intro]               | React GraphQL Weather |
+|  5  | Thu, Apr 15 | [Lesson 5 - React and GraphQL]         | - |
+|  6  | Tue, Apr 20 | [Lesson 6 - GraphQL Mutations]         | - |
 |  7  | Thu, Apr 22 | [Lesson 7 - React and GraphQL]         | React + Apollo |
 |  8  | Tue, Apr 27 | [Lesson 8 - Lab]                       | - |
 |  9  | Thu, Apr 29 | [Lesson 9 - GraphQL ORM]               | GraphQL Hackernews |
@@ -60,9 +60,9 @@ Students by the end of the course will be able to ...
 [Lesson 1 - GraphQL Intro]: Lessons/Lesson-1.md
 [Lesson 2 - GraphQL Schemas and Types]: Lessons/Lesson-2.md
 [Lesson 3 - GraphQL + Express]: Lessons/Lesson-3.md
-[Lesson 4 - GraphQL Mutations]: Lessons/Lesson-4.md
-[Lesson 5 - GraphQL Subscriptions]: Lessons/Lesson-5.md
-[Lesson 6 - React Review]: Lessons/Lesson-6.md
+[Lesson 4 - React Intro]: Lessons/Lesson-4.md
+[Lesson 5 - React and GraphQL]: Lessons/Lesson-5.md
+[Lesson 6 - GraphQL Mutations]: Lessons/Lesson-6.md
 [Lesson 7 - React and GraphQL]: Lessons/Lesson-7.md
 [Lesson 8 - Lab]: Lessons/Lesson-8.md
 [Lesson 9 - GraphQL ORM]: Lessons/Lesson-9.md

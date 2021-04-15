@@ -214,7 +214,7 @@ Open graphiql:
 
 <!-- > -->
 
-**Challenge 3 - Get your API Key**
+**Challenge 2 - Get your API Key**
 
 Go to https://openweathermap.org
 
@@ -261,7 +261,7 @@ const apikey = process.env.OPENWEATHERMAP_API_KEY
 
 <!-- > -->
 
-**Challenge 4 - Define Schema**
+**Challenge 3 - Define Schema**
 
 Define your schema
 
@@ -280,7 +280,7 @@ type Query {
 
 <!-- > -->
 
-**Challenge 5 - Import node-fetch**
+**Challenge 4 - Import node-fetch**
 
 Import node-fetch to make network calls. You can also use Axios or other library of your choice. You need something to make network requests.
 
@@ -292,7 +292,7 @@ Add import to server.js
 
 <!-- > -->
 
-**Challenge 6 - Define your Resolver**
+**Challenge 5 - Define your Resolver**
 
 Define your resolver: 
 
@@ -314,7 +314,7 @@ const root = {
 
 <!-- > -->
 
-**Challenge 7 - Test your work in GraphiQL**
+**Challenge 6 - Test your work in GraphiQL**
 
 Try out a query and solve any errors that might pop up.
 
@@ -329,7 +329,7 @@ Try out a query and solve any errors that might pop up.
 
 <!-- > -->
 
-**Challenge 8 - Add units**
+**Challenge 7 - Add units**
 
 The weather API supports a unit of `standard`, `metric`, or `imperial`. Currently you should be getting the weather in Kelvin (standard) this is hard to understand better to allow a request to include the unit. 
 
@@ -388,7 +388,7 @@ Test your work! Write a query:
 
 <!-- > -->
 
-**Challenge 9 - Expand the API**
+**Challenge 8 - Expand the API**
 
 If you followed all of the instructions here your API should allow fetching the temperature and description. The OpenWeatherMap response provides a lot more information. The goal of this challenge is to expand the getWeather query type. 
 
@@ -404,7 +404,7 @@ Challenge, expand your query to include the following properties:
 
 <!-- > -->
 
-**Challenge 10 - Handle Errors**
+**Challenge 9 - Handle Errors**
 
 The OpenWeatherMap API provides a cod property that includes an error code. If you provide a zip code that doesn't exist you'll get a JSON object with a code of 404 and a message property with a message string. It might look something like: 
 
