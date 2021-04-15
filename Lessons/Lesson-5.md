@@ -25,7 +25,7 @@ The React GraphQL Weather project is due next week. Use today to get the project
 			- Be sure the uri is set to the graphql endpoint defined in your server. 
 		- Wrap your app in the ApolloClient and include your client.
 	- Make a component to handle the weather data. 
-			- Make a new file Weather.js
+		- Make a new file Weather.js
 			- Add a function Weather, and export it. 
 			- Your component needs a form to handle inputing a zip code and submitting the data to your server. Add an input and a button. 
 			- Use state to handle the zip code input. Define a state var and a setter function with useState.
