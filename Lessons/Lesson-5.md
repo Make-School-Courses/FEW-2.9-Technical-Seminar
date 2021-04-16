@@ -75,6 +75,70 @@ Client Challenges:
 - **Challenge 12 - Get weather by geolocation**
 - **Challenge 13 - Sub another API**
 
+## Stretch Challenges 
+
+Anyone working on the stretch challenges. If you are working on the geolocation challenge the browsre will not let you use geolocation from an `http` connection it wants an `https` connection. You'll to provide this from both the lient and the server. 
+
+**Setup https on your express server**
+
+Install mkcert follow the instructions here: 
+
+https://github.com/FiloSottile/mkcert
+
+tl;dr: 
+
+```
+brew install mkcert
+mkcert -install
+```
+
+This will create the files `localhost-key.pem` and `localhost.pem`. These should be in your root directory. **Do not share or commit these to gihub!** Note the path to these files, its used in the nect step. 
+
+Set up in your express server: 
+
+```JS
+// https 
+const fs = require("fs");
+const https = require("https");
+const homedir = require('os').homedir();
+const key = fs.readFileSync(`${homedir}/localhost-key.pem`, 'utf-8');
+const cert = fs.readFileSync(`${homedir}/localhost.pem`, 'utf-8');
+```
+
+The path to `localhost-key.pem` and `localhost.pem` is from the home directory. You may need to adjust this. 
+
+Change how you start your server with `app.listen`: 
+
+```JS
+// Start this app
+const port = 4000
+// app.listen(port, () => {
+//   console.log('Running on port:'+port)
+// })
+https.createServer({ key, cert }, app).listen(port);
+```
+
+**Start your React APP with HTTPS**
+
+This is easier than it sounds! Quit your React app and restart with: 
+
+```
+HTTPS=true npm start
+```
+
+**Note! When you do this you'll see a scary warning screen that reads something like: 
+
+> Your connection is not Private
+> Attackers might be trying to steal your information from localhost (for example, passwords, messages, or credit cards). Learn more
+> NET::ERR_CERT_AUTHORITY_INVALID
+
+Normally we want to heed these warnings but in this it's your app running locally so it's okay! 
+
+Depending on your browser you'll need to click through to your site. In Chrome there is an "Advanced" button followed by the link "Proceed to localhost (unsafe)". You can click that to vidsit your React site on HTTPS. 
+
+
+
+
 
 
 
