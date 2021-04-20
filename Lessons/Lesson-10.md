@@ -1,5 +1,14 @@
 # FEW 2.9 Advanced queries 
 
+
+More ideas: 
+
+- Variables 
+- Fragments
+- Directives 
+
+
+
 Using variables with GraphQL
 
 A query will often provide values to define and refine the expected results. GraphQL queries can define variables that may appear anywhere inside of a Query. This saves you the trouble of concatenating a long query string, and makes it easy to track variables used in a query by keeping them in one location. 
