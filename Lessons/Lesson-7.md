@@ -96,7 +96,7 @@ When you create a connection with a websocket the connection is persistent and a
 
 What can you do with a websocket? 
 
-- Update tings in real time
+- Things that update in real time
 - Mapping
 - Games
 
@@ -597,9 +597,8 @@ Tour Prisma Studio...
 
 <!-- > -->
 
-Finish the Hackernews Node.js tutorial!
-
-- Complete the following chapters by the next class: `Realtime GraphQL Subscriptions`, `Filtering, Pagination & Sorting` and `Summary`
+- Finsih the challenges here and submit your work to GradeScope
+- Finish up the outstanding hoemwork projects and submit those to GradeScope.
 
 <!-- > -->
 
