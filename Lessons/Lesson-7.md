@@ -1,8 +1,4 @@
-# FEW 2.9 GraphQL Subscriptions
-
-<!-- > -->
-
-## Review
+# FEW 2.9 Websockets
 
 <!-- > -->
 
