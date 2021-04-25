@@ -4,22 +4,105 @@
 
 ## Review 
 
+Quick there's a couple of problems with this code you need to fix them! Remember that Kaiju battle schema? Someone started writing an implementation for it. But there are a few problems can you fix them? 
 
+Read the code and try and solve as many problems as you can find. You can do this by eye just reading the code here, or you can run the code and read the error.
+
+```JS
+const express = require('express')
+const { graphqlHTTP } = require('express-graphql')
+const { buildSchema } = require('graphql')
+
+// Create a schema
+const schema = buildSchema(`
+type Kaiju {
+	name: String!
+	power: Int!
+}
+
+type City {
+	name: String!
+	population: Int!
+}
+
+type Battle {
+	fighter1: Kaiju!
+	fighter2: Kaiju!
+	city: City!
+}
+
+type Query {
+	getKaiju(id: Int!): Kaiju!
+	allKaiju: [Kaiju!]!
+	getCity(id: Int!): City!
+	allCities: [City!]!
+	getBattle(fighter1: String!, fighter2: String!, arena: String!): Battle! 
+}`)
+
+const fighters = [
+	{ name: 'Godzilla', power: 72 },
+	{ name: 'Mothra', power: 89 },
+	{ name: 'Kong', power: 68 },
+	{ name: 'Predator', power: 98 }
+]
+
+const cities = [
+	{ name: 'Tokyo', population: 37260000 },
+	{ name: 'Shanghai', population: 234800000 },
+	{ name: 'Såo Paulo', population: 208800000 },
+	{ name: 'New York City', population: 18650000 } 
+]
+
+// Define a resolver
+const root = {
+	getKaiju: ({id}) => {
+		return fighters[id]
+	},
+	allKaiju: () => {
+		return fighters 
+	},
+	getCity: ({id}) => {
+		return cities[id]
+	},
+	allCities: () => {
+		return cities
+	},
+	getBattle: ({ fighter1, fighter2 ,arena }) => {
+		return { fighter1, fighter2, city }
+	}
+}
+// Create an express app
+const app = express()
+
+// Define a route for GraphQL
+app.use('/graphql', graphqlHTTP({
+	schema,
+	rootValue: root,
+	graphiql: true
+}))
+ 
+// Start this app
+const port = 4000
+app.listen(port, () => {
+	console.log(`Running on port: ${port}`)
+})
+```
 
 <!-- > -->
 
 # Learning Objectives
 
-
+- Use Apollo Server
+- Create GraphQL Schema
+- Use GraphQL Subscriptions
 
 <!-- > -->
-
 
 ## Subscriptions with GraphQL
 
 <!-- > -->
 
-Subscriptions are described in the GraphQL docs but the implementation is left up to developers. Usually these would be implemented with a websocket.
+Subscriptions are described in the GraphQL docs but the implementation is left up to developers. Usually, these would be implemented with a websocket.
 
 <!-- > -->
 
@@ -33,11 +116,11 @@ There are several GraphQL libraries:
 
 This example uses Apollo Server. This seems to be the most advanced GraphQL server available at this time. 
 
-<small>(I started with express-graphql and coudln't get subscriptions to work.)</small>
+<small>(I tried with express-graphql and couldn't get subscriptions to work.)</small>
 
 <!-- > -->
 
-Implementing a server with Apollo is similar to implementing the express-graphql server but has a few differences. 
+Implementing a server with Apollo is similar to implementing the express-graphql server but has a few differences.
 
 <!-- > -->
 
@@ -69,9 +152,9 @@ Add a start script to your package.json:
 
 ```
 "scripts": {
-    ...
-    "start": "nodemon server.js"
-  },
+	...
+	"start": "nodemon server.js"
+ },
 ```
 
 ### Setup the server
@@ -92,7 +175,7 @@ const pubsub = new PubSub();
 
 You'll come back to this later. We need to put some things in place first before we make use of this pubsub instance. 
 
-The listening for and publishing subcriptions will be handled with PubSub. Read more about it here: 
+The listening for and publishing subscriptions will be handled with PubSub. Read more about it here: 
 
 https://www.apollographql.com/docs/apollo-server/data/subscriptions/#the-pubsub-class
 
@@ -121,13 +204,11 @@ const typeDefs = gql`
 `
 ```
 
-This defines an object type: Post, a Query type: posts, a Mutation type: addPost, and a Subscription type: newPost.
+This defines an object type: Post, a Query type: posts, a Mutation type: `addPost`, and a Subscription type: `newPost`.
 
 Read more about the gql function here: 
 
 https://www.apollographql.com/docs/resources/graphql-glossary/#gql-function
-
-
 
 **Aside: JS Template Strings**
 
@@ -135,21 +216,21 @@ The syntax here looks a little strange:
 
 ```JS
 const typeDefs = gql`
-  ...
+	...
 `
 ```
 
 Following `gql` with the backquotes looks weird, what is going on? 
 
-tl;dr gql is a function and the JS allows us to follow a function with a template string and omit the parenthesis. read the notes notes below there is more to this feature! 
+tl;dr gql is a function and the JS allows us to follow a function with a template string and omit the parenthesis. read the notes below there is more to this feature! 
 
-Why? Using this syntax makes it include a multiline string value as a parameter to the the `gql` function. 
+Why? Using this syntax makes it include a multiline string value as a parameter to the `gql` function. 
 
 Read more here:
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates
 
-### Mock up some Data
+### Mockup some Data
 
 Define an array of post objects. Each message will have a message and date field. This matches the Post type defined in the schema. 
 
@@ -159,7 +240,7 @@ const data = [
 ]
 ```
 
-You'll exapnds on this in the challenges later. 
+You'll expand on this in the challenges later. 
 
 ### Define your resolvers
 
@@ -201,7 +282,7 @@ You'll define the resolver for this `Query`:
 const resolvers = {
 	Query: {
 		posts: () => {
-			return data
+		return data
 		}
 	},
 	Mutation: {
@@ -239,7 +320,7 @@ const resolvers = {
 }
 ```
 
-Note: `pubsub.publish('NEW_POST', { newPost: post })`. This line will publish a post to anyone who subscribed. Anyone that subscribes to `newPost` will get a this post. You will tackle subscriptions in the next section. 
+Note: `pubsub.publish('NEW_POST', { newPost: post })`. This line will publish a post to anyone who subscribed. Anyone that subscribes to `newPost` will get this post. You will tackle subscriptions in the next section. 
 
 Note! The arguments for a resolver function in Apollo are different! A resolver takes 4 arguments: `parent`, `args`, `context`, and `info`. You'll be looking at the other arguments later, now let's focus on args. 
 
@@ -247,11 +328,11 @@ We need the `_` in place to get to the second argument, and we'll use the decons
 
 ```JS
 const resolvers = {
-  Query: {
-    user(parent, args, context, info) {
-      return users.find(user => user.id === args.id);
-    }
-  }
+	Query: {
+		user(parent, args, context, info) {
+			return users.find(user => user.id === args.id);
+		}
+	}
 }
 ```
 
@@ -261,11 +342,11 @@ https://www.apollographql.com/docs/apollo-server/data/resolvers/#gatsby-focus-wr
 
 #### Subscription Resolvers
 
-Resolvers for subscriptions work a little different from other resolvers. Here is where you will use `pubsub`. 
+Resolvers for subscriptions work a little differently from other resolvers. Here is where you will use `pubsub`. 
 
 A subscription uses a `subscribe` method. This method must return an instance of `AsyncIterator`. 
 
-**Note!** The `PubSub` class is used for development. For production the docs suggest using the `PubSubEngine` class. 
+**Note!** The `PubSub` class is used for development. For production, the docs suggest using the `PubSubEngine` class. 
 
 #### Adding a subscription
 
@@ -282,7 +363,7 @@ So our resolver will be:
 
 ```JS
 const resolvers = {
-	...
+		...
 	Subscription: {
 		newPost: {
 			subscribe: () => pubsub.asyncIterator('NEW_POST')
@@ -291,7 +372,7 @@ const resolvers = {
 }
 ```
 
-This subscribe method will add a subscription for `newPost`. Notice you're calling: `pubsub.asyncIterator('NEW_POST')` to generate the instance of `AsyncIterator`. The argument: `'NEW_POST'` is a "tag" to that will identify this subscription from other subscriptions. 
+This subscribe method will add a subscription for `newPost`. Notice you're calling: `pubsub.asyncIterator('NEW_POST')` to generate the instance of `AsyncIterator`. The argument: `'NEW_POST'` is a "tag" that will identify this subscription from other subscriptions. 
 
 Read more about it here: 
 
@@ -313,13 +394,13 @@ Start the server:
 ```JS
 // The `listen` method launches a web server.
 server.listen().then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
+	console.log(`🚀 Server ready at ${url}`);
 });
 ```
 
 ### Testing your work! 
 
-The next step will be test the server and test subscriptions. You do this with Graphiql browser for now since you haven't created a client application yet. 
+The next step will be to test the server and test subscriptions. You do this with Graphiql browser for now since you haven't created a client application yet. 
 
 So far the system supports the following features: 
 
@@ -337,7 +418,7 @@ The interface looks a little different but the function is the same.
 
 #### Aside: Operation names
 
-When you run a query you can give it an "Operation Name". This allows you identify and describe a query with a name. 
+When you run a query you can give it an "Operation Name". This allows you to identify and describe a query with a name. 
 
 ```
 # Operation name: Luke
@@ -359,10 +440,10 @@ Test your posts:
 ```
 # Operation name: Posts
 query Posts {
-  posts {
-    message
-    date
-  }
+	posts {
+		message
+		date
+	}
 }
 ```
 
@@ -371,27 +452,27 @@ Click the > button. You should see a list of posts.
 
 #### Test addPost Mutation
 
-Add this new query below the existing qurey:
+Add this new query below the existing query:
 
 ``` 
 # Operation name: AddPost
 mutation AddPost {
-  addPost(message:"Foo Bar") {
-    message
-    date
-  }
+	addPost(message:"Foo Bar") {
+		message
+		date
+	}
 }
 ```
 
 Clicking the > button should show a menu listing your named operations! Choose "AddPost". 
 
-Now click > and choose "Posts". This should list your your posts and the new post should be in the list! 
+Now click > and choose "Posts". This should list your posts and the new post should be in the list! 
 
 Debug any errors you have here at this step. 
 
 #### test newPost Subscription
 
-If you can lists your posts and add new posts you can register a subscription for posts. Registering a subscription will display the new post when a new post is created. 
+If you can list your posts and add new posts you can register a subscription for posts. Registering a subscription will display the new post when a new post is created. 
 
 To make this work you'll need to dedicate a new tab inside the Graphiql interface. Notice at the top there are tabs. make a new one by clicking +.
 
@@ -401,16 +482,16 @@ In the new tab add a subscription query:
 
 ```
 subscription NewPost {
-  newPost {
-    message
-    date
-  }
+	newPost {
+		message
+		date
+	}
 }
 ```
 
 Click the > button. This should run constantly. Notice the run button now looks like a stop button. This tab is now dedicated to watching for subscriptions. 
 
-This should register a subscription that will display message and date of new post when it is created. 
+This should register a subscription that will display the message and date of the new post when it is created. 
 
 Switch the first tab and run the `AddPost` operation again. You can change the message for fun. 
 
@@ -426,13 +507,13 @@ Review your work. Answer these questions for your self:
 
 ### Challenges!
 
-The goal of these challenges is to make a Slack like server. To do this you need to create channels, post messages to channels, subscribe to a channel and subscribe to new channels. 
+The goal of these challenges is to make a Slack-like server. To do this you need to create channels, post messages to channels, subscribe to a channel, and subscribe to new channels. 
 
-Slack would require a user object and authentication. We are going to leave of this project to scope it to the core functionality. You could add these features later if you wanted to continue working on this!
+Slack would require a user object and authentication. We are going to leave this project to scope it to the core functionality. You could add these features later if you wanted to continue working on this!
 
 **Challenge 1 - managing Channels**
 
-The first step is to look at your data and ask yourself where you would store channels? Here are a couple options:
+The first step is to look at your data and ask yourself where you would store channels? Here are a couple of options:
 
 Option 1: Use an object. Imagine your data storage as an object. 
 
@@ -443,7 +524,7 @@ Option 1: Use an object. Imagine your data storage as an object.
 }
 ```
 
-Each property is the channel name and the value is an array of posts. Pros you can be sure that channels are unique! Cons there isn't any room for channel meta data. 
+Each property is the channel name and the value is an array of posts. Pros you can be sure that channels are unique! Cons there isn't any room for channel metadata. 
 
 Option 2: As above but you use an object for the value of each channel property. 
 
@@ -454,9 +535,9 @@ Option 2: As above but you use an object for the value of each channel property.
 }
 ```
 
-Here you could add meta data to each channel. But your structure is more complex. 
+Here you could add metadata to each channel. But your structure is more complex. 
 
-Option 3: Use array of objects with a channel name and posts property. 
+Option 3: Use an array of objects with a channel name and posts property. 
 
 ```JS
 [
@@ -467,7 +548,7 @@ Option 3: Use array of objects with a channel name and posts property.
 
 This works but you will need to keep the channel names unique. 
 
-There are other options. You can think of your own ideas. What's important now is to understand your solution since it will affect how you answer the challenges coming up. 
+There are other options. You can think of your ideas. What's important now is to understand your solution since it will affect how you answer the challenges coming up. 
 
 Refactor your code to support channels. Include at least one channel in the refactored code! 
 
@@ -479,7 +560,7 @@ Create a Query type for `channels`. It should return an array of channel names.
 
 **Challenge 3 - addChannel Mutation**
 
-Now that we can get a list of the channels its time to make new channels. 
+Now that we can get a list of the channels it's time to make new channels. 
 
 Add a Mutation that creates a new channel. 
 
@@ -501,7 +582,7 @@ posts(channel: String!): [Post!]
 
 **Challenge 6 - Add Post to channel**
 
-All posts need to be associated with a channel. You need to make sure when a post is created that it assigned to a channel. How you do this depends on the arrangement of your data. 
+All posts need to be associated with a channel. You need to make sure when a post is created that it is assigned to a channel. How you do this depends on the arrangement of your data. 
 
 Here is a suggestion. You probably want to modify the `addPost` Mutation to look something like:
 
@@ -541,11 +622,42 @@ Complete the challenges here. Submit them to GradeScope.
 
 Start working on the final assignment. Choose one: 
 
-- React + Apollo Tutorial - https://www.howtographql.com
-- Your own Project idea 
+- GraphQL Node Tutorial - https://www.howtographql.com/graphql-js/0-introduction/
+- React + Apollo Tutorial - https://www.howtographql.com/react-apollo/0-introduction/
+- Your Project idea 
+- Stretch Challenge - Do both tutorials!
 
+### React + Apollo Tutorial 
 
+Following this tutorial, you will be building a Hackernews clone with React using a GraphQL server. This tutorial focuses on the React Front end that connects to the GraphQL backend built using Node. The backend is provided you will building the client. 
 
+Do this tutorial if you want to focus on React and client-side projects. 
 
+### GraphQL Node 
+
+In this tutorial, you will be building a Hackernews clone using Apollo server. This a Node project and focuses on building the server. You won't be building a client. 
+
+Do this project if you want to focus on server-side projects. 
+
+### Your project
+
+If you have an idea for a project that uses GraphQL you can do this! It can focus on the server-side or the client-side or can be a mix of both. 
+
+Your project should include the following: 
+
+- Uses all three Query types: Query, Mutation, and Subscription
+- Uses Apollo Server
+- If your project is client-focused it should use React. Your server can use a simple in-memory data store. 
+- If your project is server-focused it should use Apollo Server. Your server should use a database or other persistent storage type. 
+
+### Stretch Challenge!
+
+Do both tutorials! The GraphQL Node tutorial builds a HackerNews clone server and the React + Apollo tutorial builds a React client for the HackerNews backend. By doing both projects you would be building the entire system! 
+
+## Resources 
+
+- Apollo Docs - https://www.apollographql.com/docs/
+- GraphQL - https://graphql.org
+- https://www.howtographql.com
 
 
