@@ -297,17 +297,32 @@ To recap, this is the typical workflow you will follow when updating your data:
 
 <!-- > -->
 
-Work on the Hackernews clone tutorial. 
 
-- https://www.howtographql.com/graphql-js/0-introduction/
 
 <!-- > -->
 
 ## After Class 
 
-Continue working on the React + Apollo tutorial: <https://www.howtographql.com/react-apollo/0-introduction/>
+## After Class 
 
-- Complete the following chapters by next class: `More Mutations and Updating the Store`, `Filtering: Searching the List of Links`
+You should decide an what you are going to do for the final project
+
+- React + Apollo Tutorial - Complete chapeters 5 and 6
+  - [Routing](https://www.howtographql.com/react-apollo/4-routing/)
+  - [Authenication](https://www.howtographql.com/react-apollo/5-authentication/)
+- GraphQL Node Tutorial - Complete chapeters 5 and 6
+  - [Connecting The Server and Database with Prisma Client](https://www.howtographql.com/graphql-js/5-connecting-server-and-database/)
+  - [Authentication](https://www.howtographql.com/graphql-js/6-authentication/)
+- Your Custom project
+	- Server - Solve problems and add subscriptions
+	- Client - Solve problems displaying data from the server
+- Stretch Challenge - Complete the GraphQL Node tutorial and start the React + Apollo tutorial. 
+  - [Filtering, Pagination & Sorting](https://www.howtographql.com/graphql-js/8-filtering-pagination-and-sorting/)
+  - [Summary](https://www.howtographql.com/graphql-js/9-summary/)
+  - [Introduction](https://www.howtographql.com/react-apollo/0-introduction/)
+	- [Getting started](https://www.howtographql.com/react-apollo/1-getting-started/)
+  - [Queries: Loading Links](https://www.howtographql.com/react-apollo/2-queries-loading-links/)
+	- [Mutations: Creating Links](https://www.howtographql.com/react-apollo/3-mutations-creating-links/)
 
 ## Resources
 
@@ -384,3 +399,7 @@ Solve the exercise at the end of section 4: A simple Mutation.
 - GraphQL Hackernews clone - Tutorial
 	- Start the GraphQL Node Tutorial: https://www.howtographql.com/graphql-js/0-introduction/
 	   - Complete the following chapters by the next class: `Getting Started`, `A Simple Query`, and `A Simple Mutation`
+
+
+
+

@@ -616,7 +616,7 @@ Write a query for each of the following:
 - Test posts added to the correct channel
 - newPost - Check the subscription is showing new posts.
 
-## After Class 
+## Final Project
 
 Complete the challenges here. Submit them to GradeScope. 
 
@@ -633,13 +633,13 @@ Following this tutorial, you will be building a Hackernews clone with React usin
 
 Do this tutorial if you want to focus on React and client-side projects. 
 
-### GraphQL Node 
+### GraphQL Node Tutorial
 
 In this tutorial, you will be building a Hackernews clone using Apollo server. This a Node project and focuses on building the server. You won't be building a client. 
 
 Do this project if you want to focus on server-side projects. 
 
-### Your project
+### Your Custom project
 
 If you have an idea for a project that uses GraphQL you can do this! It can focus on the server-side or the client-side or can be a mix of both. 
 
@@ -653,6 +653,26 @@ Your project should include the following:
 ### Stretch Challenge!
 
 Do both tutorials! The GraphQL Node tutorial builds a HackerNews clone server and the React + Apollo tutorial builds a React client for the HackerNews backend. By doing both projects you would be building the entire system! 
+
+## After Class 
+
+You should decide an what you are going to do for the final project
+
+- React + Apollo Tutorial - You should complete the first two chapters of the tutorial
+	- [Introduction](https://www.howtographql.com/react-apollo/0-introduction/)
+	- [Getting started](https://www.howtographql.com/react-apollo/1-getting-started/)
+- GraphQL Node Tutorial - You should complete the first two chapters of the tutorial 
+	- [Introduction](https://www.howtographql.com/graphql-js/0-introduction/)
+	- [Getting Started](https://www.howtographql.com/graphql-js/1-getting-started/)
+- Your Custom project - have your server stubbed in and schema started
+	- Setup Apollo - Follow the guide from Lesson 7
+	- Write your Schema
+- Stretch Challenge - Start with the GraphQL Node tutorial and complete the first four chapters (do half the tutorial, five chapters, if you can!)
+	- [Introduction](https://www.howtographql.com/graphql-js/0-introduction/)
+	- [Getting Started](https://www.howtographql.com/graphql-js/1-getting-started/)
+	- [A simple query](https://www.howtographql.com/graphql-js/2-a-simple-query/)
+	- [A simple mutation](https://www.howtographql.com/graphql-js/3-a-simple-mutation/)
+	- [Adding a database](https://www.howtographql.com/graphql-js/4-adding-a-database/)
 
 ## Resources 
 
