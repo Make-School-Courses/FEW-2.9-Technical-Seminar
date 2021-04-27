@@ -27,7 +27,7 @@ Where are you at with the final project? Answer the questions in your group in r
 
 ## Advanced Queries 
 
-
+Operation Names
 
 
 
