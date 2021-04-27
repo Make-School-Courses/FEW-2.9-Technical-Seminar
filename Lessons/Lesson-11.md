@@ -192,7 +192,11 @@ GraphQL supports three operation types:
 
 **Vartiables**
 
+Variables are values that act as placeholders in a query. The values are defined outside of the query itself. Inside the query a variable consists of just the name and a type. 
 
+```python
+
+```
 
 
 
