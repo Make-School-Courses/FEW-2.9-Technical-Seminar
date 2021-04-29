@@ -17,10 +17,10 @@
 
 In Groups conduct a standup focussing on the final project progress. Answer these questions: 
 
-- WHat did you work on since Tuesday? 
+- What did you work on since Tuesday? 
 - What Are you working on today? 
 - What problems did you encounter?
-- Do yu have any blockers? 
+- Do you have any blockers? 
 
 <!-- > -->
 
