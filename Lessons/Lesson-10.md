@@ -143,4 +143,3 @@ You should decide an what you are going to do for the final project
   - [Introduction](https://www.howtographql.com/react-apollo/0-introduction/)
 	- [Getting started](https://www.howtographql.com/react-apollo/1-getting-started/)
   - [Queries: Loading Links](https://www.howtographql.com/react-apollo/2-queries-loading-links/)
-	- [Mutations: Creating Links](https://www.howtographql.com/react-apollo/3-mutations-creating-links/)
