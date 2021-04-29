@@ -198,14 +198,7 @@ Variables are values that act as placeholders in a query. The values are defined
 
 ```
 
-
-
-
 ## Variables
-
-
-
-
 
 Using variables with GraphQL
 
@@ -254,24 +247,17 @@ Here a variable is defined like this:
 You should decide an what you are going to do for the final project
 
 - React + Apollo Tutorial - Complete chapeters 7 and 8
-  - [More Mutations and Updating the Store](https://www.howtographql.com/react-apollo/6-more-mutations-and-updating-the-store/)
-  - [Filtering: Searching the List of Links](https://www.howtographql.com/react-apollo/7-filtering-searching-the-list-of-links/)
+  - [Realtime Updates with GraphQL Subscriptions](https://www.howtographql.com/react-apollo/8-subscriptions/)
+  - [Pagination](https://www.howtographql.com/react-apollo/9-pagination/)
+  - [Summary](https://www.howtographql.com/react-apollo/10-summary/)
 - GraphQL Node Tutorial - Complete chapeters 7 and 8
-  - [Authentication](https://www.howtographql.com/graphql-js/6-authentication/)
-  - [Realtime GraphQL Subscriptions](https://www.howtographql.com/graphql-js/7-subscriptions/)
+  - [Filtering, Pagination & Sorting](https://www.howtographql.com/graphql-js/8-filtering-pagination-and-sorting/)
+  - [Summary](https://www.howtographql.com/graphql-js/9-summary/)
 - Your Custom project
 	- Server - Solve problems and add subscriptions
 	- Client - Add CSS!
 - Stretch Challenge - React + Apollo tutorial chapters 
-  - [Routing](https://www.howtographql.com/react-apollo/4-routing/)
-  - [Authentication](https://www.howtographql.com/react-apollo/5-authentication/)
-  - [More Mutations and Updating the Store](https://www.howtographql.com/react-apollo/6-more-mutations-and-updating-the-store/)
   - [Filtering: Searching the List of Links](https://www.howtographql.com/react-apollo/7-filtering-searching-the-list-of-links/)
-
-<!-- > -->
-
-### Tutorial Stretch Challenges
-
-1. Implement the component that renders comments of authenticated users on links.
-1. Finish off the Logout functionality
-1. Implement a functionality that enables users to vote on comments of the links (one vote per link and user)
+  - [Realtime Updates with GraphQL Subscriptions](https://www.howtographql.com/react-apollo/8-subscriptions/)
+  - [Pagination](https://www.howtographql.com/react-apollo/9-pagination/)
+  - [Summary](https://www.howtographql.com/react-apollo/10-summary/)

@@ -303,26 +303,7 @@ To recap, this is the typical workflow you will follow when updating your data:
 
 ## After Class 
 
-## After Class 
 
-You should decide an what you are going to do for the final project
-
-- React + Apollo Tutorial - Complete chapeters 5 and 6
-  - [Routing](https://www.howtographql.com/react-apollo/4-routing/)
-  - [Authenication](https://www.howtographql.com/react-apollo/5-authentication/)
-- GraphQL Node Tutorial - Complete chapeters 5 and 6
-  - [Connecting The Server and Database with Prisma Client](https://www.howtographql.com/graphql-js/5-connecting-server-and-database/)
-  - [Authentication](https://www.howtographql.com/graphql-js/6-authentication/)
-- Your Custom project
-	- Server - Solve problems and add subscriptions
-	- Client - Solve problems displaying data from the server
-- Stretch Challenge - Complete the GraphQL Node tutorial and start the React + Apollo tutorial. 
-  - [Filtering, Pagination & Sorting](https://www.howtographql.com/graphql-js/8-filtering-pagination-and-sorting/)
-  - [Summary](https://www.howtographql.com/graphql-js/9-summary/)
-  - [Introduction](https://www.howtographql.com/react-apollo/0-introduction/)
-	- [Getting started](https://www.howtographql.com/react-apollo/1-getting-started/)
-  - [Queries: Loading Links](https://www.howtographql.com/react-apollo/2-queries-loading-links/)
-	- [Mutations: Creating Links](https://www.howtographql.com/react-apollo/3-mutations-creating-links/)
 
 ## Resources
 
@@ -350,17 +331,25 @@ You should decide an what you are going to do for the final project
 
 ## After Class 
 
+## After Class 
 
-The next assignment is to create a hacknews clone with GraphQL 
+You should decide an what you are going to do for the final project
 
-<!-- > -->
-
-This assignment will use **Apollo Server**. Apollo is a GraphQL Server built on Node.
-
-<!-- > -->
-
-The project will also use **Prisma**. Prisma is an Object-Relationship Mapper (ORM.) Prisma will connect your resolvers to a data base. 
-
+- React + Apollo Tutorial - Complete chapeters 7 and 8
+  - [More Mutations and Updating the Store](https://www.howtographql.com/react-apollo/6-more-mutations-and-updating-the-store/)
+  - [Filtering: Searching the List of Links](https://www.howtographql.com/react-apollo/7-filtering-searching-the-list-of-links/)
+- GraphQL Node Tutorial - Complete chapeters 7 and 8
+  - [Authentication](https://www.howtographql.com/graphql-js/6-authentication/)
+  - [Realtime GraphQL Subscriptions](https://www.howtographql.com/graphql-js/7-subscriptions/)
+- Your Custom project
+	- Server - Solve problems and add subscriptions
+	- Client - Add CSS!
+- Stretch Challenge - React + Apollo tutorial chapters 
+  - [Mutations: Creating Links](https://www.howtographql.com/react-apollo/3-mutations-creating-links/)
+  - [Routing](https://www.howtographql.com/react-apollo/4-routing/)
+  - [Authentication](https://www.howtographql.com/react-apollo/5-authentication/)
+  - [More Mutations and Updating the Store](https://www.howtographql.com/react-apollo/6-more-mutations-and-updating-the-store/)
+  
 <!-- > -->
 
 ## Challenges

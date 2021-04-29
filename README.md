@@ -49,11 +49,11 @@ Students by the end of the course will be able to ...
 |  4  | Tue, Apr 13 | [Lesson 4 - React Intro]               | React GraphQL Weather |
 |  5  | Thu, Apr 15 | [Lesson 5 - React and GraphQL]         | - |
 |  6  | Tue, Apr 20 | [Lesson 6 - GraphQL Mutations]         | - |
-|  7  | Thu, Apr 22 | [Lesson 7 - Subscriptions]             | Subscriptions |
-|  8  | Tue, Apr 27 | [Lesson 8 - Lab]                       | - |
-|  9  | Thu, Apr 29 | [Lesson 9 - GraphQL ORM]               | GraphQL Hackernews |
+|  7  | Thu, Apr 22 | [Lesson 7 - Websockets]                | Subscriptions |
+|  8  | Tue, Apr 27 | [Lesson 8 - Subscriptions]             | - |
+|  9  | Thu, Apr 29 | [Lesson 9 - Subscriptions Lab]         | GraphQL Hackernews |
 |  10 | Tue, May 4  | [Lesson 10 - Advanced Queries]         | - |
-|  11 | Thu, May 6  | [Lesson 11 - Lab]                      | - |
+|  11 | Thu, May 6  | [Lesson 11 - GraphQL ORM]                      | - |
 |  12 | Tue, May 11 | Final Class                            | - |
 |  13 | Thu, May 13 | Final Exams/Presentations              | - |
 
@@ -63,9 +63,9 @@ Students by the end of the course will be able to ...
 [Lesson 4 - React Intro]: Lessons/Lesson-4.md
 [Lesson 5 - React and GraphQL]: Lessons/Lesson-5.md
 [Lesson 6 - GraphQL Mutations]: Lessons/Lesson-6.md
-[Lesson 7 - Subscriptions]: Lessons/Lesson-7.md
-[Lesson 8 - Lab]: Lessons/Lesson-8.md
-[Lesson 9 - GraphQL ORM]: Lessons/Lesson-9.md
+[Lesson 7 - Websockets]: Lessons/Lesson-7.md
+[Lesson 8 - Subscriptions]: Lessons/Lesson-8.md
+[Lesson 9 - Subscriptions Lab]: Lessons/Lesson-9.md
 [Lesson 10 - Advanced Queries]: Lessons/Lesson-10.md
 [Lesson 11 - Lab]: Lessons/Lesson-11.md
 [Lesson 12]: Lessons/Lesson-12.md
