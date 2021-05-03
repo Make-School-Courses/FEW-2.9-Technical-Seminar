@@ -1,27 +1,58 @@
 ## Slack Clone Client with Apollo Client
 
-Set up
 
+
+
+
+
+
+
+
+
+
+## Building the Slack Client
+
+The goal is build a client to interact with your simple Slack-like GraphQL server. 
+
+You will likely need to adjust this to fit your server. 
+
+### Create your react App
+
+Create the default project:
+
+```
 npx creat-react-app slack-client
 cd slack-client
+```
+
+Import your dependencies:
+
+```
 npm install @apollo/client graphql
+```
 
 Needed for subscriptions:
-npm install subscriptions-transport-ws
 
-Boilerplate
+```
+npm install subscriptions-transport-ws
+```
+
+Setup a connection to the GraphQL server. 
 
 in src/index.js
 
 ```JS
+// Dependencies
 import { ApolloProvider, InMemoryCache, ApolloClient, split, HttpLink } from '@apollo/client'
 import { getMainDefinition } from '@apollo/client/utilities';
 import { WebSocketLink } from '@apollo/client/link/ws';
 
+// Used for Query and Mutation Queries
 const httpLink = new HttpLink({
   uri: 'http://localhost:4000/graphql'
 });
 
+// Use for Subscription Queries
 const wsLink = new WebSocketLink({
   uri: 'ws://localhost:4000/graphql',
   options: {
@@ -29,8 +60,9 @@ const wsLink = new WebSocketLink({
   }
 });
 
+// Routes Queries to the http:// or ws:// depending on the type
 const splitLink = split(
-  ({ query }) => {
+	({ query }) => {
     const definition = getMainDefinition(query);
     return (
       definition.kind === 'OperationDefinition' &&
@@ -47,6 +79,7 @@ export const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
+// Lets share the client with child components
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
@@ -56,6 +89,23 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
+
+You may need to adjust the port number here to match your server. 
+
+**Note:** Since this project will be using Subscriptions it will need to use the `ws://` protocol for those. 
+
+Query and Mutation will still need to use `http://`. 
+
+You're using `split()` here to look at the at the query and route it to `wsLink` if it's a subscription and to the `httpLink` if it's a Query or Mutation. 
+
+
+
+
+
+
+
+
+
 
 Fetch some channels: 
 
