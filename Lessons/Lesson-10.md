@@ -469,11 +469,11 @@ Try these challenges!
 
 **Challenge 2** [Import the dependencies](#Import-Dependencies) to connect the project to your Apollo Server.
 
-**Challenge 3** [Setup Apollo Client in index.js](#Setup-index.js)
+**Challenge 3** [Setup Apollo Client in index.js](#Setup-indexjs)
 
 **Challenge 4** [Define a Query with a variable](#Define-a-Query)
 
-**Challenge 5** [Set up App.js and run a query](#Setup-App.js)
+**Challenge 5** [Set up App.js and run a query](#Setup-Appjs)
 
 **Challenge 6** If everything is working and you have one query working. Try another query. Create a new file for the query and try something like loading channels. 
 
