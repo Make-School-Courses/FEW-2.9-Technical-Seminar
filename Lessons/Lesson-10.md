@@ -6,11 +6,13 @@ The goal of this class will be to set up a React client using Apollo Client and 
 
 <!-- > -->
 
-## Review 
+## Standup 
 
-<!-- > -->
+Check in with your final project progress. 
 
-
+- What did you accomplish since last Wednesday
+- What are you going to accomplish between now and wednesday
+- Do you have any blockers?
 
 <!-- > -->
 
