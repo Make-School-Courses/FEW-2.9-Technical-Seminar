@@ -482,18 +482,18 @@ Try these challenges!
 You should decide what you are going to do for the final project
 
 - React + Apollo Tutorial - Complete chapters 5 and 6
- - [Routing](https://www.howtographql.com/react-apollo/4-routing/)
- - [Authenication](https://www.howtographql.com/react-apollo/5-authentication/)
+  - [Routing](https://www.howtographql.com/react-apollo/4-routing/)
+  - [Authenication](https://www.howtographql.com/react-apollo/5-authentication/)
 - GraphQL Node Tutorial - Complete chapters 5 and 6
- - [Adding a Database](https://www.howtographql.com/graphql-js/4-adding-a-database/)
- - [Connecting The Server and Database with Prisma Client](https://www.howtographql.com/graphql-js/5-connecting-server-and-database/)
+  - [Adding a Database](https://www.howtographql.com/graphql-js/4-adding-a-database/)
+  - [Connecting The Server and Database with Prisma Client](https://www.howtographql.com/graphql-js/5-connecting-server-and-database/)
 - Your Custom project
- - Server - Solve problems and add subscriptions
- - Client - Solve problems displaying data from the server
+  - Server - Solve problems and add subscriptions
+  - Client - Solve problems displaying data from the server
 - Stretch Challenge - Complete the GraphQL Node tutorial and start the React + Apollo tutorial. 
- - [Filtering, Pagination & Sorting](https://www.howtographql.com/graphql-js/8-filtering-pagination-and-sorting/)
- - [Summary](https://www.howtographql.com/graphql-js/9-summary/)
- - [Introduction](https://www.howtographql.com/react-apollo/0-introduction/)
- - [Getting started](https://www.howtographql.com/react-apollo/1-getting-started/)
- - [Queries: Loading Links](https://www.howtographql.com/react-apollo/2-queries-loading-links/)
+  - [Filtering, Pagination & Sorting](https://www.howtographql.com/graphql-js/8-filtering-pagination-and-sorting/)
+  - [Summary](https://www.howtographql.com/graphql-js/9-summary/)
+  - [Introduction](https://www.howtographql.com/react-apollo/0-introduction/)
+  - [Getting started](https://www.howtographql.com/react-apollo/1-getting-started/)
+  - [Queries: Loading Links](https://www.howtographql.com/react-apollo/2-queries-loading-links/)
 
