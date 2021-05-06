@@ -12,6 +12,53 @@ Standup focussed on final project process:
   - What three things can you get done right now? 
 - Do you have any blockers? 
 
+## Tutorial Notes: 
+
+React Apollo: Throughout the tutorial the author offers code a code snippet that requires a code snippet that comes later in the tutorial. Be aware of this! 
+
+React Apollo: Getting Started: 
+
+Error: "Argument id for data.postedBy.connect.id must not be null. Please use undefined instead.\n"
+
+I skipped this error, it seems to be in Prisma. Could be due to update?
+
+I continued to the next section and things seemed to be working.
+
+React Apollo: Mutations: Creating Links
+
+Error: Unhandled Rejection (Error): Argument id for data.postedBy.connect.id must not be null. Please use undefined instead.
+
+Looks like the same error from the client side. 
+
+I'm going to ignore it again seince authentication is not setup and I suspect it has something to do with that?
+
+React Apollo: Routing
+
+The routing worked, I was able to switch betwen the list of links and the create link form. The default links were showing in the list. 
+
+Submitting a new link generated this error: 
+
+Error: Unhandled Rejection (Error): Argument id for data.postedBy.connect.id must not be null. Please use undefined instead.
+
+The next section is Authentication. I'll go through that and see if that fixes things if not? 
+
+React Apollo: Authentication
+
+At this point authentication seems to be working. 
+
+The "New" link doesn't seem to be working. Not sure if I made a mistake. This could be handled in the next sections?
+
+React Apollo: More Mutations and Updating the Store
+
+I had errors all the way unitl the end of this section. Seems the code is presented first then an import statement is added after the code that uses the import. 
+
+At the end of this section I was able to create new links! 
+
+I did see this warning in the console: Warning: Can't perform a React state update on an unmounted component. 
+
+
+
+
 <!-- > -->
 
 ## Resources
