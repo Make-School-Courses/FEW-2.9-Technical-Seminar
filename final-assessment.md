@@ -2,7 +2,7 @@
 
 ## Question 1 - Setup (20pts)
 
-Your goal is to build a GraphQL Todo application. For this assignment you will build a server supports your GraphQL schema. You will write the schema, resolvers, and some queries that test query types in your schema. 
+Your goal is to build a GraphQL Todo application. For this assignment, you will build a server that supports your GraphQL schema. You will write the schema, resolvers, and some queries that test query types in your schema. 
 
 # Todo GraphQL
 
@@ -38,10 +38,7 @@ Write a schema that defines the following types:
 
 Write queries to perform the following operations. Test these in Graphiql and paste them into a readme in your project folder.
 
-- list all todos, show these fields
-	- name
-	- date 
-	- completed
+- list all todos
 - add a new todo: name: "Complete the final assessment"
 - show the "Complete final assessment" todo 
 - Complete the "Complete final assessment" todo
@@ -50,7 +47,7 @@ Write queries to perform the following operations. Test these in Graphiql and pa
 
 ### Stretch Challenge: Subscriptions
 
-Add subscriptions to your work. WE need a ubscriptions to tell us when a new todo is created and when a todo is completed.
+Add subscriptions to your work. We need a subscriptions to tell us when a new todo is created and when a todo is completed.
 
 **Schema**
 
