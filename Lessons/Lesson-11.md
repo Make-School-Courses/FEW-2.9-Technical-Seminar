@@ -16,7 +16,7 @@ Standup focussed on final project process:
 
 React Apollo: Throughout the tutorial the author offers code a code snippet that requires a code snippet that comes later in the tutorial. Be aware of this! 
 
-React Apollo: Getting Started: 
+**React Apollo: Getting Started**
 
 Error: "Argument id for data.postedBy.connect.id must not be null. Please use undefined instead.\n"
 
@@ -24,7 +24,7 @@ I skipped this error, it seems to be in Prisma. Could be due to update?
 
 I continued to the next section and things seemed to be working.
 
-React Apollo: Mutations: Creating Links
+**React Apollo: Mutations: Creating Links**
 
 Error: Unhandled Rejection (Error): Argument id for data.postedBy.connect.id must not be null. Please use undefined instead.
 
@@ -32,7 +32,7 @@ Looks like the same error from the client side.
 
 I'm going to ignore it again seince authentication is not setup and I suspect it has something to do with that?
 
-React Apollo: Routing
+**React Apollo: Routing**
 
 The routing worked, I was able to switch betwen the list of links and the create link form. The default links were showing in the list. 
 
@@ -56,6 +56,13 @@ At the end of this section I was able to create new links!
 
 I did see this warning in the console: Warning: Can't perform a React state update on an unmounted component. 
 
+React Apollo: Filter and Searching the list of links
+
+At the end of this section the list of links was missing? Not sure if I did something wrong. 
+
+When adding a new link I got an error in the client/browser but the link I added appeared in the database when I checked the server in Graphiql. Not sure what happened could be my fault. 
+
+The search button did work...
 
 
 

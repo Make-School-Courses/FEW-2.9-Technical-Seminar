@@ -2,54 +2,114 @@
 
 ## Question 1 - Setup (20pts)
 
-Make an express app that uses GraphQL. 
+Your goal is to build a GraphQL Todo application. For this assignment you will build a server supports your GraphQL schema. You will write the schema, resolvers, and some queries that test query types in your schema. 
 
-It should implement Graphiql browser. 
+# Todo GraphQL
 
-## Question 2 - Schema Types (20pts)
+Your goal is to make a GraphQL todo app. It should be able to display a list of todos, create new todos, and mark a todo completed.
 
-Write a schema that defines four types: 
+## Challenges
 
-- About: with fields
-	- name: returns your name
-	- course: returns this course
-	- description: Describe your project
-- Portfolio: with fields
-	- id: Int
-	- title: String
-	- description: String
-	- url: String
-	
-## Question 3 - Schema Query (20pts)
+### Create a Server
 
-Add three queries to your schema. These should:
+- Setup GraphQL server
+- Enable Graphiql
 
-- Return the About type
-- Array of the portfolio 
-- Portfolio by id 
+### Create a Schema 
 
-## Question 4 - Schema Mutation (20pts)
+Write a schema that defines the following types:
 
-Add some mutations that do the following: 
+**Type Todo**
+- name 
+- completed
+- date 
+- id
 
-- create a new portfolio
-- edit an existing portfolio
-- delete a portfolio
+**Query**
+- getAllTodos
+- getTodo parameters: id => todos[]
+- getComletedTodos: completed => todos[]
 
-_For this section you can mock up your data in your app. You do not need to create a functioning database._
+**Mutation**
+- addTodo: name => todo
+- completeTodo: id => todo
 
-## Question 5 - Resolvers (20pts)
+### Write a GraphQL Queries
 
-Define a resolver for each of the queries and types defined above. 
+Write queries to perform the following operations. Test these in Graphiql and paste them into a readme in your project folder.
 
-## Exrta credit
+- list all todos, show these fields
+	- name
+	- date 
+	- completed
+- add a new todo: name: "Complete the final assessment"
+- show the "Complete final assessment" todo 
+- Complete the "Complete final assessment" todo
+- show all completed todos
+- show all not completed todos
 
-- (5pts) Use variables in yout Query and Mutations
-- (5pts each) Add a description of what GraphQL is. Include the following: 
-	- What is GraphQL
-	- What are it's advantages and disadvanatges
-	- Describe a use case
-	- Compare GraphQL and REST
-	
+### Stretch Challenge: Subscriptions
 
-  
+Add subscriptions to your work. WE need a ubscriptions to tell us when a new todo is created and when a todo is completed.
+
+**Schema**
+
+**Subscription**
+- newTodo => todo
+- todoCompleted => todo
+
+**Resolver**
+
+Write a resolver to handle the two new query types.
+
+**Query**
+
+Write a query for each of the subscription types above. 
+
+## Submit your work 
+
+Submit your completed work on GradeScope.
+
+<!-- 
+
+### Define a Schema
+
+Enum Race 
+- Human
+- Dwarf
+- Elf
+
+Type Character
+- name
+- race
+- power
+- speed
+- hp
+
+Type Party 
+- name 
+- characters []
+
+Query 
+- getParty returns Party
+- 
+
+Mutation 
+- createParty 
+	- parameters name
+	- returns Party
+- creatCharacter returns Character
+- addToParty return character
+
+### Create a server 
+
+- Setup GraphQL server 
+- Define a resolver for your schema
+
+### Write Queries 
+
+Define the following queries
+
+- get a party 
+	- show 
+ -->
