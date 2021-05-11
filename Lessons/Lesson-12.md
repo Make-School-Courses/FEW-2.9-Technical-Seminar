@@ -37,7 +37,9 @@ In Groups do a standup focusing in your final project. Answer these questions:
 
 ### Why use an ORM? 
 
-The code you write, JavaScript in our case, is an Object Oriented language. Data is organized in  objects that can be nested. Databases on the other hand are tables which represent a flat list. 
+The code you write, JavaScript in our case, is an Object Oriented language. Data is organized in  objects that can be nested. Databases on the other hand are tables which are flat lists. 
+
+<!-- > -->
 
 The ORM provides an abstraction that allows us to access our databases like in the form and with the language that we are working on most of the time. 
 
