@@ -2,6 +2,16 @@
 
 <!-- > -->
 
+## Final Project Standup
+
+In Groups do a standup focusing in your final project. Answer these questions:
+
+- What have you accomplished since class last Thursday? 
+- What do you plan accomplish now and Thursday? (our last class!)
+- What will work on in today's lab time in class?
+
+<!-- > -->
+
 ## Review 
 
 
@@ -25,9 +35,11 @@
 
 <!-- > -->
 
-### Where's GraphQL? 
+### Why use an ORM? 
 
-Since GraphQL is just a specification and a language we need a tool that implements that spec and understands the language. For this project we'll use Prisma.
+The code you write, JavaScript in our case, is an Object Oriented language. Data is organized in  objects that can be nested. Databases on the other hand are tables which represent a flat list. 
+
+The ORM provides an abstraction that allows us to access our databases like in the form and with the language that we are working on most of the time. 
 
 <!-- > -->
 
@@ -35,9 +47,9 @@ Since GraphQL is just a specification and a language we need a tool that impleme
 
 <!-- > -->
 
-**Prisma** is an ORM (Object-Relationship Mapper) you'll use this to connect your GraphQL resolvers to your data through your database. 
+**Prisma** is an ORM (Object-Relationship Mapper) the tutorial uses this to connect your GraphQL resolvers to your data through your database. 
 
-Prisma implements GraphQL. 
+Prisma implements GraphQL!
 
 <!-- > -->
 
@@ -91,17 +103,17 @@ The Auto generated code lives in `node_modules/prisma/prisma-client`. Since this
 
 <!-- > -->
 
-What is really happening here? Prisma is looing at the schema you created and generating all of the code needed to create, update, delete, and fetch records from the database that you define. 
+What is really happening here? Prisma is looking at the schema you created and generating all of the code needed to create, update, delete, and fetch records from the database that you define. 
+
+<!-- > -->
+
+Optional: Try Prisma out through their 5min tutorial: https://www.prisma.io/docs/getting-started/quickstart-typescript
 
 <!-- > -->
 
 ### Prisma Schema
 
 The Prisma Schema describes the data model used by your GraphQL server and how it should map your database. 
-
-<!-- > -->
-
-
 
 <!-- > -->
 

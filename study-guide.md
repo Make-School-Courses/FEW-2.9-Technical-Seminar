@@ -3,43 +3,33 @@
 Be able to answer these questions:
 
 - What is GraphQL
-- Compare GraphQL with REST
   - What are the advantages of using GraphQL?
   - What are the disadvantages?
 - Describe the Features of the GraphQL language
   - Schema
+    - Define types
+      - String, Float, Int, Boolean, ID, List
+    - not null !
   - Query 
+    - Write query, query nested types
   - Variables
   - Types  
   - Resolvers
   - Subscriptions 
-- What types of queries does GraphQL support? 
+- What types of queries does GraphQL support?
+  - Query
+  - Mutation
+  - Subscription
 - Write a basic GraphQL query
+  - Use the GraphQL query language
 - Write a basic GraphQL Schema 
-
+  - Use the GraphQL Schema Language
+  - What's a type? 
+  - Define a type?
 - Can you make an app that 
-  - Returns a Thing
-    - Thing
-      - name string
-      - id string
-      - thinginess WTF
-    - WTF
-      - id string
-      - min Float
-      - max Float
-      - rating Int
-
-{
-  getThing(id: String) {
-    name
-    id
-    thinginess {
-      min
-      max
-    }
-  }
-}
-
+  - Defines a schema?
+  - Defines Resolvers to handle the types in your schema?
+  - Handles queries mutations and subscriptions?
 
 
 
