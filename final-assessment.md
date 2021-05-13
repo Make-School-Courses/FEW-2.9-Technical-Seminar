@@ -6,13 +6,17 @@ Your goal is to build a GraphQL Todo application. For this assignment, you will 
 
 # Todo GraphQL
 
-Your goal is to make a GraphQL todo app. It should be able to display a list of todos, create new todos, and mark a todo completed.
+Your goal is to make a GraphQL todo app. It should be able to:
+
+- display a list of todos
+- create new todos
+- and mark a todo completed or not completed
 
 ## Challenges
 
 ### Create a Server
 
-- Setup GraphQL server
+- Setup a GraphQL server
 - Enable Graphiql
 
 ### Create a Schema 
@@ -26,24 +30,27 @@ Write a schema that defines the following types:
 - id
 
 **Query**
-- getAllTodos
-- getTodo parameters: id => todos[]
-- getComletedTodos: completed => todos[]
+- getAllTodos, should return a list of todos
+- getTodo, should return a single todo
+- getCompletedTodos, returns a list of completed todos
+	- Stretch: can return completed or not completed todos
 
 **Mutation**
-- addTodo: name => todo
-- completeTodo: id => todo
+- addTodo, creates a new todo, and returns that todo
+- completeTodo, marks a todo complete and returns that todo
 
 ### Write a GraphQL Queries
 
-Write queries to perform the following operations. Test these in Graphiql and paste them into a readme in your project folder.
+Write queries to perform the following operations. 
 
-- list all todos
-- add a new todo: name: "Complete the final assessment"
-- show the "Complete final assessment" todo 
-- Complete the "Complete final assessment" todo
-- show all completed todos
-- show all not completed todos
+**Test these in Graphiql and paste them into a readme in your project folder.** If I launch your project I should be able to test all of your queries. 
+
+- List all todos
+- Add a new todo: name: "Complete the final assessment"
+- Show the: "Completed final assessment" todo 
+- Complete the: "Complete final assessment" todo
+- Show all completed todos
+- Show all not completed todos
 
 ### Stretch Challenge: Subscriptions
 
@@ -62,6 +69,29 @@ Write a resolver to handle the two new query types.
 **Query**
 
 Write a query for each of the subscription types above. 
+
+#### Stretch Challenge: Enum
+
+Add an enum to prioritize your todos. 
+
+**Schema**
+
+- Define an enum with: High, Normal, and Low 
+- Add a priority field to your Todo type
+- Add a setPriority mutation
+- Add a query to sort by priority
+
+**Resolver**
+
+Handle the new query types in your schema. You'll need to also update your data source. 
+
+**Query**
+
+Test the following queries and add them to your readme:  
+
+- Display the priority when you list todos
+- Set the "Complete final assessment" todo to "High" priority
+- Sort todos by priority
 
 ## Submit your work 
 

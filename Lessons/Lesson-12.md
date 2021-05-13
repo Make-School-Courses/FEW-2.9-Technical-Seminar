@@ -14,7 +14,9 @@ In Groups do a standup focusing in your final project. Answer these questions:
 
 ## Review 
 
+In Groups review the Final Assessment Study Guide. Identify the things that you know and the things you know less about by explaining them to each other in your group. 
 
+https://github.com/Make-School-Courses/FEW-2.9-Technical-Seminar/blob/master/study-guide.md
 
 <!-- > -->
 
@@ -157,7 +159,7 @@ The Prisma Data Model defines your resources that are stored in your database. T
 
 <!-- > -->
 
-A model should mirror your GraphQL types. 
+A model should mirror your GraphQL types.
 
 <!-- > -->
 
